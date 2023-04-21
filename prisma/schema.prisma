@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Auth {
+  email    String @unique
+  password String
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String
+}
+
+model User {
+  id        String @id @default(uuid())
+  firstName String
+  lastName  String
+  bio       String
+  // posts Post @relation(fields:[userId], reference:[id])
+  // links Link @default(fields:[userId], reference:[id])
+
+  Auth    Auth[]
+  Post    Post[]
+  Project Project[]
+  Link    Link[]
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  date      DateTime @default(now())
+  title     String
+  content   String
+  published Boolean  @default(false)
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  title       String
+  description String
+  imageUrl    String
+  date        DateTime
+  ghLink      String
+
+  deployedLink String
+}
+
+model Link {
+  id       Int      @id @default(autoincrement())
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
+  linkURL  String
+  userLink UserLink
+}
+
+enum UserLink {
+  TWITTER
+  LINKEDIN
+  GITHUBPROJECT
+  DEPLOYEDINSTANCE
+  GITHUBPERSONAL
+  INSTAGRAM
+  FACEBOOK
+  DISCORD
+}
