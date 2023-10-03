@@ -324,6 +324,8 @@ export default function Homepage() {
               </div>
             </div>
           </div>
+
+          {/**blob placement section */}
           <div className=' skills-section right-div h-0   md:h-[100dvh] basis-0 md:basis-1/2 hidden sticky top-0 border-l md:flex  items-center bg-white'>
             <p className='font-dida text-[6vw] text-center'>
               *stand by for some cool 3d shit rendered here*
