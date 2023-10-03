@@ -127,15 +127,30 @@ export default function Homepage() {
           },
         });
 
+        {/**skills section bg color merge */}
       tl.to('.skills-section', {
         backgroundColor: '#121212',
         immediateRender: false,
+        duration: 3.4,
         scrollTrigger: {
           trigger: '.skills-section',
           // scroller: '.container',
-          scrub: true,
+          scrub: 3.8,
           start: 'top bottom',
           end: '+=100%',
+        },
+      });
+
+      tl.to('.projects-section', {
+        backgroundColor: '#fff',
+        immediateRender: false,
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.projects-section',
+          scrub: 4,
+          start: 'top bottom',
+          end: '+=100%',
+          markers: true
         },
       });
 
@@ -205,21 +220,17 @@ export default function Homepage() {
     <main className='container relative w-[100vw] h-full min-h-screen text-white '>
       <Navbar scrollToSection={scrollToSection} />
 
-  
-
-
-
       {/**hero section */}
       <section
         id='home'
-        className='hero-section z-[100] h-screen  flex flex-col justify-center items-center  xs:-translate-y-[30%] md:-translate-y-[10%]'
+        className='hero-section  h-screen  flex flex-col justify-center items-center  xs:-translate-y-[30%] md:-translate-y-[10%]'
       >
         <p className='self-end xs:pr-4 pr-[5%] font-mono xs:text-[1.8vw] md:text-[.8vw]'>
           hello, i am
         </p>
         <h1
           id='text'
-          className='font-dida text-[6.7vw] leading-none text-center'
+          className='font-dida  text-[6.7vw] leading-none text-center'
         >
           FULLSTACK DEVELOPER
         </h1>
@@ -337,7 +348,7 @@ export default function Homepage() {
       {/**projects section */}
       <section
         id='projects-section-scroll-to'
-        className='projects-section flex pt-[11dvh] z-[250] bg-white '
+        className='projects-section flex pt-[11dvh]   bg-[#121212] '
       >
         <div className='  flex flex-none  overflow-x-scroll '>
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center '>
