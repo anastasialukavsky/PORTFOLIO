@@ -13,6 +13,7 @@ function App() {
     const skillsSection = document.querySelector('.skills-section');
     const contactSection = document.querySelector('#contact');
     const miscDiv = document.querySelector('.misc-div')
+    const projectsSection = document.querySelector('.projects-section')
 
   useLayoutEffect(() => {
  const ctx = gsap.context(() => {
@@ -49,20 +50,25 @@ function App() {
       //     pin: true,
       //   },
       // });
-            gsap.to(blobRef.current, {
-          xPercent: -200,
-          ease: 'none',
-          duration: 2,
-          scrollTrigger: {
-            trigger: '.misc-div',
-            start: 'top top',
-            end: '50% 10%',
-            scrub: false,
-            pin:true
-            // scrub: true,
-            // markers: true,
-          },
-        });
+
+
+
+        //     gsap.to(blobRef.current, {
+        //   xPercent: -100,
+        //   ease: 'none',
+        //   duration: 2,
+        //   scrollTrigger: {
+        //     trigger: contactSection,
+        //     start: 'top top',
+        //     end: 'center center',
+        //     // scrub: false,
+        //     pin:true,
+        //     scrub: 5,
+        //     markers: true,
+        //   },
+        // });
+
+        
  });
 
  return () => {
