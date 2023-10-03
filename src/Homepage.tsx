@@ -141,6 +141,7 @@ export default function Homepage() {
         },
       });
 
+      {/**projects sectino bg transition */}
       tl.to('.projects-section', {
         backgroundColor: '#fff',
         immediateRender: false,
@@ -150,30 +151,45 @@ export default function Homepage() {
           scrub: 4,
           start: 'top bottom',
           end: '+=100%',
-          markers: true
+          // markers: true
         },
       });
 
+{/**contact section bg transition */}
+
+
+tl.to('.contact-section', {
+  backgroundColor: '#121212',
+  immediateRender: false,
+  duration: 1,
+  scrollTrigger: {
+    trigger: '.contact-section',
+    scrub: 4,
+    start: 'top bottom',
+    end: '+=100%',
+    markers: true
+  }
+})
       {
         /**horizontal scroll anim */
       }
-      // gsap.to(projects, {
-      //   xPercent: -100 * (projects.length - 1),
-      //   ease: 'none',
-      //   duration: 2,
-      //   scrollTrigger: {
-      //     trigger: '.projects-section',
-      //     pin: true,
-      //     scrub: 2,
-      //     end: '+=4000',
-      //     // snap: {
-      //     //   snapTo: 0.33,
-      //     //   duration: 0.02,
-      //     //   ease: 'power1.inOut',
-      //     // },
-      //     // markers: true,
-      //   },
-      // });
+      gsap.to(projects, {
+        xPercent: -100 * (projects.length - 1),
+        ease: 'none',
+        duration: 2,
+        scrollTrigger: {
+          trigger: '.projects-section',
+          pin: true,
+          scrub: 2,
+          end: '+=4000',
+          // snap: {
+          //   snapTo: 0.33,
+          //   duration: 0.02,
+          //   ease: 'power1.inOut',
+          // },
+          // markers: true,
+        },
+      });
     });
 
     return () => {
@@ -183,30 +199,6 @@ export default function Homepage() {
   }, []);
 
 
-  // useLayoutEffect(() => {
-  //   //  const blobElement = document.getElementById('blob');
-  //   const blobElement = document.getElementById('#blob') as HTMLElement;
-    
-  //   const blobHeight = blobRef.current?.clientHeight;
-  //   const windowHeight = window.innerHeight;
-  //   const bodyHeight = document.body?.clientHeight;
-    
-  //   // if (!blobHeight || !blobRef.current || !bodyHeight) return;
-  //   console.log('hello');
-
-  //   gsap.to(blobRef.current, {
-  //     ease: 'none',
-  //     scrollTrigger: {
-  //       trigger: document.body,
-  //       start: 'top top',
-  //       end: 'bottom bottom',
-  //       scrub: true,
-  //       pin: true,
-  //       markers: true,
-  //       pinSpacing: false,
-  //     },
-  //   });
-  // }, [blobRef.current]);
 
 
   {
@@ -348,7 +340,7 @@ export default function Homepage() {
       {/**projects section */}
       <section
         id='projects-section-scroll-to'
-        className='projects-section flex pt-[11dvh]   bg-[#121212] '
+        className='projects-section flex pt-[11dvh]  z-[200] bg-[#121212] '
       >
         <div className='  flex flex-none  overflow-x-scroll '>
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center '>
@@ -548,20 +540,11 @@ export default function Homepage() {
       </section>
 
       {/**contact section */}
-      <section id='contact' className='contact-section font-mono'>
-        <div className='h-screen w-screen bg-[#121212] relative '>
-          <div className='flex justify-between'>
-            <video
-              src={vid}
-              loop={true}
-              autoPlay={true}
-              muted={true}
-              data-sizes='auto'
-              className='md:h-screen object-cover h-0 md:basis-1/2 mix-blend-luminosity'
-            ></video>
-
+      <section id='contact' className='contact-section bg-[#fff] font-mono'>
+        <div className='h-screen w-screen  relative '>
+          <div className='flex  justify-between'>
             <div className=' h-screen w-full md:basis-1/2 gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden'>
-              <p className='md:text-[2vw] text-[5vw]'>contact me </p>
+              <p className='md:text-[1.2vw] text-[5vw]'>contact me </p>
               <a
                 href='https://www.linkedin.com/in/anastasialukavsky/'
                 target='_blank'
@@ -583,6 +566,7 @@ export default function Homepage() {
                 onClick={handleEmailClick}
               />
             </div>
+            <div className='md:h-screen object-cover h-0 md:basis-1/2 '></div>
           </div>
         </div>
       </section>
