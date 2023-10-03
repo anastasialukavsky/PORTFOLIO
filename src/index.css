@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: The Rivers Regular;
+  src: url('/fonts/The Rivers Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Dida;
+  src: url('/fonts/Dida.otf') format('opentype')
+}
