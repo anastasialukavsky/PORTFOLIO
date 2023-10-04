@@ -35,27 +35,27 @@ function App() {
   //     },
   //   });
   // }, [blobRef.current]);
-  const skillsSection = document.querySelector('.skills-section');
-  const blob = document.querySelector('#blob');
+  // const skillsSection = document.querySelector('.skills-section');
+  // const blob = document.querySelector('#blob');
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(blob, {
-        ease: 'none',
-        x: 200,
-        scrollTrigger: {
-          trigger: skillsSection,
-          start: 'top top',
-          end: 'center bottom',
-          markers: true
-        },
-      });
-    });
+  // useLayoutEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     gsap.to(blob, {
+  //       ease: 'none',
+  //       x: 200,
+  //       scrollTrigger: {
+  //         trigger: skillsSection,
+  //         start: 'top top',
+  //         end: 'center bottom',
+  //         markers: true
+  //       },
+  //     });
+  //   });
 
-    return () => {
-      ctx.revert();
-    };
-  }, []);
+  //   return () => {
+  //     ctx.revert();
+  //   };
+  // }, []);
 
   return (
     <div className='wrapper h-fit fixed z-[100] w-screen'>
