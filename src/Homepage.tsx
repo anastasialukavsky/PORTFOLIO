@@ -45,6 +45,7 @@ export default function Homepage() {
       !document.querySelector('.backend-div') ||
       !document.querySelector('.right-div') ||
       !document.querySelector('.skills-section') ||
+      !document.querySelector('.misc-div') || 
       // !projects || !projects.length ||
       !document.querySelector('.contact-section') 
       // !document.querySelector('.projects-section')
@@ -63,6 +64,8 @@ export default function Homepage() {
       const tl_08 = gsap.timeline({});
       const tl_09 = gsap.timeline({});
       const tl_10 = gsap.timeline({});
+      const tl_11 = gsap.timeline({});
+      const tl_12 = gsap.timeline({});
 
 
       console.log('hello')
@@ -133,7 +136,7 @@ export default function Homepage() {
             trigger: '.misc-div',
             start: 'top top',
             end: '120% 10%',
-            scrub: 1,
+            scrub: 3,
             // scrub: true,
             // markers: true,
           },
@@ -191,10 +194,10 @@ export default function Homepage() {
 
       tl_09.to('.blob-wrapper', {
         ease: 'none',
-        x: 700,
-        //  scaleY: 3,
-        //  scaleX: 3,
-
+        x: 350,
+         scaleY: 2,
+         scaleX: 2,
+duration: 1,
         scrollTrigger: {
           trigger: '.about-section',
           start: 'top center',
@@ -205,6 +208,54 @@ export default function Homepage() {
           // pin: true,
         },
       });
+
+
+      // tl_12.to('.blob-wrapper', {
+      //   ease: 'none',
+      //   scaleX: 1.5,
+      //   scaleY: 1.5,
+      //   scrollTrigger: {
+      //     trigger: '.skills-section',
+      //     start: 'top top',
+      //     end: 'top center',
+      //     scrub: 2
+      //   }
+      // })
+
+
+
+      // tl_10.to('.blob-wrapper', {
+      //   ease: 'none',
+      //   x: '-120%',
+      //   // y: '-50%',
+      //   scaleX: 1.2,
+      //   duration: 5,
+      //   scrollTrigger: {
+      //     trigger: '.misc-div',
+      //     start: 'top top',
+      //     end: 'center bottom',
+      //     scrub: 5,
+      //     // markers: true,
+      //     // pin: true,
+      //   },
+      // });
+
+
+
+
+      // tl_11.to('.blob-wrapper', {
+      //   ease: 'none',
+      //   x: '120%',
+      //   duration: 5,
+      //   scrollTrigger: {
+      //     trigger: '.contact-section',
+      //     start: 'top 10%',
+      //     end: 'center bottom',
+      //     scrub: 5,
+      //     // markers: true,
+      //     // pin: true,
+      //   },
+      // });
       {
         /**horizontal scroll anim */
       }
@@ -252,9 +303,9 @@ export default function Homepage() {
 
       <div
         // ref={blobRef}
-        className='blob-wrapper fixed   h-[50vh]  z-[100] w-[50vw] p-3 top-1/2 right-1/2 -translate-y-[50%] translate-x-[50%]'
+        className='blob-wrapper fixed   h-[90vh]  z-[100] w-[90vw] p-3 top-1/2 right-1/2 -translate-y-[50%] translate-x-[50%]'
       >
-        <Canvas camera={{ position: [0.0, 0.0, 8.0] }}>
+        <Canvas camera={{ position: [0.0, 0.0, 8.0] }} >
           <Blob />
         </Canvas>
       </div>
@@ -265,7 +316,7 @@ export default function Homepage() {
       {/**hero section */}
       <section
         id='home'
-        className='hero-section  h-screen  flex flex-col justify-center items-center  xs:-translate-y-[30%] md:-translate-y-[10%]'
+        className='hero-section  h-screen z-[150] relative  flex flex-col justify-center items-center  xs:-translate-y-[30%] md:-translate-y-[10%]'
       >
         <p className='self-end xs:pr-4 pr-[5%] font-mono xs:text-[1.8vw] md:text-[.8vw]'>
           hello, i am
@@ -388,7 +439,7 @@ export default function Homepage() {
       {/**projects section */}
       <section
         id='projects-section-scroll-to'
-        className='projects-section flex pt-[11dvh]  z-[200] bg-[#121212] '
+        className='projects-section flex pt-[11dvh]  z-[150] relative bg-[#121212] '
       >
         <div className='  flex flex-none  overflow-x-scroll '>
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center '>
