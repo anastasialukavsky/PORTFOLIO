@@ -1,29 +1,24 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import ProgressBar from './ProgressBar';
+
 import me from '../public/bg/me.jpg';
 import Navbar from './Navbar';
-import vid from '../public/bg/testvid1.mp4';
 
 import linkedin from '../public/icons/linkedin.svg';
 import github from '../public/icons/github.svg';
 import gmail from '../public/icons/gmail.svg';
-import { CSSPlugin } from 'gsap/CSSPlugin';
 import { Canvas } from '@react-three/fiber';
-// import Blob2 from './Blob2';
+import Blob from './Blob';
 
-import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
-import Test from './Test';
 
-gsap.registerPlugin(ScrollTrigger, CSSPlugin, MotionPathPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Homepage() {
   const aboutSectionRef = useRef(null);
   const heroSectionRef = useRef(null);
   const skillContentRef = useRef(null);
 
-  //  const blobRef = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -50,14 +45,29 @@ export default function Homepage() {
       !document.querySelector('.backend-div') ||
       !document.querySelector('.right-div') ||
       !document.querySelector('.skills-section') ||
-      !projects
+      // !projects || !projects.length ||
+      !document.querySelector('.contact-section') 
+      // !document.querySelector('.projects-section')
     )
       return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
 
-      tl.to('.hero-section', {
+      const tl_01 = gsap.timeline({});
+      const tl_02 = gsap.timeline({});
+      const tl_03 = gsap.timeline({});
+      const tl_04 = gsap.timeline({});
+      const tl_05 = gsap.timeline({});
+      const tl_06 = gsap.timeline({});
+      const tl_07 = gsap.timeline({});
+      const tl_08 = gsap.timeline({});
+      const tl_09 = gsap.timeline({});
+      const tl_10 = gsap.timeline({});
+
+
+      console.log('hello')
+
+      tl_01.to('.hero-section', {
         yPercent: 100,
         ease: 'expo',
         duration: 1,
@@ -66,13 +76,14 @@ export default function Homepage() {
           start: 'top bottom',
           end: 'top top',
           scrub: 1.5,
+          // markers: true
         },
       });
 
       {
         /**bg color merge */
       }
-      tl.to('.about-section', {
+      tl_02.to('.about-section', {
         backgroundColor: '#FFFFFF',
         immediateRender: false,
         scrollTrigger: {
@@ -81,11 +92,12 @@ export default function Homepage() {
           scrub: true,
           start: 'top bottom',
           end: '+=100%',
+          // markers: true,
           // snap: .5,
         },
       });
 
-      tl.to('.backend-div', {
+      tl_03.to('.backend-div', {
         yPercent: -60,
         ease: 'expo',
         duration: 1,
@@ -99,7 +111,7 @@ export default function Homepage() {
           // markers: true,
         },
       })
-        .to('.devops-and-deployment-div', {
+        tl_04.to('.devops-and-deployment-div', {
           yPercent: -60,
           ease: 'expo',
           duration: 1,
@@ -113,7 +125,7 @@ export default function Homepage() {
             // markers: true,
           },
         })
-        .to('.right-div', {
+        tl_05.to('.right-div', {
           xPercent: -200,
           ease: 'none',
           duration: 2,
@@ -127,8 +139,10 @@ export default function Homepage() {
           },
         });
 
-        {/**skills section bg color merge */}
-      tl.to('.skills-section', {
+      {
+        /**skills section bg color merge */
+      }
+      tl_06.to('.skills-section', {
         backgroundColor: '#121212',
         immediateRender: false,
         duration: 3.4,
@@ -141,8 +155,10 @@ export default function Homepage() {
         },
       });
 
-      {/**projects sectino bg transition */}
-      tl.to('.projects-section', {
+      {
+        /**projects sectino bg transition */
+      }
+      tl_07.to('.projects-section', {
         backgroundColor: '#fff',
         immediateRender: false,
         duration: 1,
@@ -155,48 +171,69 @@ export default function Homepage() {
         },
       });
 
-{/**contact section bg transition */}
-
-
-tl.to('.contact-section', {
-  backgroundColor: '#121212',
-  immediateRender: false,
-  duration: 1,
-  scrollTrigger: {
-    trigger: '.contact-section',
-    scrub: 4,
-    start: 'top bottom',
-    end: '+=100%',
-    markers: true
-  }
-})
       {
-        /**horizontal scroll anim */
+        /**contact section bg transition */
       }
-      gsap.to(projects, {
-        xPercent: -100 * (projects.length - 1),
-        ease: 'none',
-        duration: 2,
+
+      tl_08.to('.contact-section', {
+        backgroundColor: '#121212',
+        immediateRender: false,
+        duration: 1,
         scrollTrigger: {
-          trigger: '.projects-section',
-          pin: true,
-          scrub: 2,
-          end: '+=4000',
-          // snap: {
-          //   snapTo: 0.33,
-          //   duration: 0.02,
-          //   ease: 'power1.inOut',
-          // },
+          trigger: '.contact-section',
+          scrub: 4,
+          start: 'top bottom',
+          end: '+=100%',
           // markers: true,
         },
       });
+
+
+      tl_09.to('.blob-wrapper', {
+        ease: 'none',
+        x: 700,
+        //  scaleY: 3,
+        //  scaleX: 3,
+
+        scrollTrigger: {
+          trigger: '.about-section',
+          start: 'top center',
+          end: 'center bottom',
+
+          // markers: true,
+          scrub: 4,
+          // pin: true,
+        },
+      });
+      {
+        /**horizontal scroll anim */
+      }
+      // tl_10.to(projects, {
+      //   xPercent: -100 * (projects.length - 1),
+      //   ease: 'none',
+      //   duration: 2,
+      //   scrollTrigger: {
+      //     trigger: '.projects-section',
+      //     pin: true,
+      //     scrub: 2,
+      //     end: '+=4000',
+      //     snap: {
+      //       snapTo: 0.33,
+      //       duration: 0.02,
+      //       ease: 'power1.inOut',
+      //     },
+      //     // markers: true,
+      //   },
+      // });
     });
 
     return () => {
-      ScrollTrigger.refresh();
+      // ScrollTrigger.refresh();
       ctx.revert();
     };
-  }, []);
+  });
+
+
 
 
 
@@ -209,8 +246,21 @@ tl.to('.contact-section', {
   };
 
   return (
-    <main className='container relative w-[100vw] h-full min-h-screen text-white '>
+    <main className='container relative w-[100vw] h-full min-h-screen  text-white '>
       <Navbar scrollToSection={scrollToSection} />
+      {/* <ProgressBar/> */}
+
+      <div
+        // ref={blobRef}
+        className='blob-wrapper fixed   h-[50vh]  z-[100] w-[50vw] p-3 top-1/2 right-1/2 -translate-y-[50%] translate-x-[50%]'
+      >
+        <Canvas camera={{ position: [0.0, 0.0, 8.0] }}>
+          <Blob />
+        </Canvas>
+      </div>
+
+
+      
 
       {/**hero section */}
       <section
@@ -236,7 +286,7 @@ tl.to('.contact-section', {
       {/**about section */}
       <section
         id='about'
-        className='about z-[150] flex font-mono min-h-screen h-full relative'
+        className='about z-[150] flex font-mono  relative border'
       >
         <p className='text-[#121212] z-50 absolute top-4 left-4 text-[5vw] md:hidden '>
           //ABOUT
@@ -315,7 +365,7 @@ tl.to('.contact-section', {
               </div>
             </div>
 
-            <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t'>
+            <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t '>
               <div className='ft-section flex flex-col  p-20 '>
                 <ul className='list-disc  '>//misc</ul>
                 <li>html</li>
@@ -329,10 +379,8 @@ tl.to('.contact-section', {
           </div>
 
           {/**blob placement section */}
-          <div className=' skills-section right-div h-0   md:h-[100dvh] basis-0 md:basis-1/2 hidden sticky top-0 border-l md:flex  items-center bg-white'>
-            <p className='font-dida text-[6vw] text-center'>
-              *stand by for some cool 3d shit rendered here*
-            </p>
+          <div className=' skills-section right-div h-0 border-l  md:h-[100dvh] basis-0 md:basis-1/2 hidden sticky top-0  md:flex  items-center bg-white'>
+            <p className='font-dida text-[6vw] text-center'>3d?</p>
           </div>
         </div>
       </section>
