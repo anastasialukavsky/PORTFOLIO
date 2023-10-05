@@ -5,6 +5,8 @@ import { gsap } from 'gsap/gsap-core';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect, useRef, useEffect, useState } from 'react';
 
+gsap.registerPlugin(ScrollTrigger);
+
 type SectionsText = {
   'about-section': string;
   'skills-section': string;
@@ -19,115 +21,158 @@ export default function ProgressBar() {
 
   const [currentSectionText, setCurrentSectionText] = useState('');
 
-  const sectionsText: SectionsText = {
-    'about-section': '// who i am ',
-    'skills-section': '// what i know',
-    'projects-section': '// what i made',
-    'contact-section': '// hit me up',
-  };
+  // const sectionsText: SectionsText = {
+  //   'about-section': '// who i am ',
+  //   'skills-section': '// what i know',
+  //   'projects-section': '// what i made',
+  //   'contact-section': '// hit me up',
+  // };
 
   useLayoutEffect(() => {
-    if (
-      !document.querySelector('.about-section') ||
-      !document.querySelector('.skills-section')
-    )
-      return;
+    const documentReadyState = document.readyState;
+   
 
-    const sections = Object.keys(sectionsText);
-    sections.forEach((section) => {
-      ScrollTrigger.create({
-        trigger: `.${section}`,
-        start: 'top 50%',
-        // ease: 'slow',
-        scrub: true,
-        onUpdate: (self) => {
-          const currentSection = self.trigger;
-          const sectionText = sectionsText[section];
+    const onDOMContentLoaded = () => {
+      // gsap.registerPlugin(ScrollTrigger);
 
-          if (currentSection && progressRef.current) {
-            setCurrentSectionText(sectionText);
-          }
-        },
+      const sectionsText: SectionsText = {
+        'about-section': '// who i am ',
+        'skills-section': '// what i know',
+        'projects-section': '// what i made',
+        'contact-section': '// hit me up',
+      };
+
+      const sections = Object.keys(sectionsText);
+      sections.forEach((section) => {
+        ScrollTrigger.create({
+          trigger: `.${section}`,
+          start: 'top 50%',
+          scrub: true,
+          onUpdate: (self) => {
+            const currentSection = self.trigger;
+            const sectionText = sectionsText[section];
+
+            if (currentSection && progressRef.current) {
+              setCurrentSectionText(sectionText);
+            }
+          },
+        });
       });
-    });
-    ScrollTrigger.refresh();
+    };
+
+    if (
+      documentReadyState === 'complete' ||
+      documentReadyState === 'interactive'
+    ) {
+   
+      onDOMContentLoaded();
+    } else {
+      document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
+    }
+
+    return () => {
+      document.removeEventListener('DOMContentLoaded', onDOMContentLoaded);
+    };
   });
 
   // console.log('currentTxt', currentSectionText);
 
+  // useLayoutEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     // console.log(sections);
+  //     gsap.to('.progress-bar', {
+  //       top: '10%',
+  //       ease: 'expo',
+  //       scrollTrigger: {
+  //         trigger: aboutSection,
+  //         start: 'top 50%',
+  //         end: 'center center',
+  //         scrub: true,
+  //         // markers: true
+  //       },
+  //     });
+
+  //     gsap.to('.hidden-dot', {
+  //       display: 'block',
+  //       position: 'absolute',
+  //       top: '40%',
+  //       // y: '50%',
+  //       scrollTrigger: {
+  //         trigger: aboutSection,
+  //         start: 'top 40%',
+  //         end: 'center center',
+  //         scrub: true,
+  //         // markers: true,
+  //       },
+  //     });
+  //   });
+
+  //   return () => {
+  //     ctx.revert();
+  //   };
+  // });
+
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      // console.log(sections);
-      gsap.to('.progress-bar', {
-        top: '10%',
-        ease: 'expo',
-        scrollTrigger: {
-          trigger: aboutSection,
-          start: 'top 50%',
-          end: 'center center',
-          scrub: true,
-          // markers: true
-        },
+    const onDOMContentLoaded = () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const ctx = gsap.context(() => {
+        gsap.to('.progress-bar', {
+          top: '10%',
+          ease: 'expo',
+          scrollTrigger: {
+            trigger: aboutSection,
+            start: 'top 50%',
+            end: 'center center',
+            scrub: true,
+            // markers: true
+          },
+        });
+
+        gsap.to('.hidden-dot', {
+          display: 'block',
+          position: 'absolute',
+          top: '40%',
+          // y: '50%',
+          scrollTrigger: {
+            trigger: aboutSection,
+            start: 'top 40%',
+            end: 'center center',
+            scrub: true,
+            // markers: true,
+          },
+        });
       });
 
+      return () => {
+        ctx.revert();
+      };
+    };
 
-      gsap.to('.hidden-dot', {
-        display: 'block',
-        position: 'absolute',
-        top: '40%',
-        // y: '50%',
-        scrollTrigger: {
-          trigger: aboutSection,
-          start: 'top center',
-          end: 'center center',
-          scrub: true,
-          // markers: true,
-        },
-      });
-
-      // gsap.to('.who-i-am', {
-      //   display: 'block',
-      //   // position: 'absolute',
-      //   opacity: 1,
-      //   // left: '-60%',
-      //   // marginLeft: '-25px',
-      //   // top: '40%',
-      //   y: '-10%',
-      //   ease: 'slow',
-      //   duration: 2,
-      //   // y: '50%',
-      //   scrollTrigger: {
-      //     trigger: aboutSection,
-      //     start: 'center center',
-      //     end: 'center center',
-      //     scrub: 2,
-      //     // pin: true,
-      //     markers: true,
-      //   },
-      // });
-    });
+    if (document.readyState === 'complete') {
+      onDOMContentLoaded();
+    } else {
+      document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
+    }
 
     return () => {
-      ctx.revert();
+      document.removeEventListener('DOMContentLoaded', onDOMContentLoaded);
     };
-  }, []);
+  });
 
   return (
     <div
       ref={progressRef}
       className='progress-bar fixed top-3/4 left-0 min-h-screen z-[300] w-12   mix-blend-difference'
     >
-        <img src={whiteDot} alt='' className='w-2 ml-8' />
+      <img src={whiteDot} alt='' className='w-2 ml-8' />
       <div className='w-[1px]  min-h-screen ml-9 bg-white mix-blend-difference'>
-
-
-      <p
-        className={`-rotate-90 font-mono z-50 absolute top-[37%]  -left-14 w-36  uppercase  `}
+        <p
+          className={`-rotate-90 font-mono z-50 absolute top-[37%]  -left-14 w-36  uppercase  `}
         >
-        {currentSectionText}
-      </p>
-      
-        </div>
+          {currentSectionText}
+        </p>
+      </div>
 
       <img src={whiteDot} alt='' className='hidden-dot w-2 ml-8 hidden z-50' />
     </div>
