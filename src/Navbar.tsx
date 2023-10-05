@@ -31,10 +31,10 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
   // }, []);
 
   return (
-    <nav className='w-screen max-h-[11dvh] text-white fixed top-0 left-0 z-50 mix-blend-difference border-b '>
-      <div className='navigation-wrapper flex justify-between pl-[3%] pr-[5%] relative'>
+    <nav className='w-screen  h-[75px] text-white fixed top-0 left-0 z-[205] mix-blend-difference border-b '>
+      <div className='navigation-wrapper  flex justify-between pl-[3%] pr-[5%] relative'>
         {/**logo */}
-        <p className='font-logo text-[16vw] md:text-[7vw] leading-none'>.a</p>
+        <p className='font-logo  text-[5rem] leading-none'>.a</p>
 
         {/**mobile nav hamburger */}
         {isMenuOpen ? (
