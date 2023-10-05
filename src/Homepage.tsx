@@ -9,8 +9,8 @@ import linkedin from '../public/icons/linkedin.svg';
 import github from '../public/icons/github.svg';
 import gmail from '../public/icons/gmail.svg';
 import { Canvas } from '@react-three/fiber';
+import ProgressBar from './ProgressBar';
 import Blob from './Blob';
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,7 +18,6 @@ export default function Homepage() {
   const aboutSectionRef = useRef(null);
   const heroSectionRef = useRef(null);
   const skillContentRef = useRef(null);
-
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -45,15 +44,14 @@ export default function Homepage() {
       !document.querySelector('.backend-div') ||
       !document.querySelector('.right-div') ||
       !document.querySelector('.skills-section') ||
-      !document.querySelector('.misc-div') || 
+      !document.querySelector('.misc-div') ||
       // !projects || !projects.length ||
-      !document.querySelector('.contact-section') 
+      !document.querySelector('.contact-section')
       // !document.querySelector('.projects-section')
     )
       return;
 
     const ctx = gsap.context(() => {
-
       const tl_01 = gsap.timeline({});
       const tl_02 = gsap.timeline({});
       const tl_03 = gsap.timeline({});
@@ -67,8 +65,7 @@ export default function Homepage() {
       const tl_11 = gsap.timeline({});
       const tl_12 = gsap.timeline({});
 
-
-      console.log('hello')
+      console.log('hello');
 
       tl_01.to('.hero-section', {
         yPercent: 100,
@@ -113,34 +110,36 @@ export default function Homepage() {
           // scrub: true
           // markers: true,
         },
-      })
-        tl_04.to('.devops-and-deployment-div', {
-          yPercent: -60,
-          ease: 'expo',
-          duration: 1,
-          // delay: 2,
-          scrollTrigger: {
-            trigger: '.devops-and-deployment-div',
-            start: 'top 90%',
-            end: 'bottom bottom',
-            scrub: 1.5,
-            // scrub: true
-            // markers: true,
-          },
-        })
-        tl_05.to('.right-div', {
-          xPercent: -200,
-          ease: 'none',
-          duration: 2,
-          scrollTrigger: {
-            trigger: '.misc-div',
-            start: 'top top',
-            end: '120% 10%',
-            scrub: 3,
-            // scrub: true,
-            // markers: true,
-          },
-        });
+      });
+      tl_04.to('.devops-and-deployment-div', {
+        yPercent: -60,
+        ease: 'expo',
+        duration: 1,
+        // delay: 2,
+        scrollTrigger: {
+          trigger: '.devops-and-deployment-div',
+          start: 'top 90%',
+          end: 'bottom bottom',
+          scrub: 1.5,
+          // scrub: true
+          // markers: true,
+        },
+      });
+      tl_05.set('.right-div', {position: 'sticky', top: 0})
+      tl_05.to('.right-div', {
+        xPercent: -200,
+        ease: 'none',
+        // position: 'relative',
+        duration: 2,
+        scrollTrigger: {
+          trigger: '.misc-div',
+          start: 'top top',
+          end: '120% 10%',
+          scrub: 3,
+          // scrub: true,
+          // markers: true,
+        },
+      });
 
       {
         /**skills section bg color merge */
@@ -192,12 +191,17 @@ export default function Homepage() {
       });
 
 
+
+
       tl_09.to('.blob-wrapper', {
         ease: 'none',
-        x: 350,
-         scaleY: 2,
-         scaleX: 2,
-duration: 1,
+        x: 650,
+        // scaleY: 1.2,
+        // scaleX: 1.2,
+        scale:1.2,
+        //  height: '100dvh',
+        //  width: '100dvw',
+        duration: 3,
         scrollTrigger: {
           trigger: '.about-section',
           start: 'top center',
@@ -210,72 +214,43 @@ duration: 1,
       });
 
 
-      // tl_12.to('.blob-wrapper', {
-      //   ease: 'none',
-      //   scaleX: 1.5,
-      //   scaleY: 1.5,
-      //   scrollTrigger: {
-      //     trigger: '.skills-section',
-      //     start: 'top top',
-      //     end: 'top center',
-      //     scrub: 2
-      //   }
-      // })
+      tl_10.to('.blob-wrapper', {
+        ease: 'none',
+        x: -800,
+        // y: -300,
+        scale: 1.2,
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.misc-div',
+          start: 'top top',
+          end: 'center bottom',
+          scrub: 2,
+          // markers: true,
+          // pin: true,
+        },
+      });
+
+      tl_11.to('.blob-wrapper', {
+        ease: 'none',
+        // y: 100,
+        scale:1.5,
+        x: 400,
+        duration: 2,
+        scrollTrigger: {
+          trigger: '.contact-section',
+          start: '-30% 10%',
+          end: 'center center',
+          scrub: 3,
+          // markers: true,
+          // pin: true,
+        },
+      });
 
 
 
-      // tl_10.to('.blob-wrapper', {
-      //   ease: 'none',
-      //   x: '-120%',
-      //   // y: '-50%',
-      //   scaleX: 1.2,
-      //   duration: 5,
-      //   scrollTrigger: {
-      //     trigger: '.misc-div',
-      //     start: 'top top',
-      //     end: 'center bottom',
-      //     scrub: 5,
-      //     // markers: true,
-      //     // pin: true,
-      //   },
-      // });
 
 
-
-
-      // tl_11.to('.blob-wrapper', {
-      //   ease: 'none',
-      //   x: '120%',
-      //   duration: 5,
-      //   scrollTrigger: {
-      //     trigger: '.contact-section',
-      //     start: 'top 10%',
-      //     end: 'center bottom',
-      //     scrub: 5,
-      //     // markers: true,
-      //     // pin: true,
-      //   },
-      // });
-      {
-        /**horizontal scroll anim */
-      }
-      // tl_10.to(projects, {
-      //   xPercent: -100 * (projects.length - 1),
-      //   ease: 'none',
-      //   duration: 2,
-      //   scrollTrigger: {
-      //     trigger: '.projects-section',
-      //     pin: true,
-      //     scrub: 2,
-      //     end: '+=4000',
-      //     snap: {
-      //       snapTo: 0.33,
-      //       duration: 0.02,
-      //       ease: 'power1.inOut',
-      //     },
-      //     // markers: true,
-      //   },
-      // });
+ 
     });
 
     return () => {
@@ -284,10 +259,57 @@ duration: 1,
     };
   });
 
+  const proj = document.querySelector('.proj') as HTMLElement;
+  useLayoutEffect(() => {
+    if (!projects || !proj) return;
+    const ctx = gsap.context(() => {
+      {
+        /**horizontal scroll anim */
+      }
+      gsap.to(projects, {
+        xPercent: -100 * (projects.length - 1),
+        ease: 'none',
+        duration: 2,
+        //  immediateRender: false,
+        scrollTrigger: {
+          trigger: '.projects-section',
+          pin: true,
+          scrub: 2,
+          //  refreshPriority: 1,
+           end: '+=4000',
+          // end: () => '+=' + (proj?.offsetWidth - window.innerWidth),
+          //!1st snap works better
+          //  snap: {
+          //    snapTo: 0.33,
+          //    duration: 0.02,
+          //    ease: 'power1.inOut',
+          //  },
+          //  snap: {
+          //    snapTo: 1 / (projects.length - 1),
+          //    inertia: false,
+          //    duration: { min: 0.1, max: 0.1 },
+          //  },
+          //*test snaps
+          //  snap: 1 / (projects.length - 1),
+          //     snap: {
+          // snapTo: 1 / (Sections.length - 1),
+          // duration: { min: 0.22, max: 0.31 },
+          // delay: 0,
+          // ease: "sine.inOut",
+          //     },
 
+          invalidateOnRefresh: true,
+          // markers: true,
+        },
+      });
+    });
 
-
-
+    return () => {
+      // ScrollTrigger.refresh()
+      // ScrollTrigger.clearScrollMemory();
+      ctx.revert();
+    };
+  });
 
   {
     /**click handler for default email app */
@@ -299,31 +321,37 @@ duration: 1,
   return (
     <main className='container relative w-[100vw] h-full min-h-screen  text-white '>
       <Navbar scrollToSection={scrollToSection} />
-      {/* <ProgressBar/> */}
 
       <div
         // ref={blobRef}
-        className='blob-wrapper fixed   h-[90vh]  z-[100] w-[90vw] p-3 top-1/2 right-1/2 -translate-y-[50%] translate-x-[50%]'
+        className='blob-wrapper fixed border self-center h-[60dvh]   z-[100] w-[50dvw] m-auto top-1/2 right-1/2 -translate-y-[50%] translate-x-[50%]'
       >
-        <Canvas camera={{ position: [0.0, 0.0, 8.0] }} >
+        <Canvas
+          camera={{ position: [8.0, 8.0, 8.0] }}
+          gl={{
+            powerPreference: 'high-performance',
+            alpha: true,
+            antialias: true,
+            stencil: false,
+            depth: true,
+          }}
+        >
           <Blob />
         </Canvas>
       </div>
 
-
-      
-
       {/**hero section */}
       <section
         id='home'
-        className='hero-section  h-screen z-[150] relative  flex flex-col justify-center items-center  xs:-translate-y-[30%] md:-translate-y-[10%]'
+        className='hero-section  h-[100dvh]  z-0 relative flex flex-col justify-center items-center  xs:-translate-y-[30%] pt-96'
       >
         <p className='self-end xs:pr-4 pr-[5%] font-mono xs:text-[1.8vw] md:text-[.8vw]'>
           hello, i am
         </p>
+
         <h1
           id='text'
-          className='font-dida  text-[6.7vw] leading-none text-center'
+          className='font-dida text-[6.7vw] leading-none text-center'
         >
           FULLSTACK DEVELOPER
         </h1>
@@ -334,11 +362,14 @@ duration: 1,
         </div>
       </section>
 
+
+      <div className=''>
+
+        <ProgressBar />
+      </div>
+
       {/**about section */}
-      <section
-        id='about'
-        className='about z-[150] flex font-mono  relative border'
-      >
+      <section id='about' className='about z-[150] flex font-mono  relative '>
         <p className='text-[#121212] z-50 absolute top-4 left-4 text-[5vw] md:hidden '>
           //ABOUT
         </p>
@@ -430,8 +461,8 @@ duration: 1,
           </div>
 
           {/**blob placement section */}
-          <div className=' skills-section right-div h-0 border-l  md:h-[100dvh] basis-0 md:basis-1/2 hidden sticky top-0  md:flex  items-center bg-white'>
-            <p className='font-dida text-[6vw] text-center'>3d?</p>
+          <div className=' skills-section right-div h-0 border-l  md:h-full basis-0 md:basis-1/2 hidden sticky  md:flex w-fit items-center bg-white'>
+            {/* <p className='font-dida text-[6vw] text-center'></p> */}
           </div>
         </div>
       </section>
@@ -441,7 +472,7 @@ duration: 1,
         id='projects-section-scroll-to'
         className='projects-section flex pt-[11dvh]  z-[150] relative bg-[#121212] '
       >
-        <div className='  flex flex-none  overflow-x-scroll '>
+        <div className='proj  flex flex-none  overflow-x-scroll '>
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center '>
             <div className='w-[90vw]  h-[85dvh] md:flex  flex border border-black  gap-3 p-4'>
               <div className='bg-[#121212] md:h-full h-[40%] basis-1/2'></div>
