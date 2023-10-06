@@ -117,8 +117,9 @@ export default function Blob() {
   return (
     <mesh
       ref={mesh}
-      scale={3}
-      position={[0, 0, 0]}
+      scale={2.2}
+      // scale={3.5}
+      position={[0,0, 0]}
       onPointerOver={() => (hover.current = true)}
       onPointerOut={() => (hover.current = false)}
       // material={meshMaterial}
