@@ -21,12 +21,7 @@ export default function ProgressBar() {
 
   const [currentSectionText, setCurrentSectionText] = useState('');
 
-  // const sectionsText: SectionsText = {
-  //   'about-section': '// who i am ',
-  //   'skills-section': '// what i know',
-  //   'projects-section': '// what i made',
-  //   'contact-section': '// hit me up',
-  // };
+
 
   useLayoutEffect(() => {
     const documentReadyState = document.readyState;
@@ -75,42 +70,7 @@ export default function ProgressBar() {
     };
   });
 
-  // console.log('currentTxt', currentSectionText);
 
-  // useLayoutEffect(() => {
-  //   const ctx = gsap.context(() => {
-  //     // console.log(sections);
-  //     gsap.to('.progress-bar', {
-  //       top: '10%',
-  //       ease: 'expo',
-  //       scrollTrigger: {
-  //         trigger: aboutSection,
-  //         start: 'top 50%',
-  //         end: 'center center',
-  //         scrub: true,
-  //         // markers: true
-  //       },
-  //     });
-
-  //     gsap.to('.hidden-dot', {
-  //       display: 'block',
-  //       position: 'absolute',
-  //       top: '40%',
-  //       // y: '50%',
-  //       scrollTrigger: {
-  //         trigger: aboutSection,
-  //         start: 'top 40%',
-  //         end: 'center center',
-  //         scrub: true,
-  //         // markers: true,
-  //       },
-  //     });
-  //   });
-
-  //   return () => {
-  //     ctx.revert();
-  //   };
-  // });
 
   useLayoutEffect(() => {
     const onDOMContentLoaded = () => {
@@ -119,12 +79,13 @@ export default function ProgressBar() {
       const ctx = gsap.context(() => {
         gsap.to('.progress-bar', {
           top: '10%',
-          ease: 'expo',
+          ease: 'slow',
+          duration:2,
           scrollTrigger: {
             trigger: aboutSection,
             start: 'top 50%',
             end: 'center center',
-            scrub: true,
+            scrub: .6,
             // markers: true
           },
         });
