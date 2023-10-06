@@ -63,7 +63,6 @@ export default function Homepage() {
       const tl_11 = gsap.timeline({});
       const tl_12 = gsap.timeline({});
 
-
       tl_01.to('.hero-section', {
         yPercent: 100,
         ease: 'expo',
@@ -78,21 +77,68 @@ export default function Homepage() {
       });
 
       {
-        /**bg color merge */
+        /**about-section bg color merge */
       }
       tl_02.to('.about-section', {
         backgroundColor: '#FFFFFF',
         immediateRender: false,
+        duration: 5,
+        ease: 'slow',
         scrollTrigger: {
           trigger: '.about-section',
           // scroller: '.container',
-          scrub: true,
+          scrub: 6,
           start: 'top bottom',
           end: '+=100%',
           // markers: true,
           // snap: .5,
         },
       });
+
+      tl_09.from('.pic', {
+        // height: '100dvh',
+        // scale: 1.4,
+        // opacity: 0,
+        // width: '800%',
+        // aspectRatio: '4/5',
+        xPercent: 70,
+        ease: 'expo.inOut',
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.about-section',
+          start: 'top 7%',
+          end: 'bottom bottom',
+          scrub: 4,
+          pin: true,
+          // markers: true,
+        }
+      })
+      tl_10.from('.bio-text', {
+        opacity: 0,
+        xPercent: '10',
+        ease: 'expo',
+        scrollTrigger: {
+          trigger: '.pic', 
+          start: 'top 17%',
+          end: 'top 29%',
+          markers: true,
+          scrub: 3, 
+        }
+      })
+      // tl_11.from('.pic-wrapper', {
+      //   opacity: 0,
+      //   xPercent: '10',
+      //   ease: 'expo',
+      //   scrollTrigger: {
+      //     trigger: '.pic', 
+      //     start: 'top 17%',
+      //     end: 'top 29%',
+      //     markers: true,
+      //     scrub: 3, 
+      //   }
+      // })
+
+
 
       tl_03.to('.backend-div', {
         yPercent: -60,
@@ -122,15 +168,17 @@ export default function Homepage() {
           // markers: true,
         },
       });
-      tl_05.set('.right-div', { position: 'sticky', top: 0 });
+
+      // tl_05.set('.right-div', { position: 'sticky', top: 20 });
       tl_05.to('.right-div', {
         xPercent: -200,
         ease: 'none',
+        // top: '75px',
         // position: 'relative',
         duration: 2,
         scrollTrigger: {
           trigger: '.misc-div',
-          start: 'top top',
+          start: 'top 20%',
           end: '120% 10%',
           scrub: 3,
           // scrub: true,
@@ -138,17 +186,29 @@ export default function Homepage() {
         },
       });
 
+      gsap.to('.right-div', {
+        // top: '75px',
+        scrollTrigger :{
+          trigger: '.right-div',
+          pin: true,
+          start: 'top 75px',
+          end: 'bottom bottom',
+          endTrigger: '.projects-section'
+        }
+      })
+
       {
         /**skills section bg color merge */
       }
       tl_06.to('.skills-section', {
         backgroundColor: '#121212',
         immediateRender: false,
-        duration: 3.4,
+        duration: 4,
+        ease: 'slow',
         scrollTrigger: {
           trigger: '.skills-section',
           // scroller: '.container',
-          scrub: 3.8,
+          scrub: 5,
           start: 'top bottom',
           end: '+=100%',
         },
@@ -161,6 +221,7 @@ export default function Homepage() {
         backgroundColor: '#fff',
         immediateRender: false,
         duration: 1,
+        ease: 'slow',
         scrollTrigger: {
           trigger: '.projects-section',
           scrub: 4,
@@ -187,60 +248,6 @@ export default function Homepage() {
         },
       });
 
-
-
-
-      // tl_09.to('.blob-wrapper', {
-      //   ease: 'none',
-      //   x: 650,
-      //   // scaleY: 1.2,
-      //   // scaleX: 1.2,
-      //   scale: 1.2,
-      //   //  height: '100dvh',
-      //   //  width: '100dvw',
-      //   duration: 3,
-      //   scrollTrigger: {
-      //     trigger: '.about-section',
-      //     start: 'top center',
-      //     end: 'center bottom',
-
-      //     // markers: true,
-      //     scrub: 4,
-      //     // pin: true,
-      //   },
-      // });
-
-      // tl_10.to('.blob-wrapper', {
-      //   ease: 'none',
-      //   x: -800,
-      //   // y: -300,
-      //   scale: 1.2,
-      //   duration: 1,
-      //   scrollTrigger: {
-      //     trigger: '.misc-div',
-      //     start: 'top top',
-      //     end: 'center bottom',
-      //     scrub: 2,
-      //     // markers: true,
-      //     // pin: true,
-      //   },
-      // });
-
-      // tl_11.to('.blob-wrapper', {
-      //   ease: 'none',
-      //   // y: 100,
-      //   scale:1.5,
-      //   x: 400,
-      //   duration: 2,
-      //   scrollTrigger: {
-      //     trigger: '.contact-section',
-      //     start: '-30% 10%',
-      //     end: 'center center',
-      //     scrub: 3,
-      //     // markers: true,
-      //     // pin: true,
-      //   },
-      // });
     });
 
     return () => {
@@ -249,98 +256,118 @@ export default function Homepage() {
     };
   });
 
+  useLayoutEffect(() => {
+    const resetBlob = () => {
+      gsap.set('.blob-wrapper', {
+        // x: 0,
+        // paddingTop: 0,
+        scale: 1,
+      });
+    };
 
-useLayoutEffect(() => {
-  const resetBlob = () => {
-    gsap.set('.blob-wrapper', {
-      x: 0,
-      scale: 1,
+    const downTl = gsap.timeline({
+      // yPercent: '20%',
+      scrollTrigger: {
+        trigger: '.about-section',
+        start: 'center center',
+        end: 'bottom 90%',
+        scrub: 3,
+        // markers: true,
+        immediateRender: false,
+        onEnter: () => {
+          resetBlob();
+        },
+      },
     });
-  };
 
-  const downTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.about-section',
-      start: 'top center',
-      end: 'center bottom',
-      scrub: 4,
-      onEnter: () => {
-        resetBlob();
+    downTl.to('.blob-wrapper', {
+      // height: '90dvh',
+      // width: '60dvw',
+      // opacity: 1.6,
+      // translateY: '4%',
+      // opacity:1,
+      ease: 'none',
+      y: 70,
+      // rotate: -100,
+      // rotateX: -800,
+      // marginTop: '90px',
+      x: 390,
+      // scale: .5,
+      duration: 1,
+    });
+
+    // const miscTl = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: '.misc-div',
+    //     start: 'top 10%',
+    //     end: '120% 10%',
+    //     markers: true,
+    //     onEnter: () => {
+    //       resetBlob();
+    //     },
+    //     onLeave: () => {
+    //       // Reverse the animation smoothly when scrolling back
+    //       const reverseTl = gsap.timeline();
+    //       reverseTl.to('.blob-wrapper', {
+    //         ease: 'none',
+    //         x: 650,
+    //         scale: 1.2,
+    //         duration: 1,
+    //       });
+    //     },
+    //   },
+    // });
+
+    // miscTl.to('.blob-wrapper', {
+    //   ease: 'none',
+    //   x: -700,
+    //   scale: 1.2,
+    //   duration: 2,
+    // });
+
+    const contactTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.contact-section',
+        start: '-30% 10%',
+        end: 'center center',
+        scrub: 1,
+        // markers: true,
+        onEnter: () => {
+          resetBlob();
+        },
       },
-    },
-  });
+    });
 
-  downTl.to('.blob-wrapper', {
-    ease: 'none',
-    x: 650,
-    scale: 1.2,
-    duration: 3,
-  });
+    contactTl.to('.blob-wrapper', {
+      ease: 'none',
+      // scale: 2,
+      y: 100,
+      // rotate: -100,
+      // x: 350,
+      // scaleY: 1.5,
+      // scaleX: .5,
+      // height: '115dvh',
+      // width: '130dvw',
+      // duration: 5,
+    });
 
-  const miscTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.misc-div',
-      start: 'top top',
-      end: 'center bottom',
-      scrub: 2,
-      onEnter: () => {
-        resetBlob();
-      },
-    },
+    return () => {
+      downTl.kill();
+      // miscTl.kill();
+      contactTl.kill();
+    };
   });
-
-  miscTl.to('.blob-wrapper', {
-    ease: 'none',
-    x: -800,
-    scale: 1.2,
-    duration: 1,
-  });
-
-  const contactTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.contact-section',
-      start: '-30% 10%',
-      end: 'center center',
-      scrub: 3,
-      onEnter: () => {
-        resetBlob();
-      },
-    },
-  });
-  
-  contactTl.to('.blob-wrapper', {
-    ease: 'none',
-    scale: 1.5,
-    x: 400,
-    duration: 2,
-  });
-
-  return () => {
-    downTl.kill();
-    miscTl.kill();
-    contactTl.kill();
-  };
-}, []);
-
 
   useLayoutEffect(() => {
-
-
     // if (!projects || !projects.length || !projectsSection) return;
     const documentReadyState = document.readyState;
 
-
     const handleDOMContentLoaded = () => {
-
       const ctx = gsap.context(() => {
-          const projectsSection = document.querySelector(
-            '.projects-section'
-          ) as HTMLElement;
+        const projectsSection = document.querySelector(
+          '.projects-section'
+        ) as HTMLElement;
         const projects = gsap.utils.toArray('.projects');
-
-
-
-
 
         {
           /**horizontal scroll anim */
@@ -355,7 +382,7 @@ useLayoutEffect(() => {
             pin: true,
             start: 'top top',
             scrub: 1,
-            markers: true,
+            // markers: true,
             invalidateOnRefresh: true,
             anticipatePin: 1,
             refreshPriority: 1,
@@ -389,7 +416,6 @@ useLayoutEffect(() => {
         });
       });
       return () => {
-       
         ctx.revert();
       };
     };
@@ -397,7 +423,7 @@ useLayoutEffect(() => {
     let funcCall: () => void;
     if (
       documentReadyState === 'complete' ||
-      documentReadyState === 'interactive' 
+      documentReadyState === 'interactive'
     ) {
       funcCall = handleDOMContentLoaded();
     } else {
@@ -406,7 +432,7 @@ useLayoutEffect(() => {
 
     return () => {
       document.removeEventListener('DOMContentLoaded', handleDOMContentLoaded);
-       funcCall();
+      funcCall();
     };
   });
 
@@ -423,10 +449,10 @@ useLayoutEffect(() => {
 
       <div
         // ref={blobRef}
-        className='blob-wrapper fixed border self-center h-[60dvh]   z-[100] w-[50dvw] m-auto top-1/2 right-1/2 -translate-y-[50%] translate-x-[50%]'
+        className='blob-wrapper fixed opacity-80 self-center h-[99dvh]   z-[100] w-[90dvw] m-auto bottom-0 right-0 '
       >
         <Canvas
-          camera={{ position: [8.0, 8.0, 8.0] }}
+          camera={{ position: [0.0, 0.0, 9.9] }}
           gl={{
             powerPreference: 'high-performance',
             alpha: true,
@@ -434,7 +460,6 @@ useLayoutEffect(() => {
             stencil: false,
             depth: true,
           }}
-          className='z-[160] relative'
         >
           <Blob />
         </Canvas>
@@ -443,7 +468,7 @@ useLayoutEffect(() => {
       {/**hero section */}
       <section
         id='home'
-        className='hero-section  h-[100dvh]   flex flex-col justify-center items-center  xs:-translate-y-[30%] pt-96'
+        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center  xs:-translate-y-[30%] pt-96'
       >
         <p className='self-end xs:pr-4 pr-[5%] font-mono xs:text-[1.8vw] md:text-[.8vw]'>
           hello, i am
@@ -474,13 +499,12 @@ useLayoutEffect(() => {
         <div className='about-section  h-[100dvh] w-full bg-[#121212] flex relative top-0 '>
           <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto  '>
             <div className=' about-me-details-wrapper w-full h-fit'>
-              <div className='bg-[#383838]  h-full'>
-                <img
-                  src={me}
-                  alt='photo of the creator'
-                  className='pic aspect-[4/5] object-cover h-fit relative xs:-right-3 -top-4 -right-8 xs:aspect-auto'
-                />
-              </div>
+              <div className='pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%] h-[67%] w-[36vw]'></div>
+              <img
+                src={me}
+                alt='photo of the creator'
+                className='pic aspect-[4/5] z-10 object-cover h-fit relative xs:-right-3 -top-4 -right-8 xs:aspect-auto'
+              />
             </div>
 
             <p className='bio-text font-mono text-[#121212] w-full lowercase  md:pr-8 md:text-[1.5vw] leading-tight text-[2.5vw] pt-5'>
@@ -504,11 +528,11 @@ useLayoutEffect(() => {
       {/**skills section */}
       <section
         id='skills'
-        className='skills-section font-mono  md:text-[1vw] flex w-screen bg-white  '
+        className='skills-section font-mono  md:text-[1vw]  flex w-screen bg-white  '
       >
         {/* <span className='text-[5vw] h-fit md:hidden p-5 text-white'>//SKILLS</span> */}
-        <div className='front-end-section text-[4vw]  md:text-[1.3vw]  flex w-[100vw]  '>
-          <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 md:pt-96 ml-[48px]'>
+        <div className='front-end-section  md:text-[1.3vw]  flex w-[100vw]'>
+          <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 md:pt-96 ml-[37px] '>
             <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b'>
               <div className='flex flex-col   p-20 '>
                 <ul className='list-disc  '>//front-end development</ul>
@@ -533,7 +557,7 @@ useLayoutEffect(() => {
               </div>
             </div>
 
-            <div className='devops-and-deployment-div bg-[#121212]   min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t'>
+            <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t'>
               <div className='ft-section flex flex-col  p-20 '>
                 <ul className='list-disc  '>//devops and deployment</ul>
                 <li>html</li>
@@ -559,7 +583,7 @@ useLayoutEffect(() => {
           </div>
 
           {/**blob placement section */}
-          <div className=' skills-section right-div  border-l   h-full  md:basis-1/2 hidden sticky  md:flex w-fit items-center bg-white'>
+          <div className=' skills-section right-div  border-l   md:basis-1/2 hidden     h-screen    md:flex w-fit items-center bg-white'>
             {/* <p className='font-dida text-[6vw] text-center'></p> */}
           </div>
         </div>
