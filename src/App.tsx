@@ -35,6 +35,8 @@ function App() {
 
    // lenis.on('scroll', (e: any) => {
     // bg - [#a977cb];
+    // 343a40
+    // 353b3c
     // [#1d1d1d]
    //   // console.log(e);
    // });
@@ -46,10 +48,7 @@ function App() {
 
    requestAnimationFrame(raf);
   return (
-    <div className='min-h-screen h-full bg-[#121212] w-screen relative'>
-
-
-
+    <div className='min-h-screen h-full bg-[#353b3c] w-screen relative'>
       {/* <ProgressBar /> */}
 
       <Homepage />
