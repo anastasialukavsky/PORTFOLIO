@@ -127,9 +127,9 @@ export default function ProgressBar() {
       className='progress-bar fixed top-3/4 left-0 min-h-screen z-[300] w-12   mix-blend-difference'
     >
       <img src={whiteDot} alt='' className='w-2 ml-8' />
-      <div className='w-[1px]  min-h-screen ml-9 bg-white mix-blend-difference'>
+      <div className='w-[1px]  min-h-screen ml-9 bg-white mix-blend-difference '>
         <p
-          className={`-rotate-90 font-mono z-50 absolute top-[37%]  -left-14 w-36  uppercase  `}
+          className={`-rotate-90 font-mono z-50 absolute top-[37%] lg:top-[36%]  -left-14 lg:-left-[68px] w-44  uppercase  text-[.8rem] lg:text-[1rem]`}
         >
           {currentSectionText}
         </p>
