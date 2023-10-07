@@ -31,10 +31,10 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
   // }, []);
 
   return (
-    <nav className='w-screen  h-[75px] text-white fixed top-0 left-0 z-[205] mix-blend-difference border-b '>
+    <nav className='w-screen  h-[52px] lg:h-[75px] text-white fixed top-0 left-0 z-[205] mix-blend-difference border-b '>
       <div className='navigation-wrapper  flex justify-between pl-[3%] pr-[5%] relative'>
         {/**logo */}
-        <p className='font-logo  text-[5rem] leading-none'>.a</p>
+        <p className='font-logo  text-[3.5rem] lg:text-[5rem] leading-none'>.a</p>
 
         {/**mobile nav hamburger */}
         {isMenuOpen ? (
@@ -113,7 +113,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
         )}
 
         {/**primary nav */}
-        <div className='hidden md:flex uppercase  gap-4 text-[1.1vw] absolute top-4 right-7'>
+        <div className='hidden md:flex uppercase  gap-4 text-[1.1vw] absolute top-4 right-7 4xl:text-[.9vw] 5xl:text-[.7vw]'>
           <a
             href='#home'
             onClick={(e) => scrollToSection(e, '#home')}
