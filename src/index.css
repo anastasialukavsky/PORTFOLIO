@@ -14,3 +14,7 @@
   font-family: Dida;
   src: url('/fonts/Dida.otf') format('opentype')
 }
+/* 
+html {
+  width: '110vw';
+} */
