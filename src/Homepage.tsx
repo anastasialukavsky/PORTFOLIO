@@ -292,7 +292,7 @@ export default function Homepage() {
   const [scale, setScale] = useState(1);
 
 
-  console.log(blobScale.current);
+  // console.log(blobScale.current);
   useLayoutEffect(() => {
     const resetBlob = () => {
       gsap.set('.blob-wrapper', {
@@ -313,6 +313,9 @@ export default function Homepage() {
     //     markers: true,
     //     immediateRender: false,
 
+    //     onUpdate: () => {
+    //       console.log('hi')
+    //     }
 
     //     // onEnter: () => {
     //     //   setScale(.7)
@@ -329,12 +332,12 @@ export default function Homepage() {
     //   // opacity: 1.6,
     //   // translateY: '4%',
     //   // opacity:1,
-    //   ease: 'none',
-    //   y: 70,
-    //   // rotate: -100,
+    //   // ease: 'none',
+    //   // y: 70,
+    //   rotate: -100,
     //   // rotateX: -800,
     //   // marginTop: '90px',
-    //   x: 390,
+    //   // x: 390,
     //   // scale: .7,
     //   duration: 1,
     // });
@@ -452,12 +455,12 @@ export default function Homepage() {
             end: () => '+=' + projectsSection?.offsetWidth,
             // end: () => '+=4000',
             // end: () => '+=' + (proj?.offsetWidth - window.innerWidth),
-            snap: {
-              snapTo: 0.33,
-              ease: 'expo.inOut',
-              delay: 0,
-              // duration: { min: 0.22, max: 0.31 },
-            },
+            // snap: {
+            //   snapTo: 0.33,
+            //   ease: 'expo.inOut',
+            //   delay: 0,
+            //   // duration: { min: 0.22, max: 0.31 },
+            // },
             //!1st snap works better
             //  snap: {
             //    snapTo: 0.33,
@@ -511,16 +514,21 @@ export default function Homepage() {
   const handleEmailClick = () => {
     window.location.href = 'mailto:lukavskyanastasia@gmail.com';
   };
+  const ref = useRef(null)
+  
+
+  console.log(ref.current)
 
   return (
-    <main className='container relative w-[100vw] h-full min-h-screen z-0 text-white'>
+    <main className='container relative w-[100vw] h-full min-h-screen z-0 text-white portrait:w-[100svw]'>
       <Navbar scrollToSection={scrollToSection} />
 
       <div
         // ref={blobScale}
-        className='blob-wrapper fixed self-center h-[99dvh]   z-[100] w-[90dvw] m-auto bottom-0 right-0 '
+        className='blob-wrapper fixed self-center md:h-[99dvh] h-[30svh] w-[30svw]  z-[100] md:w-[90dvw] m-auto bottom-0 right-0 portrait:hidden'
       >
         <Canvas
+        ref={ref}
           camera={{ position: [0.0, 0.0, 9.9] }}
           gl={{
             powerPreference: 'high-performance',
@@ -537,7 +545,7 @@ export default function Homepage() {
       {/**hero section */}
       <section
         id='home'
-        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center  xs:-translate-y-[30%] pt-96'
+        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center  xs:-translate-y-[30%] pt-96 portrait:w-[100svw]'
       >
         <p className='self-end xs:pr-4 pr-[5%] font-mono xs:text-[1.8vw] md:text-[.8vw]'>
           hello, i am
@@ -545,30 +553,33 @@ export default function Homepage() {
 
         <h1
           id='text'
-          className='font-dida text-[6.7vw] z-[150] relative leading-none text-center'
+          className='font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[6.5vw] portrait:whitespace-nowrap portrait:self-center'
         >
           FULLSTACK DEVELOPER
         </h1>
 
-        <div className='font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] xs:text-[2.2vw] pt-[1%]  md:text-[1.2vw] 5xl:text-[1vw]'>
+        <div className='font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[2.5vw] pt-[1%] portrait:w-full md:text-[1.2vw] 5xl:text-[1vw]'>
           <p>Crafting Digital Experiences from Front to Back</p>
           <p> Bringing Ideas to Life with Code and Creativity</p>
         </div>
       </section>
 
-      <div className=''>
-        <ProgressBar />
-      </div>
+     
+        <ProgressBar />{' '}
+     
 
       {/**about section */}
-      <section id='about' className='about z-[150] flex font-mono  relative '>
+      <section
+        id='about'
+        className='about z-[150] flex font-mono portrait:w-[100svw] w-[100svw]  relative '
+      >
         <p className='text-[#121212] z-50 absolute top-4 left-4 text-[5vw] md:hidden '>
           //ABOUT
         </p>
-        <div className='about-section  h-[100dvh] w-full bg-[#353b3c] flex relative top-0 '>
+        <div className='about-section  portrait:w-[100svw] h-[100dvh] w-full bg-[#353b3c] flex relative top-0 '>
           <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto  '>
             <div className=' about-me-details-wrapper w-full h-fit '>
-              <div className='pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%] h-[67%] w-[36vw] 3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%]'></div>
+              <div className='pic-wrapper hidden  bg-[#383838] absolute max-h-[75%] min-h-[40%] h-[67%] w-[36vw] 3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%]'></div>
               <img
                 src={me}
                 alt='photo of the creator'
@@ -601,9 +612,9 @@ export default function Homepage() {
       >
         {/* <span className='text-[5vw] h-fit md:hidden p-5 text-white'>//SKILLS</span> */}
         <div className='front-end-section  md:text-[1.3vw] 4xl:text-[1rem]  flex w-[100vw]'>
-          <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 md:pt-96 ml-[37px] '>
-            <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b'>
-              <div className='flex flex-col   p-20 '>
+          <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 md:pt-96 ml-[37px] portrait:w-[90svw]'>
+            <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b portrait:w-[90svw]'>
+              <div className='flex flex-col   p-20 portrait:p-10 portrait:w-fit'>
                 <ul className='list-disc  '>//front-end development</ul>
                 <li>html</li>
                 <li>html</li>
@@ -614,8 +625,8 @@ export default function Homepage() {
               </div>
             </div>
 
-            <div className='backend-div bg-[#292e2f]   min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 border-t'>
-              <div className=' ft-section flex flex-col  p-20 '>
+            <div className='backend-div bg-[#292e2f]   min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 border-t portrait:w-[90svw]'>
+              <div className=' ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit'>
                 <ul className='list-disc '>//back-end development</ul>
                 <li>html</li>
                 <li>html</li>
@@ -626,8 +637,8 @@ export default function Homepage() {
               </div>
             </div>
 
-            <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t'>
-              <div className='ft-section flex flex-col  p-20 '>
+            <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw]'>
+              <div className='ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit'>
                 <ul className='list-disc  '>//devops and deployment</ul>
                 <li>html</li>
                 <li>html</li>
@@ -638,8 +649,8 @@ export default function Homepage() {
               </div>
             </div>
 
-            <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t '>
-              <div className='ft-section flex flex-col  p-20 '>
+            <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw]'>
+              <div className='ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit'>
                 <ul className='list-disc  '>//misc</ul>
                 <li>html</li>
                 <li>html</li>
@@ -661,14 +672,14 @@ export default function Homepage() {
       {/**projects section */}
       <section
         id='projects-section-scroll-to'
-        className='projects-section flex pt-[11dvh]  z-[150] relative bg-[#292e2f] overflow-x-hidden'
+        className='projects-section flex pt-[11dvh]  z-[150] relative bg-[#292e2f] overflow-x-hidden portrait:pt-14'
       >
         <div className=' flex flex-none  overflow-x-scroll '>
-          <div className='projects h-screen w-[100vw] flex pt-2 justify-center '>
-            <div className='w-[90vw]  h-[85dvh] md:flex  flex border border-black  gap-3 p-4'>
-              <div className="bg-[#b93c3c] md:h-full h-[40%] bg-cover basis-1/2 bg-[url('/public/bg/mock1.jpg')] "></div>
+          <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
+            <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
+              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:h-full portrait:basis-full"></div>
 
-              <div className='basis-1/2 h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center'>
+              <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10'>
                 <p className='text-center md:text-[1.7rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
                   ASTORIA
                 </p>
@@ -716,12 +727,12 @@ export default function Homepage() {
             </div>
           </div>
 
-          <div className='projects h-screen w-[100vw] flex pt-2 justify-center  '>
-            <div className='w-[90vw] h-[85dvh] flex  border border-black  gap-3 p-4'>
-              <div className='bg-[#121212] h-full basis-1/2'></div>
+          <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
+            <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
+              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1.jpg')] portrait:h-full portrait:basis-full"></div>
 
-              <div className='basis-1/2 h-fit font-mono text-[#121212] text-[1vw] flex flex-col items-center justify-center'>
-                <p className='text-center md:text-[1.7rem] text-[3vw] 2xl:text-[2rem]'>
+              <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10'>
+                <p className='text-center md:text-[1.7rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
                   ASTORIA
                 </p>
                 <p className='leading-tight text-[.7rem] 2xl:text-[.9rem]'>
@@ -768,12 +779,12 @@ export default function Homepage() {
             </div>
           </div>
 
-          <div className='projects h-screen w-[100vw] flex pt-2 justify-center'>
-            <div className='w-[90vw] h-[85dvh] flex  border border-black  gap-3 p-4'>
-              <div className='bg-[#121212] h-full basis-1/2'></div>
+          <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
+            <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
+              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:h-full portrait:basis-full"></div>
 
-              <div className='basis-1/2 h-fit font-mono text-[#121212] text-[1vw] flex flex-col items-center justify-center'>
-                <p className='text-center md:text-[1.7rem] text-[3vw] 2xl:text-[2rem]'>
+              <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10'>
+                <p className='text-center md:text-[1.7rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
                   ASTORIA
                 </p>
                 <p className='leading-tight text-[.7rem] 2xl:text-[.9rem]'>
@@ -820,12 +831,12 @@ export default function Homepage() {
             </div>
           </div>
 
-          <div className='projects h-screen w-[100vw] flex pt-2 justify-center'>
-            <div className='w-[90vw] h-[85dvh] flex  border border-black  gap-3 p-4'>
-              <div className='bg-[#121212] h-full basis-1/2'></div>
+          <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
+            <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
+              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:h-full portrait:basis-full"></div>
 
-              <div className='basis-1/2 h-fit font-mono text-[#121212] text-[1vw] flex flex-col items-center justify-center'>
-                <p className='text-center md:text-[1.7rem] text-[3vw] 2xl:text-[2rem]'>
+              <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10'>
+                <p className='text-center md:text-[1.7rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
                   ASTORIA
                 </p>
                 <p className='leading-tight text-[.7rem] 2xl:text-[.9rem]'>
@@ -875,11 +886,16 @@ export default function Homepage() {
       </section>
 
       {/**contact section */}
-      <section id='contact' className='contact-section bg-[#fff] font-mono'>
+      <section
+        id='contact'
+        className='contact-section bg-[#fff] font-mono portrait:w-[100svw]'
+      >
         <div className='h-screen w-screen  relative '>
           <div className='flex  justify-between'>
             <div className=' h-screen w-full md:basis-1/2 gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden'>
-              <p className='md:text-[1.2vw] text-[5vw] 3xl:text-[1vw]'>contact me </p>
+              <p className='md:text-[1.2vw] text-[5vw] 3xl:text-[1vw]'>
+                contact me{' '}
+              </p>
               <a
                 id='link'
                 href='https://www.linkedin.com/in/anastasialukavsky/'
