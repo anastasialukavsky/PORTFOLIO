@@ -14,13 +14,10 @@ import { MathUtils } from 'three';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { useThree } from '@react-three/fiber';
 // import { AttrPlugin } from 'gsap/AttrPlugin';
 
-gsap.registerPlugin({
-  scrollTrigger: ScrollTrigger,
-  xPercent: gsap.utils.checkPrefix('xPercent'),
-  yPercent: gsap.utils.checkPrefix('yPercent'),
-});
+gsap.registerPlugin(ScrollTrigger);
 // import { useControls } from 'leva';
 
 export default function Blob() {
@@ -129,18 +126,20 @@ export default function Blob() {
       // mesh.current.scale.set(2.2 * scale, 2.2 * scale, 2.2 * scale)
     }
   });
+  // console.log('mesh', mesh.current);
 
   useEffect(() => {
+    if (!mesh.current) return; // Ensure mesh.current is available
     let ctx = gsap.context(() => {
       gsap.to(mesh.current?.rotation, {
-        y: '+=.5',
+        y: '+=.2',
         repeat: -1,
         ease: 'none',
         repeatRefresh: true,
       });
 
-      // gsap.to(mesh.current?.scale, {
-      //   scaleX:1,
+      // gsap.to(mesh.current, {
+      //   // rotate: 900,
       //   scrollTrigger: {
       //     trigger: aboutSection,
       //     start: 'center center',
@@ -154,6 +153,9 @@ export default function Blob() {
   });
 
   const aboutSection = document.querySelector('.about-section');
+  const devopsSection = document.querySelector('.devops-and-deployment-div');
+  const miscSection = document.querySelector('.misc-div');
+  const contactSection = document.querySelector('.contact-section');
 
   // useLayoutEffect(() => {
   //   gsap.registerPlugin(ScrollTrigger);
@@ -184,40 +186,110 @@ export default function Blob() {
   //   };
   // });
 
+  const { camera } = useThree();
+  let meshPosition = mesh.current ? mesh.current.position : new THREE.Vector3();
+
+  console.log('meshpos', camera)
+
   useLayoutEffect(() => {
     gsap.registerPlugin({
       scrollTrigger: ScrollTrigger,
       xPercent: gsap.utils.checkPrefix('xPercent'),
       yPercent: gsap.utils.checkPrefix('yPercent'),
     });
+
     if (!mesh.current || !aboutSection) return;
     const ctx = gsap.context(() => {
-      // const downTl = gsap.timeline({});
+      const position = { x: 0, y: 0, z: 9.9 };
+      let prevPos = 0;
 
-      gsap.to(mesh.current, {
-        yPercent: 70,
-        xPercent: 390,
+      // gsap.to(position, {
+      //   // yPercent: 70,
+      //   // z: .1,
+      //   x: 40,
+      //   // y: 1,
+      //   repeatRefresh: true,
+      //   scrollTrigger: {
+      //     trigger: aboutSection,
+      //     start: 'center center',
+      //     end: 'bottom 140%',
+      //     scrub: 3,
+
+      //   },
+      //   onUpdate: () => {
+      //     // console.log('mesh', mesh.current)
+      //     // mesh.current?.translateY(position.y - mesh.current?.position.y)
+      //     // mesh.current?.translateZ(position.z - mesh.current?.position.z)
+      //     mesh.current?.translateX(position.x - mesh.current?.position.x)
+      //     // prevPos = position.z
+      //     // prevPos = position.x
+      //     // console.log(prevPos)
+      //     console.log(mesh.current?.position)
+      //     // mesh.current?.translateZ(position.z);
+      //     // mesh.current?.translateY(position.x);
+      //     // mesh.current!.position = new THREE.Vector3(0,0,position.z);
+      //     // mesh.current?.updateMatrix();
+      //   }
+      // });
+      // const newPosition = { x: -4.9, y: 1, z: 6 };
+      gsap.to(position, {
+        z: 6,
+        x: -4.9,
+        y: 1,
+        // repeatRefresh: true,
         scrollTrigger: {
           trigger: aboutSection,
           start: 'center center',
           end: 'bottom 140%',
           scrub: 3,
         },
-      });
+        onUpdate: () => {
+          camera.translateY(position.y - camera.position.y);
+          camera.translateZ(position.z - camera.position.z);
+          camera.translateX(position.x - camera.position.x);
 
-      // return () => downTl.kill();
-    }, mesh);
+          // mesh.current?.translateZ(position.z);
+          // mesh.current?.translateY(position.x);
+          // mesh.current!.position = new THREE.Vector3(0,0,position.z);
+          // mesh.current?.updateMatrix();
+        },
+      });
+      // let zoom = 1;
+      // // const nzoom = { x: 1, y: 1, z: 3 };
+ const prevPosition = { x: -4.9, y: 1, z: 6 };
+ gsap.to(position, {
+   repeatRefresh: true,
+  //  z: 11,
+   x: -1.9,
+  //  y: 1,
+   scrollTrigger: {
+     trigger: miscSection,
+    //  start: 'top top',
+    //  end: 'center center',
+     // endTrigger: miscSection,
+     scrub: 3,
+   },
+   onUpdate: () => {
+    //  camera.translateY(prevPosition.y - camera.position.y);
+    //  camera.translateZ(prevPosition.z - camera.position.z);
+     console.log(camera.position);
+    //  console.log('NP', prevPosition);
+     //  console.log()
+      camera.translateX(position.x - camera.position.x);
+   },
+ });
+    });
     return () => {
       ctx.revert();
     };
-  });
+  }, [camera]);
 
   return (
     <mesh
       ref={mesh}
-      scale={2.2}
+      scale={2.1}
       // scale={3.5}
-      position={[0, 0, 0]}
+      // position={[0, 0, 0]}
       onPointerOver={() => (hover.current = true)}
       onPointerOut={() => (hover.current = false)}
       // material={meshMaterial}
