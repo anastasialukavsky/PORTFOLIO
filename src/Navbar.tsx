@@ -31,17 +31,19 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
   // }, []);
 
   return (
-    <nav className='w-screen  h-[52px] lg:h-[75px] text-white fixed top-0 left-0 z-[205] mix-blend-difference border-b '>
-      <div className='navigation-wrapper  flex justify-between pl-[3%] pr-[5%] relative'>
+    <nav className='w-screen  h-[52px] lg:h-[75px] text-white fixed top-0 left-0 z-[205] mix-blend-difference border-b portrait:w-[100svw]'>
+      <div className='navigation-wrapper  flex justify-between pl-[3%] pr-[5%] relative '>
         {/**logo */}
-        <p className='font-logo  text-[3.5rem] lg:text-[5rem] leading-none'>.a</p>
+        <p className='font-logo  text-[3.5rem] lg:text-[5rem] leading-none'>
+          .a
+        </p>
 
         {/**mobile nav hamburger */}
         {isMenuOpen ? (
           <img
             src={x}
             alt='x icon'
-            className='w-[10vw] xs:flex md:hidden z-[150] p-3'
+            className='w-[10vw] xs:flex md:hidden z-[260] p-3'
             onClick={closeMenu}
           />
         ) : (
@@ -55,7 +57,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
 
         {/**mobile nav dropdown */}
         {isMenuOpen && (
-          <div className='md:hidden absolute  top-0 left-0 h-screen w-screen  bg-[#121212] z-[100]'>
+          <div className='md:hidden absolute  top-0 left-0 h-screen w-screen bg-[#353b3c] z-[250]'>
             <div className='flex flex-col items-center justify-center h-full'>
               <a
                 href='#home'
@@ -82,6 +84,18 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
               </a>
 
               <a
+                href='#skills'
+                className='font-mono text-[7vw] border-b'
+                onClick={(e) => {
+                  scrollToSection(e, '#skills');
+                  toggleMenu();
+                }}
+              >
+                <span className='self-start text-[3vw] pr-2'>02</span>
+                SKILLS
+              </a>
+
+              <a
                 href='#projects-section-scroll-to'
                 className='font-mono text-[7vw] border-b'
                 onClick={(e) => {
@@ -89,12 +103,8 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
                   toggleMenu();
                 }}
               >
-                <span className='self-start text-[3vw] pr-2'>02</span>
-                PROJECTS
-              </a>
-              <a href='#skills' className='font-mono text-[7vw] border-b '>
                 <span className='self-start text-[3vw] pr-2'>03</span>
-                SKILLS
+                PROJECTS
               </a>
 
               <a
