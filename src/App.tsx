@@ -48,7 +48,7 @@ function App() {
 
    requestAnimationFrame(raf);
   return (
-    <div className='min-h-screen h-full bg-[#353b3c] w-screen relative'>
+    <div className='min-h-screen h-full bg-[#353b3c] w-screen relative portrait:w-[100vw]'>
       {/* <ProgressBar /> */}
 
       <Homepage />
