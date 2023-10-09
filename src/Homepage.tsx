@@ -21,20 +21,43 @@ export default function Homepage() {
   const heroSectionRef = useRef(null);
   const skillContentRef = useRef(null);
 
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    sectionId: string
-  ) => {
-    e.preventDefault();
-    const target = document.querySelector(sectionId);
+const scrollToSection = (
+  e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+  sectionId: string,
+  isHorizontalScroll: boolean = false
+) => {
+  e.preventDefault();
+  const target = document.querySelector(sectionId);
 
-    if (target instanceof HTMLElement) {
+  if (target instanceof HTMLElement) {
+    if (isHorizontalScroll) {
+      const projectsSection = document.querySelector(
+        '.proj-try'
+      );
+      if (projectsSection instanceof HTMLElement) {
+        if (projectsSection.scrollLeft !== undefined) {
+          const scrollLeft = target.offsetLeft - projectsSection.offsetLeft;
+          projectsSection.scrollTo({
+            left: scrollLeft,
+            behavior: 'smooth',
+          });
+        }
+      }
+    } else {
       window.scrollTo({
         top: target.offsetTop,
         behavior: 'smooth',
       });
     }
-  };
+  }
+};
+
+
+ const projectsSection = document.querySelector('.proj-try');
+useEffect(() => {
+console.log(window.location)
+}, [projectsSection])
+
 
   useLayoutEffect(() => {
     if (
@@ -292,135 +315,6 @@ export default function Homepage() {
   const [scale, setScale] = useState(1);
 
 
-  // console.log(blobScale.current);
-  useLayoutEffect(() => {
-    const resetBlob = () => {
-      gsap.set('.blob-wrapper', {
-        // x: 0,
-        // paddingTop: 0,
-        scale: 1,
-      });
-    };
-
-    // const downTl = gsap.timeline({
-    //   // yPercent: '20%',
-    //   scrollTrigger: {
-    //     trigger: '.about-section',
-    //     start: 'center center',
-    //     end: 'bottom 140%',
-    //     // pin:true,
-    //     scrub: 3,
-    //     markers: true,
-    //     immediateRender: false,
-
-    //     onUpdate: () => {
-    //       console.log('hi')
-    //     }
-
-    //     // onEnter: () => {
-    //     //   setScale(.7)
-    //     // },
-    //     // onEnterBack: () => {
-    //     //   setScale(1)
-    //     // }
-    //   },
-    // });
-
-    // downTl.to('.blob-wrapper', {
-    //   // height: '90dvh',
-    //   // width: '60dvw',
-    //   // opacity: 1.6,
-    //   // translateY: '4%',
-    //   // opacity:1,
-    //   // ease: 'none',
-    //   // y: 70,
-    //   rotate: -100,
-    //   // rotateX: -800,
-    //   // marginTop: '90px',
-    //   // x: 390,
-    //   // scale: .7,
-    //   duration: 1,
-    // });
-
-    // downTl.set('.blob-wrapper', {scale:.7})
-
-    // downTl.to('.blob-wrapper', {
-    //   // x: 390,
-    //   rotate: 100,
-    //   // y: 70,
-    //   ease: 'none'
-    // })
-
-    // downTl.to(blobScale, {
-    //   current: 0.7,
-
-    //   onUpdate: () => {
-    //      debounce(() => setScale(blobScale.current), 100)();
-    //     // console.log(blobScale.current);
-    //   },
-    // });
-
-    // const miscTl = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: '.misc-div',
-    //     start: 'top 10%',
-    //     end: '120% 10%',
-    //     markers: true,
-    //     onEnter: () => {
-    //       resetBlob();
-    //     },
-    //     onLeave: () => {
-    //       // Reverse the animation smoothly when scrolling back
-    //       const reverseTl = gsap.timeline();
-    //       reverseTl.to('.blob-wrapper', {
-    //         ease: 'none',
-    //         x: 650,
-    //         scale: 1.2,
-    //         duration: 1,
-    //       });
-    //     },
-    //   },
-    // });
-
-    // miscTl.to('.blob-wrapper', {
-    //   ease: 'none',
-    //   x: -700,
-    //   scale: 1.2,
-    //   duration: 2,
-    // });
-
-    const contactTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.contact-section',
-        start: '-30% 10%',
-        end: 'center center',
-        scrub: 1,
-        // markers: true,
-        onEnter: () => {
-          resetBlob();
-        },
-      },
-    });
-
-    contactTl.to('.blob-wrapper', {
-      ease: 'none',
-      // scale: 2,
-      y: 100,
-      // rotate: -100,
-      // x: 350,
-      // scaleY: 1.5,
-      // scaleX: .5,
-      // height: '115dvh',
-      // width: '130dvw',
-      // duration: 5,
-    });
-
-    return () => {
-      // downTl.kill();
-      // miscTl.kill();
-      contactTl.kill();
-    };
-  });
 
   useLayoutEffect(() => {
     // if (!projects || !projects.length || !projectsSection) return;
@@ -514,21 +408,19 @@ export default function Homepage() {
   const handleEmailClick = () => {
     window.location.href = 'mailto:lukavskyanastasia@gmail.com';
   };
-  const ref = useRef(null)
-  
+  const ref = useRef(null);
 
-  console.log(ref.current)
+  console.log(ref.current);
 
   return (
     <main className='container relative w-[100vw] h-full min-h-screen z-0 text-white portrait:w-[100svw]'>
       <Navbar scrollToSection={scrollToSection} />
-
       <div
         // ref={blobScale}
-        className='blob-wrapper fixed self-center md:h-[99dvh] h-[30svh] w-[30svw]  z-[100] md:w-[90dvw] m-auto bottom-0 right-0 portrait:hidden'
+        className='blob-wrapper fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[80dvw] m-auto bottom-0 right-0 '
       >
         <Canvas
-        ref={ref}
+          ref={ref}
           camera={{ position: [0.0, 0.0, 9.9] }}
           gl={{
             powerPreference: 'high-performance',
@@ -541,7 +433,6 @@ export default function Homepage() {
           <Blob />
         </Canvas>
       </div>
-
       {/**hero section */}
       <section
         id='home'
@@ -563,12 +454,7 @@ export default function Homepage() {
           <p> Bringing Ideas to Life with Code and Creativity</p>
         </div>
       </section>
-
-     
-        <ProgressBar />{' '}
-     
-
-      {/**about section */}
+      <ProgressBar /> {/**about section */}
       <section
         id='about'
         className='about z-[150] flex font-mono portrait:w-[100svw] w-[100svw]  relative '
@@ -604,7 +490,6 @@ export default function Homepage() {
           </div>
         </div>
       </section>
-
       {/**skills section */}
       <section
         id='skills'
@@ -668,16 +553,16 @@ export default function Homepage() {
           </div>
         </div>
       </section>
-
       {/**projects section */}
+      {/* <div id='projects-section-scroll-to'></div> */}
       <section
         id='projects-section-scroll-to'
-        className='projects-section flex pt-[11dvh]  z-[150] relative bg-[#292e2f] overflow-x-hidden portrait:pt-14'
+        className='projects-section flex pt-[11dvh]  z-[150] relative bg-[#292e2f] overflow-x-hidden  portrait:pt-14'
       >
-        <div className=' flex flex-none  overflow-x-scroll '>
+        <div className='proj-try flex flex-none  overflow-x-scroll '>
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
-              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:h-full portrait:basis-full"></div>
+              <div className=" md:h-full portrait:bg-cover  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:h-full portrait:basis-full"></div>
 
               <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10'>
                 <p className='text-center md:text-[1.7rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
@@ -729,7 +614,7 @@ export default function Homepage() {
 
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
-              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1.jpg')] portrait:h-full portrait:basis-full"></div>
+              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1.jpg')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
 
               <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10'>
                 <p className='text-center md:text-[1.7rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
@@ -781,7 +666,7 @@ export default function Homepage() {
 
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
-              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:h-full portrait:basis-full"></div>
+              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
 
               <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10'>
                 <p className='text-center md:text-[1.7rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
@@ -833,7 +718,7 @@ export default function Homepage() {
 
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
-              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:h-full portrait:basis-full"></div>
+              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/lb_mockup.jpg')] portrait:h-full portrait:basis-full portrait:bg-cover "></div>
 
               <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10'>
                 <p className='text-center md:text-[1.7rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
@@ -884,15 +769,14 @@ export default function Homepage() {
           </div>
         </div>
       </section>
-
       {/**contact section */}
       <section
         id='contact'
-        className='contact-section bg-[#fff] font-mono portrait:w-[100svw]'
+        className='contact-section bg-[#fff] font-mono portrait:w-[100svw] '
       >
-        <div className='h-screen w-screen  relative '>
+        <div className='h-screen w-screen  relative  '>
           <div className='flex  justify-between'>
-            <div className=' h-screen w-full md:basis-1/2 gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden'>
+            <div className=' h-screen w-full md:basis-1/2 relative z-[110] gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden'>
               <p className='md:text-[1.2vw] text-[5vw] 3xl:text-[1vw]'>
                 contact me{' '}
               </p>
