@@ -132,10 +132,17 @@ export default function Blob() {
     if (!mesh.current) return; // Ensure mesh.current is available
     let ctx = gsap.context(() => {
       gsap.to(mesh.current?.rotation, {
+        // x: '+=20',
         y: '+=.2',
         repeat: -1,
         ease: 'none',
         repeatRefresh: true,
+        //  scrollTrigger: {
+        //   trigger: aboutSection,
+        //   start: 'center center',
+        //   end: 'bottom 140%',
+        //   scrub: 3,
+        // },
       });
 
       // gsap.to(mesh.current, {
@@ -191,6 +198,7 @@ export default function Blob() {
 
   console.log('meshpos', camera)
 
+  const position = { x: 0, y: 0, z: 9.9 };
   useLayoutEffect(() => {
     gsap.registerPlugin({
       scrollTrigger: ScrollTrigger,
@@ -200,7 +208,6 @@ export default function Blob() {
 
     if (!mesh.current || !aboutSection) return;
     const ctx = gsap.context(() => {
-      const position = { x: 0, y: 0, z: 9.9 };
       let prevPos = 0;
 
       // gsap.to(position, {
@@ -240,8 +247,9 @@ export default function Blob() {
         scrollTrigger: {
           trigger: aboutSection,
           start: 'center center',
-          end: 'bottom 140%',
+          end: 'bottom bottom',
           scrub: 3,
+          markers: true,
         },
         onUpdate: () => {
           camera.translateY(position.y - camera.position.y);
@@ -257,25 +265,26 @@ export default function Blob() {
       // let zoom = 1;
       // // const nzoom = { x: 1, y: 1, z: 3 };
  const prevPosition = { x: -4.9, y: 1, z: 6 };
- gsap.to(position, {
+ gsap.to(prevPosition, {
    repeatRefresh: true,
-  //  z: 11,
-   x: -1.9,
+   z:15,
+   x: -2.9,
   //  y: 1,
    scrollTrigger: {
      trigger: miscSection,
-    //  start: 'top top',
-    //  end: 'center center',
-     // endTrigger: miscSection,
+      start: 'bottom bottom',
+      // end: 'bottom 140%',
+     endTrigger: contactSection,
      scrub: 3,
+     markers: true
    },
    onUpdate: () => {
-    //  camera.translateY(prevPosition.y - camera.position.y);
-    //  camera.translateZ(prevPosition.z - camera.position.z);
-     console.log(camera.position);
-    //  console.log('NP', prevPosition);
+      // camera.translateY(prevPosition.y - camera.position.y);
+     camera.translateZ(prevPosition.z - camera.position.z);
+    //  console.log(camera.prevPosition);
+     //  console.log('NP', prevPosition);
      //  console.log()
-      camera.translateX(position.x - camera.position.x);
+     camera.translateX(prevPosition.x - camera.position.x);
    },
  });
     });
