@@ -4,7 +4,8 @@ import x from '../public/icons/x.svg';
 
 type ScrollToSection = (
   e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-  sectionId: string
+  sectionId: string,
+   isHorizontalScroll: boolean
 ) => void;
 
 interface NavbarProps {
@@ -63,7 +64,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
                 href='#home'
                 className='font-mono text-[7vw] border-b'
                 onClick={(e) => {
-                  scrollToSection(e, '#home');
+                  scrollToSection(e, '#home', false);
                   toggleMenu();
                 }}
               >
@@ -75,7 +76,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
                 href='#about'
                 className='font-mono text-[7vw] border-b'
                 onClick={(e) => {
-                  scrollToSection(e, '#about');
+                  scrollToSection(e, '#about', false);
                   toggleMenu();
                 }}
               >
@@ -87,7 +88,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
                 href='#skills'
                 className='font-mono text-[7vw] border-b'
                 onClick={(e) => {
-                  scrollToSection(e, '#skills');
+                  scrollToSection(e, '#skills', false);
                   toggleMenu();
                 }}
               >
@@ -99,7 +100,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
                 href='#projects-section-scroll-to'
                 className='font-mono text-[7vw] border-b'
                 onClick={(e) => {
-                  scrollToSection(e, '#projects-section-scroll-to');
+                  scrollToSection(e, '#projects-section-scroll-to', true);
                   toggleMenu();
                 }}
               >
@@ -111,7 +112,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
                 href='#contact'
                 className='font-mono text-[7vw] border-b '
                 onClick={(e) => {
-                  scrollToSection(e, '#contact');
+                  scrollToSection(e, '#contact', false);
                   toggleMenu();
                 }}
               >
@@ -126,14 +127,14 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
         <div className='hidden md:flex uppercase  gap-4 text-[1.1vw] absolute top-4 right-7 4xl:text-[.9vw] 5xl:text-[.7vw]'>
           <a
             href='#home'
-            onClick={(e) => scrollToSection(e, '#home')}
+            onClick={(e) => scrollToSection(e, '#home', false)}
             className='text-white font-mono'
           >
             home
           </a>
           <a
             href='#about'
-            onClick={(e) => scrollToSection(e, '#about')}
+            onClick={(e) => scrollToSection(e, '#about', false)}
             className='text-white font-mono'
           >
             about
@@ -141,7 +142,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
 
           <a
             href='#skills'
-            onClick={(e) => scrollToSection(e, '#skills')}
+            onClick={(e) => scrollToSection(e, '#skills', false)}
             className='text-white font-mono'
           >
             skills
@@ -149,7 +150,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
 
           <a
             href='#projects'
-            onClick={(e) => scrollToSection(e, '#projects')}
+            onClick={(e) => scrollToSection(e, '#projects', true)}
             className='text-white font-mono'
           >
             projects
@@ -157,7 +158,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
 
           <a
             href='#contact'
-            onClick={(e) => scrollToSection(e, '#contact')}
+            onClick={(e) => scrollToSection(e, '#contact', false)}
             className='text-white font-mono'
           >
             contact
