@@ -490,6 +490,9 @@ console.log(window.location)
           </div>
         </div>
       </section>
+
+
+
       {/**skills section */}
       <section
         id='skills'
@@ -553,11 +556,14 @@ console.log(window.location)
           </div>
         </div>
       </section>
+
+
+
       {/**projects section */}
       {/* <div id='projects-section-scroll-to'></div> */}
       <section
         id='projects-section-scroll-to'
-        className='projects-section flex pt-[11dvh]  z-[150] relative bg-[#292e2f] overflow-x-hidden  portrait:pt-14'
+        className='projects-section flex pt-[11dvh]  z-[150] relative bg-[#292e2f] overflow-x-hidden  portrait:pt-14 w-[100vw]'
       >
         <div className='proj-try flex flex-none  overflow-x-scroll '>
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
@@ -769,10 +775,14 @@ console.log(window.location)
           </div>
         </div>
       </section>
+
+
+
+
       {/**contact section */}
       <section
         id='contact'
-        className='contact-section bg-[#fff] font-mono portrait:w-[100svw] '
+        className='contact-section bg-[#fff] font-mono portrait:w-[100svw] w-[100svw]'
       >
         <div className='h-screen w-screen  relative  '>
           <div className='flex  justify-between'>
