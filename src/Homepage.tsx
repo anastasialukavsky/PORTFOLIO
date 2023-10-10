@@ -102,6 +102,7 @@ console.log(window.location)
         },
       });
 
+
       {
         /**about-section bg color merge */
       }
@@ -474,14 +475,7 @@ console.log(window.location)
             </div>
 
             <p className='bio-text font-mono text-[#121212] w-full lowercase  md:pr-8 md:text-[1.5vw] 2xl:text-[1.2rem] leading-tight text-[2.5vw] pt-5'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              aspernatur corporis? Eos pariatur aspernatur officiis hic tempora
-              molestiae dolor natus fugiat consequatur eius iste deserunt
-              commodi ex voluptate, impedit aperiam suscipit iure ipsam. Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              aspernatur corporis? Eos pariatur aspernatur officiis hic tempora
-              molestiae dolor natus fugiat consequatur eius iste deserunt
-              commodi ex
+              I am a fullstack web developer based in Brookly, NY. i enjoy every stage of development, from system design to user design interface. 
             </p>
           </div>
           <div className='firstname-lastname md:flex flex-col justify-end items-end hidden uppercase text-[#121212] bottom-[7vw] absolute left-[10%] font-mono text-left w-fit h-fit text-[1rem]  3xl:bottom-10 5xl:bottom-7'>
@@ -490,9 +484,6 @@ console.log(window.location)
           </div>
         </div>
       </section>
-
-
-
       {/**skills section */}
       <section
         id='skills'
@@ -504,32 +495,36 @@ console.log(window.location)
             <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b portrait:w-[90svw]'>
               <div className='flex flex-col   p-20 portrait:p-10 portrait:w-fit'>
                 <ul className='list-disc  '>//front-end development</ul>
-                <li>html</li>
-                <li>html</li>
-                <li>html</li>
-                <li>html</li>
-                <li>html</li>
-                <li>html</li>
+                <li>HTML5</li>
+                <li>React</li>
+                <li>Redux</li>
+                <li>CSS3</li>
+                <li>Tailwind CSS</li>
+                <li>GSAP</li>
+                <li>Vite</li>
+                <li>THREE JS</li>
               </div>
             </div>
 
             <div className='backend-div bg-[#292e2f]   min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 border-t portrait:w-[90svw]'>
               <div className=' ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit'>
                 <ul className='list-disc '>//back-end development</ul>
-                <li>html</li>
-                <li>html</li>
-                <li>html</li>
-                <li>html</li>
-                <li>html</li>
-                <li>html</li>
+                <li>Node JS</li>
+                <li>Express JS</li>
+                <li>Axios</li>
+                <li>Postgress</li>
+                <li>Sequelize</li>
+                <li>Prisma</li>
+                <li>MongoDB</li>
+                <li>Mongoose</li>
               </div>
             </div>
 
             <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw]'>
               <div className='ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit'>
                 <ul className='list-disc  '>//devops and deployment</ul>
-                <li>html</li>
-                <li>html</li>
+                <li>Git</li>
+                <li>GitHub</li>
                 <li>html</li>
                 <li>html</li>
                 <li>html</li>
@@ -540,10 +535,10 @@ console.log(window.location)
             <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw]'>
               <div className='ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit'>
                 <ul className='list-disc  '>//misc</ul>
-                <li>html</li>
-                <li>html</li>
-                <li>html</li>
-                <li>html</li>
+                <li>Blender</li>
+                <li>Figma</li>
+                <li>DaVinci Resolve</li>
+                <li>Photoshop</li>
                 <li>html</li>
                 <li>html</li>
               </div>
@@ -556,9 +551,6 @@ console.log(window.location)
           </div>
         </div>
       </section>
-
-
-
       {/**projects section */}
       {/* <div id='projects-section-scroll-to'></div> */}
       <section
@@ -618,7 +610,7 @@ console.log(window.location)
             </div>
           </div>
 
-          <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
+          <div className='projects last-project h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
               <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1.jpg')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
 
@@ -775,20 +767,16 @@ console.log(window.location)
           </div>
         </div>
       </section>
-
-
-
-
       {/**contact section */}
       <section
         id='contact'
-        className='contact-section bg-[#fff] font-mono portrait:w-[100svw] w-[100svw]'
+        className='contact-section  font-mono portrait:w-[100svw] w-[100svw] h-[100svh] relative'
       >
-        <div className='h-screen w-screen  relative  '>
-          <div className='flex  justify-between'>
-            <div className=' h-screen w-full md:basis-1/2 relative z-[110] gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden'>
-              <p className='md:text-[1.2vw] text-[5vw] 3xl:text-[1vw]'>
-                contact me{' '}
+        <div className='h-screen w-screen  relative '>
+          <div className="flex  justify-between   bg-[url('/public/bg/test2.jpg')]  bg-cover h-[100svh] border  mx-36 items-center ">
+            <div className=' h-screen w-full md:basis-1/2 relative z-[120] gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden'>
+              <p className='md:text-[1.5vw] text-[5vw] 3xl:text-[1vw]'>
+                let's connect'{' '}
               </p>
               <a
                 id='link'
