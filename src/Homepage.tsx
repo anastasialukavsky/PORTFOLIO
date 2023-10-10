@@ -13,6 +13,7 @@ import ProgressBar from './ProgressBar';
 import Blob from './Blob';
 
 import { debounce } from 'lodash';
+import Typewriter from './Typewriter';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,43 +22,39 @@ export default function Homepage() {
   const heroSectionRef = useRef(null);
   const skillContentRef = useRef(null);
 
-const scrollToSection = (
-  e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-  sectionId: string,
-  isHorizontalScroll: boolean = false
-) => {
-  e.preventDefault();
-  const target = document.querySelector(sectionId);
+  const scrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    sectionId: string,
+    isHorizontalScroll: boolean = false
+  ) => {
+    e.preventDefault();
+    const target = document.querySelector(sectionId);
 
-  if (target instanceof HTMLElement) {
-    if (isHorizontalScroll) {
-      const projectsSection = document.querySelector(
-        '.proj-try'
-      );
-      if (projectsSection instanceof HTMLElement) {
-        if (projectsSection.scrollLeft !== undefined) {
-          const scrollLeft = target.offsetLeft - projectsSection.offsetLeft;
-          projectsSection.scrollTo({
-            left: scrollLeft,
-            behavior: 'smooth',
-          });
+    if (target instanceof HTMLElement) {
+      if (isHorizontalScroll) {
+        const projectsSection = document.querySelector('.proj-try');
+        if (projectsSection instanceof HTMLElement) {
+          if (projectsSection.scrollLeft !== undefined) {
+            const scrollLeft = target.offsetLeft - projectsSection.offsetLeft;
+            projectsSection.scrollTo({
+              left: scrollLeft,
+              behavior: 'smooth',
+            });
+          }
         }
+      } else {
+        window.scrollTo({
+          top: target.offsetTop,
+          behavior: 'smooth',
+        });
       }
-    } else {
-      window.scrollTo({
-        top: target.offsetTop,
-        behavior: 'smooth',
-      });
     }
-  }
-};
+  };
 
-
- const projectsSection = document.querySelector('.proj-try');
-useEffect(() => {
-console.log(window.location)
-}, [projectsSection])
-
+  const projectsSection = document.querySelector('.proj-try');
+  useEffect(() => {
+    console.log(window.location);
+  }, [projectsSection]);
 
   useLayoutEffect(() => {
     if (
@@ -101,7 +98,6 @@ console.log(window.location)
           // markers: true
         },
       });
-
 
       {
         /**about-section bg color merge */
@@ -315,8 +311,6 @@ console.log(window.location)
   const blobScale = useRef(1);
   const [scale, setScale] = useState(1);
 
-
-
   useLayoutEffect(() => {
     // if (!projects || !projects.length || !projectsSection) return;
     const documentReadyState = document.readyState;
@@ -411,8 +405,58 @@ console.log(window.location)
   };
   const ref = useRef(null);
 
-  console.log(ref.current);
+// useEffect(() => {
+//   const tl = gsap.timeline({
+//     paused: true,
+//   });
 
+//   // letter animation
+//   tl.fromTo(
+//     '.anim-typewriter',
+//     {
+//       width: '0',
+//     },
+//     {
+//       width: '20.18em' /* same as CSS .line-1 width */,
+//       ease: 'steps(37)',
+//     },
+//     0
+//   );
+
+//   // text cursor animation
+//   tl.fromTo(
+//     '.anim-typewriter',
+//     {
+//       borderRightColor: 'rgba(255,255,255,0.75)',
+//     },
+//     {
+//       borderRightColor: 'rgba(255,255,255,0)',
+//       repeat: -1,
+//       ease: 'steps(37)',
+//     },
+//     0.5 // Add a delay of 0.5 seconds before this animation starts
+//   );
+
+//   tl.play();
+// }, []);
+
+const animateTypewriter = () => {
+  const letters = document.querySelectorAll('.anim-typewriter span');
+
+  letters.forEach((letter, index) => {
+    gsap.to(letter, {
+      width: '100%',
+      ease: 'power1.inOut',
+      delay: index * 0.5,
+      stagger: .7,
+      duration: 2, // Adjust the delay for each letter
+    });
+  });
+};
+
+useEffect(() => {
+  animateTypewriter()
+}, [])
   return (
     <main className='container relative w-[100vw] h-full min-h-screen z-0 text-white portrait:w-[100svw]'>
       <Navbar scrollToSection={scrollToSection} />
@@ -445,9 +489,9 @@ console.log(window.location)
 
         <h1
           id='text'
-          className='font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[6.5vw] portrait:whitespace-nowrap portrait:self-center'
+          className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[6.5vw] portrait:whitespace-nowrap portrait:self-center w-[20.18em]'
         >
-          FULLSTACK DEVELOPER
+          <Typewriter text='FULLSTACK DEVELOPER' />
         </h1>
 
         <div className='font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[2.5vw] pt-[1%] portrait:w-full md:text-[1.2vw] 5xl:text-[1vw]'>
@@ -475,7 +519,8 @@ console.log(window.location)
             </div>
 
             <p className='bio-text font-mono text-[#121212] w-full lowercase  md:pr-8 md:text-[1.5vw] 2xl:text-[1.2rem] leading-tight text-[2.5vw] pt-5'>
-              I am a fullstack web developer based in Brookly, NY. i enjoy every stage of development, from system design to user design interface. 
+              I am a fullstack web developer based in Brookly, NY. i enjoy every
+              stage of development, from system design to user design interface.
             </p>
           </div>
           <div className='firstname-lastname md:flex flex-col justify-end items-end hidden uppercase text-[#121212] bottom-[7vw] absolute left-[10%] font-mono text-left w-fit h-fit text-[1rem]  3xl:bottom-10 5xl:bottom-7'>
@@ -502,7 +547,7 @@ console.log(window.location)
                 <li>Tailwind CSS</li>
                 <li>GSAP</li>
                 <li>Vite</li>
-                <li>THREE JS</li>
+                <li>THREE JS/React Fiber/DREI</li>
               </div>
             </div>
 
@@ -576,35 +621,31 @@ console.log(window.location)
                 <p className='text-center pt-5 text-[1rem] 2xl:text-[1.3rem]'>
                   STACK
                 </p>
-                <div className='h-fit w-fit border border-[#121212] p-5 text-[.7rem] 2xl:text-[.9rem]'>
+                <div className='h-fit w-full border border-[#121212] p-5 text-[.7rem] 2xl:text-[.9rem]'>
                   <ul>//front-end</ul>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo
-                  </li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo
-                  </li>
-                  <li>html</li>
+                  <li>React</li>
+                  <li>Vite</li>
+                  <li>Redux</li>
+                  <li>GSAP/Framer Motion</li>
+                  <li>Fuse JS</li>
+                  <li>Tailwind CSS</li>
+                  <li>Lenis</li>
+                  <li>Day JS</li>
+                  <li>Chart JS</li>
+                  <li>Axios</li>
+                  <li>Zod</li>
+                  <li>Stripe</li>
+                  <li>React Hot Toast</li>
+
                   <ul className='pt-5'>//back-end</ul>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo?
-                  </li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo?
-                  </li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>html</li>
+                  <li>Node JS</li>
+                  <li>Express JS</li>
+                  <li>MongoDB</li>
+                  <li>Mongoose</li>
+                  <li>Zod</li>
+                  <li>Passport JS/JSON Web Token</li>
+                  <li>Passport JS</li>
+                  <li>Stripe</li>
                 </div>
               </div>
             </div>
@@ -616,7 +657,7 @@ console.log(window.location)
 
               <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10'>
                 <p className='text-center md:text-[1.7rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
-                  ASTORIA
+                  PLANTS&CO 2.0
                 </p>
                 <p className='leading-tight text-[.7rem] 2xl:text-[.9rem]'>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
@@ -628,35 +669,23 @@ console.log(window.location)
                 <p className='text-center pt-5 text-[1rem] 2xl:text-[1.3rem]'>
                   STACK
                 </p>
-                <div className='h-fit w-fit border border-[#121212] p-5 text-[.7rem] 2xl:text-[.9rem]'>
+                <div className='h-fit w-full border border-[#121212] p-5 text-[.7rem] 2xl:text-[.9rem]'>
                   <ul>//front-end</ul>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo
-                  </li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo
-                  </li>
-                  <li>html</li>
+                  <li>React</li>
+                  <li>Vite</li>
+                  <li>Redux</li>
+                  <li>Tailwind CSS</li>
+                  <li>Framer Motion</li>
+                  <li>React Hot Toast</li>
+                  <li>Axios</li>
+
                   <ul className='pt-5'>//back-end</ul>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo?
-                  </li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo?
-                  </li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>html</li>
+                  <li>Express JS</li>
+                  <li>Node JS</li>
+                  <li>JSON Web Token</li>
+                  <li>Postress</li>
+                  <li>Sequelize</li>
+                  <li>Stripe</li>
                 </div>
               </div>
             </div>
@@ -668,7 +697,7 @@ console.log(window.location)
 
               <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10'>
                 <p className='text-center md:text-[1.7rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
-                  ASTORIA
+                  SHROOM 3.0
                 </p>
                 <p className='leading-tight text-[.7rem] 2xl:text-[.9rem]'>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
@@ -680,35 +709,25 @@ console.log(window.location)
                 <p className='text-center pt-5 text-[1rem] 2xl:text-[1.3rem]'>
                   STACK
                 </p>
-                <div className='h-fit w-fit border border-[#121212] p-5 text-[.7rem] 2xl:text-[.9rem]'>
+                <div className='h-fit w-full border border-[#121212] p-5 text-[.7rem] 2xl:text-[.9rem]'>
                   <ul>//front-end</ul>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo
-                  </li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo
-                  </li>
-                  <li>html</li>
+                  <li>React</li>
+                  <li>Vite</li>
+                  <li>Redux</li>
+                  <li>Tailwind CSS</li>
+                  <li>Three JS/ React Fiber/ DREI</li>
+                  <li>SocketIO</li>
+                  <li>JSON Web Token</li>
+                  <li>Axios</li>
+                  <li>Zod</li>
+                  <li>TweetNaCl</li>
+
                   <ul className='pt-5'>//back-end</ul>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo?
-                  </li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo?
-                  </li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>html</li>
+                  <li>Node JS</li>
+                  <li>Express JS</li>
+                  <li>Postgress</li>
+                  <li>Sequelize</li>
+                  <li>Zod</li>
                 </div>
               </div>
             </div>
@@ -720,7 +739,7 @@ console.log(window.location)
 
               <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10'>
                 <p className='text-center md:text-[1.7rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
-                  ASTORIA
+                  LUNCH BUDDY 2.0
                 </p>
                 <p className='leading-tight text-[.7rem] 2xl:text-[.9rem]'>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
@@ -732,35 +751,26 @@ console.log(window.location)
                 <p className='text-center pt-5 text-[1rem] 2xl:text-[1.3rem]'>
                   STACK
                 </p>
-                <div className='h-fit w-fit border border-[#121212] p-5 text-[.7rem] 2xl:text-[.9rem]'>
+                <div className='h-fit w-full border border-[#121212] p-5 text-[.7rem] 2xl:text-[.9rem]'>
                   <ul>//front-end</ul>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo
-                  </li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo
-                  </li>
-                  <li>html</li>
+                  <li>React</li>
+                  <li>Redux</li>
+                  <li>Vite</li>
+                  <li>Tailwind CSS</li>
+                  <li>GSAP/Framer Motion</li>
+                  <li>React Hot Toast</li>
+                  <li>Axios</li>
+
                   <ul className='pt-5'>//back-end</ul>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo?
-                  </li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Distinctio laboriosam porro illo?
-                  </li>
-                  <li>html</li>
-                  <li>html</li>
-                  <li>html</li>
+                  <li>Node JS</li>
+                  <li>Express JS</li>
+                  <li>SocketIO</li>
+                  <li>Geolib</li>
+                  <li>Yelp Fusion API</li>
+                  <li>Google Maps API</li>
+                  <li>JSON Web Token</li>
+                  <li>Postgress</li>
+                  <li>Sequelize</li>
                 </div>
               </div>
             </div>
