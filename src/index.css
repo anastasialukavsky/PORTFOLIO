@@ -33,3 +33,21 @@ html {
   border-radius: 50%;
   pointer-events: none;
 } */
+
+
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 50%, 100% {
+    border-color: transparent; /* Hide the cursor */
+  }
+  25%, 75% {
+    border-color: white; /* Display the cursor */
+  }
+}
+
+/* Apply the blinking animation to the cursor */
+span {
+  border-right: 2px solid; /* Border for the cursor */
+  padding-right: 5px; /* Adjust the padding to control the blinking speed of the cursor */
+  animation: blink 1.5s step-end infinite; /* Apply the blinking animation */
+}
