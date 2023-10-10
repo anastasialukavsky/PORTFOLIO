@@ -91,7 +91,7 @@ function App() {
       {/* <ProgressBar /> */}
 
       <Homepage />
-      <div className='ball mix-blend-difference w-[60px] h-[60px] fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
+      <div className='ball mix-blend-difference w-[60px]  h-[60px] fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
     </div>
   );
 }
