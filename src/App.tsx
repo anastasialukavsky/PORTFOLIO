@@ -87,7 +87,7 @@ function App() {
   }, []); 
 
   return (
-    <div className='min-h-screen h-full bg-[#353b3c] w-screen relative portrait:w-[100vw]'>
+    <div className='min-h-screen h-full bg-[#353b3c] w-screen relative portrait:w-[100vw] selection:bg-fuchsia-300'>
       {/* <ProgressBar /> */}
 
       <Homepage />
