@@ -243,13 +243,14 @@ export default function Blob() {
         z: 6,
         x: -4.9,
         y: 1,
+        // rotateX: 800,
         // repeatRefresh: true,
         scrollTrigger: {
           trigger: aboutSection,
           start: 'center center',
           end: 'bottom bottom',
           scrub: 3,
-          markers: true,
+          // markers: true,
         },
         onUpdate: () => {
           camera.translateY(position.y - camera.position.y);
@@ -269,6 +270,7 @@ export default function Blob() {
    repeatRefresh: true,
    z:15,
    x: -2.9,
+ 
   //  y: 1,
    scrollTrigger: {
      trigger: miscSection,
@@ -276,7 +278,7 @@ export default function Blob() {
       // end: 'bottom 140%',
      endTrigger: contactSection,
      scrub: 3,
-     markers: true
+    //  markers: true
    },
    onUpdate: () => {
       // camera.translateY(prevPosition.y - camera.position.y);
@@ -286,7 +288,18 @@ export default function Blob() {
      //  console.log()
      camera.translateX(prevPosition.x - camera.position.x);
    },
- });
+  })
+  
+    //  gsap.to(mesh.current, {
+    //   rotate: 600,
+    //   ease: 'none',
+    //   scrollTrigger: {
+    //     trigger: aboutSection,
+    //     start: 'bottom 150%',
+    //     end: 'bottom 250%',
+    //     markers: true
+    //   }
+//  });
     });
     return () => {
       ctx.revert();
