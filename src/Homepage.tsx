@@ -85,6 +85,14 @@ export default function Homepage() {
       const tl_11 = gsap.timeline({});
       const tl_12 = gsap.timeline({});
       const tl_13 = gsap.timeline({});
+      const tl_14 = gsap.timeline({});
+
+      tl_14.to('.hello-article', {
+        opacity: 1,
+        duration: 1.2,
+        delay: 2,
+        ease: 'expo',
+      });
 
       tl_01.to('.hero-section', {
         yPercent: 100,
@@ -119,62 +127,62 @@ export default function Homepage() {
         },
       });
 
-      // tl_09.from('.pic', {
-      //   // height: '100dvh',
-      //   scale: 1.2,
-      //   // opacity: 0,
-      //   // width: '800%',
-      //   // aspectRatio: '4/5',
-      //   xPercent: 70,
-      //   ease: 'expo.inOut',
-      //   duration: 1,
-      //   scrollTrigger: {
-      //     trigger: '.about-section',
-      //     start: 'top top',
-      //     end: 'bottom 90%',
-      //     scrub: 4,
-      //     pin: true,
-      //     // markers: true,
-      //   }
-      // })
-      // tl_10.from('.bio-text', {
-      //   opacity: 0,
-      //   // xPercent: '10',
-      //   ease: 'slow',
-      //   duration: 3,
-      //   scrollTrigger: {
-      //     trigger: '.pic',
-      //     start: 'top top',
-      //     end: 'top 35%',
-      //     // markers: true,
-      //     scrub: 4,
-      //   }
-      // })
-      // tl_11.from('.pic-wrapper', {
-      //   opacity: 0,
-      //   xPercent: '10',
-      //   ease: 'expo',
-      //   scrollTrigger: {
-      //     trigger: '.pic',
-      //     start: 'top 7%',
-      //     end: 'top 15%',
-      //     // markers: true,
-      //     scrub: 3,
-      //   }
-      // })
-      // tl_12.from('.firstname-lastname', {
-      //   opacity: 0,
-      //   // xPercent: '10',
-      //   ease: 'slow',
-      //   duration: 3,
-      //   scrollTrigger: {
-      //     trigger: '.pic',
-      //     start: 'top 5%',
-      //     end: 'top 29%',
-      //     // markers: true,
-      //     scrub: 4,
-      //   }
-      // })
+      tl_09.from('.pic', {
+        // height: '100dvh',
+        scale: 1.2,
+        // opacity: 0,
+        // width: '800%',
+        // aspectRatio: '4/5',
+        xPercent: 70,
+        ease: 'expo.inOut',
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.about-section',
+          start: 'top top',
+          end: 'center 90%',
+          scrub: 4,
+          // pin: true,
+          // markers: true,
+        },
+      });
+      tl_10.from('.bio-text', {
+        opacity: 0,
+        // xPercent: '10',
+        ease: 'slow',
+        duration: 3,
+        scrollTrigger: {
+          trigger: '.pic',
+          start: 'top 7%',
+          end: 'top 25%',
+          markers: true,
+          scrub: 4,
+        },
+      });
+      tl_11.from('.pic-wrapper', {
+        opacity: 0,
+        xPercent: '10',
+        ease: 'expo',
+        scrollTrigger: {
+          trigger: '.pic',
+          start: 'top 7%',
+          end: 'top 15%',
+          // markers: true,
+          scrub: 3,
+        },
+      });
+      tl_12.from('.firstname-lastname', {
+        opacity: 0,
+        // xPercent: '10',
+        ease: 'slow',
+        duration: 3,
+        scrollTrigger: {
+          trigger: '.pic',
+          start: 'top 5%',
+          end: 'top 29%',
+          // markers: true,
+          scrub: 4,
+        },
+      });
 
       tl_03.to('.backend-div', {
         yPercent: -50,
@@ -462,11 +470,11 @@ export default function Homepage() {
       <Navbar scrollToSection={scrollToSection} />
       <div
         // ref={blobScale}
-        className='blob-wrapper fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[80dvw] m-auto bottom-0 right-0 '
+        className='blob-wrapper fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
       >
         <Canvas
           ref={ref}
-          camera={{ position: [0.0, 0.0, 9.9] }}
+          camera={{ position: [1.0, 0.0, 9.9] }}
           gl={{
             powerPreference: 'high-performance',
             alpha: true,
@@ -483,7 +491,7 @@ export default function Homepage() {
         id='home'
         className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center  xs:-translate-y-[30%] pt-96 portrait:w-[100svw]'
       >
-        <p className='self-end xs:pr-4 pr-[5%] font-mono xs:text-[1.8vw] md:text-[.8vw]'>
+        <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono xs:text-[1.8vw] md:text-[.9vw] opacity-0'>
           hello, i am
         </p>
 
@@ -491,7 +499,7 @@ export default function Homepage() {
           id='text'
           className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[6.5vw] portrait:whitespace-nowrap portrait:self-center '
         >
-          <Typewriter text='FULLSTACK DEVELOPER' />
+          <Typewriter name='ANASTASIA LUKAVSKY' text='FULLSTACK DEVELOPER' />
         </h1>
 
         <div className='font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[2.5vw] pt-[1%] portrait:w-full md:text-[1.2vw] 5xl:text-[1vw]'>
@@ -510,7 +518,7 @@ export default function Homepage() {
         <div className='about-section  portrait:w-[100svw] h-[100dvh] w-full bg-[#353b3c] flex relative top-0 '>
           <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto  '>
             <div className=' about-me-details-wrapper w-full h-fit '>
-              <div className='pic-wrapper hidden  bg-[#383838] absolute max-h-[75%] min-h-[40%] h-[67%] w-[36vw] 3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%]'></div>
+              <div className='pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%] h-[67%] w-[36vw] 3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%]'></div>
               <img
                 src={me}
                 alt='photo of the creator'
@@ -848,7 +856,7 @@ export default function Homepage() {
         className='contact-section  font-mono portrait:w-[100svw] w-[100svw] h-[100svh] relative'
       >
         <div className='h-screen w-screen  relative '>
-          <div className="flex  justify-between   bg-[url('/public/bg/test15.jpg')]  bg-cover h-[100svh] border  mx-36 items-center ">
+          <div className="flex  justify-between   bg-[url('/public/bg/test15.jpg')]  bg-cover h-[100svh]   mx-36 items-center ">
             <div className=' h-screen w-full md:basis-1/2 relative z-[120] gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden'>
               <p className='md:text-[1.5vw] text-[5vw] 3xl:text-[1vw]'>
                 let's connect'{' '}
