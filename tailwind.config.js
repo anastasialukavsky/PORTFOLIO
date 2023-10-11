@@ -13,14 +13,18 @@ export default {
     },
     extend: {
       screens: {
+        xxs: '360px',
         xs: '375px',
         sm: '412px',
         md: '768px',
+        lg: '1024px',
+        xl: '1280px',
         '2xl': '1440px',
         '3xl': '1536px',
         '4xl': '1920px',
         '5xl': '2560px',
         '6xl': '3440px',
+        short: { raw: '(max-height: 768px) and (min-width: 1440px)' },
       },
     },
   },
