@@ -1,19 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import hamburger from '../public/icons/hamburger.svg';
 import x from '../public/icons/x.svg';
+import { gsap } from 'gsap';
 
 type ScrollToSection = (
   e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   sectionId: string,
-   isHorizontalScroll: boolean
+  isHorizontalScroll: boolean
 ) => void;
 
 interface NavbarProps {
   scrollToSection: ScrollToSection;
+  mobileMenu: boolean;
 }
 
-export default function Navbar({ scrollToSection }: NavbarProps) {
+export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const wrapperRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -31,8 +34,56 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
   //   };
   // }, []);
 
+  useEffect(() => {
+
+    if (!wrapperRef.current) return;
+
+
+
+
+
+      if (isMenuOpen) {
+        const ctx = gsap.context(() => {
+          const tl = gsap.timeline({});
+
+          tl.set(wrapperRef.current, { display: 'block' });
+          tl.to(wrapperRef.current, {
+            // height: 0,
+            y: '+=100%',
+            duration: 0.55,
+            ease: 'expo',
+          });
+        });
+
+        return () => ctx.revert();
+      } else {
+        if (!isMenuOpen) {
+          const ctx = gsap.context(() => {
+            const tl = gsap.timeline({});
+
+            // tl.set(wrapperRef.current, { display: 'block' })
+            tl.from(
+              wrapperRef.current,
+              {
+                // height: 0,
+                duration: 0.5,
+                y: '+=100%',
+                ease: 'power1.in',
+              },
+              '<'
+            ).set(wrapperRef.current, { display: 'none' });
+          });
+          return () => ctx.revert();
+        }
+      }
+  }, [wrapperRef.current]);
+
   return (
-    <nav className='w-screen  h-[52px] lg:h-[75px] text-white fixed top-0 left-0 z-[205] mix-blend-difference border-b portrait:w-[100svw]'>
+    <nav
+      className={`${
+        isMenuOpen ? '' : ' mix-blend-difference'
+      } w-screen  h-[52px] lg:h-[75px] text-white fixed top-0 left-0 z-[205] border-b portrait:w-[100svw]`}
+    >
       <div className='navigation-wrapper  flex justify-between pl-[3%] pr-[5%] relative '>
         {/**logo */}
         <p className='font-logo  text-[3.5rem] lg:text-[5rem] leading-none'>
@@ -58,7 +109,10 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
 
         {/**mobile nav dropdown */}
         {isMenuOpen && (
-          <div className='md:hidden absolute  top-0 left-0 h-screen w-screen bg-[#353b3c] z-[250]'>
+          <div
+            ref={wrapperRef}
+            className='md:hidden absolute  top-0 left-0 h-[100dvh] w-[100svw] bg-[#353b3c] z-[250] -translate-y-full '
+          >
             <div className='flex flex-col items-center justify-center h-full'>
               <a
                 href='#home'
