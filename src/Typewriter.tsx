@@ -2,37 +2,54 @@ import { useEffect, useState } from 'react';
 import lodash from 'lodash';
 
 export type Props = {
-text: string
-}
-const Typewriter = ({ text }: Props) => {
+  text: string;
+  name: string;
+};
+
+const Typewriter = ({ text, name }: Props) => {
   const [displayedText, setDisplayedText] = useState('');
 
-  console.log('dispTxt', displayedText)
+  const typeText = (str: string, index: number) => {
+    if (index <= str.length) {
+      setDisplayedText(str.slice(0, index));
+      setTimeout(() => {
+        typeText(str, index + 1);
+      }, 110);
+    }
+  };
+
+  const eraseName = () => {
+    let index = name.length;
+    const eraseInterval = setInterval(() => {
+      if (index >= 0) {
+        setDisplayedText((prev) => prev.slice(0, -1));
+        index--;
+      } else {
+        clearInterval(eraseInterval);
+   
+          typeText(text, 0);
+      }
+    }, 60);
+  };
+
+  useEffect(() => {
+    
+    typeText(name, 0);
+
+    
+    setTimeout(() => {
+      eraseName();
+    }, name.length * 150);
+
+
+  }, [name, text]);
 
   
-  const typeFunc = lodash.debounce(( ) => {
-    let index = 0;
 
-    while (index < text.length) {
-      console.log(index);
-      console.log('txt', text);
-      console.log('txt_idx', text[index]);
-
-      const letter = text[index];
-
-      const interval = setTimeout(() => {
-        setDisplayedText((prev) => prev + letter);
-        // index += 1;
-      }, 150 * index);
-
-      index++;
-    }
-  })
   useEffect(() => {
+    console.log('dispText', displayedText);
+  }, [displayedText]);
 
-typeFunc()
-    // return () => clearInterval(interval);
-  }, []);
 
   return <span className='blink'>{displayedText}</span>;
 };
