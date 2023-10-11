@@ -514,7 +514,7 @@ export default function Homepage() {
       <Navbar scrollToSection={scrollToSection} mobileMenu={mobileMenu} />
       <div
         // ref={blobScale}
-        className='blob-wrapper hidden fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
+        className='blob-wrapper  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
       >
         <Canvas
           ref={ref}
@@ -567,12 +567,12 @@ export default function Homepage() {
               <div
                 className={` ${
                   mobileMenu ? 'h-[49%] w-[80vw]' : 'h-[67%] w-[36vw]'
-                } pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%]   3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%]`}
+                } pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%] short:min-h-[82%]  3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%]`}
               ></div>
               <img
                 src={me}
-                alt='photo of the creator'
-                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8 xs:aspect-auto'
+                alt='photo of the creator :)'
+                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8 xs:aspect-auto'
               />
             </div>
 
@@ -585,7 +585,7 @@ export default function Homepage() {
               of joy and fulfillment.
             </p>
           </div>
-          <div className='firstname-lastname md:flex flex-col justify-end items-end hidden uppercase text-[#121212] bottom-[7vw] absolute left-[10%] font-mono text-left w-fit h-fit text-[1rem]  3xl:bottom-10 5xl:bottom-7'>
+          <div className='firstname-lastname md:flex flex-col justify-end items-end hidden uppercase text-[#121212] bottom-[7vw] absolute left-[10%] font-mono text-left w-fit h-fit text-[1rem] short:bottom-3 3xl:bottom-10 5xl:bottom-7'>
             <p className='about'>anastasia</p>
             <p>//lukavsky</p>
           </div>
@@ -812,7 +812,7 @@ export default function Homepage() {
               <div className=" md:h-full portrait:bg-cover  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:h-full portrait:basis-full"></div>
 
               <div className='mobile-proj basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5 '>
-                <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 '>
+                <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   ASTORIA
                 </p>
                 <p className='leading-tight text-[.9rem] md:text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] xl:pt-4 '>
@@ -831,7 +831,7 @@ export default function Homepage() {
                 <p className='text-center pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
                   STACK
                 </p>
-                <div className='h-fit w-full border border-[#121212] p-5 lg:p-7 text-[.8rem] md:text-[.6rem] lg:text-[.8rem] lg:leading-[1.4] 2xl:text-[.9rem] leading-[1.1] flex justify-between xl:leading-normal xl:pl-10 4xl:max-w-[70%] 6xl:max-w-[50%]'>
+                <div className='h-fit w-full border border-[#121212] p-5 lg:p-7 text-[.8rem] md:text-[.6rem] lg:text-[.8rem] lg:leading-[1.4] 2xl:text-[.9rem] leading-[1.1] flex justify-between xl:leading-normal xl:pl-10 4xl:max-w-[70%] 6xl:max-w-[50%] short:leading-[1.1]'>
                   <ul className='list-disc'>
                     //front-end
                     <li>React</li>
@@ -872,7 +872,7 @@ export default function Homepage() {
               <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1.jpg')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
 
               <div className='mobile-proj basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center '>
-                <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
+                <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   PLANTS&CO 2.0
                 </p>
                 <p className='leading-tight text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] xl:pt-4'>
@@ -897,7 +897,7 @@ export default function Homepage() {
                 <p className='text-center pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
                   STACK
                 </p>
-                <div className='h-fit w-full border border-[#121212]  p-5 lg:p-7 text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] flex justify-between leading-[1.1] xl:leading-normal xl:pl-10 4xl:max-w-[70%]  6xl:max-w-[50%]'>
+                <div className='h-fit w-full border border-[#121212]  p-5 lg:p-7 text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] flex justify-between leading-[1.1] xl:leading-normal xl:pl-10 4xl:max-w-[70%]  6xl:max-w-[50%] short:leading-[1.1]'>
                   <ul className='list-disc'>
                     //front-end
                     <li>React</li>
@@ -930,7 +930,7 @@ export default function Homepage() {
               <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
 
               <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center'>
-                <p className='text-center md:text-[1rem] lg:text-[1.2rem] font-bold 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
+                <p className='text-center md:text-[1rem] lg:text-[1.2rem] font-bold 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   SHROOM 3.0
                 </p>
                 <p className='leading-tight text-[.6rem] 2xl:text-[.9rem] lg:text-[.8rem] xl:pt-4'>
@@ -955,7 +955,7 @@ export default function Homepage() {
                 <p className='text-center lg:pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
                   STACK
                 </p>
-                <div className='h-fit w-full border border-[#121212]  p-2 text-[.6rem] 2xl:text-[.9rem] leading-[1] flex  justify-between pl-5 lg:text-[.8rem] lg:leading-[1.1] lg:p-5 xl:leading-normal xl:px-10 4xl:max-w-[70%]  6xl:max-w-[50%]'>
+                <div className='h-fit w-full border border-[#121212]  p-2 text-[.6rem] 2xl:text-[.9rem] leading-[1] flex  justify-between pl-5 lg:text-[.8rem] lg:leading-[1.1] lg:p-5 xl:leading-normal xl:px-10 4xl:max-w-[70%]  6xl:max-w-[50%] short:leading-[1.1]'>
                   <ul className='list-disc '>
                     //front-end
                     <li>React</li>
@@ -991,7 +991,7 @@ export default function Homepage() {
               <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/lb_mockup.jpg')] portrait:h-full portrait:basis-full portrait:bg-cover "></div>
 
               <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center'>
-                <p className='text-center md:text-[1rem] lg:text-[1.rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
+                <p className='text-center md:text-[1rem] lg:text-[1.rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   LUNCH BUDDY 2.0
                 </p>
                 <p className='leading-tight text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] xl:pt-4'>
@@ -1018,7 +1018,7 @@ export default function Homepage() {
                 <p className='text-center lg:pt-3 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
                   STACK
                 </p>
-                <div className='h-fit w-full border border-[#121212] p-1 lg:p-3 text-[.6rem] 2xl:text-[.9rem] flex justify-between leading-[1.1]  lg:text-[.8rem] lg:pl-6 xl:leading-normal xl:pl-10 4xl:max-w-[70%]  6xl:max-w-[50%] pl-5'>
+                <div className='h-fit w-full border border-[#121212] p-1 lg:p-3 text-[.6rem] 2xl:text-[.9rem] flex justify-between leading-[1.1]  lg:text-[.8rem] lg:pl-6 xl:leading-normal xl:pl-10 4xl:max-w-[70%]  6xl:max-w-[50%] pl-5 short:leading-[1.1]'>
                   <ul className='list-disc'>
                     //front-end
                     <li>React</li>
