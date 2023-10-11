@@ -8,6 +8,36 @@ import Navbar from './Navbar';
 import linkedin from '../public/icons/linkedin.svg';
 import github from '../public/icons/github.svg';
 import gmail from '../public/icons/gmail.svg';
+import html from '../public/icons/html-1.svg';
+import adobePhotoshop from '../public/icons/adobe-photoshop.svg';
+import axios from '../public/icons/axios-1.svg';
+import blendr from '../public/icons/blender-1.svg';
+import css from '../public/icons/css-3.svg';
+import davinciResolve from '../public/icons/davinci-resolve-12.svg';
+import docker from '../public/icons/docker.svg';
+import electron from '../public/icons/electron-1.svg';
+import figma from '../public/icons/figma-5.svg';
+import git from '../public/icons/git-icon.svg';
+import gsapIcon from '../public/icons/gsap.svg';
+import javascript from '../public/icons/javascript-1.svg';
+import mongodb from '../public/icons/mongodb.svg';
+import nginx from '../public/icons/nginx-1.svg';
+import nodejs from '../public/icons/nodejs-1.svg';
+import postreSQL from '../public/icons/postgresql.svg';
+import prisma from '../public/icons/prisma-3.svg';
+import reactIcon from '../public/icons/react-2.svg';
+import reactNative from '../public/icons/react-native-1.svg';
+import redux from '../public/icons/redux.svg';
+import sequelize from '../public/icons/sequelize.svg';
+import stripe from '../public/icons/stripe-3.svg';
+import tailwind from '../public/icons/tailwind-css-2.svg';
+import threejs from '../public/icons/threejs-1.svg';
+import typescript from '../public/icons/ts-logo-512.svg';
+import vite from '../public/icons/vitejs.svg';
+import zod from '../public/icons/zod.svg';
+import postman from '../public/icons/postman.svg';
+import mongoose from '../public/icons/mongoose.svg';
+import express from '../public/icons/express-logo.svg';
 import { Canvas } from '@react-three/fiber';
 import ProgressBar from './ProgressBar';
 import Blob from './Blob';
@@ -21,7 +51,7 @@ export default function Homepage() {
   const aboutSectionRef = useRef(null);
   const heroSectionRef = useRef(null);
   const skillContentRef = useRef(null);
-    const [mobileMenu, setMobileMenu] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -102,7 +132,9 @@ export default function Homepage() {
         ease: 'expo',
       });
 
-      {/**hero section slide in */}
+      {
+        /**hero section slide in */
+      }
       tl_01.to('.hero-section', {
         yPercent: 100,
         ease: 'expo',
@@ -136,7 +168,9 @@ export default function Homepage() {
         },
       });
 
-      {/**about section pic anim */}
+      {
+        /**about section pic anim */
+      }
       // tl_09.from('.pic', {
       //   // height: '100dvh',
       //   scale: 1.2,
@@ -458,7 +492,6 @@ export default function Homepage() {
   //   tl.play();
   // }, []);
 
-
   useEffect(() => {
     const checkDimensions = () => {
       if (window.innerWidth < 650 || window.innerHeight < 450) {
@@ -476,14 +509,12 @@ export default function Homepage() {
     };
   }, []);
 
-
-
   return (
     <main className='container relative w-[100vw] h-full min-h-screen z-0 text-white portrait:w-[100vw] '>
-      <Navbar scrollToSection={scrollToSection} mobileMenu={mobileMenu}/>
+      <Navbar scrollToSection={scrollToSection} mobileMenu={mobileMenu} />
       <div
         // ref={blobScale}
-        className='blob-wrapper  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
+        className='blob-wrapper hidden fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
       >
         <Canvas
           ref={ref}
@@ -567,56 +598,198 @@ export default function Homepage() {
       >
         {/* <span className='text-[5vw] h-fit md:hidden p-5 text-white'>//SKILLS</span> */}
         <div className='front-end-section  md:text-[1.3vw] 4xl:text-[1rem]   flex w-[100vw]'>
-          <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 md:pt-96 ml-[37px] portrait:w-[90svw]'>
-            <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b portrait:w-[90svw]'>
-              <div className='flex flex-col   p-20 portrait:p-10 portrait:w-fit'>
-                <ul className='list-disc  '>//front-end development</ul>
-                <li>HTML5</li>
-                <li>React</li>
-                <li>Redux</li>
-                <li>CSS3</li>
-                <li>Tailwind CSS</li>
-                <li>GSAP</li>
-                <li>Vite</li>
-                <li>THREE JS/React Fiber/DREI</li>
-                <li>React Native</li>
-                <li>Electron</li>
+          <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:w-[90svw]'>
+            <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b portrait:w-[90svw] md:pb-20'>
+              <div className='flex flex-col   p-20 portrait:p-10 portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className=' self-center '>//front-end development</p>
+                <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-24 w-full'>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img src={html} alt='HTML' className='w-12 5xl:w-16 ' />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img
+                      src={javascript}
+                      alt='JavaScript'
+                      className='w-12 5xl:w-16'
+                    />
+                  </li>
+                  <li className='place-self-center'>
+                    <img
+                      src={css}
+                      alt='CSS'
+                      className='w-12 5xl:w-16 hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img
+                      src={typescript}
+                      alt='TypeScript'
+                      className='w-12 5xl:w-16'
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img
+                      src={reactIcon}
+                      alt='React'
+                      className='w-12 5xl:w-16 hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img src={redux} alt='Redux' className='w-12 5xl:w-16' />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img
+                      src={tailwind}
+                      alt='Tailwind CSS'
+                      className='w-12 5xl:w-16'
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img src={gsapIcon} alt='GSAP' className='w-12 5xl:w-16' />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img src={vite} alt='Vite' className='w-12 5xl:w-16' />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img
+                      src={reactNative}
+                      alt='React Native'
+                      className='w-16 5xl:w-24'
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img
+                      src={threejs}
+                      alt='Three.js'
+                      className='w-12 5xl:w-16'
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img
+                      src={electron}
+                      alt='Electron'
+                      className='w-12 5xl:w-16'
+                    />
+                  </li>
+                </ul>
               </div>
             </div>
 
-            <div className='backend-div bg-[#292e2f]   min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 border-t portrait:w-[90svw]'>
-              <div className=' ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit'>
-                <ul className='list-disc '>//back-end development</ul>
-                <li>Node JS</li>
-                <li>Express JS</li>
-                <li>Axios</li>
-                <li>Postgress</li>
-                <li>Sequelize</li>
-                <li>Prisma</li>
-                <li>MongoDB</li>
-                <li>Mongoose</li>
+            <div className='backend-div bg-[#292e2f]   min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 border-t portrait:w-[90svw] pt-36'>
+              <div className=' ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className=' self-center'>//back-end development</p>
+                <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14'>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img
+                      src={nodejs}
+                      alt='NodeJS'
+                      className='w-16 5xl:w-20 mix-blend-difference'
+                    />
+                  </li>
+                  <li className='place-self-center  hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img
+                      src={express}
+                      alt='ExpressJS'
+                      className='w-12 5xl:w-20 '
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img src={axios} alt='Axios' className='w-20 5xl:w-24 ' />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img
+                      src={postreSQL}
+                      alt='PostgreSQL'
+                      className='w-14 5xl:w-20 '
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img
+                      src={sequelize}
+                      alt='Sequelize'
+                      className='w-14 5xl:w-20'
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img
+                      src={prisma}
+                      alt='Prisma'
+                      className='w-14 5xl:w-32 mix-blend-difference'
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img
+                      src={mongodb}
+                      alt='MongoDB'
+                      className='w-14 5xl:w-24 '
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img
+                      src={mongoose}
+                      alt='Mongoose'
+                      className='w-20 5xl:w-28 '
+                    />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img src={zod} alt='Mongoose' className='w-20 5xl:w-28 ' />
+                  </li>
+                </ul>
               </div>
             </div>
 
-            <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw]'>
-              <div className='ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit'>
-                <ul className='list-disc  '>//devops and deployment</ul>
-                <li>Git</li>
-                <li>GitHub</li>
-                <li>Docker</li>
-                <li>html</li>
-                <li>html</li>
-                <li>html</li>
+            <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw] pt-36'>
+              <div className='ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className='self-center'>//devops and deployment</p>
+                <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14 '>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img src={git} alt='Git' className='w-14 5xl:w-20 ' />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img src={github} alt='GutHub' className='w-14 5xl:w-20 ' />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img src={nginx} alt='Nginx' className='w-14 5xl:w-20 ' />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img src={docker} alt='Docker' className='w-14 5xl:w-20 ' />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img
+                      src={postman}
+                      alt='Postman'
+                      className='w-14 5xl:w-20 '
+                    />
+                  </li>
+                </ul>
               </div>
             </div>
 
-            <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw]'>
-              <div className='ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit'>
-                <ul className='list-disc  '>//misc</ul>
-                <li>Blender</li>
-                <li>Figma</li>
-                <li>DaVinci Resolve</li>
-                <li>Photoshop</li>
+            <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw] pt-36'>
+              <div className='ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className='self-center'>//misc</p>
+                <ul className='grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14   '>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img src={blendr} alt='Blendr' className='w-14 5xl:w-20 ' />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img src={figma} alt='Figma' className='w-14 5xl:w-20 ' />
+                  </li>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+                    <img
+                      src={davinciResolve}
+                      alt='Davinci Resolve'
+                      className='w-14 5xl:w-20 '
+                    />
+                  </li>
+                  <li className='place-self-center col-span-full hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                    <img
+                      src={adobePhotoshop}
+                      alt='Adobe Photoshop'
+                      className='w-10 5xl:w-20 '
+                    />
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -686,6 +859,8 @@ export default function Homepage() {
                     <li>Passport JS/JSON Web Token</li>
                     <li>Passport JS</li>
                     <li>Stripe</li>
+                    <li>Nginx</li>
+                    <li>Docker</li>
                   </ul>
                 </div>
               </div>
@@ -742,6 +917,8 @@ export default function Homepage() {
                     <li>Postress</li>
                     <li>Sequelize</li>
                     <li>Stripe</li>
+                    <li>Nginx</li>
+                    <li>Docker</li>
                   </ul>
                 </div>
               </div>
@@ -801,6 +978,8 @@ export default function Homepage() {
                     <li>Postgress</li>
                     <li>Sequelize</li>
                     <li>Zod</li>
+                    <li>Nginx</li>
+                    <li>Docker</li>
                   </ul>
                 </div>
               </div>
@@ -839,7 +1018,7 @@ export default function Homepage() {
                 <p className='text-center lg:pt-3 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
                   STACK
                 </p>
-                <div className='h-fit w-full border border-[#121212] p-2 lg:p-3 text-[.6rem] 2xl:text-[.9rem] flex justify-between leading-[1.1] pl-4 lg:text-[.8rem] lg:pl-6 xl:leading-normal xl:pl-10 4xl:max-w-[70%]  6xl:max-w-[50%]'>
+                <div className='h-fit w-full border border-[#121212] p-1 lg:p-3 text-[.6rem] 2xl:text-[.9rem] flex justify-between leading-[1.1]  lg:text-[.8rem] lg:pl-6 xl:leading-normal xl:pl-10 4xl:max-w-[70%]  6xl:max-w-[50%] pl-5'>
                   <ul className='list-disc'>
                     //front-end
                     <li>React</li>
@@ -862,6 +1041,8 @@ export default function Homepage() {
                     <li>JSON Web Token</li>
                     <li>Postgress</li>
                     <li>Sequelize</li>
+                    <li>Nginx</li>
+                    <li>Docker</li>
                   </ul>
                 </div>
               </div>
