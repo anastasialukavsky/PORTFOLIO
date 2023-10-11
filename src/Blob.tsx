@@ -239,10 +239,25 @@ export default function Blob() {
       //   }
       // });
       // const newPosition = { x: -4.9, y: 1, z: 6 };
+      gsap.from(position, {
+        z:0, 
+        x: 0,
+        y: 4.8,
+        duration: 1.2, 
+        // delay: 4,
+        ease: 'expo',
+
+        onUpdate: () => {
+          camera.translateY(position.y - camera.position.y);
+          camera.translateZ(position.z - camera.position.z);
+          camera.translateX(position.x - camera.position.x);
+        }
+      })
       gsap.to(position, {
         z: 6,
         x: -4.9,
         y: 1,
+        delay: 4,
         // rotateX: 800,
         // repeatRefresh: true,
         scrollTrigger: {
