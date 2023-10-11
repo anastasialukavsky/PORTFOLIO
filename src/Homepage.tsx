@@ -21,6 +21,7 @@ export default function Homepage() {
   const aboutSectionRef = useRef(null);
   const heroSectionRef = useRef(null);
   const skillContentRef = useRef(null);
+    const [mobileMenu, setMobileMenu] = useState(false);
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -136,62 +137,62 @@ export default function Homepage() {
       });
 
       {/**about section pic anim */}
-      tl_09.from('.pic', {
-        // height: '100dvh',
-        scale: 1.2,
-        // opacity: 0,
-        // width: '800%',
-        // aspectRatio: '4/5',
-        xPercent: 70,
-        ease: 'expo.inOut',
-        duration: 1,
-        scrollTrigger: {
-          trigger: '.about-section',
-          start: 'top 7%',
-          end: 'center 90%',
-          scrub: 4,
-          // pin: true,
-          // markers: true,
-        },
-      });
-      tl_10.from('.bio-text', {
-        opacity: 0,
-        // xPercent: '10',
-        ease: 'slow',
-        duration: 3,
-        scrollTrigger: {
-          trigger: '.pic',
-          start: 'top 15%',
-          end: 'top 25%',
-          // markers: true,
-          scrub: 4,
-        },
-      });
-      tl_11.from('.pic-wrapper', {
-        opacity: 0,
-        xPercent: '10',
-        ease: 'expo',
-        scrollTrigger: {
-          trigger: '.pic',
-          start: 'top 9%',
-          end: 'center 90%',
-          // markers: true,
-          scrub: 3,
-        },
-      });
-      tl_12.from('.firstname-lastname', {
-        opacity: 0,
-        // xPercent: '10',
-        ease: 'slow',
-        duration: 3,
-        scrollTrigger: {
-          trigger: '.pic',
-          start: 'top 15%',
-          end: 'top 17%',
-          // markers: true,
-          scrub: 4,
-        },
-      });
+      // tl_09.from('.pic', {
+      //   // height: '100dvh',
+      //   scale: 1.2,
+      //   // opacity: 0,
+      //   // width: '800%',
+      //   // aspectRatio: '4/5',
+      //   xPercent: 70,
+      //   ease: 'expo.inOut',
+      //   duration: 1,
+      //   scrollTrigger: {
+      //     trigger: '.about-section',
+      //     start: 'top 7%',
+      //     end: 'center 90%',
+      //     scrub: 4,
+      //     // pin: true,
+      //     // markers: true,
+      //   },
+      // });
+      // tl_10.from('.bio-text', {
+      //   opacity: 0,
+      //   // xPercent: '10',
+      //   ease: 'slow',
+      //   duration: 3,
+      //   scrollTrigger: {
+      //     trigger: '.pic',
+      //     start: 'top 15%',
+      //     end: 'top 25%',
+      //     // markers: true,
+      //     scrub: 4,
+      //   },
+      // });
+      // tl_11.from('.pic-wrapper', {
+      //   opacity: 0,
+      //   xPercent: '10',
+      //   ease: 'expo',
+      //   scrollTrigger: {
+      //     trigger: '.pic',
+      //     start: 'top 9%',
+      //     end: 'center 90%',
+      //     // markers: true,
+      //     scrub: 3,
+      //   },
+      // });
+      // tl_12.from('.firstname-lastname', {
+      //   opacity: 0,
+      //   // xPercent: '10',
+      //   ease: 'slow',
+      //   duration: 3,
+      //   scrollTrigger: {
+      //     trigger: '.pic',
+      //     start: 'top 15%',
+      //     end: 'top 17%',
+      //     // markers: true,
+      //     scrub: 4,
+      //   },
+      // });
 
       tl_03.to('.backend-div', {
         yPercent: -50,
@@ -457,29 +458,32 @@ export default function Homepage() {
   //   tl.play();
   // }, []);
 
-  const animateTypewriter = () => {
-    const letters = document.querySelectorAll('.anim-typewriter span');
-
-    letters.forEach((letter, index) => {
-      gsap.to(letter, {
-        width: '100%',
-        ease: 'power1.inOut',
-        delay: index * 0.5,
-        stagger: 0.7,
-        duration: 2, // Adjust the delay for each letter
-      });
-    });
-  };
 
   useEffect(() => {
-    animateTypewriter();
+    const checkDimensions = () => {
+      if (window.innerWidth < 650 || window.innerHeight < 450) {
+        setMobileMenu(true);
+      } else {
+        setMobileMenu(false);
+      }
+    };
+
+    window.addEventListener('resize', checkDimensions);
+    checkDimensions();
+
+    return () => {
+      window.removeEventListener('resize', checkDimensions);
+    };
   }, []);
+
+
+
   return (
-    <main className='container relative w-[100vw] h-full min-h-screen z-0 text-white portrait:w-[100svw]'>
+    <main className='container relative w-[100vw] h-full min-h-screen z-0 text-white portrait:w-[100vw] '>
       <Navbar scrollToSection={scrollToSection} />
       <div
         // ref={blobScale}
-        className='blob-wrapper fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
+        className='blob-wrapper  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
       >
         <Canvas
           ref={ref}
@@ -516,18 +520,24 @@ export default function Homepage() {
           <p> Bringing Ideas to Life with Code and Creativity</p>
         </div>
       </section>
-      <ProgressBar /> {/**about section */}
+      <ProgressBar mobileMenu={mobileMenu} />
+
+      {/**about section */}
       <section
         id='about'
-        className='about z-[150] flex font-mono portrait:w-[100svw] w-[100svw]  relative '
+        className='about z-[150] flex font-mono portrait:w-[100vw] w-[100svw] relative portrait:bg-[#353b3c] '
       >
-        <p className='text-[#121212] z-50 absolute top-4 left-4 text-[5vw] md:hidden '>
+        <p className='text-[#121212] hidden z-50 absolute top-4 left-4 text-[5vw] md:hidden '>
           //ABOUT
         </p>
         <div className='about-section  portrait:w-[100svw] h-[100dvh] w-full bg-[#353b3c] flex relative top-0 '>
           <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto  '>
             <div className=' about-me-details-wrapper w-full h-fit '>
-              <div className='pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%] h-[67%] w-[36vw] 3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%]'></div>
+              <div
+                className={` ${
+                  mobileMenu ? 'h-[49%] w-[80vw]' : 'h-[67%] w-[36vw]'
+                } pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%]   3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%]`}
+              ></div>
               <img
                 src={me}
                 alt='photo of the creator'
@@ -535,7 +545,7 @@ export default function Homepage() {
               />
             </div>
 
-            <p className='bio-text font-mono text-[#121212] w-full lowercase  md:pr-8 md:text-[1.5vw] 2xl:text-[1.2rem] leading-tight text-[2.5vw] pt-5'>
+            <p className='bio-text font-mono text-[#121212] w-full lowercase  md:pr-8 md:text-[1.5vw] 2xl:text-[1.2rem] leading-tight text-[.8rem] pt-5 portrait:ml-2'>
               I am a passionate fullstack web developer based in Brooklyn, NY,
               with a keen eye for detail and a drive for creating exceptional
               digital experiences. My journey in web development has been an
@@ -628,11 +638,11 @@ export default function Homepage() {
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
               <div className=" md:h-full portrait:bg-cover  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:h-full portrait:basis-full"></div>
 
-              <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center '>
+              <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5 '>
                 <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 '>
                   ASTORIA
                 </p>
-                <p className='leading-tight text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] xl:pt-4 '>
+                <p className='leading-tight text-[.9rem] md:text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] xl:pt-4 '>
                   ASTORIA is a sophisticated e-commerce web platform
                   meticulously designed for a diverse audience, ensuring
                   pleantly seamless shopping experience. We prioritized an
@@ -648,7 +658,7 @@ export default function Homepage() {
                 <p className='text-center pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
                   STACK
                 </p>
-                <div className='h-fit w-full border border-[#121212] p-5 lg:p-7 text-[.6rem] lg:text-[.8rem] lg:leading-[1.4] 2xl:text-[.9rem] leading-[1.1] flex justify-between xl:leading-normal xl:pl-10 4xl:max-w-[70%] 6xl:max-w-[50%]'>
+                <div className='h-fit w-full border border-[#121212] p-5 lg:p-7 text-[.8rem] md:text-[.6rem] lg:text-[.8rem] lg:leading-[1.4] 2xl:text-[.9rem] leading-[1.1] flex justify-between xl:leading-normal xl:pl-10 4xl:max-w-[70%] 6xl:max-w-[50%]'>
                   <ul className='list-disc'>
                     //front-end
                     <li>React</li>
@@ -865,10 +875,10 @@ export default function Homepage() {
         className='contact-section  font-mono portrait:w-[100svw] w-[100svw] h-[100svh] relative'
       >
         <div className='h-screen w-screen  relative '>
-          <div className="flex  justify-between   bg-[url('/public/bg/test15.jpg')]  bg-cover h-[100svh]   mx-36 items-center ">
-            <div className=' h-screen w-full md:basis-1/2 relative z-[120] gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden'>
-              <p className='md:text-[1.5vw] text-[5vw] 3xl:text-[1vw]'>
-                let's connect'{' '}
+          <div className="flex  justify-between   bg-[url('/public/bg/test15.jpg')] portrait:bg-none bg-cover h-[100svh] portrait:mx-5   mx-36 items-center ">
+            <div className=' h-screen w-full md:basis-1/2  relative z-[120] gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden'>
+              <p className='md:text-[1.5vw] text-[5vw] 3xl:text-[1vw] whitespace-nowrap '>
+                let's connect
               </p>
               <a
                 id='link'
@@ -886,7 +896,7 @@ export default function Homepage() {
                 rel='noopener noreferrer'
                 className='hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'
               >
-                <img src={github} alt='' className='md:w-[4vw] w-[10vw]' />
+                <img src={github} alt='' className='md:w-[4vw] w-[11vw]' />
               </a>
               <img
                 id='link'
