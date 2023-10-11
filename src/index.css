@@ -45,8 +45,8 @@ html {
   }
 }
 
-/* Apply the blinking animation to the cursor */
-span {
+
+.blink-styles {
   border-right: 2px solid; /* Border for the cursor */
   padding-right: 5px; /* Adjust the padding to control the blinking speed of the cursor */
   animation: blink 1.5s step-end infinite; /* Apply the blinking animation */
