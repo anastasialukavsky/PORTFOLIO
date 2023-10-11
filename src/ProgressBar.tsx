@@ -17,6 +17,7 @@ type SectionsText = {
 export default function ProgressBar({mobileMenu}: {mobileMenu: boolean}) {
   const aboutSection = document.querySelector('.about-section');
   const skillsSection = document.querySelector('.skills-section');
+  const projects = document.querySelector('.projects-section');
   const progressRef = useRef<HTMLDivElement>(null);
 
   const [currentSectionText, setCurrentSectionText] = useState('');
@@ -90,6 +91,19 @@ export default function ProgressBar({mobileMenu}: {mobileMenu: boolean}) {
           },
         });
 
+        {mobileMenu && 
+          gsap.to('.progress-bar', {
+            top: '90%',
+            scrollTrigger: {
+              trigger: projects,
+              start: 'top 40%',
+              end: 'center center',
+              scrub: true,
+              // markers: true,
+            },
+          });
+        }
+
         gsap.to('.hidden-dot', {
           display: 'block',
           position: 'absolute',
@@ -124,7 +138,7 @@ export default function ProgressBar({mobileMenu}: {mobileMenu: boolean}) {
   return (
     <div
       ref={progressRef}
-      className='progress-bar  fixed top-3/4 left-0 min-h-screen z-[300] w-12   mix-blend-difference'
+      className='progress-bar  fixed top-3/4 left-0 min-h-screen z-[200] w-12   mix-blend-difference'
     >
       <img src={whiteDot} alt='' className='w-2 ml-8' />
       <div className='w-[1px]  min-h-screen ml-9 bg-white mix-blend-difference '>
