@@ -46,10 +46,6 @@ const Typewriter = ({ text, name }: Props) => {
 
   
 
-  useEffect(() => {
-    console.log('dispText', displayedText);
-  }, [displayedText]);
-
 
   return <span className='blink'>{displayedText}</span>;
 };
