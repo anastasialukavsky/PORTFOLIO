@@ -86,14 +86,22 @@ export default function Homepage() {
       const tl_12 = gsap.timeline({});
       const tl_13 = gsap.timeline({});
       const tl_14 = gsap.timeline({});
+      const tl_15 = gsap.timeline({});
 
       tl_14.to('.hello-article', {
         opacity: 1,
         duration: 1.2,
-        delay: 2,
+        delay: 1,
+        ease: 'expo',
+      });
+      tl_14.to('.hero-desc', {
+        opacity: 1,
+        duration: 1,
+        delay: 4,
         ease: 'expo',
       });
 
+      {/**hero section slide in */}
       tl_01.to('.hero-section', {
         yPercent: 100,
         ease: 'expo',
@@ -127,6 +135,7 @@ export default function Homepage() {
         },
       });
 
+      {/**about section pic anim */}
       tl_09.from('.pic', {
         // height: '100dvh',
         scale: 1.2,
@@ -154,7 +163,7 @@ export default function Homepage() {
           trigger: '.pic',
           start: 'top 7%',
           end: 'top 25%',
-          markers: true,
+          // markers: true,
           scrub: 4,
         },
       });
@@ -491,7 +500,7 @@ export default function Homepage() {
         id='home'
         className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center  xs:-translate-y-[30%] pt-96 portrait:w-[100svw]'
       >
-        <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono xs:text-[1.8vw] md:text-[.9vw] opacity-0'>
+        <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono xs:text-[1.8vw] md:text-[1vw] opacity-0'>
           hello, i am
         </p>
 
@@ -502,7 +511,7 @@ export default function Homepage() {
           <Typewriter name='ANASTASIA LUKAVSKY' text='FULLSTACK DEVELOPER' />
         </h1>
 
-        <div className='font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[2.5vw] pt-[1%] portrait:w-full md:text-[1.2vw] 5xl:text-[1vw]'>
+        <div className='hero-desc font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[2.5vw] pt-[1%] portrait:w-full md:text-[1.2vw] 5xl:text-[1vw] opacity-0'>
           <p>Crafting Digital Experiences from Front to Back</p>
           <p> Bringing Ideas to Life with Code and Creativity</p>
         </div>
