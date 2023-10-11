@@ -480,7 +480,7 @@ export default function Homepage() {
 
   return (
     <main className='container relative w-[100vw] h-full min-h-screen z-0 text-white portrait:w-[100vw] '>
-      <Navbar scrollToSection={scrollToSection} />
+      <Navbar scrollToSection={scrollToSection} mobileMenu={mobileMenu}/>
       <div
         // ref={blobScale}
         className='blob-wrapper  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
@@ -504,7 +504,7 @@ export default function Homepage() {
         id='home'
         className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center  xs:-translate-y-[30%] pt-96 portrait:w-[100svw]'
       >
-        <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono xs:text-[1.8vw] md:text-[1vw] opacity-0'>
+        <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono text-[2.7vw] md:text-[1vw] opacity-0'>
           hello, i am
         </p>
 
@@ -515,7 +515,7 @@ export default function Homepage() {
           <Typewriter name='ANASTASIA LUKAVSKY' text='FULLSTACK DEVELOPER' />
         </h1>
 
-        <div className='hero-desc font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[2.5vw] pt-[1%] portrait:w-full md:text-[1.2vw] 5xl:text-[1vw] opacity-0'>
+        <div className='hero-desc font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[3vw] pt-[1%] portrait:pt-3 portrait:w-full md:text-[1.2vw] 5xl:text-[1vw] opacity-0'>
           <p>Crafting Digital Experiences from Front to Back</p>
           <p> Bringing Ideas to Life with Code and Creativity</p>
         </div>
@@ -638,7 +638,7 @@ export default function Homepage() {
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
               <div className=" md:h-full portrait:bg-cover  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:h-full portrait:basis-full"></div>
 
-              <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5 '>
+              <div className='mobile-proj basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5 '>
                 <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 '>
                   ASTORIA
                 </p>
@@ -696,7 +696,7 @@ export default function Homepage() {
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
               <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1.jpg')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
 
-              <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center '>
+              <div className='mobile-proj basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center '>
                 <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0'>
                   PLANTS&CO 2.0
                 </p>
