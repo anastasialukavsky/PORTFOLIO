@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useEffect, useState } from 'react';
 
 // import './index.css';
 import Homepage from './Homepage';
@@ -10,12 +10,13 @@ import Blob from './Blob';
 import { Canvas } from '@react-three/fiber';
 import ProgressBar from './ProgressBar';
 
-
 gsap.registerPlugin(ScrollTrigger);
 
-
-
 function App() {
+
+
+
+
   const lenis = new Lenis({
     duration: 2.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -47,6 +48,10 @@ function App() {
 
   requestAnimationFrame(raf);
 
+
+
+
+  {/**cursor animation for landscape md+ */}
   useEffect(() => {
     gsap.set('.ball', { xPercent: -50, yPercent: -50 });
 
@@ -78,23 +83,22 @@ function App() {
     };
 
     gsap.ticker.add(tickerUpdate);
-  // ball?.style.pointerEvents = 'none';
-   
+    // ball?.style.pointerEvents = 'none';
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       gsap.ticker.remove(tickerUpdate);
     };
-  }, []); 
+  }, []);
 
   return (
-    <div className='min-h-screen h-full bg-[#353b3c] w-screen relative portrait:w-[100vw] selection:bg-fuchsia-300'>
+    <div className='min-h-screen h-full bg-[#353b3c] w-screen relative portrait:w-[100vw] selection:bg-pink-200'>
       {/* <ProgressBar /> */}
 
       <Homepage />
-      <div className='ball mix-blend-difference w-[60px]  h-[60px] fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
+      <div className='portrait:hidden ball mix-blend-difference w-[60px]  h-[60px] md:fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
     </div>
   );
 }
-
 
 export default App;
