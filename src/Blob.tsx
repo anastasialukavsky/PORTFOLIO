@@ -20,7 +20,7 @@ import { useThree } from '@react-three/fiber';
 gsap.registerPlugin(ScrollTrigger);
 // import { useControls } from 'leva';
 
-export default function Blob() {
+export default function Blob({mobileMenu}: {mobileMenu: boolean}) {
   const mesh = useRef<Mesh | null>(null);
   const hover = useRef(false);
 
@@ -202,8 +202,8 @@ export default function Blob() {
   useLayoutEffect(() => {
     gsap.registerPlugin({
       scrollTrigger: ScrollTrigger,
-      xPercent: gsap.utils.checkPrefix('xPercent'),
-      yPercent: gsap.utils.checkPrefix('yPercent'),
+      // xPercent: gsap.utils.checkPrefix('xPercent'),
+      // yPercent: gsap.utils.checkPrefix('yPercent'),
     });
 
     if (!mesh.current || !aboutSection) return;
@@ -254,9 +254,9 @@ export default function Blob() {
         }
       })
       gsap.to(position, {
-        z: 6,
-        x: -4.9,
-        y: 1,
+        z: mobileMenu ? 6 : 6,
+        x: mobileMenu ? -4 : -4.9,
+        y: mobileMenu ? 8 : 1,
         delay: 4,
         // rotateX: 800,
         // repeatRefresh: true,
