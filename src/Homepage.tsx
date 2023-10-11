@@ -147,7 +147,7 @@ export default function Homepage() {
         duration: 1,
         scrollTrigger: {
           trigger: '.about-section',
-          start: 'top top',
+          start: 'top 7%',
           end: 'center 90%',
           scrub: 4,
           // pin: true,
@@ -161,7 +161,7 @@ export default function Homepage() {
         duration: 3,
         scrollTrigger: {
           trigger: '.pic',
-          start: 'top 7%',
+          start: 'top 15%',
           end: 'top 25%',
           // markers: true,
           scrub: 4,
@@ -173,8 +173,8 @@ export default function Homepage() {
         ease: 'expo',
         scrollTrigger: {
           trigger: '.pic',
-          start: 'top 7%',
-          end: 'top 15%',
+          start: 'top 9%',
+          end: 'center 90%',
           // markers: true,
           scrub: 3,
         },
@@ -186,8 +186,8 @@ export default function Homepage() {
         duration: 3,
         scrollTrigger: {
           trigger: '.pic',
-          start: 'top 5%',
-          end: 'top 29%',
+          start: 'top 15%',
+          end: 'top 17%',
           // markers: true,
           scrub: 4,
         },
