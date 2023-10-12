@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import me from '../public/bg/me.jpg';
+import me from '../public/bg/me-q30.webp';
 import Navbar from './Navbar';
 
 import linkedin from '../public/icons/linkedin.svg';
@@ -171,63 +171,65 @@ export default function Homepage() {
       {
         /**about section pic anim */
       }
-      // tl_09.from('.pic', {
-      //   // height: '100dvh',
-      //   scale: 1.2,
-      //   // opacity: 0,
-      //   // width: '800%',
-      //   // aspectRatio: '4/5',
-      //   xPercent: 70,
-      //   ease: 'expo.inOut',
-      //   duration: 1,
-      //   scrollTrigger: {
-      //     trigger: '.about-section',
-      //     start: 'top 7%',
-      //     end: 'center 90%',
-      //     scrub: 4,
-      //     // pin: true,
-      //     // markers: true,
-      //   },
-      // });
-      // tl_10.from('.bio-text', {
-      //   opacity: 0,
-      //   // xPercent: '10',
-      //   ease: 'slow',
-      //   duration: 3,
-      //   scrollTrigger: {
-      //     trigger: '.pic',
-      //     start: 'top 15%',
-      //     end: 'top 25%',
-      //     // markers: true,
-      //     scrub: 4,
-      //   },
-      // });
-      // tl_11.from('.pic-wrapper', {
-      //   opacity: 0,
-      //   xPercent: '10',
-      //   ease: 'expo',
-      //   scrollTrigger: {
-      //     trigger: '.pic',
-      //     start: 'top 9%',
-      //     end: 'center 90%',
-      //     // markers: true,
-      //     scrub: 3,
-      //   },
-      // });
-      // tl_12.from('.firstname-lastname', {
-      //   opacity: 0,
-      //   // xPercent: '10',
-      //   ease: 'slow',
-      //   duration: 3,
-      //   scrollTrigger: {
-      //     trigger: '.pic',
-      //     start: 'top 15%',
-      //     end: 'top 17%',
-      //     // markers: true,
-      //     scrub: 4,
-      //   },
-      // });
-
+      {!mobileMenu && 
+        tl_09.from('.pic', {
+          // height: '100dvh',
+          scale: 1.2,
+          // opacity: 0,
+          // width: '800%',
+          // aspectRatio: '4/5',
+          xPercent: 70,
+          ease: 'expo.inOut',
+          duration: 1,
+          scrollTrigger: {
+            trigger: '.about-section',
+            start: 'top 7%',
+            end: 'center 90%',
+            scrub: 4,
+            // pin: true,
+            // markers: true,
+        },
+      });
+      tl_10.from('.bio-text', {
+        opacity: 0,
+        // xPercent: '10',
+        ease: 'slow',
+        duration: 3,
+        scrollTrigger: {
+          trigger: '.pic',
+          start: 'top 15%',
+          end: 'top 25%',
+          // markers: true,
+          scrub: 4,
+        },
+      });
+      tl_11.from('.pic-wrapper', {
+        opacity: 0,
+        xPercent: '10',
+        ease: 'expo',
+        scrollTrigger: {
+          trigger: '.pic',
+          start: 'top 9%',
+          end: 'center 90%',
+          // markers: true,
+          scrub: 3,
+        },
+      });
+      tl_12.from('.firstname-lastname', {
+        opacity: 0,
+        // xPercent: '10',
+        ease: 'slow',
+        duration: 3,
+        scrollTrigger: {
+          trigger: '.pic',
+          start: 'top 15%',
+          end: 'top 17%',
+          // markers: true,
+          scrub: 4,
+        },
+      });
+      
+    }
       tl_03.to('.backend-div', {
         yPercent: -50,
         ease: 'expo.inOut',
@@ -514,7 +516,7 @@ export default function Homepage() {
       <Navbar scrollToSection={scrollToSection} mobileMenu={mobileMenu} />
       <div
         // ref={blobScale}
-        className='blob-wrapper  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
+        className='blob-wrapper fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
       >
         <Canvas
           ref={ref}
@@ -527,7 +529,7 @@ export default function Homepage() {
             depth: true,
           }}
         >
-          <Blob />
+          <Blob mobileMenu={mobileMenu} />
         </Canvas>
       </div>
       {/**hero section */}
@@ -600,10 +602,12 @@ export default function Homepage() {
         <div className='front-end-section  md:text-[1.3vw] 4xl:text-[1rem]   flex w-[100vw]'>
           <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:w-[90svw]'>
             <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b portrait:w-[90svw] md:pb-20'>
-              <div className='flex flex-col   p-20 portrait:p-10 portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
-                <p className=' self-center '>//front-end development</p>
-                <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-24 w-full'>
-                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
+              <div className='flex flex-col   p-20  portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className=' self-center portrait:pb-14'>
+                  //front-end development
+                </p>
+                <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-24 w-full '>
+                  <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12 '>
                     <img src={html} alt='HTML' className='w-12 5xl:w-16 ' />
                   </li>
                   <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
@@ -676,8 +680,10 @@ export default function Homepage() {
             </div>
 
             <div className='backend-div bg-[#292e2f]   min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 border-t portrait:w-[90svw] pt-36'>
-              <div className=' ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit justify-center 5xl:items-center gap-2 xl:gap-10'>
-                <p className=' self-center'>//back-end development</p>
+              <div className=' ft-section flex flex-col  p-20 portrait:w-fit justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className=' self-center portrait:pb-14'>
+                  //back-end development
+                </p>
                 <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14'>
                   <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
                     <img
@@ -739,8 +745,10 @@ export default function Homepage() {
             </div>
 
             <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw] pt-36'>
-              <div className='ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
-                <p className='self-center'>//devops and deployment</p>
+              <div className='ft-section flex flex-col  p-20  portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className='self-center portrait:pb-14'>
+                  //devops and deployment
+                </p>
                 <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14 '>
                   <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
                     <img src={git} alt='Git' className='w-14 5xl:w-20 ' />
@@ -766,8 +774,8 @@ export default function Homepage() {
             </div>
 
             <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw] pt-36'>
-              <div className='ft-section flex flex-col  p-20 portrait:p-10 portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
-                <p className='self-center'>//misc</p>
+              <div className='ft-section flex flex-col  p-20  portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className='self-center portrait:pb-14'>//misc</p>
                 <ul className='grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14   '>
                   <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
                     <img src={blendr} alt='Blendr' className='w-14 5xl:w-20 ' />
@@ -809,7 +817,7 @@ export default function Homepage() {
         <div className='proj-try flex flex-none  overflow-x-scroll '>
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
-              <div className=" md:h-full portrait:bg-cover  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:h-full portrait:basis-full"></div>
+              <div className=" md:h-full portrait:bg-cover  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:h-full portrait:basis-full"></div>
 
               <div className='mobile-proj basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5 '>
                 <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
@@ -869,7 +877,7 @@ export default function Homepage() {
 
           <div className='projects last-project h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
-              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1.jpg')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
+              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1-q30.webp')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
 
               <div className='mobile-proj basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center '>
                 <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
@@ -927,7 +935,7 @@ export default function Homepage() {
 
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
-              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3.jpg')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
+              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
 
               <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center'>
                 <p className='text-center md:text-[1rem] lg:text-[1.2rem] font-bold 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
@@ -988,7 +996,7 @@ export default function Homepage() {
 
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
-              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/lb_mockup.jpg')] portrait:h-full portrait:basis-full portrait:bg-cover "></div>
+              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/lb_mockup-q30.webp')] portrait:h-full portrait:basis-full portrait:bg-cover "></div>
 
               <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center'>
                 <p className='text-center md:text-[1rem] lg:text-[1.rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
@@ -1056,7 +1064,7 @@ export default function Homepage() {
         className='contact-section  font-mono portrait:w-[100svw] w-[100svw] h-[100svh] relative'
       >
         <div className='h-screen w-screen  relative '>
-          <div className="flex  justify-between   bg-[url('/public/bg/test15.jpg')] portrait:bg-none bg-cover h-[100svh] portrait:mx-5   mx-36 items-center ">
+          <div className='flex  justify-between  portrait:bg-none bg-cover h-[100svh] portrait:mx-5   mx-36 items-center '>
             <div className=' h-screen w-full md:basis-1/2  relative z-[120] gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden'>
               <p className='md:text-[1.5vw] text-[5vw] 3xl:text-[1vw] whitespace-nowrap '>
                 let's connect
