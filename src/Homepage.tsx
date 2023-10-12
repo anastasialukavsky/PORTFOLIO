@@ -520,7 +520,7 @@ export default function Homepage() {
       <Navbar scrollToSection={scrollToSection} mobileMenu={mobileMenu} />
       <div
         // ref={blobScale}
-        className='blob-wrapper fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
+        className='blob-wrapper  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
       >
         <Canvas
           ref={ref}
@@ -539,7 +539,7 @@ export default function Homepage() {
       {/**hero section */}
       <section
         id='home'
-        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center md:-translate-y-[30%] md:pt-96 portrait:w-[100svw] '
+        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center md:-translate-y-[30%] md:pt-96 portrait:w-[100svw] portrait:h-[100vh]'
       >
         <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono text-[2.7vw] md:text-[1vw] opacity-0'>
           hello, i am
@@ -602,9 +602,9 @@ export default function Homepage() {
       >
         {/* <span className='text-[5vw] h-fit md:hidden p-5 text-white'>//SKILLS</span> */}
         <div className='front-end-section  md:text-[1.3vw] 4xl:text-[1rem]   flex w-[100vw]'>
-          <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:w-[90svw]'>
-            <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b portrait:w-[90svw] md:pb-20'>
-              <div className='flex flex-col   p-20  portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
+          <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:w-[90vw]'>
+            <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b portrait:w-[90vw] md:pb-20'>
+              <div className='flex flex-col   p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
                 <p className=' self-center portrait:pb-14'>
                   //front-end development
                 </p>
@@ -1063,7 +1063,7 @@ export default function Homepage() {
       {/**contact section */}
       <section
         id='contact'
-        className='contact-section  font-mono portrait:w-[100svw] w-[100svw] h-[100dvh] relative'
+        className='contact-section  font-mono portrait:w-[100svw] w-[100svw] h-[100vh] relative'
       >
         <div className='h-screen w-screen  relative '>
           <div className='flex  justify-between  portrait:bg-none bg-cover h-[100svh] portrait:mx-5   mx-36 items-center '>
