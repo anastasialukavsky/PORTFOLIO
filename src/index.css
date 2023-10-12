@@ -37,3 +37,25 @@
   padding-right: 5px; /* Adjust the padding to control the blinking speed of the cursor */
   animation: blink 1.5s step-end infinite; /* Apply the blinking animation */
 }
+
+
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
