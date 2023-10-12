@@ -547,7 +547,7 @@ export default function Homepage() {
 
         <h1
           id='text'
-          className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[13.5vw]  portrait:self-center portrait:'
+          className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[13.5vw]  portrait:self-center portrait:top-0'
         >
           <Typewriter name='ANASTASIA LUKAVSKY' text='FULLSTACK DEVELOPER' />
         </h1>
@@ -1063,7 +1063,7 @@ export default function Homepage() {
       {/**contact section */}
       <section
         id='contact'
-        className='contact-section  font-mono portrait:w-[100svw] w-[100svw] h-[100svh] relative'
+        className='contact-section  font-mono portrait:w-[100svw] w-[100svw] h-[100dvh] relative'
       >
         <div className='h-screen w-screen  relative '>
           <div className='flex  justify-between  portrait:bg-none bg-cover h-[100svh] portrait:mx-5   mx-36 items-center '>
