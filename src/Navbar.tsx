@@ -99,9 +99,14 @@ export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
     >
       <div className='navigation-wrapper  flex justify-between pl-[3%] pr-[5%] relative '>
         {/**logo */}
+
+        <a href="#home"
+        onClick={(e) => scrollToSection(e, '#home', false)}>
+
         <p className='font-logo  text-[3.5rem] lg:text-[5rem] leading-none'>
           .a
         </p>
+        </a>
 
         {/**mobile nav hamburger */}
         <svg
