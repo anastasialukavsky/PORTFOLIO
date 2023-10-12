@@ -562,7 +562,7 @@ export default function Homepage() {
       >
        
         <div className='about-section  portrait:w-[100svw] h-[100dvh] w-full bg-[#353b3c] flex relative top-0 '>
-          <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto bg-pink-300 '>
+          <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto bg-pink-300 portrait'>
             <div className=' about-me-details-wrapper w-full h-fit '>
               <div
                 className={` ${
@@ -572,7 +572,7 @@ export default function Homepage() {
               <img
                 src={me}
                 alt='photo of the creator :)'
-                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8  portrait:aspect-[7/11] portrait:h-fit'
+                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8  portrait:aspect-auto portrait:h-[50vw]'
               />
             </div>
 
