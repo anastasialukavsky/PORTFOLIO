@@ -20,7 +20,7 @@ import { useThree } from '@react-three/fiber';
 gsap.registerPlugin(ScrollTrigger);
 // import { useControls } from 'leva';
 
-export default function Blob({mobileMenu}: {mobileMenu: boolean}) {
+export default function Blob({ mobileMenu }: { mobileMenu: boolean }) {
   const mesh = useRef<Mesh | null>(null);
   const hover = useRef(false);
 
@@ -196,7 +196,7 @@ export default function Blob({mobileMenu}: {mobileMenu: boolean}) {
   const { camera } = useThree();
   let meshPosition = mesh.current ? mesh.current.position : new THREE.Vector3();
 
-  console.log('meshpos', camera)
+  console.log('meshpos', camera);
 
   const position = { x: 0, y: 0, z: 9.9 };
   useLayoutEffect(() => {
@@ -240,10 +240,10 @@ export default function Blob({mobileMenu}: {mobileMenu: boolean}) {
       // });
       // const newPosition = { x: -4.9, y: 1, z: 6 };
       gsap.from(position, {
-        z:0, 
+        z: 0,
         x: 0,
         y: 4.8,
-        duration: 1.2, 
+        duration: 1.2,
         // delay: 4,
         ease: 'expo',
 
@@ -251,8 +251,8 @@ export default function Blob({mobileMenu}: {mobileMenu: boolean}) {
           camera.translateY(position.y - camera.position.y);
           camera.translateZ(position.z - camera.position.z);
           camera.translateX(position.x - camera.position.x);
-        }
-      })
+        },
+      });
       gsap.to(position, {
         z: mobileMenu ? 6 : 6,
         x: mobileMenu ? -4 : -4.9,
@@ -280,41 +280,41 @@ export default function Blob({mobileMenu}: {mobileMenu: boolean}) {
       });
       // let zoom = 1;
       // // const nzoom = { x: 1, y: 1, z: 3 };
- const prevPosition = { x: -4.9, y: 1, z: 6 };
- gsap.to(prevPosition, {
-   repeatRefresh: true,
-   z:15,
-   x: -2.9,
- 
-  //  y: 1,
-   scrollTrigger: {
-     trigger: miscSection,
-      start: 'bottom bottom',
-      // end: 'bottom 140%',
-     endTrigger: contactSection,
-     scrub: 3,
-    //  markers: true
-   },
-   onUpdate: () => {
-      // camera.translateY(prevPosition.y - camera.position.y);
-     camera.translateZ(prevPosition.z - camera.position.z);
-    //  console.log(camera.prevPosition);
-     //  console.log('NP', prevPosition);
-     //  console.log()
-     camera.translateX(prevPosition.x - camera.position.x);
-   },
-  })
-  
-    //  gsap.to(mesh.current, {
-    //   rotate: 600,
-    //   ease: 'none',
-    //   scrollTrigger: {
-    //     trigger: aboutSection,
-    //     start: 'bottom 150%',
-    //     end: 'bottom 250%',
-    //     markers: true
-    //   }
-//  });
+      const prevPosition = { x: -4.9, y: 1, z: 6 };
+      gsap.to(prevPosition, {
+        repeatRefresh: true,
+        z: mobileMenu ? 6 : 15,
+        x: mobileMenu ? 3 : -2.9,
+
+         y: mobileMenu ? 5 : 0,
+        scrollTrigger: {
+          trigger: miscSection,
+          start: 'bottom bottom',
+          // end: 'bottom 140%',
+          endTrigger: contactSection,
+          scrub: 3,
+          //  markers: true
+        },
+        onUpdate: () => {
+          camera.translateY(prevPosition.y - camera.position.y);
+          camera.translateZ(prevPosition.z - camera.position.z);
+          //  console.log(camera.prevPosition);
+          //  console.log('NP', prevPosition);
+          //  console.log()
+          camera.translateX(prevPosition.x - camera.position.x);
+        },
+      });
+
+      //  gsap.to(mesh.current, {
+      //   rotate: 600,
+      //   ease: 'none',
+      //   scrollTrigger: {
+      //     trigger: aboutSection,
+      //     start: 'bottom 150%',
+      //     end: 'bottom 250%',
+      //     markers: true
+      //   }
+      //  });
     });
     return () => {
       ctx.revert();
