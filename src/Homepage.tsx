@@ -366,12 +366,12 @@ export default function Homepage() {
     };
   });
 
-const [width, setWidth] = useState(0)
-const [height, setHeight] = useState(0)
-  useEffect(() => {
-    setHeight(window.innerHeight)
-    setWidth(window.innerWidth)
-  }, [width, height])
+// const [width, setWidth] = useState(0)
+// const [height, setHeight] = useState(0)
+//   useEffect(() => {
+//     setHeight(window.innerHeight)
+//     setWidth(window.innerWidth)
+//   }, [width, height])
 
   const blobScale = useRef(1);
   const [scale, setScale] = useState(1);
@@ -527,7 +527,7 @@ const [height, setHeight] = useState(0)
       <Navbar scrollToSection={scrollToSection} mobileMenu={mobileMenu} />
       <div
         // ref={blobScale}
-        className='blob-wrapper  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0 '
+        className='blob-wrapper  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0  landscape:xshort:w-[100svw] landscape:xshort:h-[100svh]'
       >
         <Canvas
           ref={ref}
@@ -546,15 +546,15 @@ const [height, setHeight] = useState(0)
       {/**hero section */}
       <section
         id='home'
-        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center md:-translate-y-[30%] md:pt-96 portrait:w-[100svw] portrait:h-[100vh]'
+        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center md:-translate-y-[30%] md:pt-96 portrait:w-[100svw] portrait:h-[100vh] landscape:xshort:w-[100svw] landscape:xshort:h-[100svh]'
       >
         <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono text-[2.7vw] md:text-[1vw] opacity-0 portrait:fixed portrait:top-[37%]'>
           hello, i am
         </p>
-<p className='text-[3rem] '>width: {width}, <br/>height: {height}</p>
+        {/* <p className='text-[3rem] '>width: {width}, <br/>height: {height}</p> */}
         <h1
           id='text'
-          className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[13.5vw]  portrait:self-center portrait:top-0'
+          className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[13.5vw]  portrait:self-center portrait:top-0 xshort:whitespace-nowrap'
         >
           <Typewriter name='ANASTASIA LUKAVSKY' text='FULLSTACK DEVELOPER' />
         </h1>
@@ -569,24 +569,26 @@ const [height, setHeight] = useState(0)
       {/**about section */}
       <section
         id='about'
-        className='about z-[150] flex font-mono portrait:w-[100vw] w-[100svw] relative portrait:bg-[#353b3c] '
+        className='about z-[150] flex font-mono portrait:w-[100vw] w-[100svw] relative portrait:bg-[#353b3c]  landscape:xshort:w-[100svw] landscape:xshort:h-[100svh]'
       >
         <div className='about-section  portrait:w-[100svw] h-[100dvh] w-full bg-[#353b3c] flex relative top-0 '>
           <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto  portrait'>
             <div className=' about-me-details-wrapper w-full h-fit '>
               <div
                 className={` ${
-                  mobileMenu ? 'h-[47%] w-[70vw] left-16 top-36' : 'h-[62%] w-[36vw]'
-                } pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%] short:min-h-[82%]  3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%] 6xl:min-h-[87%]`}
+                  mobileMenu
+                    ? 'h-[47%] w-[70vw] left-16 top-36'
+                    : 'h-[62%] w-[36vw]'
+                } pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%] short:min-h-[82%]  3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%] 6xl:min-h-[87%] landscape:xshort:max-w-[27%] landscape:xshort:h-[70%]`}
               ></div>
               <img
                 src={me}
                 alt='photo of the creator :)'
-                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:object-contain 5xl:aspect-[8/11] relative md:-right-3 -top-4 -right-8   portrait:h-[95vw] portrait:aspect-auto'
+                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:object-contain 5xl:aspect-[8/11] relative md:-right-3 -top-4 -right-8   portrait:h-[95vw] portrait:aspect-auto landscape:xshort:h-[70vh]'
               />
             </div>
 
-            <p className='bio-text font-mono text-[#121212] w-full lowercase  md:pr-8 md:text-[1.5vw] 2xl:text-[1.2rem] leading-tight text-[.8rem] pt-5 portrait:ml-2'>
+            <p className='bio-text font-mono text-[#121212] w-full lowercase  md:pr-8 md:text-[1.5vw] 2xl:text-[1.2rem] leading-tight text-[.8rem] pt-5 portrait:ml-2 landscape:xshort:text-[.7rem]'>
               I am a fullstack web developer based in Brooklyn, NY, with a keen
               eye for detail and a drive for creating exceptional digital
               experiences. My journey in web development has been an exciting
@@ -595,7 +597,7 @@ const [height, setHeight] = useState(0)
               and fulfillment.
             </p>
           </div>
-          <div className='firstname-lastname md:flex flex-col justify-end items-end hidden uppercase text-[#121212] bottom-[7vw] absolute left-[10%] font-mono text-left w-fit h-fit text-[1rem] short:bottom-3 3xl:bottom-10 5xl:bottom-7'>
+          <div className='firstname-lastname md:flex flex-col justify-end items-end hidden uppercase text-[#121212] bottom-[7vw] absolute left-[10%] font-mono text-left w-fit h-fit text-[1rem] short:bottom-3 3xl:bottom-10 5xl:bottom-7 landscape:xshort:bottom-2'>
             <p className='about'>anastasia</p>
             <p>//lukavsky</p>
           </div>
@@ -807,7 +809,7 @@ const [height, setHeight] = useState(0)
           </div>
 
           {/**blob placement section */}
-          <div className=' skills-section right-div  border-l   md:basis-1/2 hidden     h-screen    md:flex w-fit items-center bg-white'>
+          <div className=' skills-section right-div  border-l   md:basis-1/2 hidden     h-screen   md:flex w-fit items-center bg-white'>
             {/* <p className='font-dida text-[6vw] text-center'></p> */}
           </div>
         </div>
@@ -1065,7 +1067,7 @@ const [height, setHeight] = useState(0)
       {/**contact section */}
       <section
         id='contact'
-        className='contact-section  font-mono portrait:w-[100svw] w-[100svw] h-[100vh] relative'
+        className='contact-section  font-mono portrait:w-[100svw] w-[100svw] h-[100vh] relative portrait:h-[100vh]'
       >
         <div className='h-screen w-screen  relative '>
           <div className='flex  justify-between  portrait:bg-none bg-cover h-[100svh] portrait:mx-5   mx-36 items-center '>
