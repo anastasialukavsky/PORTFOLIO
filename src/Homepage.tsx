@@ -562,7 +562,7 @@ export default function Homepage() {
       >
        
         <div className='about-section  portrait:w-[100svw] h-[100dvh] w-full bg-[#353b3c] flex relative top-0 '>
-          <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto  '>
+          <div className='md:flex  gap-[9%] md:w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto bg-pink-300 '>
             <div className=' about-me-details-wrapper w-full h-fit '>
               <div
                 className={` ${
