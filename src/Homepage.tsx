@@ -174,7 +174,7 @@ export default function Homepage() {
       {!mobileMenu && 
         tl_09.from('.pic', {
           // height: '100dvh',
-          scale: 1.2,
+          scale: 1.1,
           // opacity: 0,
           // width: '800%',
           // aspectRatio: '4/5',
@@ -543,7 +543,7 @@ export default function Homepage() {
 
         <h1
           id='text'
-          className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[6.5vw] portrait:whitespace-nowrap portrait:self-center '
+          className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[13.5vw]  portrait:self-center '
         >
           <Typewriter name='ANASTASIA LUKAVSKY' text='FULLSTACK DEVELOPER' />
         </h1>
