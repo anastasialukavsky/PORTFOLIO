@@ -78,7 +78,7 @@ export default function ProgressBar({mobileMenu}: {mobileMenu: boolean}) {
       gsap.registerPlugin(ScrollTrigger);
 
       const ctx = gsap.context(() => {
-        gsap.to('.progress-bar', {
+        gsap.to(progressRef.current, {
           top: '10%',
           ease: 'slow',
           duration:2,
@@ -91,23 +91,23 @@ export default function ProgressBar({mobileMenu}: {mobileMenu: boolean}) {
           },
         });
 
-        {mobileMenu && 
-          gsap.to('.progress-bar', {
-            top: '90%',
-            scrollTrigger: {
-              trigger: projects,
-              start: 'top 40%',
-              end: 'center center',
-              scrub: true,
-              // markers: true,
-            },
-          });
-        }
+        // {mobileMenu && 
+        //   gsap.to('.progress-bar', {
+        //     top: '90%',
+        //     scrollTrigger: {
+        //       trigger: projects,
+        //       start: 'top 40%',
+        //       end: 'center center',
+        //       scrub: true,
+        //       // markers: true,
+        //     },
+        //   });
+        // }
 
         gsap.to('.hidden-dot', {
           display: 'block',
           position: 'absolute',
-          top: mobileMenu ? '70%' : '40%',
+          top:  '40%',
           // y: '50%',
           scrollTrigger: {
             trigger: aboutSection,
@@ -138,20 +138,24 @@ export default function ProgressBar({mobileMenu}: {mobileMenu: boolean}) {
   return (
     <div
       ref={progressRef}
-      className='progress-bar  fixed top-3/4 left-0 min-h-screen z-[200] w-12   mix-blend-difference'
+      className='progress-bar  fixed top-3/4 left-0 min-h-screen z-[200] w-12   mix-blend-difference portrait:top-[120%]'
     >
       <img src={whiteDot} alt='' className='w-2 ml-8' />
       <div className='w-[1px]  min-h-screen ml-9 bg-white mix-blend-difference '>
         <p
-          className={` ${
-            mobileMenu ? 'top-[65%]' : 'top-[37%]'
-          } -rotate-90 font-mono z-50 absolute   lg:top-[36%]  -left-16 lg:-left-[68px] w-44  uppercase  text-[.8rem] lg:text-[1rem]`}
+          className={` 
+            top-[37%]
+           -rotate-90 font-mono z-50 absolute   lg:top-[36%]  -left-16 lg:-left-[68px] w-44  uppercase  text-[.8rem] lg:text-[1rem]`}
         >
           {currentSectionText}
         </p>
       </div>
 
-      <img src={whiteDot} alt='' className='hidden-dot w-2 ml-8 hidden z-50' />
+      <img
+        src={whiteDot}
+        alt=''
+        className='hidden-dot w-2 ml-8 hidden z-50 portrait:top-[120%]'
+      />
     </div>
   );
 }
