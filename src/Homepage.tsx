@@ -188,8 +188,9 @@ export default function Homepage() {
             scrub: 4,
             // pin: true,
             // markers: true,
-        },
-      });
+          },
+        });
+      }
       tl_10.from('.bio-text', {
         opacity: 0,
         // xPercent: '10',
@@ -197,9 +198,9 @@ export default function Homepage() {
         duration: 3,
         scrollTrigger: {
           trigger: '.pic',
-          start: 'top 15%',
-          end: 'top 25%',
-          // markers: true,
+          start: mobileMenu ? 'top 30%' :  'top 15%',
+          end: mobileMenu ? 'top 50%' : 'top 25%',
+          markers: true,
           scrub: 4,
         },
       });
@@ -209,7 +210,7 @@ export default function Homepage() {
         ease: 'expo',
         scrollTrigger: {
           trigger: '.pic',
-          start: 'top 9%',
+          start:  mobileMenu ? 'top 50%' : 'top 9%',
           end: 'center 90%',
           // markers: true,
           scrub: 3,
@@ -229,7 +230,10 @@ export default function Homepage() {
         },
       });
       
-    }
+   
+
+
+
       tl_03.to('.backend-div', {
         yPercent: -50,
         ease: 'expo.inOut',
@@ -562,17 +566,17 @@ export default function Homepage() {
       >
        
         <div className='about-section  portrait:w-[100svw] h-[100dvh] w-full bg-[#353b3c] flex relative top-0 '>
-          <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto bg-pink-300 portrait'>
+          <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto  portrait'>
             <div className=' about-me-details-wrapper w-full h-fit '>
               <div
                 className={` ${
-                  mobileMenu ? 'h-[49%] w-[80vw] hidden' : 'h-[67%] w-[36vw]'
-                } pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%] short:min-h-[82%]  3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%]`}
+                  mobileMenu ? 'h-[44%] w-[70vw] left-14' : 'h-[62%] w-[36vw]'
+                } pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%] short:min-h-[82%]  3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%] 6xl:min-h-[87%]`}
               ></div>
               <img
                 src={me}
                 alt='photo of the creator :)'
-                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8   portrait:h-[90vw]'
+                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:object-contain 5xl:aspect-[8/11] relative md:-right-3 -top-4 -right-8   portrait:h-[95vw] portrait:aspect-auto'
               />
             </div>
 
