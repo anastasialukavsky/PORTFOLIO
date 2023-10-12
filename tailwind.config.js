@@ -25,6 +25,7 @@ export default {
         '5xl': '2560px',
         '6xl': '3440px',
         short: { raw: '(max-height: 768px) and (min-width: 1440px)' },
+        xshort: { raw: '(max-height: 550px) and (min-width: 1020px)' },
       },
     },
   },
