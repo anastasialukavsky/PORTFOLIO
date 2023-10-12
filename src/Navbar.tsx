@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from 'react';
 import hamburger from '../public/icons/hamburger.svg';
 import x from '../public/icons/x.svg';
 import { gsap } from 'gsap';
+import { CustomEase } from 'gsap/CustomEase';
+gsap.registerPlugin(CustomEase);
 
 type ScrollToSection = (
   e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -18,65 +20,76 @@ export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const wrapperRef = useRef(null);
 
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  //prevent scroll on overflow
+  // prevent scroll on overflow
   // useEffect(() => {
-  //   document.body.style.overflow = 'hidden';
-  //   return () => {
-  //     document.body.style.overflow = '';
-  //   };
-  // }, []);
+  //   if (mobileMenu && isMenuOpen) {
+  //     document.body.style.overflow = 'hidden';
+  //     return () => {
+  //       document.body.style.overflow = '';
+  //     };
+  //   }
+  // }, [mobileMenu, isMenuOpen]);
 
   useEffect(() => {
-
     if (!wrapperRef.current) return;
 
+    if (isMenuOpen) {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({});
 
-
-
-
-      if (isMenuOpen) {
-        const ctx = gsap.context(() => {
-          const tl = gsap.timeline({});
-
-          tl.set(wrapperRef.current, { display: 'block' });
-          tl.to(wrapperRef.current, {
-            // height: 0,
-            y: '+=100%',
-            duration: 0.55,
-            ease: 'expo',
-          });
+        tl.to(wrapperRef.current, {
+          x: '0%',
+          // backdropFilter: 'blur(20px)',
+          duration: 0.55,
+          ease: 'expo',
         });
+      });
 
-        return () => ctx.revert();
-      } else {
-        if (!isMenuOpen) {
-          const ctx = gsap.context(() => {
-            const tl = gsap.timeline({});
+      return () => ctx.revert();
+    } else if (!isMenuOpen) {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({});
 
-            // tl.set(wrapperRef.current, { display: 'block' })
-            tl.from(
-              wrapperRef.current,
-              {
-                // height: 0,
-                duration: 0.5,
-                y: '+=100%',
-                ease: 'power1.in',
-              },
-              '<'
-            ).set(wrapperRef.current, { display: 'none' });
-          });
-          return () => ctx.revert();
-        }
-      }
-  }, [wrapperRef.current]);
+        tl.from(
+          wrapperRef.current,
+          {
+            duration: 0.55,
+            x: '0%',
+            ease: 'expo',
+          },
+          '<'
+        );
+
+       
+      });
+      return () => ctx.revert();
+    }
+  }, [wrapperRef.current, isMenuOpen]);
+
+
+
+  const animateHamburgerToX = () => {
+    const tl = gsap.timeline();
+
+    if (isMenuOpen) {
+      tl.to('.line1', { y: 0, rotate: 0, duration: 0.3, ease: 'back' })
+      .to('.line2',
+        { y: 0, rotate: 0, duration: 0.3, ease: 'back' },
+        '-=0.3'
+      );
+    } else {
+      tl.to('.line1', { y: -9, rotate: 50, duration: 0.3, ease: 'back' }).to(
+        '.line2',
+        { y:20, rotate: -53, duration: 0.3, ease: 'back' },
+        '-=0.3'
+      );
+    }
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prevMenuOpen) => !prevMenuOpen);
+  };
 
   return (
     <nav
@@ -91,91 +104,107 @@ export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
         </p>
 
         {/**mobile nav hamburger */}
-        {isMenuOpen ? (
-          <img
-            src={x}
-            alt='x icon'
-            className='w-[10vw] xs:flex md:hidden z-[260] p-3'
-            onClick={closeMenu}
+        <svg
+          className='z-[260] pt-2  md:hidden'
+          onClick={() => {
+            toggleMenu();
+            animateHamburgerToX();
+          }}
+          width='60'
+          height='50'
+          viewBox='0 0 50 50'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <rect
+            className='line line1'
+            x='10'
+            y='15'
+            width='50'
+            height='1'
+            stroke='#fff'
+            fill='#fff'
+            rx='1'
           />
-        ) : (
-          <img
-            src={hamburger}
-            alt='hamburger icon'
-            className='w-[10vw] xs:flex md:hidden'
-            onClick={toggleMenu}
+          <rect
+            className='line line2'
+            x='10'
+            y='25'
+            width='50'
+            height='1'
+            stroke='#fff'
+            fill='#fff'
+            rx='1'
           />
-        )}
+        </svg>
 
         {/**mobile nav dropdown */}
-        {isMenuOpen && (
-          <div
-            ref={wrapperRef}
-            className='md:hidden absolute  top-0 left-0 h-[100dvh] w-[100svw] bg-[#353b3c] z-[250] -translate-y-full '
-          >
-            <div className='flex flex-col items-center justify-center h-full'>
-              <a
-                href='#home'
-                className='font-mono text-[7vw] border-b'
-                onClick={(e) => {
-                  scrollToSection(e, '#home', false);
-                  toggleMenu();
-                }}
-              >
-                <span className='self-start text-[3vw] pr-2 '>00</span>
-                HOME
-              </a>
 
-              <a
-                href='#about'
-                className='font-mono text-[7vw] border-b'
-                onClick={(e) => {
-                  scrollToSection(e, '#about', false);
-                  toggleMenu();
-                }}
-              >
-                <span className='self-start text-[3vw] pr-2 '>01</span>
-                ABOUT
-              </a>
+        <div
+          ref={wrapperRef}
+          className='md:hidden absolute  top-0 left-0 h-[100dvh] w-[100svw] backdrop-blur-0  bg-[#2f2f2f] opacity-[99%] z-[250] transform translate-x-full '
+        >
+          <div className='flex flex-col items-center justify-center h-full'>
+            <a
+              href='#home'
+              className='font-mono text-[7vw] border-b'
+              onClick={(e) => {
+                scrollToSection(e, '#home', false);
+                toggleMenu();
+              }}
+            >
+              <span className='self-start text-[3vw] pr-2 '>00</span>
+              HOME
+            </a>
 
-              <a
-                href='#skills'
-                className='font-mono text-[7vw] border-b'
-                onClick={(e) => {
-                  scrollToSection(e, '#skills', false);
-                  toggleMenu();
-                }}
-              >
-                <span className='self-start text-[3vw] pr-2'>02</span>
-                SKILLS
-              </a>
+            <a
+              href='#about'
+              className='font-mono text-[7vw] border-b'
+              onClick={(e) => {
+                scrollToSection(e, '#about', false);
+                toggleMenu();
+              }}
+            >
+              <span className='self-start text-[3vw] pr-2 '>01</span>
+              ABOUT
+            </a>
 
-              <a
-                href='#projects-section-scroll-to'
-                className='font-mono text-[7vw] border-b'
-                onClick={(e) => {
-                  scrollToSection(e, '#projects-section-scroll-to', true);
-                  toggleMenu();
-                }}
-              >
-                <span className='self-start text-[3vw] pr-2'>03</span>
-                PROJECTS
-              </a>
+            <a
+              href='#skills'
+              className='font-mono text-[7vw] border-b'
+              onClick={(e) => {
+                scrollToSection(e, '#skills', false);
+                toggleMenu();
+              }}
+            >
+              <span className='self-start text-[3vw] pr-2'>02</span>
+              SKILLS
+            </a>
 
-              <a
-                href='#contact'
-                className='font-mono text-[7vw] border-b '
-                onClick={(e) => {
-                  scrollToSection(e, '#contact', false);
-                  toggleMenu();
-                }}
-              >
-                <span className='self-start text-[3vw] pr-2'>04</span>
-                CONTACT
-              </a>
-            </div>
+            <a
+              href='#projects-section-scroll-to'
+              className='font-mono text-[7vw] border-b'
+              onClick={(e) => {
+                scrollToSection(e, '#projects-section-scroll-to', true);
+                toggleMenu();
+              }}
+            >
+              <span className='self-start text-[3vw] pr-2'>03</span>
+              PROJECTS
+            </a>
+
+            <a
+              href='#contact'
+              className='font-mono text-[7vw] border-b '
+              onClick={(e) => {
+                scrollToSection(e, '#contact', false);
+                toggleMenu();
+              }}
+            >
+              <span className='self-start text-[3vw] pr-2'>04</span>
+              CONTACT
+            </a>
           </div>
-        )}
+        </div>
 
         {/**primary nav */}
         <div className='hidden md:flex uppercase  gap-4 text-[1.1vw] absolute top-4 right-7 4xl:text-[.9vw] 5xl:text-[.7vw]'>
