@@ -572,7 +572,7 @@ export default function Homepage() {
               <img
                 src={me}
                 alt='photo of the creator :)'
-                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8  portrait:aspect-auto portrait:h-fit'
+                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8  portrait:aspect-[7/11] portrait:h-fit'
               />
             </div>
 
