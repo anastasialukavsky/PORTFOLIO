@@ -562,17 +562,17 @@ export default function Homepage() {
       >
        
         <div className='about-section  portrait:w-[100svw] h-[100dvh] w-full bg-[#353b3c] flex relative top-0 '>
-          <div className='md:flex  gap-[9%] md:w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto bg-pink-300 '>
+          <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto bg-pink-300 '>
             <div className=' about-me-details-wrapper w-full h-fit '>
               <div
                 className={` ${
-                  mobileMenu ? 'h-[49%] w-[80vw]' : 'h-[67%] w-[36vw]'
-                } pic-wrapper portrait:hidden  bg-[#383838] absolute max-h-[75%] min-h-[40%] short:min-h-[82%]  3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%]`}
+                  mobileMenu ? 'h-[49%] w-[80vw] hidden' : 'h-[67%] w-[36vw]'
+                } pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%] short:min-h-[82%]  3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%]`}
               ></div>
               <img
                 src={me}
                 alt='photo of the creator :)'
-                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8  portrait:aspect-[4/5]'
+                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8  portrait:aspect-auto portrait:h-fit'
               />
             </div>
 
