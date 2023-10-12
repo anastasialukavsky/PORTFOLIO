@@ -95,7 +95,7 @@ export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
     <nav
       className={`${
         isMenuOpen ? '' : ' mix-blend-difference'
-      } w-screen  h-[52px] lg:h-[75px] text-white fixed top-0 left-0 z-[205] border-b portrait:w-[100svw]`}
+      } w-screen  portrait:h-[52px] md:h-[75px] text-white fixed top-0 left-0 z-[205] border-b portrait:w-[100svw]`}
     >
       <div className='navigation-wrapper  flex justify-between pl-[3%] pr-[5%] relative '>
         {/**logo */}
