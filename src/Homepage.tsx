@@ -200,7 +200,7 @@ export default function Homepage() {
           trigger: '.pic',
           start: mobileMenu ? 'top 30%' :  'top 15%',
           end: mobileMenu ? 'top 50%' : 'top 25%',
-          markers: true,
+          // markers: true,
           scrub: 4,
         },
       });
@@ -365,6 +365,13 @@ export default function Homepage() {
       ctx.revert();
     };
   });
+
+const [width, setWidth] = useState(0)
+const [height, setHeight] = useState(0)
+  useEffect(() => {
+    setHeight(window.innerHeight)
+    setWidth(window.innerWidth)
+  }, [width, height])
 
   const blobScale = useRef(1);
   const [scale, setScale] = useState(1);
@@ -544,7 +551,7 @@ export default function Homepage() {
         <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono text-[2.7vw] md:text-[1vw] opacity-0 portrait:fixed portrait:top-[37%]'>
           hello, i am
         </p>
-
+<p className='text-[3rem] '>width: {width}, <br/>height: {height}</p>
         <h1
           id='text'
           className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[13.5vw]  portrait:self-center portrait:top-0'
