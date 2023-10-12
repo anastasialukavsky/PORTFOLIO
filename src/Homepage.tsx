@@ -512,7 +512,7 @@ export default function Homepage() {
   }, []);
 
   return (
-    <main className='container relative w-[100vw] h-full min-h-screen z-0 text-white portrait:w-[100vw] '>
+    <main className='container relative w-[100vw] h-full min-h-screen z-0 text-white portrait:w-[100vw]'>
       <Navbar scrollToSection={scrollToSection} mobileMenu={mobileMenu} />
       <div
         // ref={blobScale}
@@ -535,7 +535,7 @@ export default function Homepage() {
       {/**hero section */}
       <section
         id='home'
-        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center md:-translate-y-[30%] pt-96 portrait:w-[100svw] portrait:pt-0'
+        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center md:-translate-y-[30%] md:pt-96 portrait:w-[100svw] '
       >
         <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono text-[2.7vw] md:text-[1vw] opacity-0'>
           hello, i am
@@ -543,7 +543,7 @@ export default function Homepage() {
 
         <h1
           id='text'
-          className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[13.5vw]  portrait:self-center '
+          className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[13.5vw]  portrait:self-center portrait:'
         >
           <Typewriter name='ANASTASIA LUKAVSKY' text='FULLSTACK DEVELOPER' />
         </h1>
@@ -560,9 +560,7 @@ export default function Homepage() {
         id='about'
         className='about z-[150] flex font-mono portrait:w-[100vw] w-[100svw] relative portrait:bg-[#353b3c] '
       >
-        <p className='text-[#121212] hidden z-50 absolute top-4 left-4 text-[5vw] md:hidden '>
-          //ABOUT
-        </p>
+       
         <div className='about-section  portrait:w-[100svw] h-[100dvh] w-full bg-[#353b3c] flex relative top-0 '>
           <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto  '>
             <div className=' about-me-details-wrapper w-full h-fit '>
@@ -574,7 +572,7 @@ export default function Homepage() {
               <img
                 src={me}
                 alt='photo of the creator :)'
-                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8 xs:aspect-auto'
+                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8 xs:aspect-auto portrait:aspect-[3/5]'
               />
             </div>
 
