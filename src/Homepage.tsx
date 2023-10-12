@@ -572,12 +572,12 @@ export default function Homepage() {
               <img
                 src={me}
                 alt='photo of the creator :)'
-                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8  portrait:aspect-auto portrait:h-[50vw]'
+                className='pic aspect-[4/5] z-10 object-cover h-fit 3xl:aspect-[9/11] short:aspect-[9/11] 5xl:aspect-[11/11] relative xs:-right-3 -top-4 -right-8   portrait:h-[90vw]'
               />
             </div>
 
             <p className='bio-text font-mono text-[#121212] w-full lowercase  md:pr-8 md:text-[1.5vw] 2xl:text-[1.2rem] leading-tight text-[.8rem] pt-5 portrait:ml-2'>
-              I am a passionate fullstack web developer based in Brooklyn, NY,
+              I am a fullstack web developer based in Brooklyn, NY,
               with a keen eye for detail and a drive for creating exceptional
               digital experiences. My journey in web development has been an
               exciting exploration, where each stage of the development process,
