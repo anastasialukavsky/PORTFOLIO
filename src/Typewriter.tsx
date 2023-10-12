@@ -47,7 +47,7 @@ const Typewriter = ({ text, name }: Props) => {
   
 
 
-  return <span className='blink'>{displayedText}</span>;
+  return <span className='blink blink-styles'>{displayedText}</span>;
 };
 
 export default Typewriter;
