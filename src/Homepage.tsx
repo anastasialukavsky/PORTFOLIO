@@ -535,7 +535,7 @@ export default function Homepage() {
       {/**hero section */}
       <section
         id='home'
-        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center -translate-y-[30%] pt-96 portrait:w-[100svw] portrait:pt-0'
+        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center md:-translate-y-[30%] pt-96 portrait:w-[100svw] portrait:pt-0'
       >
         <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono text-[2.7vw] md:text-[1vw] opacity-0'>
           hello, i am
