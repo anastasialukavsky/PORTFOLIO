@@ -569,7 +569,7 @@ export default function Homepage() {
             <div className=' about-me-details-wrapper w-full h-fit '>
               <div
                 className={` ${
-                  mobileMenu ? 'h-[44%] w-[70vw] left-14' : 'h-[62%] w-[36vw]'
+                  mobileMenu ? 'h-[47%] w-[70vw] left-16 top-36' : 'h-[62%] w-[36vw]'
                 } pic-wrapper  bg-[#383838] absolute max-h-[75%] min-h-[40%] short:min-h-[82%]  3xl:min-h-[77%] 4xl:min-h-[78%] 5xl:min-h-[85%] 6xl:min-h-[87%]`}
               ></div>
               <img
