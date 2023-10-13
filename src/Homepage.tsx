@@ -38,12 +38,16 @@ import zod from '../public/icons/zod.svg';
 import postman from '../public/icons/postman.svg';
 import mongoose from '../public/icons/mongoose.svg';
 import express from '../public/icons/express-logo.svg';
+
 import { Canvas } from '@react-three/fiber';
 import ProgressBar from './ProgressBar';
 import Blob from './Blob';
 
 import { debounce } from 'lodash';
 import Typewriter from './Typewriter';
+import ProjectButton from './ProjectButton';
+import ProjectDescription from './ProjectDescription';
+import ProjectStack from './ProjectStack';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -171,25 +175,26 @@ export default function Homepage() {
       {
         /**about section pic anim */
       }
-      {!mobileMenu && 
-        tl_09.from('.pic', {
-          // height: '100dvh',
-          scale: 1.1,
-          // opacity: 0,
-          // width: '800%',
-          // aspectRatio: '4/5',
-          xPercent: 70,
-          ease: 'expo.inOut',
-          duration: 1,
-          scrollTrigger: {
-            trigger: '.about-section',
-            start: 'top 7%',
-            end: 'center 90%',
-            scrub: 4,
-            // pin: true,
-            // markers: true,
-          },
-        });
+      {
+        !mobileMenu &&
+          tl_09.from('.pic', {
+            // height: '100dvh',
+            scale: 1.1,
+            // opacity: 0,
+            // width: '800%',
+            // aspectRatio: '4/5',
+            xPercent: 70,
+            ease: 'expo.inOut',
+            duration: 1,
+            scrollTrigger: {
+              trigger: '.about-section',
+              start: 'top 7%',
+              end: 'center 90%',
+              scrub: 4,
+              // pin: true,
+              // markers: true,
+            },
+          });
       }
       tl_10.from('.bio-text', {
         opacity: 0,
@@ -198,7 +203,7 @@ export default function Homepage() {
         duration: 3,
         scrollTrigger: {
           trigger: '.pic',
-          start: mobileMenu ? 'top 30%' :  'top 15%',
+          start: mobileMenu ? 'top 30%' : 'top 15%',
           end: mobileMenu ? 'top 50%' : 'top 25%',
           // markers: true,
           scrub: 4,
@@ -210,7 +215,7 @@ export default function Homepage() {
         ease: 'expo',
         scrollTrigger: {
           trigger: '.pic',
-          start:  mobileMenu ? 'top 50%' : 'top 9%',
+          start: mobileMenu ? 'top 50%' : 'top 9%',
           end: 'center 90%',
           // markers: true,
           scrub: 3,
@@ -229,10 +234,6 @@ export default function Homepage() {
           scrub: 4,
         },
       });
-      
-   
-
-
 
       tl_03.to('.backend-div', {
         yPercent: -50,
@@ -366,12 +367,12 @@ export default function Homepage() {
     };
   });
 
-// const [width, setWidth] = useState(0)
-// const [height, setHeight] = useState(0)
-//   useEffect(() => {
-//     setHeight(window.innerHeight)
-//     setWidth(window.innerWidth)
-//   }, [width, height])
+  // const [width, setWidth] = useState(0)
+  // const [height, setHeight] = useState(0)
+  //   useEffect(() => {
+  //     setHeight(window.innerHeight)
+  //     setWidth(window.innerWidth)
+  //   }, [width, height])
 
   const blobScale = useRef(1);
   const [scale, setScale] = useState(1);
@@ -829,24 +830,25 @@ export default function Homepage() {
                 <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   ASTORIA
                 </p>
-                <p className='leading-tight text-[.9rem] md:text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] xl:pt-4 '>
-                  ASTORIA is a sophisticated e-commerce web platform
-                  meticulously designed for a diverse audience, ensuring
-                  pleantly seamless shopping experience. We prioritized an
-                  intuitive user interface to facilitate effortless navigation
-                  and an aesthetically pleasing design. Leveraging technologies
-                  such as React.js and Node.js, alongside server-side caching,
-                  we significantly enhanced site performance and provided
-                  real-time updates, leaving the room for future scalability.
-                  Our team adeptly handled the integration of third-party
-                  payment gateway, ensuring a swift and secure user checkout
-                  process.
-                </p>
+
+                <ProjectButton link='https://astoriaskincare.co/' />
+
+                <ProjectDescription
+                  description='ASTORIA is a sophisticated e-commerce web platform meticulously designed
+      for a diverse audience, ensuring pleantly seamless shopping experience. We
+      prioritized an intuitive user interface to facilitate effortless
+      navigation and an aesthetically pleasing design. Leveraging technologies
+      such as React.js and Node.js, alongside server-side caching, we
+      significantly enhanced site performance and provided real-time updates,
+      leaving the room for future scalability. Our team adeptly handled the
+      integration of third-party payment gateway, ensuring a swift and secure
+      user checkout process.'
+                />
                 <p className='text-center pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
                   STACK
                 </p>
                 <div className='h-fit w-full border border-[#121212] p-5 lg:p-7 text-[.8rem] md:text-[.6rem] lg:text-[.8rem] lg:leading-[1.4] 2xl:text-[.9rem] leading-[1.1] flex justify-between xl:leading-normal xl:pl-10 4xl:max-w-[70%] 6xl:max-w-[50%] short:leading-[1.1]'>
-                  <ul className='list-disc'>
+                  {/* <ul className='list-disc'>
                     //front-end
                     <li>React</li>
                     <li>Vite</li>
@@ -861,9 +863,14 @@ export default function Homepage() {
                     <li>Zod</li>
                     <li>Stripe</li>
                     <li>React Hot Toast</li>
-                  </ul>
+                  </ul> */}
 
-                  <ul className=' list-disc'>
+                  <ProjectStack frontEnd={
+                  [  'React' , 'Vite', 'Redux', 'GSAP', 'Framer Motion', 'FuseJS', 'TailwindCSS', 'Lenis', 'Axios', 'Zod', 'Stripe', 'React Hot Toast']}
+                  backEnd={['NodeJS', 'ExpressJS', 'MongoDB', 'Zod', 'Mongoose', 'Nginx', 'Docker', 'PassportJS']}
+                  />
+
+                  {/* <ul className=' list-disc'>
                     //back-end
                     <li>Node JS</li>
                     <li>Express JS</li>
@@ -875,7 +882,7 @@ export default function Homepage() {
                     <li>Stripe</li>
                     <li>Nginx</li>
                     <li>Docker</li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
             </div>
@@ -889,6 +896,9 @@ export default function Homepage() {
                 <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   PLANTS&CO 2.0
                 </p>
+
+                <ProjectButton link='https://www.plantsandco.shop/' />
+
                 <p className='leading-tight text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] xl:pt-4'>
                   PLANTS&CO 2.0 embodies a dynamic e-commerce platform, artfully
                   fusing sleek design with robust functionality. Evolving from
@@ -947,6 +957,9 @@ export default function Homepage() {
                 <p className='text-center md:text-[1rem] lg:text-[1.2rem] font-bold 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   SHROOM 3.0
                 </p>
+
+                <ProjectButton link='https://shhroom.live/' />
+
                 <p className='leading-tight text-[.6rem] 2xl:text-[.9rem] lg:text-[.8rem] xl:pt-4'>
                   SHHROOM 3.0 is a collaborative project that evolved from its
                   early versions during development, culminating in its recent
@@ -1008,6 +1021,8 @@ export default function Homepage() {
                 <p className='text-center md:text-[1rem] lg:text-[1.rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   LUNCH BUDDY 2.0
                 </p>
+
+                <ProjectButton link='https://lunchbuddy.co/' />
                 <p className='leading-tight text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] xl:pt-4'>
                   LUNCH BUDDY 2.0 revolutionizes lunchtime networking for busy
                   individuals, facilitating meaningful connections during brief
