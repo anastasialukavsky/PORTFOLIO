@@ -4,11 +4,13 @@ export type ProjectDescProps = {
   description: string;
   projectDescHeight: number;
   setProjectDescHeight: React.Dispatch<React.SetStateAction<number>>;
+  setIsFullDescription: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export default function ProjectDescription({
   description,
   setProjectDescHeight,
   projectDescHeight,
+  setIsFullDescription
 }: ProjectDescProps) {
   const [toggleDesc, setToggleDesc] = useState(true);
 
@@ -29,12 +31,14 @@ export default function ProjectDescription({
     if (descRef.current) {
       // console.log('h', descRef.current.getBoundingClientRect());
       setShortDescriptionHeight(descRef.current.getBoundingClientRect().height);
+      // setIsFullDescription(false)
     }
   }, [description]);
 
   useEffect(() => {
     if (descRef.current) {
-      setFullDescriptionHeight(descRef.current.getBoundingClientRect().height);
+      setFullDescriptionHeight(descRef.current.getBoundingClientRect().height)
+      // setIsFullDescription(true)
     }
   }, [toggleDesc, description]);
   
