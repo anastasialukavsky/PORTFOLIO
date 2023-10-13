@@ -1,40 +1,70 @@
-import React, {useState, useEffect} from 'react'
-
+import React, { useState, useEffect, useRef, SetStateAction } from 'react';
 
 export type ProjectDescProps = {
-  description: string
-}
-export default function ProjectDescription({description}: ProjectDescProps) {
-
+  description: string;
+  projectDescHeight: number;
+  setProjectDescHeight: React.Dispatch<React.SetStateAction<number>>;
+};
+export default function ProjectDescription({
+  description,
+  setProjectDescHeight,
+  projectDescHeight,
+}: ProjectDescProps) {
   const [toggleDesc, setToggleDesc] = useState(true);
 
+  const descRef = useRef<HTMLDivElement>(null);
+  const [shortDescriptionHeight, setShortDescriptionHeight] = useState(0);
+  const [fullDescriptionHeight, setFullDescriptionHeight] = useState(0);
 
   let shortDescription = description.slice(0, 200);
-  let fullDescription = description.slice( 200, description.length);
+  let fullDescription = description;
 
   const handleFullDescription = () => {
-    if (fullDescription) {
+    if (shortDescription) {
       setToggleDesc((prev) => !prev);
-    } 
+    }
   };
-  // useEffect(() => {
-  //   handleFullDescription();
-  // }, [toggleDesc]);
 
+  useEffect(() => {
+    if (descRef.current) {
+      // console.log('h', descRef.current.getBoundingClientRect());
+      setShortDescriptionHeight(descRef.current.getBoundingClientRect().height);
+    }
+  }, [description]);
+
+  useEffect(() => {
+    if (descRef.current) {
+      setFullDescriptionHeight(descRef.current.getBoundingClientRect().height);
+    }
+  }, [toggleDesc, description]);
+  
+  const heightDifference = fullDescriptionHeight - shortDescriptionHeight;
+  
+  useEffect(() => {
+
+    setProjectDescHeight(heightDifference);
+  }, [heightDifference])
+  // console.log('diff', heightDifference);
 
   return (
-    <article className='leading-tight text-[.9rem] md:text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] xl:pt-4 w-full '>
+    <article ref={descRef} className=' w-full h-fit'>
       {toggleDesc ? (
         <>
           {shortDescription}
-          <span className='font-black' onClick={handleFullDescription}>
+          <span
+            className='font-black underline'
+            onClick={handleFullDescription}
+          >
             see more
           </span>
         </>
       ) : (
         <>
           {fullDescription}
-          <span className='font-black' onClick={handleFullDescription}>
+          <span
+            className='font-black underline'
+            onClick={handleFullDescription}
+          >
             see less
           </span>
         </>
