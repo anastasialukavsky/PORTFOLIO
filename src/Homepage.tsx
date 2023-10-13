@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, RefObject } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -56,6 +56,14 @@ export default function Homepage() {
   const heroSectionRef = useRef(null);
   const skillContentRef = useRef(null);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [projectDescHeight, setProjectDescHeight] = useState(0)
+const astoriaRef= useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  console.log(astoriaRef.current?.getBoundingClientRect());
+
+  console.log("heighttt", projectDescHeight)
+});
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -822,11 +830,14 @@ export default function Homepage() {
         className='projects-section flex pt-[11dvh]  z-[150] relative bg-[#292e2f] overflow-x-hidden  portrait:pt-14 w-[100vw]'
       >
         <div className='proj-try flex flex-none  overflow-x-scroll '>
-          <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
-            <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
+          <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw] bg-blue-300 pl-10'>
+            <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh] bg-pink-300 '>
               <div className=" md:h-full portrait:bg-cover  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:h-full portrait:basis-full"></div>
 
-              <div className='mobile-proj basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5 '>
+              <div
+                ref={astoriaRef}
+                className='mobile-proj basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5 bg-gray-300 max-h-[98vh]'
+              >
                 <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   ASTORIA
                 </p>
@@ -834,6 +845,8 @@ export default function Homepage() {
                 <ProjectButton link='https://astoriaskincare.co/' />
 
                 <ProjectDescription
+                  projectDescHeight={projectDescHeight}
+                  setProjectDescHeight={setProjectDescHeight}
                   description='ASTORIA is a sophisticated e-commerce web platform meticulously designed
       for a diverse audience, ensuring pleantly seamless shopping experience. We
       prioritized an intuitive user interface to facilitate effortless
@@ -844,11 +857,8 @@ export default function Homepage() {
       integration of third-party payment gateway, ensuring a swift and secure
       user checkout process.'
                 />
-                <p className='text-center pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
-                  STACK
-                </p>
-                <div className='h-fit w-full border border-[#121212] p-5 lg:p-7 text-[.8rem] md:text-[.6rem] lg:text-[.8rem] lg:leading-[1.4] 2xl:text-[.9rem] leading-[1.1] flex justify-between xl:leading-normal xl:pl-10 4xl:max-w-[70%] 6xl:max-w-[50%] short:leading-[1.1]'>
-                  {/* <ul className='list-disc'>
+
+                {/* <ul className='list-disc'>
                     //front-end
                     <li>React</li>
                     <li>Vite</li>
@@ -865,12 +875,34 @@ export default function Homepage() {
                     <li>React Hot Toast</li>
                   </ul> */}
 
-                  <ProjectStack frontEnd={
-                  [  'React' , 'Vite', 'Redux', 'GSAP', 'Framer Motion', 'FuseJS', 'TailwindCSS', 'Lenis', 'Axios', 'Zod', 'Stripe', 'React Hot Toast']}
-                  backEnd={['NodeJS', 'ExpressJS', 'MongoDB', 'Zod', 'Mongoose', 'Nginx', 'Docker', 'PassportJS']}
-                  />
+                <ProjectStack
+                  frontEnd={[
+                    'React',
+                    'Vite',
+                    'Redux',
+                    'TailwindCSS',
+                    'GSAP',
+                    'Axios',
+                    'FuseJS',
+                    'FramerMotion',
+                    'Lenis',
+                    'Stripe',
+                    'Zod',
+                    'ReactHotToast',
+                  ]}
+                  backEnd={[
+                    'NodeJS',
+                    'ExpressJS',
+                    'MongoDB',
+                    'Mongoose',
+                    'Zod',
+                    'Nginx',
+                    'Docker',
+                    'PassportJS',
+                  ]}
+                />
 
-                  {/* <ul className=' list-disc'>
+                {/* <ul className=' list-disc'>
                     //back-end
                     <li>Node JS</li>
                     <li>Express JS</li>
@@ -883,7 +915,6 @@ export default function Homepage() {
                     <li>Nginx</li>
                     <li>Docker</li>
                   </ul> */}
-                </div>
               </div>
             </div>
           </div>
@@ -899,8 +930,10 @@ export default function Homepage() {
 
                 <ProjectButton link='https://www.plantsandco.shop/' />
 
-                <p className='leading-tight text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] xl:pt-4'>
-                  PLANTS&CO 2.0 embodies a dynamic e-commerce platform, artfully
+                <ProjectDescription
+                  projectDescHeight={projectDescHeight}
+                  setProjectDescHeight={setProjectDescHeight}
+                  description=' PLANTS&CO 2.0 embodies a dynamic e-commerce platform, artfully
                   fusing sleek design with robust functionality. Evolving from
                   its early release, which was built by a group of four young
                   and talented engineers as a school project, this version
@@ -916,35 +949,29 @@ export default function Homepage() {
                   enhance the shopping journey, adding a layer of tailor-made
                   convenience. Built with users and support personnel in mind,
                   PLANTS&CO 2.0 also features a sales and inventory admin
-                  dashboard allowing to manage website sales reports with ease.
-                </p>
-                <p className='text-center pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
-                  STACK
-                </p>
-                <div className='h-fit w-full border border-[#121212]  p-5 lg:p-7 text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] flex justify-between leading-[1.1] xl:leading-normal xl:pl-10 4xl:max-w-[70%]  6xl:max-w-[50%] short:leading-[1.1]'>
-                  <ul className='list-disc'>
-                    //front-end
-                    <li>React</li>
-                    <li>Vite</li>
-                    <li>Redux</li>
-                    <li>Tailwind CSS</li>
-                    <li>Framer Motion</li>
-                    <li>React Hot Toast</li>
-                    <li>Axios</li>
-                  </ul>
-
-                  <ul className=' list-disc'>
-                    //back-end
-                    <li>Express JS</li>
-                    <li>Node JS</li>
-                    <li>JSON Web Token</li>
-                    <li>Postress</li>
-                    <li>Sequelize</li>
-                    <li>Stripe</li>
-                    <li>Nginx</li>
-                    <li>Docker</li>
-                  </ul>
-                </div>
+                  dashboard allowing to manage website sales reports with ease.'
+                />
+                <ProjectStack
+                  frontEnd={[
+                    'React',
+                    'Vite',
+                    'Redux',
+                    'TailwindCSS',
+                    'Axios',
+                    'FramerMotion',
+                    'Stripe',
+                    'ReactHotToast',
+                  ]}
+                  backEnd={[
+                    'NodeJS',
+                    'ExpressJS',
+                    'Sequelize',
+                    'PostgreSQL',
+                    'Nginx',
+                    'Docker',
+                    'JWT',
+                  ]}
+                />
               </div>
             </div>
           </div>
@@ -960,8 +987,10 @@ export default function Homepage() {
 
                 <ProjectButton link='https://shhroom.live/' />
 
-                <p className='leading-tight text-[.6rem] 2xl:text-[.9rem] lg:text-[.8rem] xl:pt-4'>
-                  SHHROOM 3.0 is a collaborative project that evolved from its
+                <ProjectDescription
+                  projectDescHeight={projectDescHeight}
+                  setProjectDescHeight={setProjectDescHeight}
+                  description="SHHROOM 3.0 is a collaborative project that evolved from its
                   early versions during development, culminating in its recent
                   deployment. SHHROOM 3.0 offers an unexpected and fun spin on
                   the globally recognized Zoom platform, facilitating seamless
@@ -977,38 +1006,34 @@ export default function Homepage() {
                   release featured a real-time web video chat application, while
                   the subsequent release introduced a desktop video and chat
                   application built using Electron and a variety of other
-                  technologies.
-                </p>
-                <p className='text-center lg:pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
-                  STACK
-                </p>
-                <div className='h-fit w-full border border-[#121212]  p-2 text-[.6rem] 2xl:text-[.9rem] leading-[1] flex  justify-between pl-5 lg:text-[.8rem] lg:leading-[1.1] lg:p-5 xl:leading-normal xl:px-10 4xl:max-w-[70%]  6xl:max-w-[50%] short:leading-[1.1]'>
-                  <ul className='list-disc '>
-                    //front-end
-                    <li>React</li>
-                    <li>Vite</li>
-                    <li>Redux</li>
-                    <li>Tailwind CSS</li>
-                    <li>Three JS/ React Fiber/ DREI</li>
-                    <li>SocketIO</li>
-                    <li>JSON Web Token</li>
-                    <li>Axios</li>
-                    <li>Zod</li>
-                    <li>TweetNaCl</li>
-                    <li>Peer JS</li>
-                  </ul>
+                  technologies."
+                />
 
-                  <ul className='  list-disc'>
-                    //back-end
-                    <li>Node JS</li>
-                    <li>Express JS</li>
-                    <li>Postgress</li>
-                    <li>Sequelize</li>
-                    <li>Zod</li>
-                    <li>Nginx</li>
-                    <li>Docker</li>
-                  </ul>
-                </div>
+                <ProjectStack
+                  frontEnd={[
+                    'React',
+                    'Vite',
+                    'Redux',
+                    'TailwindCSS',
+                    'Axios',
+                    'ThreeJS',
+                    'ReactFiber',
+                    'TweetNaCl',
+                    'Zod',
+                    'SocketIO',
+                    'JWT',
+                    'Blendr',
+                  ]}
+                  backEnd={[
+                    'NodeJS',
+                    'ExpressJS',
+                    'Sequelize',
+                    'PostgreSQL',
+                    'Nginx',
+                    'Docker',
+                    'Zod',
+                  ]}
+                />
               </div>
             </div>
           </div>
@@ -1023,8 +1048,11 @@ export default function Homepage() {
                 </p>
 
                 <ProjectButton link='https://lunchbuddy.co/' />
-                <p className='leading-tight text-[.6rem] lg:text-[.8rem] 2xl:text-[.9rem] xl:pt-4'>
-                  LUNCH BUDDY 2.0 revolutionizes lunchtime networking for busy
+
+                <ProjectDescription
+                  projectDescHeight={projectDescHeight}
+                  setProjectDescHeight={setProjectDescHeight}
+                  description="LUNCH BUDDY 2.0 revolutionizes lunchtime networking for busy
                   individuals, facilitating meaningful connections during brief
                   breaks. Recognizing the challenge of aligning schedules with
                   friends, we've crafted a platform allowing users to instantly
@@ -1042,38 +1070,33 @@ export default function Homepage() {
                   LUNCH BUDDY 2.0 showcases significant UI rebranding,
                   comprehensive server and client-side bug fixes, seamless
                   cross-browser and cross-device responsiveness, and the
-                  introduction of a dark mode to elevate user experience.
-                </p>
-                <p className='text-center lg:pt-3 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
-                  STACK
-                </p>
-                <div className='h-fit w-full border border-[#121212] p-1 lg:p-3 text-[.6rem] 2xl:text-[.9rem] flex justify-between leading-[1.1]  lg:text-[.8rem] lg:pl-6 xl:leading-normal xl:pl-10 4xl:max-w-[70%]  6xl:max-w-[50%] pl-5 short:leading-[1.1]'>
-                  <ul className='list-disc'>
-                    //front-end
-                    <li>React</li>
-                    <li>Redux</li>
-                    <li>Vite</li>
-                    <li>Tailwind CSS</li>
-                    <li>GSAP/Framer Motion</li>
-                    <li>React Hot Toast</li>
-                    <li>Axios</li>
-                  </ul>
+                  introduction of a dark mode to elevate user experience."
+                />
 
-                  <ul className=' list-disc'>
-                    //back-end
-                    <li>Node JS</li>
-                    <li>Express JS</li>
-                    <li>SocketIO</li>
-                    <li>Geolib</li>
-                    <li>Yelp Fusion API</li>
-                    <li>Google Maps API</li>
-                    <li>JSON Web Token</li>
-                    <li>Postgress</li>
-                    <li>Sequelize</li>
-                    <li>Nginx</li>
-                    <li>Docker</li>
-                  </ul>
-                </div>
+                <ProjectStack
+                  frontEnd={[
+                    'React',
+                    'Vite',
+                    'Redux',
+                    'TailwindCSS',
+                    'Axios',
+                    'ReactHotToast',
+                    'GSAP',
+                    'FramerMotion',
+                    'JWT',
+                  ]}
+                  backEnd={[
+                    'NodeJS',
+                    'ExpressJS',
+                    'Sequelize',
+                    'SocketIO',
+                    'PostgreSQL',
+                    'Nginx',
+                    'GoogleMapsAPI',
+                    'Docker',
+                    'YelpFusionAPI',
+                  ]}
+                />
               </div>
             </div>
           </div>
