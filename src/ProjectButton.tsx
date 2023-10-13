@@ -14,14 +14,12 @@ export default function ProjectButton({ link }: ProjectBtnProps) {
         target='_blank'
         rel='noopener noreferrer'
         className={` 
-                    
                    group relative  inline-block  max-w-full  font-medium text-[#121212] focus:outline-none `}
       >
-        <span className='absolute inset-0  border border-[#121212] bg-[#353b3c]  z-0 '></span>
+        <span className='absolute inset-0 border border-[#353939]] bg-[#353939]  z-0 '></span>
         <span
           className={` 
-                    
-                     rounded-sm border border-[#121212]  px-2  relative  -translate-x-1 -translate-y-1  4xl:py-4 5xl:text-[1.3vw] 6xl:text-[1.1vw] flex py-1 z-20 bg-white gap-2`}
+   border border-[#121212]  px-2  relative  -translate-x-1 -translate-y-1  4xl:py-4 5xl:text-[1.3vw] 6xl:text-[1.1vw] flex py-1 z-20 bg-white gap-2`}
         >
           project link <img src={redirect} alt='' className='h-2 lg:h-3' />
         </span>
