@@ -104,7 +104,7 @@ function App() {
       {/* <ProgressBar /> */}
 
       <Homepage />
-      <div className='portrait:hidden ball mix-blend-difference w-[60px]  h-[60px] md:fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
+      <div className='portrait:hidden hidden ball mix-blend-difference lg:w-[60px] w-[45px] h-[45px]  lg:h-[60px] md:fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
     </div>
   );
 }
