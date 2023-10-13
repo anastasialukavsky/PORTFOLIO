@@ -57,13 +57,14 @@ export default function Homepage() {
   const skillContentRef = useRef(null);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [projectDescHeight, setProjectDescHeight] = useState(0)
+  const [isFullDescription, setIsFullDescription] = useState(false);
 const astoriaRef= useRef<HTMLDivElement>(null);
 
-useEffect(() => {
-  console.log(astoriaRef.current?.getBoundingClientRect());
+// useEffect(() => {
+//   console.log(astoriaRef.current?.getBoundingClientRect());
 
-  console.log("heighttt", projectDescHeight)
-});
+//   console.log("heighttt", projectDescHeight)
+// });
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -95,9 +96,9 @@ useEffect(() => {
   };
 
   const projectsSection = document.querySelector('.proj-try');
-  useEffect(() => {
-    console.log(window.location);
-  }, [projectsSection]);
+  // useEffect(() => {
+  //   console.log(window.location);
+  // }, [projectsSection]);
 
   useLayoutEffect(() => {
     if (
@@ -845,6 +846,7 @@ useEffect(() => {
                 <ProjectButton link='https://astoriaskincare.co/' />
 
                 <ProjectDescription
+                  setIsFullDescription={setIsFullDescription}
                   projectDescHeight={projectDescHeight}
                   setProjectDescHeight={setProjectDescHeight}
                   description='ASTORIA is a sophisticated e-commerce web platform meticulously designed
@@ -876,6 +878,8 @@ useEffect(() => {
                   </ul> */}
 
                 <ProjectStack
+                  isFullDescription={isFullDescription}
+                  projectDescHeight={projectDescHeight}
                   frontEnd={[
                     'React',
                     'Vite',
@@ -931,6 +935,7 @@ useEffect(() => {
                 <ProjectButton link='https://www.plantsandco.shop/' />
 
                 <ProjectDescription
+                  setIsFullDescription={setIsFullDescription}
                   projectDescHeight={projectDescHeight}
                   setProjectDescHeight={setProjectDescHeight}
                   description=' PLANTS&CO 2.0 embodies a dynamic e-commerce platform, artfully
@@ -952,6 +957,8 @@ useEffect(() => {
                   dashboard allowing to manage website sales reports with ease.'
                 />
                 <ProjectStack
+                  projectDescHeight={projectDescHeight}
+                  isFullDescription={isFullDescription}
                   frontEnd={[
                     'React',
                     'Vite',
@@ -988,6 +995,7 @@ useEffect(() => {
                 <ProjectButton link='https://shhroom.live/' />
 
                 <ProjectDescription
+                  setIsFullDescription={setIsFullDescription}
                   projectDescHeight={projectDescHeight}
                   setProjectDescHeight={setProjectDescHeight}
                   description="SHHROOM 3.0 is a collaborative project that evolved from its
@@ -1010,6 +1018,8 @@ useEffect(() => {
                 />
 
                 <ProjectStack
+                  isFullDescription={isFullDescription}
+                  projectDescHeight={projectDescHeight}
                   frontEnd={[
                     'React',
                     'Vite',
@@ -1050,6 +1060,7 @@ useEffect(() => {
                 <ProjectButton link='https://lunchbuddy.co/' />
 
                 <ProjectDescription
+                  setIsFullDescription={setIsFullDescription}
                   projectDescHeight={projectDescHeight}
                   setProjectDescHeight={setProjectDescHeight}
                   description="LUNCH BUDDY 2.0 revolutionizes lunchtime networking for busy
@@ -1074,6 +1085,8 @@ useEffect(() => {
                 />
 
                 <ProjectStack
+                  isFullDescription={isFullDescription}
+                  projectDescHeight={projectDescHeight}
                   frontEnd={[
                     'React',
                     'Vite',
