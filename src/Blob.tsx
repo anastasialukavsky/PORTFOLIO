@@ -196,7 +196,8 @@ export default function Blob({ mobileMenu }: { mobileMenu: boolean }) {
   const { camera } = useThree();
   let meshPosition = mesh.current ? mesh.current.position : new THREE.Vector3();
 
-  console.log('meshpos', camera);
+  // console.log('meshpos', camera);
+  
 
   const position = { x: 0, y: 0, z: 9.9 };
   useLayoutEffect(() => {
