@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useRef, useEffect, useState, useLayoutEffect} from 'react';
+import {gsap} from 'gsap'
 import html from '../public/icons/html-1.svg';
 import axios from '../public/icons/axios.svg';
 import blendr from '../public/icons/blender-1.svg';
@@ -39,8 +40,6 @@ import reactFiber from '../public/icons/fiber.svg';
 import socketio from '../public/icons/socket-io.svg';
 import yelpFusionAPI from '../public/icons/yelp-1.svg';
 import googleMapsAPI from '../public/icons/google-maps.svg';
-
-
 
 const logos = {
   NodeJS: nodejs,
@@ -83,47 +82,88 @@ const logos = {
   SocketIO: socketio,
   Blendr: blendr,
   YelpFusionAPI: yelpFusionAPI,
-  GoogleMapsAPI: googleMapsAPI
+  GoogleMapsAPI: googleMapsAPI,
 };
 
 type Logo = keyof typeof logos;
-export type ProjectStackProps =  {
-  frontEnd: Logo[]
-  backEnd: Logo[]
-}
+export type ProjectStackProps = {
+  frontEnd: Logo[];
+  backEnd: Logo[];
+  projectDescHeight: number;
+  isFullDescription: boolean
+};
 
+export default function ProjectStack({
+  frontEnd,
+  backEnd,
+  projectDescHeight,
+  isFullDescription,
+}: ProjectStackProps) {
+  const stackRef = useRef<HTMLDivElement>(null);
 
-export default function ProjectStack({frontEnd, backEnd}: ProjectStackProps) {
-  // console.log(frontEnd)
+  const [subtractedHeight, setSubtractedHeight] = useState<number | null>(null);
 
-    const renderLogos = (logosArray: Logo[]) => {
-      return logosArray.map((item) => {
-        const logoIcon = logos[item];
-        if (logoIcon) {
-          return (
-            <li key={item} className='place-self-center flex flex-col justify-between  gap-2  w-fit items-center h-full'>
-              <img src={logoIcon} alt={item} className='h-5 ' />
-              <p className='text-center  text-[.5rem]'>{item}</p>
-            </li>
-          );
-        }
-        return null;
-      });
-    };
+  useEffect(() => {
+    const currentStackHeight = stackRef.current?.getBoundingClientRect().height;
+
+    if (currentStackHeight && projectDescHeight > 0) {
+      const heightDifference = currentStackHeight - projectDescHeight;
+      setSubtractedHeight(heightDifference);
+    }
+  }, [projectDescHeight]);
+
+  //  console.log('subtr', subtractedHeight)
+
+  //   console.log('subtrH', subtractedHeight);
+
+  useLayoutEffect(() => {
+    // const ctx = gsap.context(() => {
+    //   if (isFullDescription) gsap.from(stackRef.current, {});
+    // });
+
+    // return () => {
+    //   ctx.revert();
+    // };
+
+    console.log(isFullDescription)
+  }, [isFullDescription]);
+  const renderLogos = (logosArray: Logo[]) => {
+    return logosArray.map((item) => {
+      const logoIcon = logos[item];
+      if (logoIcon) {
+        return (
+          <li
+            key={item}
+            className='place-self-center flex flex-col justify-between  gap-2  w-fit items-center h-full'
+          >
+            <img src={logoIcon} alt={item} className='h-5 ' />
+            <p className='text-center  text-[.5rem]'>{item}</p>
+          </li>
+        );
+      }
+      return null;
+    });
+  };
   return (
-    <>
+    <article ref={stackRef}>
       <p className='text-center pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem] h-fit'>
         STACK
       </p>
-    <section className='h-fit w-full border border-[#121212] p-2 lg:p-7 '>
-      <h2 className='text-center pb-3 text-[.6rem] font-black'>//front-end</h2>
-      <ul className='grid grid-cols-6 gap-2  w-full'>
-        {renderLogos(frontEnd)}
-      </ul>
+      <section className='h-fit w-full border border-[#121212] p-2 lg:p-7 '>
+        <h2 className='text-center pb-3 text-[.6rem] font-black'>
+          //front-end
+        </h2>
+        <ul className='grid grid-cols-6 gap-2  w-full'>
+          {renderLogos(frontEnd)}
+        </ul>
 
-      <h2 className='text-center pt-3 text-[.6rem] pb-2 font-black'>//back-end</h2>
-      <ul className='grid grid-cols-5 gap-2  w-full'>{renderLogos(backEnd)}</ul>
-    </section>
-    </>
+        <h2 className='text-center pt-3 text-[.6rem] pb-2 font-black'>
+          //back-end
+        </h2>
+        <ul className='grid grid-cols-5 gap-2  w-full'>
+          {renderLogos(backEnd)}
+        </ul>
+      </section>
+    </article>
   );
 }
