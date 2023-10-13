@@ -48,6 +48,7 @@ import Typewriter from './Typewriter';
 import ProjectButton from './ProjectButton';
 import ProjectDescription from './ProjectDescription';
 import ProjectStack from './ProjectStack';
+import ProjectWrapper from './ProjectWrapper';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,15 +57,14 @@ export default function Homepage() {
   const heroSectionRef = useRef(null);
   const skillContentRef = useRef(null);
   const [mobileMenu, setMobileMenu] = useState(false);
-  const [projectDescHeight, setProjectDescHeight] = useState(0)
-  const [isFullDescription, setIsFullDescription] = useState(false);
-const astoriaRef= useRef<HTMLDivElement>(null);
 
-// useEffect(() => {
-//   console.log(astoriaRef.current?.getBoundingClientRect());
+  const astoriaRef = useRef<HTMLDivElement>(null);
 
-//   console.log("heighttt", projectDescHeight)
-// });
+  // useEffect(() => {
+  //   console.log(astoriaRef.current?.getBoundingClientRect());
+
+  //   console.log("heighttt", projectDescHeight)
+  // });
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -97,8 +97,8 @@ const astoriaRef= useRef<HTMLDivElement>(null);
 
   const projectsSection = document.querySelector('.proj-try');
   // useEffect(() => {
-  //   console.log(window.location);
-  // }, [projectsSection]);
+  //   console.log(isFullDescription);
+  // }, [isFullDescription]);
 
   useLayoutEffect(() => {
     if (
@@ -826,6 +826,7 @@ const astoriaRef= useRef<HTMLDivElement>(null);
       </section>
       {/**projects section */}
       {/* <div id='projects-section-scroll-to'></div> */}
+
       <section
         id='projects-section-scroll-to'
         className='projects-section flex pt-[11dvh]  z-[150] relative bg-[#292e2f] overflow-x-hidden  portrait:pt-14 w-[100vw]'
@@ -836,7 +837,7 @@ const astoriaRef= useRef<HTMLDivElement>(null);
               <div className=" md:h-full portrait:bg-cover  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:h-full portrait:basis-full"></div>
 
               <div
-                ref={astoriaRef}
+                // ref={astoriaRef}
                 className='mobile-proj basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5 bg-gray-300 max-h-[98vh]'
               >
                 <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
@@ -845,10 +846,31 @@ const astoriaRef= useRef<HTMLDivElement>(null);
 
                 <ProjectButton link='https://astoriaskincare.co/' />
 
-                <ProjectDescription
-                  setIsFullDescription={setIsFullDescription}
-                  projectDescHeight={projectDescHeight}
-                  setProjectDescHeight={setProjectDescHeight}
+                <ProjectWrapper
+                  frontEnd={[
+                    'React',
+                    'Vite',
+                    'Redux',
+                    'TailwindCSS',
+                    'GSAP',
+                    'Axios',
+                    'FuseJS',
+                    'FramerMotion',
+                    'Lenis',
+                    'Stripe',
+                    'Zod',
+                    'ReactHotToast',
+                  ]}
+                  backEnd={[
+                    'NodeJS',
+                    'ExpressJS',
+                    'MongoDB',
+                    'Mongoose',
+                    'Zod',
+                    'Nginx',
+                    'Docker',
+                    'PassportJS',
+                  ]}
                   description='ASTORIA is a sophisticated e-commerce web platform meticulously designed
       for a diverse audience, ensuring pleantly seamless shopping experience. We
       prioritized an intuitive user interface to facilitate effortless
@@ -876,35 +898,6 @@ const astoriaRef= useRef<HTMLDivElement>(null);
                     <li>Stripe</li>
                     <li>React Hot Toast</li>
                   </ul> */}
-
-                <ProjectStack
-                  isFullDescription={isFullDescription}
-                  projectDescHeight={projectDescHeight}
-                  frontEnd={[
-                    'React',
-                    'Vite',
-                    'Redux',
-                    'TailwindCSS',
-                    'GSAP',
-                    'Axios',
-                    'FuseJS',
-                    'FramerMotion',
-                    'Lenis',
-                    'Stripe',
-                    'Zod',
-                    'ReactHotToast',
-                  ]}
-                  backEnd={[
-                    'NodeJS',
-                    'ExpressJS',
-                    'MongoDB',
-                    'Mongoose',
-                    'Zod',
-                    'Nginx',
-                    'Docker',
-                    'PassportJS',
-                  ]}
-                />
 
                 {/* <ul className=' list-disc'>
                     //back-end
@@ -934,10 +927,7 @@ const astoriaRef= useRef<HTMLDivElement>(null);
 
                 <ProjectButton link='https://www.plantsandco.shop/' />
 
-                <ProjectDescription
-                  setIsFullDescription={setIsFullDescription}
-                  projectDescHeight={projectDescHeight}
-                  setProjectDescHeight={setProjectDescHeight}
+                <ProjectWrapper
                   description=' PLANTS&CO 2.0 embodies a dynamic e-commerce platform, artfully
                   fusing sleek design with robust functionality. Evolving from
                   its early release, which was built by a group of four young
@@ -955,10 +945,6 @@ const astoriaRef= useRef<HTMLDivElement>(null);
                   convenience. Built with users and support personnel in mind,
                   PLANTS&CO 2.0 also features a sales and inventory admin
                   dashboard allowing to manage website sales reports with ease.'
-                />
-                <ProjectStack
-                  projectDescHeight={projectDescHeight}
-                  isFullDescription={isFullDescription}
                   frontEnd={[
                     'React',
                     'Vite',
@@ -994,10 +980,7 @@ const astoriaRef= useRef<HTMLDivElement>(null);
 
                 <ProjectButton link='https://shhroom.live/' />
 
-                <ProjectDescription
-                  setIsFullDescription={setIsFullDescription}
-                  projectDescHeight={projectDescHeight}
-                  setProjectDescHeight={setProjectDescHeight}
+                <ProjectWrapper
                   description="SHHROOM 3.0 is a collaborative project that evolved from its
                   early versions during development, culminating in its recent
                   deployment. SHHROOM 3.0 offers an unexpected and fun spin on
@@ -1015,11 +998,6 @@ const astoriaRef= useRef<HTMLDivElement>(null);
                   the subsequent release introduced a desktop video and chat
                   application built using Electron and a variety of other
                   technologies."
-                />
-
-                <ProjectStack
-                  isFullDescription={isFullDescription}
-                  projectDescHeight={projectDescHeight}
                   frontEnd={[
                     'React',
                     'Vite',
@@ -1059,10 +1037,7 @@ const astoriaRef= useRef<HTMLDivElement>(null);
 
                 <ProjectButton link='https://lunchbuddy.co/' />
 
-                <ProjectDescription
-                  setIsFullDescription={setIsFullDescription}
-                  projectDescHeight={projectDescHeight}
-                  setProjectDescHeight={setProjectDescHeight}
+                <ProjectWrapper
                   description="LUNCH BUDDY 2.0 revolutionizes lunchtime networking for busy
                   individuals, facilitating meaningful connections during brief
                   breaks. Recognizing the challenge of aligning schedules with
@@ -1082,11 +1057,6 @@ const astoriaRef= useRef<HTMLDivElement>(null);
                   comprehensive server and client-side bug fixes, seamless
                   cross-browser and cross-device responsiveness, and the
                   introduction of a dark mode to elevate user experience."
-                />
-
-                <ProjectStack
-                  isFullDescription={isFullDescription}
-                  projectDescHeight={projectDescHeight}
                   frontEnd={[
                     'React',
                     'Vite',
