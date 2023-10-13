@@ -1,13 +1,8 @@
 import React from 'react'
-import linkedin from '../public/icons/linkedin.svg';
-import github from '../public/icons/github.svg';
-import gmail from '../public/icons/gmail.svg';
 import html from '../public/icons/html-1.svg';
-import adobePhotoshop from '../public/icons/adobe-photoshop.svg';
-import axios from '../public/icons/axios-1.svg';
+import axios from '../public/icons/axios.svg';
 import blendr from '../public/icons/blender-1.svg';
 import css from '../public/icons/css-3.svg';
-import davinciResolve from '../public/icons/davinci-resolve-12.svg';
 import docker from '../public/icons/docker.svg';
 import electron from '../public/icons/electron-1.svg';
 import figma from '../public/icons/figma-5.svg';
@@ -15,7 +10,7 @@ import git from '../public/icons/git-icon.svg';
 import gsapIcon from '../public/icons/gsap.svg';
 import javascript from '../public/icons/javascript-1.svg';
 import mongodb from '../public/icons/mongodb.svg';
-import nginx from '../public/icons/nginx-1.svg';
+import nginx from '../public/icons/nginx.svg';
 import nodejs from '../public/icons/nodejs-1.svg';
 import postreSQL from '../public/icons/postgresql.svg';
 import prisma from '../public/icons/prisma-3.svg';
@@ -37,6 +32,13 @@ import lenis from '../public/icons/lenis.svg';
 import fusejs from '../public/icons/fuse.svg';
 import framer from '../public/icons/framer-motion.svg';
 import passportjs from '../public/icons/passport.svg';
+import jwt from '../public/icons/jwt-3.svg';
+import peerjs from '../public/icons/peerjs.svg';
+import tweetnacl from '../public/icons/tweet.svg';
+import reactFiber from '../public/icons/fiber.svg';
+import socketio from '../public/icons/socket-io.svg';
+import yelpFusionAPI from '../public/icons/yelp-1.svg';
+import googleMapsAPI from '../public/icons/google-maps.svg';
 
 
 
@@ -69,12 +71,19 @@ const logos = {
   Postman: postman,
   Mongoose: mongoose,
   ExpressJS: express,
- 'React Hot Toast': rht,
- Lenis: lenis,
- FuseJS: fusejs,
- 'Framer Motion': framer,
- PassportJS: passportjs,
-
+  ReactHotToast: rht,
+  Lenis: lenis,
+  FuseJS: fusejs,
+  FramerMotion: framer,
+  PassportJS: passportjs,
+  JWT: jwt,
+  TweetNaCl: tweetnacl,
+  PeerJS: peerjs,
+  ReactFiber: reactFiber,
+  SocketIO: socketio,
+  Blendr: blendr,
+  YelpFusionAPI: yelpFusionAPI,
+  GoogleMapsAPI: googleMapsAPI
 };
 
 type Logo = keyof typeof logos;
@@ -85,7 +94,7 @@ export type ProjectStackProps =  {
 
 
 export default function ProjectStack({frontEnd, backEnd}: ProjectStackProps) {
-  console.log(frontEnd)
+  // console.log(frontEnd)
 
     const renderLogos = (logosArray: Logo[]) => {
       return logosArray.map((item) => {
@@ -93,8 +102,8 @@ export default function ProjectStack({frontEnd, backEnd}: ProjectStackProps) {
         if (logoIcon) {
           return (
             <li key={item} className='place-self-center flex flex-col justify-between  gap-2  w-fit items-center h-full'>
-              <img src={logoIcon} alt={item} className='w-7 5xl:w-16' />
-              <p className='text-center whitespace-nowrap text-[.5rem]'>{item}</p>
+              <img src={logoIcon} alt={item} className='h-5 ' />
+              <p className='text-center  text-[.5rem]'>{item}</p>
             </li>
           );
         }
@@ -102,17 +111,19 @@ export default function ProjectStack({frontEnd, backEnd}: ProjectStackProps) {
       });
     };
   return (
-    <section className='h-fit w-full  lg:p-7 '>
-      <h2 className='text-center'>//front-end</h2>
-      <ul className='grid grid-cols-5 gap-2 4xl:gap-10 5xl:gap-24 w-full'>
+    <>
+      <p className='text-center pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem] h-fit'>
+        STACK
+      </p>
+    <section className='h-fit w-full border border-[#121212] p-2 lg:p-7 '>
+      <h2 className='text-center pb-3 text-[.6rem] font-black'>//front-end</h2>
+      <ul className='grid grid-cols-6 gap-2  w-full'>
         {renderLogos(frontEnd)}
       </ul>
 
-
-      <h2 className='text-center pt-3'>//back-end</h2>
-      <ul className='grid grid-cols-5 gap-2 4xl:gap-10 5xl:gap-24 w-full'>
-        {renderLogos(backEnd)}
-      </ul>
+      <h2 className='text-center pt-3 text-[.6rem] pb-2 font-black'>//back-end</h2>
+      <ul className='grid grid-cols-5 gap-2  w-full'>{renderLogos(backEnd)}</ul>
     </section>
+    </>
   );
 }
