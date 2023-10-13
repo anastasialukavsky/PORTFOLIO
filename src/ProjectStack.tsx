@@ -1,5 +1,5 @@
-import React, {useRef, useEffect, useState, useLayoutEffect} from 'react';
-import {gsap} from 'gsap'
+import React, { useRef, useEffect, useState, useLayoutEffect } from 'react';
+import { gsap } from 'gsap';
 import html from '../public/icons/html-1.svg';
 import axios from '../public/icons/axios.svg';
 import blendr from '../public/icons/blender-1.svg';
@@ -85,12 +85,12 @@ const logos = {
   GoogleMapsAPI: googleMapsAPI,
 };
 
-type Logo = keyof typeof logos;
+export type Logo = keyof typeof logos;
 export type ProjectStackProps = {
   frontEnd: Logo[];
   backEnd: Logo[];
   projectDescHeight: number;
-  isFullDescription: boolean
+  isFullDescription: boolean;
 };
 
 export default function ProjectStack({
@@ -101,32 +101,55 @@ export default function ProjectStack({
 }: ProjectStackProps) {
   const stackRef = useRef<HTMLDivElement>(null);
 
-  const [subtractedHeight, setSubtractedHeight] = useState<number | null>(null);
+  const [subtractedHeight, setSubtractedHeight] = useState<number | 0>(0);
 
-  useEffect(() => {
-    const currentStackHeight = stackRef.current?.getBoundingClientRect().height;
+  // useEffect(() => {
+  //   const currentStackHeight = stackRef.current?.getBoundingClientRect().height;
 
-    if (currentStackHeight && projectDescHeight > 0) {
-      const heightDifference = currentStackHeight - projectDescHeight;
-      setSubtractedHeight(heightDifference);
-    }
-  }, [projectDescHeight]);
+  //   if (currentStackHeight && projectDescHeight > 0) {
+  //     const heightDifference = currentStackHeight - projectDescHeight;
+  //     setSubtractedHeight(heightDifference);
+  //   }
+  // }, [projectDescHeight]);
 
   //  console.log('subtr', subtractedHeight)
 
   //   console.log('subtrH', subtractedHeight);
+  const currentHeight = stackRef.current?.getBoundingClientRect().height || 0;
+  // console.log({ projectDescHeight });
+  useEffect(() => {
+    if (stackRef.current && projectDescHeight > 0) {
+      setSubtractedHeight(currentHeight - projectDescHeight);
+    }
+  }, [projectDescHeight]);
 
   useLayoutEffect(() => {
-    // const ctx = gsap.context(() => {
-    //   if (isFullDescription) gsap.from(stackRef.current, {});
-    // });
+    if (!currentHeight) return;
 
-    // return () => {
-    //   ctx.revert();
-    // };
+    const revertAnimation = () => {
+      gsap.from(stackRef.current, {
+        height: currentHeight - projectDescHeight,
+        ease: 'none',
+        duration: 0.2,
+      });
+    };
 
-    console.log(isFullDescription)
-  }, [isFullDescription]);
+    if (projectDescHeight && projectDescHeight > 0) {
+      const ctx = gsap.context(() => {
+        gsap.to(stackRef.current, {
+          height: currentHeight - projectDescHeight,
+          ease: 'none',
+          duration: 0.2,
+        });
+      });
+      return () => {
+        ctx.revert();
+      };
+    } else {
+      revertAnimation();
+    }
+  }, [projectDescHeight]);
+
   const renderLogos = (logosArray: Logo[]) => {
     return logosArray.map((item) => {
       const logoIcon = logos[item];
@@ -144,12 +167,16 @@ export default function ProjectStack({
       return null;
     });
   };
+
   return (
-    <article ref={stackRef}>
-      <p className='text-center pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem] h-fit'>
+    <article
+      ref={stackRef}
+      className='overflow-hidden border border-[#121212] '
+    >
+      <p className='text-center pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
         STACK
       </p>
-      <section className='h-fit w-full border border-[#121212] p-2 lg:p-7 '>
+      <section className='h-fit w-full p-2 lg:p-7 '>
         <h2 className='text-center pb-3 text-[.6rem] font-black'>
           //front-end
         </h2>
