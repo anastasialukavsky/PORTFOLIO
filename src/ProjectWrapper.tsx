@@ -34,7 +34,7 @@ export default function ProjectWrapper({
         projectDescHeight={projectDescHeight}
         setProjectDescHeight={setProjectDescHeight}
       />
-      <p className='text-center text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem] pt-3 font-bold '>
+      <p className='text-center text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem] pt-3 font-bold xshort:pt-0'>
         STACK
       </p>
       <ProjectStack
