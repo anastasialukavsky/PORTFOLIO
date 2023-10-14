@@ -212,7 +212,7 @@ export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
         </div>
 
         {/**primary nav */}
-        <div className='hidden md:flex uppercase  gap-4 text-[1.1vw] absolute top-4 right-7 4xl:text-[.9vw] 5xl:text-[.7vw]'>
+        <div className='hidden md:flex uppercase  gap-4 text-[1.3vw] absolute top-4 right-7 4xl:text-[.9vw] 5xl:text-[.7vw]'>
           <a
             href='#home'
             onClick={(e) => scrollToSection(e, '#home', false)}
