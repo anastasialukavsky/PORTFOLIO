@@ -103,7 +103,7 @@ export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
         <a href="#home"
         onClick={(e) => scrollToSection(e, '#home', false)}>
 
-        <p className='font-logo  text-[3.5rem] lg:text-[5rem] leading-none'>
+        <p className='font-logo  text-[3.5rem] lg:text-[5rem] leading-none xshort:text-[3rem]'>
           .a
         </p>
         </a>
