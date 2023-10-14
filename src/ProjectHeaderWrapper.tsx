@@ -1,0 +1,22 @@
+import React from 'react';
+import ProjectHeader from './ProjectHeader';
+import ProjectButton from './ProjectButton';
+
+interface ProjectWrapperProps {
+  projectName: string;
+  link: string;
+}
+
+const ProjectWrapper: React.FC<ProjectWrapperProps> = ({
+  projectName,
+  link,
+}) => {
+  return (
+    <section className='flex flex-col w-full'>
+      <ProjectHeader projectName={projectName} />
+      <ProjectButton link={link} />
+    </section>
+  );
+};
+
+export default ProjectWrapper;
