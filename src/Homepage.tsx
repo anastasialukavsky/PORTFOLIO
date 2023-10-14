@@ -591,7 +591,7 @@ export default function Homepage() {
                   mobileMenu
                     ? 'h-[27%] w-[70vw] left-16 top-36'
                     : 'h-[62%] w-[36vw]'
-                } pic-wrapper  bg-[#383838] absolute max-h-[53%] min-h-[37%] short:min-h-[71%]  3xl:min-h-[68%] 4xl:min-h-[68%] 5xl:min-h-[75%] 6xl:min-h-[76%] landscape:xshort:max-w-[30%] landscape:xshort:min-h-[60%] lg:min-h-[54%] 5xl:w-[27%] 5xl:left-[14%]`}
+                } pic-wrapper  bg-[#383838] absolute max-h-[53%] min-h-[37%] short:min-h-[71%]  3xl:min-h-[68%] 4xl:min-h-[68%] 5xl:min-h-[75%] 6xl:min-h-[76%] landscape:xshort:max-w-[27%] landscape:xshort:min-h-[60%] lg:min-h-[54%] 5xl:w-[27%] 5xl:left-[14%]`}
               ></div>
               <img
                 src={me}
@@ -624,8 +624,8 @@ export default function Homepage() {
         <div className='front-end-section  md:text-[1.3vw] 4xl:text-[1rem]   flex w-[100vw]'>
           <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:w-[90vw]'>
             <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b portrait:w-[90vw] md:pb-20'>
-              <div className='flex flex-col   p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
-                <p className=' self-center portrait:pb-14'>
+              <div className='flex flex-col  p-10 lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className=' self-center portrait:pb-14 pb-5 text-[.9rem]'>
                   //front-end development
                 </p>
                 <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-24 w-full '>
@@ -702,8 +702,8 @@ export default function Homepage() {
             </div>
 
             <div className='backend-div bg-[#292e2f]   min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 border-t portrait:w-[90svw] pt-36'>
-              <div className=' ft-section flex flex-col  p-20 portrait:w-fit justify-center 5xl:items-center gap-2 xl:gap-10'>
-                <p className=' self-center portrait:pb-14'>
+              <div className=' ft-section flex flex-col  p-10 lg:p-20 portrait:w-fit justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className=' self-center portrait:pb-14 pb-5 text-[.9rem]'>
                   //back-end development
                 </p>
                 <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14'>
@@ -763,8 +763,8 @@ export default function Homepage() {
             </div>
 
             <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw] pt-36'>
-              <div className='ft-section flex flex-col  p-20  portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
-                <p className='self-center portrait:pb-14'>
+              <div className='ft-section flex flex-col  p-10 lg:p-20  portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className='self-center portrait:pb-14 pb-5 text-[.9rem]'>
                   //devops and deployment
                 </p>
                 <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14 '>
@@ -792,8 +792,10 @@ export default function Homepage() {
             </div>
 
             <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw] pt-36'>
-              <div className='ft-section flex flex-col  p-20  portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
-                <p className='self-center portrait:pb-14'>//misc</p>
+              <div className='ft-section flex flex-col p-10  lg:p-20  portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
+                <p className='self-center portrait:pb-14 pb-5 text-[.9rem]'>
+                  //misc
+                </p>
                 <ul className='grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14   '>
                   <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
                     <img src={blendr} alt='Blendr' className='w-14 5xl:w-20 ' />
@@ -812,7 +814,7 @@ export default function Homepage() {
                     <img
                       src={adobePhotoshop}
                       alt='Adobe Photoshop'
-                      className='w-10 5xl:w-20 '
+                      className='w-12 5xl:w-20 '
                     />
                   </li>
                 </ul>
