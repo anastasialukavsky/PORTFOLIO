@@ -193,7 +193,7 @@ export default function ProjectStack({
             key={item}
             className='place-self-center flex flex-col justify-between  gap-2  w-full items-center h-full'
           >
-            <img src={logoIcon} alt={item} className='h-6 w-6 lg:h-8 lg:w-8 xl:h-10 xl:w-11 2xl:w-16 short:w-10 short:h-8' />
+            <img src={logoIcon} alt={item} className='h-6 w-6 lg:h-8 lg:w-8 xl:h-10 xl:w-11 2xl:w-16 short:w-10 short:h-8 xshort:h-4 xshort:w-8' />
             <p className='text-center  text-[.5rem] lg:text-[.7rem] xl:text-[.8rem] 5xl:text-[.9rem] 6xl:text-[1rem]'>{item}</p>
           </li>
         );
@@ -207,18 +207,18 @@ export default function ProjectStack({
       ref={stackRef}
       className=' border border-[#121212] h-full w-full 6xl:mb-36'
     >
-      <section className='h-full w-full p-2 lg:p-2 xl:p-5 overflow-hidden'>
+      <section className='h-full w-full p-2 lg:p-2 xl:p-5 overflow-hidden xshort:p-1'>
         <h2 className='text-center pb-3 2xl:pb-5 text-[.7rem] font-bold lg:text-[.8rem] xl:text-[1rem] 4xl:text-[1.1rem] 5xl:text-[1.2rem]'>
           //front-end
         </h2>
-        <ul className='grid grid-cols-6 lg:grid-cols-5 3xl:grid-cols-6 gap-2 xl:gap-4 2xl:gap-6 w-full h-fit short:gap-2 short:grid-cols-6'>
+        <ul className='grid grid-cols-6 lg:grid-cols-5 3xl:grid-cols-6 gap-2 xl:gap-4 2xl:gap-6 w-full h-fit short:gap-2 short:grid-cols-6 xshort:gap-2'>
           {renderLogos(frontEnd)}
         </ul>
 
         <h2 className='text-center pt-5 xl:pt-9 text-[.7rem] pb-2  2xl:pb-5 font-bold lg:text-[.8rem] xl:text-[1rem] 4xl:text-[1.1rem] 5xl:text-[1.2rem] short:pt-4'>
           //back-end
         </h2>
-        <ul className='grid grid-cols-6  lg:grid-cols-5 3xl:grid-cols-6 gap-2 xl:gap-4 2xl:gap-6 w-full h-fit xl:pb-2 2xl:pb-0 short:gap-2 short:grid-cols-6'>
+        <ul className='grid grid-cols-6  lg:grid-cols-5 3xl:grid-cols-6 gap-2 xl:gap-4 2xl:gap-6 w-full h-fit xl:pb-2 2xl:pb-0 short:gap-2 short:grid-cols-6 xshort:gap-2'>
           {renderLogos(backEnd)}
         </ul>
       </section>
