@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, SetStateAction } from 'react';
+import React, { useState, useEffect, useRef, SetStateAction, useLayoutEffect } from 'react';
+import { gsap } from 'gsap';
 
 export type ProjectDescProps = {
   description: string;
@@ -6,6 +7,10 @@ export type ProjectDescProps = {
   setProjectDescHeight: React.Dispatch<React.SetStateAction<number>>;
   setIsFullDescription: React.Dispatch<React.SetStateAction<boolean>>;
   isFullDescription: boolean;
+  setShortDescriptionHeight: React.Dispatch<React.SetStateAction<number>>;
+  shortDescriptionHeight: number;
+  fullDescriptionHeight:number
+  setFullDescriptionHeight: React.Dispatch<React.SetStateAction<number>>;
 };
 export default function ProjectDescription({
   description,
@@ -13,14 +18,15 @@ export default function ProjectDescription({
   setIsFullDescription,
   setProjectDescHeight,
   projectDescHeight,
+  fullDescriptionHeight,
+  shortDescriptionHeight,
+  setFullDescriptionHeight,
+  setShortDescriptionHeight,
 }: ProjectDescProps) {
   const [toggleDesc, setToggleDesc] = useState(true);
   const descRef = useRef<HTMLDivElement>(null);
 
-
   //set initial projectHeight to 0
-  const [shortDescriptionHeight, setShortDescriptionHeight] = useState(0);
-  const [fullDescriptionHeight, setFullDescriptionHeight] = useState(0);
 
   let shortDescription = description.slice(0, 200) + '...';
   let fullDescription = description;
@@ -29,6 +35,23 @@ export default function ProjectDescription({
     setToggleDesc((prev) => !prev);
     setIsFullDescription((prev) => !prev);
   };
+
+  console.log(isFullDescription)
+  // useLayoutEffect(() => {
+
+  //   if(isFullDescription) {
+
+  //     const ctx = gsap.context(() => {
+  //       gsap.to(descRef.current, {
+  //         height: fullDescriptionHeight,
+  //         ease: 'none',
+  //         duration: 1
+  //       })
+  //     })
+  //     return () => ctx.revert()
+  //   }
+  // }, [isFullDescription])
+
 
   useEffect(() => {
     if (!descRef.current) return;
@@ -41,19 +64,18 @@ export default function ProjectDescription({
       setProjectDescHeight(heightDifference);
     }
   }, [toggleDesc, projectDescHeight]);
-  
+
   // console.log(descRef.current)
   // console.log({ isFullDescription });
   // console.log({ shortDescriptionHeight });
   // console.log({ fullDescriptionHeight });
   // console.log({ shortDescription });
   // console.log({ fullDescription });
-  
+
   const heightDifference = fullDescriptionHeight - shortDescriptionHeight;
   // console.log({ heightDifference });
-  
-  
-  console.log({projectDescHeight})
+
+  // console.log({projectDescHeight})
   // useEffect(() => {
   //   // setProjectDescHeight(heightDifference);
   //   // console.log({ heightDifference });
@@ -61,12 +83,12 @@ export default function ProjectDescription({
   // console.log('diff', heightDifference);
 
   return (
-    <article ref={descRef} className=' w-full h-fit'>
+    <article ref={descRef} className='stack-content w-full h-fit lg:text-[.8rem] xl:text-[.9rem] text-[.6rem] leading-tight'>
       {toggleDesc ? (
         <>
           {shortDescription}
           <span
-            className='font-black underline'
+            className='font-black underline '
             onClick={handleFullDescription}
           >
             see more
