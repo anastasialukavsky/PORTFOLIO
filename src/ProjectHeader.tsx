@@ -6,7 +6,7 @@ export type ProjectHeaderProps = {
 export default function ProjectHeader({projectName}: ProjectHeaderProps) {
   return (
     <div>
-      <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem] text-[#121212] font-mono font-black'>
+      <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem] text-[#121212] font-mono font-bold'>
         {projectName}
       </p>
     </div>
