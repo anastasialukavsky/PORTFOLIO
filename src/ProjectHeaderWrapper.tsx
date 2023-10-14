@@ -12,7 +12,7 @@ const ProjectWrapper: React.FC<ProjectWrapperProps> = ({
   link,
 }) => {
   return (
-    <section className='flex flex-col w-full'>
+    <section className='flex flex-col w-full 6xl:pt-36'>
       <ProjectHeader projectName={projectName} />
       <ProjectButton link={link} />
     </section>
