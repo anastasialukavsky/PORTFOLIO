@@ -79,7 +79,7 @@ export default function ProgressBar({mobileMenu}: {mobileMenu: boolean}) {
 
       const ctx = gsap.context(() => {
         gsap.to(progressRef.current, {
-          top: '10%',
+          top: '15%',
           ease: 'slow',
           duration:2,
           scrollTrigger: {
@@ -144,7 +144,7 @@ export default function ProgressBar({mobileMenu}: {mobileMenu: boolean}) {
       <div className='w-[1px]  min-h-screen ml-9 bg-white mix-blend-difference '>
         <p
           className={` 
-            top-[37%]
+            top-[33%]
            -rotate-90 font-mono z-50 absolute   lg:top-[36%]  -left-16 lg:-left-[68px] w-44  uppercase  text-[.8rem] lg:text-[1rem]`}
         >
           {currentSectionText}
