@@ -49,6 +49,8 @@ import ProjectButton from './ProjectButton';
 import ProjectDescription from './ProjectDescription';
 import ProjectStack from './ProjectStack';
 import ProjectWrapper from './ProjectWrapper';
+import ProjectHeader from './ProjectHeader';
+import ProjectHeaderWrapper from './ProjectHeaderWrapper';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -832,57 +834,57 @@ export default function Homepage() {
         className='projects-section flex pt-[11dvh]  z-[150] relative bg-[#292e2f] overflow-x-hidden  portrait:pt-14 w-[100vw]'
       >
         <div className='proj-try flex flex-none  overflow-x-scroll '>
-          <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw] bg-blue-300 pl-10'>
-            <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh] bg-pink-300 '>
-              <div className=" md:h-full portrait:bg-cover  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:h-full portrait:basis-full"></div>
+          <div className='projects  h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw] pl-10'>
+            <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-2 portrait:h-[90svh] bg-pink-300'>
+              <div className=" md:h-full portrait:bg-cover  bg-cover   bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:h-full portrait:basis-full border border-black "></div>
 
-              <div
-                // ref={astoriaRef}
-                className='mobile-proj basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5 bg-gray-300 max-h-[98vh]'
-              >
-                <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
-                  ASTORIA
-                </p>
+              {/* <ProjectHeader projectName='ASTORIA'/> */}
+              {/* <ProjectButton link='https://astoriaskincare.co/' /> */}
 
-                <ProjectButton link='https://astoriaskincare.co/' />
+              <div className=' basis-1/2 portrait:basis-full h-fit '>
+                <ProjectHeaderWrapper
+                  projectName='ASTORIA'
+                  link='https://astoriaskincare.co/'
+                />
 
-                <ProjectWrapper
-                  frontEnd={[
-                    'React',
-                    'Vite',
-                    'Redux',
-                    'TailwindCSS',
-                    'GSAP',
-                    'Axios',
-                    'FuseJS',
-                    'FramerMotion',
-                    'Lenis',
-                    'Stripe',
-                    'Zod',
-                    'ReactHotToast',
-                  ]}
-                  backEnd={[
-                    'NodeJS',
-                    'ExpressJS',
-                    'MongoDB',
-                    'Mongoose',
-                    'Zod',
-                    'Nginx',
-                    'Docker',
-                    'PassportJS',
-                  ]}
-                  description='ASTORIA is a sophisticated e-commerce web platform meticulously designed
-      for a diverse audience, ensuring pleantly seamless shopping experience. We
-      prioritized an intuitive user interface to facilitate effortless
-      navigation and an aesthetically pleasing design. Leveraging technologies
-      such as React.js and Node.js, alongside server-side caching, we
+                <div className='font-mono text-[#121212]  flex flex-col items-center justify-center xl:justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5 bg-gray-300  max-h-[71vh] min-h-[71vh]'>
+                  <ProjectWrapper
+                    frontEnd={[
+                      'React',
+                      'Vite',
+                      'Redux',
+                      'TailwindCSS',
+                      'GSAP',
+                      'Axios',
+                      'FuseJS',
+                      'FramerMotion',
+                      'Lenis',
+                      'ReactHotToast',
+                      'Stripe',
+                      'Zod',
+                    ]}
+                    backEnd={[
+                      'NodeJS',
+                      'ExpressJS',
+                      'MongoDB',
+                      'Mongoose',
+                      'Zod',
+                      'Nginx',
+                      'Docker',
+                      'PassportJS',
+                    ]}
+                    description='ASTORIA is a sophisticated e-commerce web platform meticulously designed
+                  for a diverse audience, ensuring pleantly seamless shopping experience. We
+                  prioritized an intuitive user interface to facilitate effortless
+                  navigation and an aesthetically pleasing design. Leveraging technologies
+                  such as React.js and Node.js, alongside server-side caching, we
       significantly enhanced site performance and provided real-time updates,
       leaving the room for future scalability. Our team adeptly handled the
       integration of third-party payment gateway, ensuring a swift and secure
       user checkout process.'
-                />
+                  />
 
-                {/* <ul className='list-disc'>
+                  {/* <ul className='list-disc'>
                     //front-end
                     <li>React</li>
                     <li>Vite</li>
@@ -899,7 +901,7 @@ export default function Homepage() {
                     <li>React Hot Toast</li>
                   </ul> */}
 
-                {/* <ul className=' list-disc'>
+                  {/* <ul className=' list-disc'>
                     //back-end
                     <li>Node JS</li>
                     <li>Express JS</li>
@@ -912,23 +914,29 @@ export default function Homepage() {
                     <li>Nginx</li>
                     <li>Docker</li>
                   </ul> */}
+                </div>
               </div>
             </div>
           </div>
 
-          <div className='projects last-project h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
+          <div className='projects  h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw] pl-10'>
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
-              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1-q30.webp')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
+              <div className=" md:h-full portrait:bg-cover bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1-q30.webp')] border border-black  portrait:h-full portrait:basis-full"></div>
 
-              <div className='mobile-proj basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center '>
-                <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
+              <div className=' basis-1/2 portrait:basis-full h-fit '>
+                <ProjectHeaderWrapper
+                  projectName='PLANTS&CO 2.0'
+                  link='https://www.plantsandco.shop/'
+                />
+                <div className=' font-mono text-[#121212]  flex flex-col items-center justify-center xl:justify-around 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center bg-gray-300  max-h-[69vh] min-h-[69vh]'>
+                  {/* <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   PLANTS&CO 2.0
                 </p>
 
-                <ProjectButton link='https://www.plantsandco.shop/' />
+                <ProjectButton link='https://www.plantsandco.shop/' /> */}
 
-                <ProjectWrapper
-                  description=' PLANTS&CO 2.0 embodies a dynamic e-commerce platform, artfully
+                  <ProjectWrapper
+                    description=' PLANTS&CO 2.0 embodies a dynamic e-commerce platform, artfully
                   fusing sleek design with robust functionality. Evolving from
                   its early release, which was built by a group of four young
                   and talented engineers as a school project, this version
@@ -945,43 +953,49 @@ export default function Homepage() {
                   convenience. Built with users and support personnel in mind,
                   PLANTS&CO 2.0 also features a sales and inventory admin
                   dashboard allowing to manage website sales reports with ease.'
-                  frontEnd={[
-                    'React',
-                    'Vite',
-                    'Redux',
-                    'TailwindCSS',
-                    'Axios',
-                    'FramerMotion',
-                    'Stripe',
-                    'ReactHotToast',
-                  ]}
-                  backEnd={[
-                    'NodeJS',
-                    'ExpressJS',
-                    'Sequelize',
-                    'PostgreSQL',
-                    'Nginx',
-                    'Docker',
-                    'JWT',
-                  ]}
-                />
+                    frontEnd={[
+                      'React',
+                      'Vite',
+                      'Redux',
+                      'TailwindCSS',
+                      'Axios',
+                      'FramerMotion',
+                      'Stripe',
+                      'ReactHotToast',
+                    ]}
+                    backEnd={[
+                      'NodeJS',
+                      'ExpressJS',
+                      'Sequelize',
+                      'PostgreSQL',
+                      'Nginx',
+                      'Docker',
+                      'JWT',
+                    ]}
+                  />
+                </div>
               </div>
             </div>
           </div>
 
-          <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
-            <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
-              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
+          <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw] pl-10'>
+            <div className='w-[90vw] portrait:w-[200svw] bg-pink-300 h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
+              <div className=" md:h-full  bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:bg-cover  portrait:h-full portrait:basis-full"></div>
 
-              <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center'>
-                <p className='text-center md:text-[1rem] lg:text-[1.2rem] font-bold 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
+              <div className=' basis-1/2 portrait:basis-full h-fit '>
+                <ProjectHeaderWrapper
+                  projectName='SHHROOM 3.0'
+                  link='https://shhroom.live/'
+                />
+                <div className=' font-mono text-[#121212]   flex flex-col items-center justify-between 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center max-h-[69vh] min-h-[69vh]'>
+                  {/* <p className='text-center md:text-[1rem] lg:text-[1.2rem] font-bold 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem] '>
                   SHROOM 3.0
                 </p>
 
-                <ProjectButton link='https://shhroom.live/' />
+                <ProjectButton link='https://shhroom.live/' /> */}
 
-                <ProjectWrapper
-                  description="SHHROOM 3.0 is a collaborative project that evolved from its
+                  <ProjectWrapper
+                    description="SHHROOM 3.0 is a collaborative project that evolved from its
                   early versions during development, culminating in its recent
                   deployment. SHHROOM 3.0 offers an unexpected and fun spin on
                   the globally recognized Zoom platform, facilitating seamless
@@ -998,47 +1012,53 @@ export default function Homepage() {
                   the subsequent release introduced a desktop video and chat
                   application built using Electron and a variety of other
                   technologies."
-                  frontEnd={[
-                    'React',
-                    'Vite',
-                    'Redux',
-                    'TailwindCSS',
-                    'Axios',
-                    'ThreeJS',
-                    'ReactFiber',
-                    'TweetNaCl',
-                    'Zod',
-                    'SocketIO',
-                    'JWT',
-                    'Blendr',
-                  ]}
-                  backEnd={[
-                    'NodeJS',
-                    'ExpressJS',
-                    'Sequelize',
-                    'PostgreSQL',
-                    'Nginx',
-                    'Docker',
-                    'Zod',
-                  ]}
-                />
+                    frontEnd={[
+                      'React',
+                      'Vite',
+                      'Redux',
+                      'TailwindCSS',
+                      'Axios',
+                      'ThreeJS',
+                      'ReactFiber',
+                      'TweetNaCl',
+                      'Zod',
+                      'SocketIO',
+                      'JWT',
+                      'Blendr',
+                    ]}
+                    backEnd={[
+                      'NodeJS',
+                      'ExpressJS',
+                      'Sequelize',
+                      'PostgreSQL',
+                      'Nginx',
+                      'Docker',
+                      'Zod',
+                    ]}
+                  />
+                </div>
               </div>
             </div>
           </div>
 
           <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[200svw]'>
             <div className='w-[90vw] portrait:w-[200svw] h-[85dvh] md:flex  flex border border-black   gap-3 lg:gap-10 p-4 portrait:h-[90svh]'>
-              <div className=" md:h-full  bg-contain lg:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/lb_mockup-q30.webp')] portrait:h-full portrait:basis-full portrait:bg-cover "></div>
+              <div className=" md:h-full bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/lb_mockup-q30.webp')] portrait:h-full portrait:basis-full portrait:bg-cover "></div>
 
-              <div className='basis-1/2 portrait:basis-full h-fit font-mono text-[#121212] md:text-[1vw] text-[2vw] flex flex-col items-center justify-center 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center'>
-                <p className='text-center md:text-[1rem] lg:text-[1.rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
+              <div className=' basis-1/2 portrait:basis-full h-fit '>
+                <ProjectHeaderWrapper
+                  projectName='PLANTS&CO 2.0'
+                  link='https://www.plantsandco.shop/'
+                />
+                <div className=' font-mono text-[#121212]  flex flex-col items-center justify-between 5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10 4xl:self-center max-h-[69vh] min-h-[69vh]'>
+                  {/* <p className='text-center md:text-[1rem] lg:text-[1.rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   LUNCH BUDDY 2.0
                 </p>
 
-                <ProjectButton link='https://lunchbuddy.co/' />
+                <ProjectButton link='https://lunchbuddy.co/' /> */}
 
-                <ProjectWrapper
-                  description="LUNCH BUDDY 2.0 revolutionizes lunchtime networking for busy
+                  <ProjectWrapper
+                    description="LUNCH BUDDY 2.0 revolutionizes lunchtime networking for busy
                   individuals, facilitating meaningful connections during brief
                   breaks. Recognizing the challenge of aligning schedules with
                   friends, we've crafted a platform allowing users to instantly
@@ -1057,29 +1077,30 @@ export default function Homepage() {
                   comprehensive server and client-side bug fixes, seamless
                   cross-browser and cross-device responsiveness, and the
                   introduction of a dark mode to elevate user experience."
-                  frontEnd={[
-                    'React',
-                    'Vite',
-                    'Redux',
-                    'TailwindCSS',
-                    'Axios',
-                    'ReactHotToast',
-                    'GSAP',
-                    'FramerMotion',
-                    'JWT',
-                  ]}
-                  backEnd={[
-                    'NodeJS',
-                    'ExpressJS',
-                    'Sequelize',
-                    'SocketIO',
-                    'PostgreSQL',
-                    'Nginx',
-                    'GoogleMapsAPI',
-                    'Docker',
-                    'YelpFusionAPI',
-                  ]}
-                />
+                    frontEnd={[
+                      'React',
+                      'Vite',
+                      'Redux',
+                      'TailwindCSS',
+                      'Axios',
+                      'ReactHotToast',
+                      'GSAP',
+                      'FramerMotion',
+                      'JWT',
+                    ]}
+                    backEnd={[
+                      'NodeJS',
+                      'ExpressJS',
+                      'Sequelize',
+                      'SocketIO',
+                      'PostgreSQL',
+                      'Nginx',
+                      'GoogleMapsAPI',
+                      'Docker',
+                      'YelpFusionAPI',
+                    ]}
+                  />
+                </div>
               </div>
             </div>
           </div>
