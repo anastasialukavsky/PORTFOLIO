@@ -8,8 +8,20 @@ export default {
   theme: {
     fontFamily: {
       mono: ['Cutive Mono', 'monospace'],
+      chivo: ['Chivo Mono', 'monospace'],
       logo: 'The Rivers Regular',
       dida: 'Dida',
+    },
+    fontWeight: {
+      thin: 100,
+      xtralight: 200,
+      light: 300,
+      regular: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700,
+      xbold: 800,
+      xxbold: 900,
     },
     extend: {
       screens: {
