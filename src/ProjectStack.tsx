@@ -91,6 +91,8 @@ export type ProjectStackProps = {
   backEnd: Logo[];
   projectDescHeight: number;
   isFullDescription: boolean;
+  shortDescriptionHeight: number;
+  fullDescriptionHeight: number;
 };
 
 export default function ProjectStack({
@@ -98,6 +100,8 @@ export default function ProjectStack({
   backEnd,
   projectDescHeight,
   isFullDescription,
+  fullDescriptionHeight,
+  shortDescriptionHeight,
 }: ProjectStackProps) {
   const stackRef = useRef<HTMLDivElement>(null);
 
@@ -123,6 +127,23 @@ export default function ProjectStack({
     }
   }, [projectDescHeight]);
 
+  const stackContent = document
+    .querySelector('.stack-content')
+
+
+  const stackContentHeight = document
+    .querySelector('.stack-content')?.getBoundingClientRect().height;
+
+  // console.log(stackContent?.getBoundingClientRect().height)
+  // console.log(stackContentHeight)
+
+  // useEffect(() => {
+  //   // console.log(stackContentHeight);
+  // }, [stackContentHeight]);
+
+
+  console.log(shortDescriptionHeight)
+  console.log(fullDescriptionHeight)
   useLayoutEffect(() => {
     if (!currentHeight) return;
 
@@ -135,12 +156,25 @@ export default function ProjectStack({
     };
 
     if (projectDescHeight && projectDescHeight > 0) {
+      const tl = gsap.timeline({});
+
       const ctx = gsap.context(() => {
         gsap.to(stackRef.current, {
           height: currentHeight - projectDescHeight,
           ease: 'none',
           duration: 0.2,
         });
+
+        // tl.to(stackContent, {
+        //   height:
+        // })
+        // if(isFullDescription) {
+        //   gsap.to(stackContent, {
+        //     height: fullDescriptionHeight,
+        //     ease:'none',
+        //     duration: .2
+        //   });
+        // }
       });
       return () => {
         ctx.revert();
@@ -157,10 +191,10 @@ export default function ProjectStack({
         return (
           <li
             key={item}
-            className='place-self-center flex flex-col justify-between  gap-2  w-fit items-center h-full'
+            className='place-self-center flex flex-col justify-between  gap-2  w-full items-center h-full'
           >
-            <img src={logoIcon} alt={item} className='h-5 ' />
-            <p className='text-center  text-[.5rem]'>{item}</p>
+            <img src={logoIcon} alt={item} className='h-6 w-6 lg:h-7 lg:w-7 xl:h-10 xl:w-11' />
+            <p className='text-center  text-[.5rem] lg:text-[.7rem] xl:text-[.8rem]'>{item}</p>
           </li>
         );
       }
@@ -169,25 +203,22 @@ export default function ProjectStack({
   };
 
   return (
-    <article
-      ref={stackRef}
-      className='overflow-hidden border border-[#121212] '
-    >
-      <p className='text-center pt-5 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
+    <article ref={stackRef} className=' border border-[#121212] h-full w-full '>
+      {/* <p className='text-center pt-3 text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem]'>
         STACK
-      </p>
-      <section className='h-fit w-full p-2 lg:p-7 '>
-        <h2 className='text-center pb-3 text-[.6rem] font-black'>
+      </p> */}
+      <section className='h-full w-full p-2 lg:p-2 xl:p-5 overflow-hidden'>
+        <h2 className='text-center pb-3 text-[.7rem] font-black lg:text-[.8rem] xl:text-[1rem]'>
           //front-end
         </h2>
-        <ul className='grid grid-cols-6 gap-2  w-full'>
+        <ul className='grid grid-cols-6 lg:grid-cols-5 gap-2 xl:gap-4 w-full h-fit '>
           {renderLogos(frontEnd)}
         </ul>
 
-        <h2 className='text-center pt-3 text-[.6rem] pb-2 font-black'>
+        <h2 className='text-center pt-5 xl:pt-9 text-[.7rem] pb-2 font-black lg:text-[.8rem] xl:text-[1rem]'>
           //back-end
         </h2>
-        <ul className='grid grid-cols-5 gap-2  w-full'>
+        <ul className='grid grid-cols-6  lg:grid-cols-5 gap-2 xl:gap-4  w-full h-fit xl:pb-2'>
           {renderLogos(backEnd)}
         </ul>
       </section>
