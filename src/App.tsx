@@ -20,7 +20,7 @@ function App() {
   const lenis = new Lenis({
     duration: 2.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    // orientation: 'vertical',
+    // orientation: 'horizontal',
     // gestureOrientation: 'vertical',
     wheelMultiplier: 1,
     smoothTouch: false,
@@ -104,7 +104,7 @@ function App() {
       {/* <ProgressBar /> */}
 
       <Homepage />
-      <div className='portrait:hidden ball mix-blend-difference lg:w-[60px] w-[45px] h-[45px]  lg:h-[60px] md:fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
+      <div className='portrait:hidden ball hidden mix-blend-difference lg:w-[60px] w-[45px] h-[45px]  lg:h-[60px] md:fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
     </div>
   );
 }
