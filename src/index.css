@@ -8,11 +8,13 @@
 @font-face {
   font-family: The Rivers Regular;
   src: url('/fonts/The Rivers Regular.ttf') format('truetype');
+  font-display: 'swap';
 }
 
 @font-face {
   font-family: Dida;
-  src: url('/fonts/Dida.otf') format('opentype')
+  src: url('/fonts/Dida.otf') format('opentype');
+  font-display: 'swap';
 }
 
 
