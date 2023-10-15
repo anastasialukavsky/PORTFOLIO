@@ -3,7 +3,9 @@ import hamburger from '../public/icons/hamburger.svg';
 import x from '../public/icons/x.svg';
 import { gsap } from 'gsap';
 import { CustomEase } from 'gsap/CustomEase';
-gsap.registerPlugin(CustomEase);
+import Lenis from '@studio-freight/lenis';
+import { ScrollToPlugin } from 'gsap/all';
+gsap.registerPlugin(CustomEase, ScrollToPlugin);
 
 type ScrollToSection = (
   e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -18,18 +20,8 @@ interface NavbarProps {
 
 export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const testRef = useRef<HTMLAnchorElement>(null);
   const wrapperRef = useRef(null);
-
-
-  // prevent scroll on overflow
-  // useEffect(() => {
-  //   if (mobileMenu && isMenuOpen) {
-  //     document.body.style.overflow = 'hidden';
-  //     return () => {
-  //       document.body.style.overflow = '';
-  //     };
-  //   }
-  // }, [mobileMenu, isMenuOpen]);
 
   useEffect(() => {
     if (!wrapperRef.current) return;
@@ -60,33 +52,53 @@ export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
           },
           '<'
         );
-
-       
       });
       return () => ctx.revert();
     }
   }, [wrapperRef.current, isMenuOpen]);
 
+  useEffect(() => {
+    if (!testRef?.current) return;
 
+    const handleScroll = () => {
+      let y = testRef.current?.offsetHeight;
+      const ctx = gsap.context(() => {
+        gsap.to(window, {
+          scrollTo: {
+            y: y,
+            autoKill: false,
+          },
+          duration: 1,
+        });
+      });
+      ctx.revert();
+    };
+    handleScroll();
+    testRef.current?.addEventListener('click', handleScroll);
+
+    return () => {
+      testRef.current?.removeEventListener('click', handleScroll);
+    };
+  });
 
   const animateHamburgerToX = () => {
     const tl = gsap.timeline();
 
     if (isMenuOpen) {
-      tl.to('.line1', { y: 0, rotate: 0, duration: 0.3, ease: 'back' })
-      .to('.line2',
+      tl.to('.line1', { y: 0, rotate: 0, duration: 0.3, ease: 'back' }).to(
+        '.line2',
         { y: 0, rotate: 0, duration: 0.3, ease: 'back' },
         '-=0.3'
       );
     } else {
       tl.to('.line1', { y: -9, rotate: 50, duration: 0.3, ease: 'back' }).to(
         '.line2',
-        { y:20, rotate: -53, duration: 0.3, ease: 'back' },
+        { y: 20, rotate: -53, duration: 0.3, ease: 'back' },
         '-=0.3'
       );
     }
   };
-
+  const lenis = new Lenis();
   const toggleMenu = () => {
     setIsMenuOpen((prevMenuOpen) => !prevMenuOpen);
   };
@@ -100,12 +112,10 @@ export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
       <div className='navigation-wrapper  flex justify-between pl-[3%] pr-[5%] relative '>
         {/**logo */}
 
-        <a href="#home"
-        onClick={(e) => scrollToSection(e, '#home', false)}>
-
-        <p className='font-logo  text-[3.5rem] lg:text-[5rem] leading-none xshort:text-[3rem]'>
-          .a
-        </p>
+        <a href='#home' onClick={(e) => scrollToSection(e, '#home', false)}>
+          <p className='font-logo  text-[3.5rem] lg:text-[5rem] leading-none xshort:text-[3rem]'>
+            .a
+          </p>
         </a>
 
         {/**mobile nav hamburger */}
@@ -222,7 +232,7 @@ export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
           </a>
           <a
             href='#about'
-            onClick={(e) => scrollToSection(e, '#about', false)}
+            onClick={(e) => lenis.scrollTo('#about')}
             className='text-white font-mono'
           >
             about
@@ -230,15 +240,15 @@ export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
 
           <a
             href='#skills'
-            onClick={(e) => scrollToSection(e, '#skills', false)}
+            onClick={(e) => lenis.scrollTo('#skills')}
             className='text-white font-mono'
           >
             skills
           </a>
 
           <a
-            href='#projects'
-            onClick={(e) => scrollToSection(e, '#projects', true)}
+            ref={testRef}
+            href='#projects-section-scroll-to'
             className='text-white font-mono'
           >
             projects
@@ -246,7 +256,7 @@ export default function Navbar({ scrollToSection, mobileMenu }: NavbarProps) {
 
           <a
             href='#contact'
-            onClick={(e) => scrollToSection(e, '#contact', false)}
+            onClick={(e) => lenis.scrollTo('#contacts')}
             className='text-white font-mono'
           >
             contact
