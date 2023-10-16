@@ -4,43 +4,44 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
   font-family: The Rivers Regular;
   src: url('/fonts/The Rivers Regular.ttf') format('truetype');
-  font-display: 'swap';
+  font-display: swap;
 }
 
 @font-face {
   font-family: Dida;
   src: url('/fonts/Dida.otf') format('opentype');
-  font-display: 'swap';
+  font-display: swap;
 }
-
-
 
 .test-clip {
   clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
 }
 
+.text-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
 /* Blinking cursor animation */
 @keyframes blink {
-  0%, 50%, 100% {
+  0%,
+  50%,
+  100% {
     border-color: transparent; /* Hide the cursor */
   }
-  25%, 75% {
+  25%,
+  75% {
     border-color: white; /* Display the cursor */
   }
 }
-
 
 .blink-styles {
   border-right: 2px solid; /* Border for the cursor */
   padding-right: 5px; /* Adjust the padding to control the blinking speed of the cursor */
   animation: blink 1.5s step-end infinite; /* Apply the blinking animation */
 }
-
-
 
 html.lenis {
   height: auto;
