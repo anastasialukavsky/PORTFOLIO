@@ -197,7 +197,6 @@ export default function Blob({ mobileMenu }: { mobileMenu: boolean }) {
   let meshPosition = mesh.current ? mesh.current.position : new THREE.Vector3();
 
   // console.log('meshpos', camera);
-  
 
   const position = { x: 0, y: 0, z: 9.9 };
   useLayoutEffect(() => {
@@ -255,9 +254,9 @@ export default function Blob({ mobileMenu }: { mobileMenu: boolean }) {
         },
       });
       gsap.to(position, {
-        z: mobileMenu ? 6 : 6,
         x: mobileMenu ? -4 : -4.9,
         y: mobileMenu ? 8 : 1,
+        z: mobileMenu ? 6 : 6,
         delay: 4,
         // rotateX: 800,
         // repeatRefresh: true,
@@ -282,27 +281,28 @@ export default function Blob({ mobileMenu }: { mobileMenu: boolean }) {
       // let zoom = 1;
       // // const nzoom = { x: 1, y: 1, z: 3 };
       const prevPosition = { x: -4.9, y: 1, z: 6 };
-      gsap.to(prevPosition, {
+      const mobilePrevPosition = {x:-4 , y:8,  z: 6}
+      gsap.to(mobileMenu ? mobilePrevPosition : prevPosition, {
         repeatRefresh: true,
         z: mobileMenu ? 6 : 15,
         x: mobileMenu ? 3 : -2.9,
-
-         y: mobileMenu ? 5 : 0,
+        y: mobileMenu ? 5 : 0,
         scrollTrigger: {
           trigger: miscSection,
-          start: 'bottom bottom',
-          // end: 'bottom 140%',
+          start: mobileMenu ? 'bottom 290%' : 'bottom bottom',
+          end: mobileMenu ? 'bottom bottom' : '',
           endTrigger: contactSection,
           scrub: 3,
-          //  markers: true
+          // markers: true,
         },
         onUpdate: () => {
-          camera.translateY(prevPosition.y - camera.position.y);
-          camera.translateZ(prevPosition.z - camera.position.z);
+          mobileMenu ? camera.translateY(mobilePrevPosition.y - camera.position.y) : camera.translateY(prevPosition.y - camera.position.y);
+          mobileMenu ? camera.translateZ(mobilePrevPosition.z - camera.position.z) : camera.translateZ(prevPosition.z - camera.position.z);
+          mobileMenu ? camera.translateX(mobilePrevPosition.x - camera.position.x) : camera.translateX(prevPosition.x - camera.position.x);
           //  console.log(camera.prevPosition);
           //  console.log('NP', prevPosition);
           //  console.log()
-          camera.translateX(prevPosition.x - camera.position.x);
+          
         },
       });
 
