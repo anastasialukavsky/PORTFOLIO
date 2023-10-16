@@ -241,7 +241,7 @@ export default function Homepage() {
           scrub: 2.5,
           // pin: true,
           // scrub: true
-          markers: true,
+          // markers: true,
         },
       });
 
