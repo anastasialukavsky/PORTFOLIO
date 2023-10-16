@@ -99,17 +99,18 @@ export default function Homepage() {
       const tl_12 = gsap.timeline({});
       const tl_13 = gsap.timeline({});
       const tl_14 = gsap.timeline({});
+      const tl_15 = gsap.timeline({});
 
       tl_14.to('.hello-article', {
         opacity: 1,
-        duration: 1.2,
-        delay: 1,
-        ease: 'expo',
+        duration: 1,
+        // delay: 1,
+        ease: 'power4',
       });
       tl_14.to('.hero-desc', {
         opacity: 1,
         duration: 1,
-        delay: 4,
+        delay: 5.2,
         ease: 'expo',
       });
 
@@ -212,6 +213,22 @@ export default function Homepage() {
         },
       });
 
+      tl_03.to('.frontend-div', {
+        yPercent: -50,
+        ease: 'expo.inOut',
+        duration: 3,
+        // delay: 2,
+        scrollTrigger: {
+          trigger: '.frontend-div',
+          start: 'bottom 70%',
+          end: ' bottom 80%',
+          scrub: 2.5,
+          // pin: true,
+          // scrub: true
+          // markers: true,
+        },
+      });
+
       tl_03.to('.backend-div', {
         yPercent: -50,
         ease: 'expo.inOut',
@@ -224,7 +241,7 @@ export default function Homepage() {
           scrub: 2.5,
           // pin: true,
           // scrub: true
-          // markers: true,
+          markers: true,
         },
       });
 
@@ -510,7 +527,7 @@ export default function Homepage() {
       <Navbar setNavbarHeight={setNavbarHeight} />
       <div
         // ref={blobScale}
-        className='blob-wrapper hidden  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0  landscape:xshort:w-[100svw] landscape:xshort:h-[100svh]'
+        className='blob-wrapper  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0  landscape:xshort:w-[100svw] landscape:xshort:h-[100svh]'
       >
         <Canvas
           ref={ref}
@@ -529,18 +546,18 @@ export default function Homepage() {
 
       {/**hero section */}
       <section className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center md:-translate-y-[30%] md:pt-96 portrait:w-[100svw] portrait:h-[100vh] landscape:xshort:w-[100svw] landscape:xshort:h-[100svh]'>
-        <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono text-[.9rem] md:text-[1vw] opacity-0 portrait:fixed portrait:top-[36%]'>
+        <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono text-[.9rem] md:text-[1vw] opacity-0 portrait:fixed portrait:top-[26%]'>
           hello, i am
         </p>
         {/* <p className='text-[3rem] '>width: {width}, <br/>height: {height}</p> */}
         <h1
           id='text'
-          className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[13.5vw]  portrait:self-center portrait:top-0 xshort:whitespace-nowrap'
+          className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[13.5vw]  portrait:self-center portrait:top-[29%] xshort:whitespace-nowrap portrait:fixed'
         >
           <Typewriter name='ANASTASIA LUKAVSKY' text='FULLSTACK DEVELOPER' />
         </h1>
 
-        <div className='hero-desc font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[.9rem] pt-[1%] portrait:pt-3 portrait:w-full md:text-[1.2vw] 5xl:text-[1vw] opacity-0'>
+        <div className='hero-desc font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[.9rem] pt-[1%] portrait:pt-0 portrait:w-full md:text-[1.2vw] 5xl:text-[1vw] opacity-0 '>
           <p>Crafting Digital Experiences from Front to Back</p>
           <p>Bringing Ideas to Life with Code and Creativity</p>
         </div>
@@ -592,7 +609,7 @@ export default function Homepage() {
         {/* <span className='text-[5vw] h-fit md:hidden p-5 text-white'>//SKILLS</span> */}
         <div className='front-end-section  md:text-[1.3vw] 4xl:text-[1rem]   flex w-[100vw]'>
           <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:w-[90vw]'>
-            <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b portrait:w-[91vw] md:pb-20'>
+            <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2  portrait:w-[91vw] md:pb-20'>
               <div className='flex flex-col  p-10 lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
                 <p className=' self-center portrait:pb-14 pb-5 text-[.9rem]'>
                   //front-end development
@@ -669,8 +686,8 @@ export default function Homepage() {
                 </ul>
               </div>
             </div>
-
-            <div className='backend-div bg-[#292e2f]   min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 border-t portrait:w-[91svw] pt-36'>
+            {/* bg-[#292e2f] */}
+            <div className='backend-div  border-t  min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 portrait:w-[91svw] pt-36'>
               <div className=' ft-section flex flex-col  p-10 lg:p-20 portrait:w-fit justify-center 5xl:items-center gap-2 xl:gap-10'>
                 <p className=' self-center portrait:pb-14 pb-5 text-[.9rem]'>
                   //back-end development
@@ -730,7 +747,6 @@ export default function Homepage() {
                 </ul>
               </div>
             </div>
-
             <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[91svw] pt-36'>
               <div className='ft-section flex flex-col  p-10 lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
                 <p className='self-center portrait:pb-14 pb-5 text-[.9rem]'>
@@ -759,7 +775,6 @@ export default function Homepage() {
                 </ul>
               </div>
             </div>
-
             <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[91svw] pt-36'>
               <div className='ft-section flex flex-col p-10  lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
                 <p className='self-center portrait:pb-14 pb-5 text-[.9rem]'>
@@ -799,12 +814,12 @@ export default function Homepage() {
 
       <section
         id='projects-section-scroll-to'
-        className='projects-section flex pt-[11dvh] portrait:pt-[20dvh] xshort:pt-[13dvh] z-[150] landscape:relative bg-[#292e2f] landscape:overflow-x-hidden w-[100vw] portrait:flex-col portrait:pb-[15vh] '
+        className='projects-section flex pt-[11dvh] portrait:pt-[5dvh] xshort:pt-[13dvh] z-[150] relative bg-[#292e2f] landscape:overflow-x-hidden w-[100vw] portrait:flex-col  '
       >
-        <div className='proj-try flex flex-none  landscape:overflow-x-scroll portrait:flex-col  portrait:gap-44 bg-red-600 portrait:min-h-full'>
-          <div className='projects landscape:h-screen w-[100vw] flex pt-2 justify-center  pl-10 portrait:w-[100svw]  portrait:min-h-full portrait:flex-col portrait:pl-0'>
-            <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212] gap-3 lg:gap-5 p-4 xshort:p-2 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw] bg-pink-200   portrait:h-[190vh]'>
-              <div className=" md:h-full portrait:bg-contain  bg-cover 3xl:bg-contain 5xl:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:basis-full portrait:max-h-[66svh] portrait:w-full  portrait:aspect-[1/3]  bg-green-200"></div>
+        <div className='proj-try flex flex-none  landscape:overflow-x-scroll portrait:flex-col  portrait:gap-0  portrait:min-h-full'>
+          <div className='projects landscape:h-screen w-[100vw] flex landscape:pt-2 justify-center  pl-10 portrait:w-[100svw]  portrait:min-h-full portrait:flex-col portrait:pl-0 '>
+            <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212] gap-3 lg:gap-5 p-4 xshort:p-2 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw]  portrait:h-[185vh]'>
+              <div className=" md:h-full portrait:bg-contain  bg-cover 3xl:bg-contain 5xl:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:basis-full portrait:max-h-[66svh] portrait:w-full  portrait:aspect-[1/3] "></div>
 
               <div className='basis-1/2 portrait:basis-full h-fit portrait:h-full'>
                 <ProjectHeaderWrapper
@@ -812,7 +827,7 @@ export default function Homepage() {
                   link='https://astoriaskincare.co/'
                 />
 
-                <div className='font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5   max-h-[69svh] min-h-[69svh] lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around   bg-sky-200 portrait:min-h-[115svh]'>
+                <div className='font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5   max-h-[69svh] min-h-[69svh] lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around portrait:min-h-[90svh] portrait:max-h-[100svh]'>
                   <ProjectWrapper
                     frontEnd={[
                       'React',
@@ -853,16 +868,16 @@ export default function Homepage() {
             </div>
           </div>
 
-          <div className='projects  landscape:h-screen w-[100vw] flex pt-2 justify-center  pl-10 portrait:w-[100svw]  portrait:min-h-full  portrait:flex-col portrait:pl-0'>
-            <div className='w-[90vw]  h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw] bg-orange-200   portrait:h-[200vh]'>
-              <div className=" md:h-full portrait:bg-contain bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1-q30.webp')]  portrait:basis-full  portrait:max-h-[66svh] portrait:w-full  portrait:aspect-[1/3]  bg-green-200"></div>
+          <div className='projects  landscape:h-screen w-[100vw] flex landscape:pt-2 justify-center  pl-10 portrait:w-[100svw]  portrait:min-h-full  portrait:flex-col portrait:pl-0'>
+            <div className='w-[90vw]  h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw]  portrait:h-[195svh]'>
+              <div className=" md:h-full portrait:bg-contain bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1-q30.webp')]  portrait:basis-full  portrait:max-h-[66svh] portrait:w-full  portrait:aspect-[1/3]"></div>
 
               <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
                 <ProjectHeaderWrapper
                   projectName='PLANTS&CO 2.0'
                   link='https://www.plantsandco.shop/'
                 />
-                <div className=' font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10   4xl:self-center  max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around portrait:min-h-[115svh] portrait:pl-5  bg-sky-200 '>
+                <div className=' font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10   4xl:self-center  max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around  portrait:min-h-[100svh] portrait:max-h-[100svh] portrait:pl-5 '>
                   {/* <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   PLANTS&CO 2.0
                 </p>
@@ -912,16 +927,16 @@ export default function Homepage() {
             </div>
           </div>
 
-          <div className='projects landscape:h-screen w-[100vw] flex pt-2 justify-center pl-10 portrait:w-[100svw]  portrait:min-h-full  portrait:flex-col portrait:pl-0'>
-            <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw] bg-pink-200   portrait:h-[200vh]'>
-              <div className=" md:h-full portrait:bg-contain  bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:basis-full portrait:max-h-[66svh] portrait:w-full  portrait:aspect-[1/3]  bg-green-200"></div>
+          <div className='projects landscape:h-screen w-[100vw] flex landscape:pt-2 justify-center pl-10 portrait:w-[100svw]  portrait:min-h-full  portrait:flex-col portrait:pl-0'>
+            <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw]   portrait:h-[190vh]'>
+              <div className=" md:h-full portrait:bg-contain  bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/shhroom_mockup-q30.webp')] portrait:basis-full portrait:max-h-[60vh] portrait:w-full  portrait:aspect-[2/3]"></div>
 
               <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
                 <ProjectHeaderWrapper
                   projectName='SHHROOM 3.0'
                   link='https://shhroom.live/'
                 />
-                <div className=' font-mono text-[#121212]   flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around portrait:min-h-[115svh] bg-sky-300 portrait:pl-5'>
+                <div className=' font-mono text-[#121212]   flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around portrait:min-h-[115svh] portrait:pl-5 portrait:pb-10'>
                   <ProjectWrapper
                     description="SHHROOM 3.0 is a collaborative project that evolved from its
                   early versions during development, culminating in its recent
@@ -969,16 +984,16 @@ export default function Homepage() {
             </div>
           </div>
 
-          <div className='projects landscape:h-screen w-[100vw] flex pt-2 justify-center portrait:w-[100svw]  portrait:min-h-full portrait:flex-col portrait:pl-0'>
-            <div className='w-[90vw]  h-[85dvh]  xshort:h-[80dvh] md:flex  flex border border-[#121212] xshort:p-2 gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw] bg-pink-200   portrait:h-[200vh]'>
-              <div className=" md:h-full portrait:bg-contain bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/lb_mockup-q30.webp')] portrait:basis-full portrait:max-h-[66svh] portrait:w-full  portrait:aspect-[1/3]  bg-green-200 "></div>
+          <div className='projects landscape:h-screen w-[100vw] flex landscape:pt-2 justify-center portrait:w-[100svw]  portrait:min-h-full portrait:flex-col portrait:pl-0'>
+            <div className='w-[90vw]  h-[85dvh]  xshort:h-[80dvh] md:flex  flex border border-[#121212] xshort:p-2 gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw]   portrait:h-[180vh] portrait:border-b-none portrait:border-transparent'>
+              <div className=" md:h-full portrait:bg-contain bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/lb_mockup-q30.webp')] portrait:basis-full portrait:max-h-[66svh] portrait:w-full  portrait:aspect-[1/3] "></div>
 
               <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
                 <ProjectHeaderWrapper
                   projectName='LUNCH BUDDY 2.0'
                   link='https://lunchbuddy.co/'
                 />
-                <div className=' font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh] xshort:justify-around bg-sky-200 portrait:min-h-[115svh] portrait:pl-5'>
+                <div className=' font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh] xshort:justify-around  portrait:min-h-[90svh] portrait:max-h-[100svh] portrait:pl-5 '>
                   <ProjectWrapper
                     description="LUNCH BUDDY 2.0 revolutionizes lunchtime networking for busy
                   individuals, facilitating meaningful connections during brief
