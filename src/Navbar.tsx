@@ -185,7 +185,7 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
         width: '55%',
       }).to(
         '.line2',
-        { y: 7, rotate: -50, duration: 0.3, ease: 'back', width: '55%' },
+        { y: 9, rotate: -50, duration: 0.3, ease: 'back', width: '55%' },
         '-=0.3'
       );
     }
@@ -212,7 +212,7 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
             toggleMenu();
           }}
         >
-          <p className='logo inline-block overflow-visible font-logo  text-[3.6rem] lg:text-[5rem] leading-none xshort:text-[3rem] z-[20] relative h-full w-fit'>
+          <p className='logo inline-block overflow-visible font-logo  text-[3.5rem] lg:text-[5rem] leading-none xshort:text-[3rem] z-[20] relative h-full w-fit'>
             .a
           </p>
         </a>
@@ -255,7 +255,7 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
 
         <div
           ref={wrapperRef}
-          className='md:hidden absolute  top-0 left-0 h-[100dvh] w-[100svw] backdrop-blur-0  bg-[#2f2f2f] opacity-[99%] z-[250] transform translate-x-full '
+          className='md:hidden absolute  top-0 left-0 h-[100dvh] w-[100svw] backdrop-blur-0  portrait:bg-[#353b3c]  opacity-[99%] z-[250] transform translate-x-full '
         >
           <div className='flex flex-col items-center justify-center h-full'>
             <a
