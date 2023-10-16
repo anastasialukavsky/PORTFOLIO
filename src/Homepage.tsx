@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, RefObject } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -59,6 +59,7 @@ export default function Homepage() {
   const heroSectionRef = useRef(null);
   const skillContentRef = useRef(null);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [navbarHeight, setNavbarHeight] = useState(0);
 
   const astoriaRef = useRef<HTMLDivElement>(null);
 
@@ -68,39 +69,7 @@ export default function Homepage() {
   //   console.log("heighttt", projectDescHeight)
   // });
 
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    sectionId: string,
-    isHorizontalScroll: boolean = false
-  ) => {
-    e.preventDefault();
-    const target = document.querySelector(sectionId);
-
-    if (target instanceof HTMLElement) {
-      if (isHorizontalScroll) {
-        const projectsSection = document.querySelector('.proj-try');
-        if (projectsSection instanceof HTMLElement) {
-          if (projectsSection.scrollLeft !== undefined) {
-            const scrollLeft = target.offsetLeft - projectsSection.offsetLeft;
-            projectsSection.scrollTo({
-              left: scrollLeft,
-              behavior: 'smooth',
-            });
-          }
-        }
-      } else {
-        window.scrollTo({
-          top: target.offsetTop,
-          behavior: 'smooth',
-        });
-      }
-    }
-  };
-
   const projectsSection = document.querySelector('.proj-try');
-  // useEffect(() => {
-  //   console.log(isFullDescription);
-  // }, [isFullDescription]);
 
   useLayoutEffect(() => {
     if (
@@ -111,9 +80,7 @@ export default function Homepage() {
       !document.querySelector('.right-div') ||
       !document.querySelector('.skills-section') ||
       !document.querySelector('.misc-div') ||
-      // !projects || !projects.length ||
       !document.querySelector('.contact-section')
-      // !document.querySelector('.projects-section')
     )
       return;
 
@@ -132,7 +99,6 @@ export default function Homepage() {
       const tl_12 = gsap.timeline({});
       const tl_13 = gsap.timeline({});
       const tl_14 = gsap.timeline({});
-      const tl_15 = gsap.timeline({});
 
       tl_14.to('.hello-article', {
         opacity: 1,
@@ -314,7 +280,7 @@ export default function Homepage() {
         scrollTrigger: {
           trigger: '.right-div',
           pin: true,
-          start: 'top 75px',
+          start: `top ${navbarHeight}`,
           end: 'bottom bottom',
           endTrigger: '.projects-section',
         },
@@ -378,12 +344,13 @@ export default function Homepage() {
     };
   });
 
-  const [width, setWidth] = useState(0)
-  const [height, setHeight] = useState(0)
-    useEffect(() => {
-      setHeight(window.innerHeight)
-      setWidth(window.innerWidth)
-    }, [width, height])
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    setHeight(window.innerHeight);
+    setWidth(window.innerWidth);
+  }, [width, height]);
 
   const blobScale = useRef(1);
   const [scale, setScale] = useState(1);
@@ -403,55 +370,56 @@ export default function Homepage() {
           /**horizontal scroll anim */
         }
 
-        gsap.to(projects, {
-          // xPercent: -100 * (projects.length - 1),
-          x: () => -1 * (projectsSection?.scrollWidth - innerWidth),
-          ease: 'none',
-          // delay:3,
-          // duration: 5,
-          scrollTrigger: {
-            trigger: projectsSection,
-            pin: true,
-            start: 'top top',
-            scrub: 1,
-            // markers: true,
-            invalidateOnRefresh: true,
-            anticipatePin: 1,
-            refreshPriority: 1,
-            end: () => '+=' + projectsSection?.offsetWidth,
-            // end: () => '+=4000',
-            // end: () => '+=' + (proj?.offsetWidth - window.innerWidth),
-            // snap: {
-            //   snapTo: 0.33,
-            //   ease: 'expo.inOut',
-            //   delay: 0,
-            //   // duration: { min: 0.22, max: 0.31 },
-            // },
-            //!1st snap works better
-            //  snap: {
-            //    snapTo: 0.33,
-            //    duration: 0.02,
-            //    ease: 'power1.inOut',
-            //  },
-            //  snap: {
-            //    snapTo: 1 / (projects.length - 1),
-            //    inertia: false,
-            //    duration: { min: 0.1, max: 0.1 },
-            //  },
-            //*test snaps
-            //  snap: 1 / (projects.length - 1),
-            //     snap: {
-            // snapTo: 1 / (projects.length - 1),
-            // duration: { min: 0.22, max: 0.31 },
-            // delay: 0,
-            // ease: "sine.inOut",
-            //     },
+        !mobileMenu &&
+          gsap.to(projects, {
+            // xPercent: -100 * (projects.length - 1),
+            x: mobileMenu ? '' :  () => -1 * (projectsSection?.scrollWidth - innerWidth),
+            ease: 'none',
+            // delay:3,
+            // duration: 5,
+            scrollTrigger: {
+              trigger: projectsSection,
+              pin: mobileMenu ? false : true,
+              start: 'top top',
+              scrub: 1,
+              // markers: true,
+              invalidateOnRefresh: true,
+              anticipatePin: 1,
+              refreshPriority: 1,
+              end: () => '+=' + projectsSection?.offsetWidth,
+              // end: () => '+=4000',
+              // end: () => '+=' + (proj?.offsetWidth - window.innerWidth),
+              // snap: {
+              //   snapTo: 0.33,
+              //   ease: 'expo.inOut',
+              //   delay: 0,
+              //   // duration: { min: 0.22, max: 0.31 },
+              // },
+              //!1st snap works better
+              //  snap: {
+              //    snapTo: 0.33,
+              //    duration: 0.02,
+              //    ease: 'power1.inOut',
+              //  },
+              //  snap: {
+              //    snapTo: 1 / (projects.length - 1),
+              //    inertia: false,
+              //    duration: { min: 0.1, max: 0.1 },
+              //  },
+              //*test snaps
+              //  snap: 1 / (projects.length - 1),
+              //     snap: {
+              // snapTo: 1 / (projects.length - 1),
+              // duration: { min: 0.22, max: 0.31 },
+              // delay: 0,
+              // ease: "sine.inOut",
+              //     },
 
-            // onUpdate: () =>  {
-            //   console.log('update')
-            // }
-          },
-        });
+              // onUpdate: () =>  {
+              //   console.log('update')
+              // }
+            },
+          });
       });
       return () => {
         ctx.revert();
@@ -535,8 +503,11 @@ export default function Homepage() {
   }, []);
 
   return (
-    <main className='container relative w-[100vw] h-full min-h-screen z-0 text-white portrait:w-[100vw]'>
-      <Navbar scrollToSection={scrollToSection} mobileMenu={mobileMenu} />
+    <main
+      id='home'
+      className='container relative w-[100vw] h-full min-h-screen z-0 text-white portrait:w-[100vw]'
+    >
+      <Navbar setNavbarHeight={setNavbarHeight} />
       <div
         // ref={blobScale}
         className='blob-wrapper hidden  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0  landscape:xshort:w-[100svw] landscape:xshort:h-[100svh]'
@@ -555,12 +526,10 @@ export default function Homepage() {
           <Blob mobileMenu={mobileMenu} />
         </Canvas>
       </div>
+
       {/**hero section */}
-      <section
-        id='home'
-        className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center md:-translate-y-[30%] md:pt-96 portrait:w-[100svw] portrait:h-[100vh] landscape:xshort:w-[100svw] landscape:xshort:h-[100svh]'
-      >
-        <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono text-[2.7vw] md:text-[1vw] opacity-0 portrait:fixed portrait:top-[37%]'>
+      <section className='hero-section  h-[100dvh] relative z-[100]  flex flex-col justify-center items-center md:-translate-y-[30%] md:pt-96 portrait:w-[100svw] portrait:h-[100vh] landscape:xshort:w-[100svw] landscape:xshort:h-[100svh]'>
+        <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono text-[.9rem] md:text-[1vw] opacity-0 portrait:fixed portrait:top-[36%]'>
           hello, i am
         </p>
         {/* <p className='text-[3rem] '>width: {width}, <br/>height: {height}</p> */}
@@ -571,9 +540,9 @@ export default function Homepage() {
           <Typewriter name='ANASTASIA LUKAVSKY' text='FULLSTACK DEVELOPER' />
         </h1>
 
-        <div className='hero-desc font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[3vw] pt-[1%] portrait:pt-3 portrait:w-full md:text-[1.2vw] 5xl:text-[1vw] opacity-0'>
+        <div className='hero-desc font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[.9rem] pt-[1%] portrait:pt-3 portrait:w-full md:text-[1.2vw] 5xl:text-[1vw] opacity-0'>
           <p>Crafting Digital Experiences from Front to Back</p>
-          <p> Bringing Ideas to Life with Code and Creativity</p>
+          <p>Bringing Ideas to Life with Code and Creativity</p>
         </div>
       </section>
       <ProgressBar mobileMenu={mobileMenu} />
@@ -589,7 +558,7 @@ export default function Homepage() {
               <div
                 className={` ${
                   mobileMenu
-                    ? 'h-[27%] w-[70vw] left-16 top-36'
+                    ? 'h-[29%] w-[70vw] left-16 top-56'
                     : 'h-[62%] w-[36vw]'
                 } pic-wrapper  bg-[#383838] absolute max-h-[53%] min-h-[37%] short:min-h-[71%]  3xl:min-h-[68%] 4xl:min-h-[68%] 5xl:min-h-[75%] 6xl:min-h-[76%] landscape:xshort:max-w-[27%] landscape:xshort:min-h-[60%] lg:min-h-[54%] 5xl:w-[27%] 5xl:left-[14%]`}
               ></div>
@@ -600,7 +569,7 @@ export default function Homepage() {
               />
             </div>
 
-            <p className='bio-text font-mono text-[#121212] w-full lowercase  md:pr-8 md:text-[1.5vw] 2xl:text-[1.2rem] leading-tight text-[.8rem] pt-5 portrait:ml-2 landscape:xshort:text-[.7rem] landscape:short:text-[.9rem]'>
+            <p className='bio-text font-mono text-[#121212] w-full lowercase  md:pr-8 md:text-[1.5vw] 2xl:text-[1.2rem] leading-tight text-[.9rem] pt-5 portrait:ml-2 landscape:xshort:text-[.7rem] landscape:short:text-[.9rem]'>
               I am a fullstack web developer based in Brooklyn, NY, with a keen
               eye for detail and a drive for creating exceptional digital
               experiences. My journey in web development has been an exciting
@@ -623,7 +592,7 @@ export default function Homepage() {
         {/* <span className='text-[5vw] h-fit md:hidden p-5 text-white'>//SKILLS</span> */}
         <div className='front-end-section  md:text-[1.3vw] 4xl:text-[1rem]   flex w-[100vw]'>
           <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:w-[90vw]'>
-            <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b portrait:w-[90vw] md:pb-20'>
+            <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2 border-b portrait:w-[91vw] md:pb-20'>
               <div className='flex flex-col  p-10 lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
                 <p className=' self-center portrait:pb-14 pb-5 text-[.9rem]'>
                   //front-end development
@@ -701,7 +670,7 @@ export default function Homepage() {
               </div>
             </div>
 
-            <div className='backend-div bg-[#292e2f]   min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 border-t portrait:w-[90svw] pt-36'>
+            <div className='backend-div bg-[#292e2f]   min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 border-t portrait:w-[91svw] pt-36'>
               <div className=' ft-section flex flex-col  p-10 lg:p-20 portrait:w-fit justify-center 5xl:items-center gap-2 xl:gap-10'>
                 <p className=' self-center portrait:pb-14 pb-5 text-[.9rem]'>
                   //back-end development
@@ -762,8 +731,8 @@ export default function Homepage() {
               </div>
             </div>
 
-            <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw] pt-36'>
-              <div className='ft-section flex flex-col  p-10 lg:p-20  portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
+            <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[91svw] pt-36'>
+              <div className='ft-section flex flex-col  p-10 lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
                 <p className='self-center portrait:pb-14 pb-5 text-[.9rem]'>
                   //devops and deployment
                 </p>
@@ -778,7 +747,7 @@ export default function Homepage() {
                     <img src={nginx} alt='Nginx' className='w-14 5xl:w-20 ' />
                   </li>
                   <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
-                    <img src={docker} alt='Docker' className='w-14 5xl:w-20 ' />
+                    <img src={docker} alt='Docker' className='w-14 5xl:w-20' />
                   </li>
                   <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
                     <img
@@ -791,8 +760,8 @@ export default function Homepage() {
               </div>
             </div>
 
-            <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[90svw] pt-36'>
-              <div className='ft-section flex flex-col p-10  lg:p-20  portrait:w-fit  justify-center 5xl:items-center gap-2 xl:gap-10'>
+            <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[91svw] pt-36'>
+              <div className='ft-section flex flex-col p-10  lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
                 <p className='self-center portrait:pb-14 pb-5 text-[.9rem]'>
                   //misc
                 </p>
@@ -823,27 +792,27 @@ export default function Homepage() {
           </div>
 
           {/**blob placement section */}
-          <div className=' skills-section right-div  border-l   md:basis-1/2 hidden     h-screen   md:flex w-fit items-center bg-white'></div>
+          <div className=' skills-section right-div  border-l   md:basis-1/2 hidden     h-screen   md:flex w-full  items-center bg-white'></div>
         </div>
       </section>
       {/**projects section */}
 
       <section
         id='projects-section-scroll-to'
-        className='projects-section flex pt-[11dvh]  xshort:pt-[13dvh] z-[150] relative bg-[#292e2f] overflow-x-hidden  portrait:pt-14 w-[100vw] portrait:flex-col portrait:pb-[15vh]'
+        className='projects-section flex pt-[11dvh] portrait:pt-[20dvh] xshort:pt-[13dvh] z-[150] landscape:relative bg-[#292e2f] landscape:overflow-x-hidden w-[100vw] portrait:flex-col portrait:pb-[15vh] '
       >
-        <div className='proj-try flex flex-none  overflow-x-scroll portrait:flex-col portrait:overflow-x-hidden portrait:gap-56'>
-          <div className='projects  h-screen w-[100vw] flex pt-2 justify-center  pl-10 portrait:w-[100svw] portrait:min-h-screen portrait:h-[1450px]  portrait:flex-col portrait:pl-0'>
-            <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]    gap-3 lg:gap-5 p-4 xshort:p-2 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw] bg-pink-200   portrait:h-[2600px] '>
-              <div className=" md:h-full portrait:bg-cover  bg-cover 3xl:bg-contain 5xl:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:basis-full portrait:min-h-[60svh] portrait:h-full bg-green-200"></div>
+        <div className='proj-try flex flex-none  landscape:overflow-x-scroll portrait:flex-col  portrait:gap-44 bg-red-600 portrait:min-h-full'>
+          <div className='projects landscape:h-screen w-[100vw] flex pt-2 justify-center  pl-10 portrait:w-[100svw]  portrait:min-h-full portrait:flex-col portrait:pl-0'>
+            <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212] gap-3 lg:gap-5 p-4 xshort:p-2 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw] bg-pink-200   portrait:h-[190vh]'>
+              <div className=" md:h-full portrait:bg-contain  bg-cover 3xl:bg-contain 5xl:bg-cover  bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:basis-full portrait:max-h-[66svh] portrait:w-full  portrait:aspect-[1/3]  bg-green-200"></div>
 
-              <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
+              <div className='basis-1/2 portrait:basis-full h-fit portrait:h-full'>
                 <ProjectHeaderWrapper
                   projectName='ASTORIA'
                   link='https://astoriaskincare.co/'
                 />
 
-                <div className='font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5   max-h-[69svh] min-h-[69svh] lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around   bg-sky-200 portrait:min-h-[95svh] '>
+                <div className='font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5   max-h-[69svh] min-h-[69svh] lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around   bg-sky-200 portrait:min-h-[115svh]'>
                   <ProjectWrapper
                     frontEnd={[
                       'React',
@@ -884,16 +853,16 @@ export default function Homepage() {
             </div>
           </div>
 
-          <div className='projects  h-screen w-[100vw] flex pt-2 justify-center  pl-10 portrait:w-[100svw]  portrait:min-h-[1450px]  portrait:flex-col portrait:pl-0'>
-            <div className='w-[90vw]  h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-black  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw] bg-pink-200   portrait:h-[2500px]'>
-              <div className=" md:h-full portrait:bg-cover bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1-q30.webp')]  portrait:basis-full portrait:min-h-[60svh] portrait:h-full"></div>
+          <div className='projects  landscape:h-screen w-[100vw] flex pt-2 justify-center  pl-10 portrait:w-[100svw]  portrait:min-h-full  portrait:flex-col portrait:pl-0'>
+            <div className='w-[90vw]  h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw] bg-orange-200   portrait:h-[200vh]'>
+              <div className=" md:h-full portrait:bg-contain bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/mock_plants1-q30.webp')]  portrait:basis-full  portrait:max-h-[66svh] portrait:w-full  portrait:aspect-[1/3]  bg-green-200"></div>
 
               <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
                 <ProjectHeaderWrapper
                   projectName='PLANTS&CO 2.0'
                   link='https://www.plantsandco.shop/'
                 />
-                <div className=' font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10   4xl:self-center  max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around portrait:min-h-[90svh] portrait:pl-5 '>
+                <div className=' font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10   4xl:self-center  max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around portrait:min-h-[115svh] portrait:pl-5  bg-sky-200 '>
                   {/* <p className='text-center md:text-[1rem] lg:text-[1.2rem] 2xl:text-[2rem] text-[5vw] pt-5 md:pt-0 short:text-[1.6rem]'>
                   PLANTS&CO 2.0
                 </p>
@@ -943,18 +912,16 @@ export default function Homepage() {
             </div>
           </div>
 
-          <div className='projects h-screen w-[100vw] flex pt-2 justify-center pl-10 portrait:w-[100svw]  portrait:min-h-[1450px]  portrait:flex-col portrait:pl-0'>
-            <div className='w-[90vw]   h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-black  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw] bg-pink-200   portrait:h-[2500px]'>
-              <div className=" md:h-full  bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:basis-full portrait:min-h-[60svh] portrait:h-full"></div>
+          <div className='projects landscape:h-screen w-[100vw] flex pt-2 justify-center pl-10 portrait:w-[100svw]  portrait:min-h-full  portrait:flex-col portrait:pl-0'>
+            <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw] bg-pink-200   portrait:h-[200vh]'>
+              <div className=" md:h-full portrait:bg-contain  bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/mock3-q30.webp')] portrait:basis-full portrait:max-h-[66svh] portrait:w-full  portrait:aspect-[1/3]  bg-green-200"></div>
 
               <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
                 <ProjectHeaderWrapper
                   projectName='SHHROOM 3.0'
                   link='https://shhroom.live/'
                 />
-                <div className=' font-mono text-[#121212]   flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around portrait:min-h-[90svh] portrait:pl-5'>
-          
-
+                <div className=' font-mono text-[#121212]   flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh]  xshort:justify-around portrait:min-h-[115svh] bg-sky-300 portrait:pl-5'>
                   <ProjectWrapper
                     description="SHHROOM 3.0 is a collaborative project that evolved from its
                   early versions during development, culminating in its recent
@@ -1002,16 +969,16 @@ export default function Homepage() {
             </div>
           </div>
 
-          <div className='projects h-screen w-[100vw] flex pt-2 justify-center portrait:w-[100svw]  portrait:min-h-[1450px]  portrait:flex-col portrait:pl-0'>
-            <div className='w-[90vw]  h-[85dvh]  xshort:h-[80dvh] md:flex  flex border border-black xshort:p-2 gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw] bg-pink-200   portrait:h-[2700px]'>
-              <div className=" md:h-full bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/lb_mockup-q30.webp')] portrait:basis-full portrait:min-h-[55svh] portrait:h-full "></div>
+          <div className='projects landscape:h-screen w-[100vw] flex pt-2 justify-center portrait:w-[100svw]  portrait:min-h-full portrait:flex-col portrait:pl-0'>
+            <div className='w-[90vw]  h-[85dvh]  xshort:h-[80dvh] md:flex  flex border border-[#121212] xshort:p-2 gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-0 xl:gap-8   3xl:px-20 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw] bg-pink-200   portrait:h-[200vh]'>
+              <div className=" md:h-full portrait:bg-contain bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 bg-[url('/public/bg/lb_mockup-q30.webp')] portrait:basis-full portrait:max-h-[66svh] portrait:w-full  portrait:aspect-[1/3]  bg-green-200 "></div>
 
               <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
                 <ProjectHeaderWrapper
                   projectName='LUNCH BUDDY 2.0'
                   link='https://lunchbuddy.co/'
                 />
-                <div className=' font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh] xshort:justify-around portrait:min-h-[90svh] portrait:pl-5'>
+                <div className=' font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[72svh] lg:max-h-[72svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[30svh] short:max-h-[30svh] xshort:justify-around bg-sky-200 portrait:min-h-[115svh] portrait:pl-5'>
                   <ProjectWrapper
                     description="LUNCH BUDDY 2.0 revolutionizes lunchtime networking for busy
                   individuals, facilitating meaningful connections during brief
@@ -1073,7 +1040,10 @@ export default function Homepage() {
                 let's connect
               </p>
               <a
-                id='link'
+                id='linkedIn-link'
+                role='link'
+                accessKey='l'
+                aria-label='LinkedIn'
                 href='https://www.linkedin.com/in/anastasialukavsky/'
                 target='_blank'
                 rel='noopener noreferrer'
@@ -1082,7 +1052,10 @@ export default function Homepage() {
                 <img src={linkedin} alt='' className=' md:w-[4vw] w-[10vw]' />
               </a>
               <a
-                id='link'
+                id='github-link'
+                role='link'
+                accessKey='h'
+                aria-label='GitHub'
                 href='https://github.com/anastasialukavsky'
                 target='_blank'
                 rel='noopener noreferrer'
@@ -1091,7 +1064,10 @@ export default function Homepage() {
                 <img src={github} alt='' className='md:w-[4vw] w-[11vw]' />
               </a>
               <img
-                id='link'
+                id='gmail-link'
+                role='link'
+                accessKey='g'
+                aria-label='Gmail'
                 src={gmail}
                 alt=''
                 className=' md:w-[4vw] w-[10vw] hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'
