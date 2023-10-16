@@ -211,9 +211,9 @@ export default function ProjectStack({
   return (
     <article
       ref={stackRef}
-      className=' border border-[#121212] h-full w-full 6xl:mb-36 portrait:h-fit'
+      className=' border border-[#121212] landscape:h-full w-full 6xl:mb-36 portrait:h-fit'
     >
-      <section className='h-full w-full p-2 lg:p-2 xl:p-5 overflow-hidden xshort:p-1'>
+      <section className='h-full w-full p-2 lg:p-2 xl:p-5 overflow-hidden xshort:p-1 portrait:h-fit'>
         <h2 className='text-center pb-3 2xl:pb-5 text-[.7rem] font-bold lg:text-[.8rem] xl:text-[1rem] 4xl:text-[1.1rem] 5xl:text-[1.2rem] portrait:text-[1.1rem] portrait:pt-4 portrait:pb-6'>
           //front-end
         </h2>
