@@ -88,7 +88,7 @@ export default function ProjectDescription({
         <>
           {shortDescription}
           <span
-            className='font-black underline '
+            className='font-bold underline '
             onClick={handleFullDescription}
           >
             see more
@@ -98,7 +98,7 @@ export default function ProjectDescription({
         <>
           {fullDescription}
           <span
-            className='font-black underline'
+            className='font-bold underline'
             onClick={handleFullDescription}
           >
             see less
