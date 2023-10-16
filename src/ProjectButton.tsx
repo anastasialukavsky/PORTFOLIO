@@ -10,6 +10,8 @@ export default function ProjectButton({ link }: ProjectBtnProps) {
     <div className='cursor-pointer flex  w-fit self-end h-fit items-center align-baseline pb-2 xl:pb-4 4xl:pb-8 5xl:pr-[8%] 6xl:pb-0 6xl:pr-[9%] portrait:pt-3 portrait:pb-5'>
       <a
         id={link}
+        role='link'
+        aria-label={link}
         href={link}
         target='_blank'
         rel='noopener noreferrer'
