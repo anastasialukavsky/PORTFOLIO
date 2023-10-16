@@ -142,8 +142,8 @@ export default function ProjectStack({
   // }, [stackContentHeight]);
 
 
-  console.log(shortDescriptionHeight)
-  console.log(fullDescriptionHeight)
+  // console.log(shortDescriptionHeight)
+  // console.log(fullDescriptionHeight)
   useLayoutEffect(() => {
     if (!currentHeight) return;
 
@@ -191,7 +191,7 @@ export default function ProjectStack({
         return (
           <li
             key={item}
-            className='place-self-center flex flex-col justify-between  gap-2  w-full items-center h-full'
+            className='place-self-center flex flex-col justify-between  gap-2  w-full items-center h-full portrait:h-fit'
           >
             <img
               src={logoIcon}
