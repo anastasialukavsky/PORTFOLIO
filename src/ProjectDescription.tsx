@@ -83,7 +83,7 @@ export default function ProjectDescription({
   // console.log('diff', heightDifference);
 
   return (
-    <article ref={descRef} className='stack-content w-full h-fit lg:text-[.8rem] xl:text-[.9rem] 4xl:text-[1rem] text-[.6rem] 6xl:text-[1.1rem] leading-tight 2xl:leading-normal portrait:text-[1rem] portrait:pl-2'>
+    <article ref={descRef} className='stack-content w-full h-fit lg:text-[.8rem] xl:text-[.9rem] 4xl:text-[1rem] text-[.6rem] 6xl:text-[1.1rem] leading-tight 2xl:leading-normal portrait:text-[1rem] portrait:pl-2 portrait:h-full'>
       {toggleDesc ? (
         <>
           {shortDescription}
