@@ -1,5 +1,12 @@
-import React, { useState, useEffect, useRef, SetStateAction, useLayoutEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  SetStateAction,
+  useLayoutEffect,
+} from 'react';
 import { gsap } from 'gsap';
+import { setQuaternionFromProperEuler } from 'three/src/math/MathUtils.js';
 
 export type ProjectDescProps = {
   description: string;
@@ -9,7 +16,7 @@ export type ProjectDescProps = {
   isFullDescription: boolean;
   setShortDescriptionHeight: React.Dispatch<React.SetStateAction<number>>;
   shortDescriptionHeight: number;
-  fullDescriptionHeight:number
+  fullDescriptionHeight: number;
   setFullDescriptionHeight: React.Dispatch<React.SetStateAction<number>>;
 };
 export default function ProjectDescription({
@@ -22,8 +29,9 @@ export default function ProjectDescription({
   shortDescriptionHeight,
   setFullDescriptionHeight,
   setShortDescriptionHeight,
+
 }: ProjectDescProps) {
-  const [toggleDesc, setToggleDesc] = useState(true);
+  const [toggleDesc, setToggleDesc] = useState(false);
   const descRef = useRef<HTMLDivElement>(null);
 
   //set initial projectHeight to 0
@@ -36,8 +44,11 @@ export default function ProjectDescription({
     setIsFullDescription((prev) => !prev);
   };
 
-  console.log(isFullDescription)
   // useLayoutEffect(() => {
+  //   // console.log(isFullDescription)
+  //   console.log({projectDescHeight})
+  //   console.log({ shortDescriptionHeight });
+  //   console.log({ fullDescriptionHeight });
 
   //   if(isFullDescription) {
 
@@ -45,26 +56,54 @@ export default function ProjectDescription({
   //       gsap.to(descRef.current, {
   //         height: fullDescriptionHeight,
   //         ease: 'none',
-  //         duration: 1
+  //         duration: 2
   //       })
   //     })
   //     return () => ctx.revert()
   //   }
   // }, [isFullDescription])
 
+  // useLayoutEffect(() => {
+  //   if (!descRef.current) return;
 
+  //   if (isFullDescription) {
+  //     gsap.to(descRef.current, {
+  //       height: fullDescriptionHeight,
+  //       ease: 'power1.inOut', // Adjust the easing if needed
+  //       duration: 2,
+  //     });
+  //   } else {
+  //     gsap.to(descRef.current, {
+  //       height: shortDescriptionHeight,
+  //       ease: 'power1.inOut', // Adjust the easing if needed
+  //       duration: 2,
+  //     });
+  //   }
+  // }, [isFullDescription, shortDescriptionHeight, fullDescriptionHeight]);
   useEffect(() => {
     if (!descRef.current) return;
 
     if (toggleDesc) {
-      setProjectDescHeight(0);
+      setProjectDescHeight(descRef.current.getBoundingClientRect().height);
+
       setShortDescriptionHeight(descRef.current.getBoundingClientRect().height);
     } else {
-      setFullDescriptionHeight(descRef.current.getBoundingClientRect().height);
+      // setFullDescriptionHeight(descRef.current.getBoundingClientRect().height);
+
       setProjectDescHeight(heightDifference);
     }
   }, [toggleDesc, projectDescHeight]);
 
+
+
+  useEffect(() => {
+    
+      setTimeout(() => {
+        setToggleDesc(true);
+        setFullDescriptionHeight(descRef.current?.getBoundingClientRect().height || 0)
+      }, 100);
+  
+  }, []);
   // console.log(descRef.current)
   // console.log({ isFullDescription });
   // console.log({ shortDescriptionHeight });
@@ -83,7 +122,10 @@ export default function ProjectDescription({
   // console.log('diff', heightDifference);
 
   return (
-    <article ref={descRef} className='stack-content w-full h-fit lg:text-[.8rem] xl:text-[.9rem] 4xl:text-[1rem] text-[.6rem] 6xl:text-[1.1rem] leading-tight 2xl:leading-normal portrait:text-[1rem] portrait:pl-2 portrait:h-full'>
+    <article
+      ref={descRef}
+      className='desc-content w-full max-h-fit h-full lg:text-[.8rem] xl:text-[.9rem] 4xl:text-[1rem] text-[.6rem] 6xl:text-[1.1rem] leading-tight 2xl:leading-normal portrait:text-[1rem] portrait:pl-2 portrait:h-full overflow-hidden shrink-0'
+    >
       {toggleDesc ? (
         <>
           {shortDescription}
@@ -97,10 +139,7 @@ export default function ProjectDescription({
       ) : (
         <>
           {fullDescription}
-          <span
-            className='font-bold underline'
-            onClick={handleFullDescription}
-          >
+          <span className='font-bold underline' onClick={handleFullDescription}>
             see less
           </span>
         </>
