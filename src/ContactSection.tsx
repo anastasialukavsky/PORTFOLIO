@@ -6,13 +6,12 @@ import gmail from '../public/icons/gmail.svg';
 export default function ContactSection() {
 
 
-  
-  {
-    /**click handler for default email app */
-  }
+
+  //**   click handler for default email app */
   const handleEmailClick = () => {
     window.location.href = 'mailto:lukavskyanastasia@gmail.com';
   };
+
   return (
     <section
       id='contact'
