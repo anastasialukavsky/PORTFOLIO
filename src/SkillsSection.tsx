@@ -1,6 +1,4 @@
-import React from 'react'
 import github from '../public/icons/github.svg';
-// import gmail from '../public/icons/gmail.svg';
 import html from '../public/icons/html-1.svg';
 import adobePhotoshop from '../public/icons/adobe-photoshop.svg';
 import axios from '../public/icons/axios-1.svg';
@@ -22,7 +20,6 @@ import reactIcon from '../public/icons/react-2.svg';
 import reactNative from '../public/icons/react-native-1.svg';
 import redux from '../public/icons/redux.svg';
 import sequelize from '../public/icons/sequelize.svg';
-import stripe from '../public/icons/stripe-3.svg';
 import tailwind from '../public/icons/tailwind-css-2.svg';
 import threejs from '../public/icons/threejs-1.svg';
 import typescript from '../public/icons/ts-logo-512.svg';
@@ -31,6 +28,9 @@ import zod from '../public/icons/zod.svg';
 import postman from '../public/icons/postman.svg';
 import mongoose from '../public/icons/mongoose.svg';
 import express from '../public/icons/express-logo.svg';
+
+
+
 export default function SkillsSection() {
   return (
     <section
