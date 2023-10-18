@@ -7,7 +7,6 @@ export default function HeroSection() {
         <p className='hello-article self-end xs:pr-4 pr-[5%] font-mono text-[.9rem] md:text-[1vw] opacity-0 portrait:fixed portrait:top-[26%]'>
           hello, i am
         </p>
-        {/* <p className='text-[3rem] '>width: {width}, <br/>height: {height}</p> */}
         <h1
           id='text'
           className='anim-typewriter font-dida text-[6.7vw] z-[150] relative leading-none text-center portrait:text-[13.5vw]  portrait:self-center portrait:top-[29%] xshort:whitespace-nowrap portrait:fixed'
