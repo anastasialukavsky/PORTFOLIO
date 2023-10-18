@@ -3,7 +3,8 @@ import { gsap } from 'gsap';
 import { CustomEase } from 'gsap/CustomEase';
 import Lenis from '@studio-freight/lenis';
 import { ScrollToPlugin } from 'gsap/all';
-import SplitType from 'split-type';
+import { useNavLinksAnimation } from './useNavLinksAnimation';
+// import SplitType from 'split-type';
 gsap.registerPlugin(CustomEase, ScrollToPlugin);
 
 export type NavbarProps = {
@@ -13,22 +14,14 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const testRef = useRef<HTMLAnchorElement>(null);
   const wrapperRef = useRef(null);
-  const navText = new SplitType('a.nav-text', { types: 'chars' });
   const navRef = useRef<HTMLElement | null>(null);
 
+  useNavLinksAnimation();
   useEffect(() => {
     const navHeight = navRef.current?.getBoundingClientRect().height;
     if (navHeight) setNavbarHeight(navHeight);
   }, []);
 
-  // const navTextAnchor = document.querySelector('a.nav-text');
-  // const navChars = navText.chars;
-  // console.log(navText);
-
-  // const navTextRefs = useRef<Array<HTMLAnchorElement | null>>([]);
-  // const handleRef = (index: number) => (el: HTMLAnchorElement | null) => {
-  //   navTextRefs.current[index] = el;
-  // };
   const lenis = new Lenis();
   const toggleMenu = () => {
     setIsMenuOpen((prevMenuOpen) => !prevMenuOpen);
@@ -99,46 +92,24 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
     }
   }, [wrapperRef.current, isMenuOpen]);
 
+  // const navTextRef = useRef<Array<HTMLAnchorElement | null>>([]);
   // const navTextRef = useRef<HTMLAnchorElement>(null);
 
-  const navTextRef = useRef<Array<HTMLAnchorElement | null>>([]);
 
-  // const handleRef = (idx: number) => (el: HTMLAnchorElement | null) => {
-  //   navTextRef.current[index] = el;
-  // };
 
-  // useEffect(() => {
-  //   const handleHover = (idx) => {
-  //     const navText = new SplitType('a.nav-text', { types: 'chars' });
 
-  //     const chars = navText.chars;
-  //     gsap.fromTo(
-  //       chars,
-  //       {
-  //         y: 100,
-  //         opacity: 0,
-  //       },
-  //       {
-  //         y: 0,
-  //         opacity: 1,
-  //         stagger: 0.05,
-  //         duration: 2,
-  //         ease: 'power4.out',
-  //       }
-  //     );
-  //   };
 
-  //   handleRef.current?.addEventListener('mouseover', handleHover(idx));
 
-  //   return () =>
-  //     navTextRef.current?.removeEventListener('mouseover', handleHover);
-  // }, [navTextRef.current]);
 
+
+
+
+ 
   useEffect(() => {
     if (!testRef?.current) return;
 
     const handleScroll = () => {
-      let y = testRef.current?.offsetHeight;
+      const y = testRef.current?.offsetHeight;
       const ctx = gsap.context(() => {
         gsap.to(window, {
           scrollTo: {
@@ -323,49 +294,40 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
         {/**primary nav */}
         <div className='hidden md:flex uppercase  gap-4 text-[1.3vw] xl:text-[1.1vw] absolute top-4 right-7 4xl:text-[.9vw] 5xl:text-[.7vw]'>
           <a
-            // ref={navTextRef}
             href='#home'
             onClick={() => lenis.scrollTo('#home')}
-            className='nav-text text-clip text-white font-mono'
+            className='nav-text text-clip text-white font-mono h-full'
           >
             home
           </a>
           <a
-            // ref={navTextRef}
-            // ref={textRef}
             href='#about'
             onClick={() => lenis.scrollTo('#about')}
-            className='nav-text text-white font-mono'
+            className='nav-text text-clip text-white font-mono'
           >
             about
           </a>
 
           <a
-            // ref={textRef}
-            // ref={navTextRef}
             href='#skills'
             onClick={() => lenis.scrollTo('#skills')}
-            className='nav-text text-white font-mono'
+            className='nav-text text-clip text-white font-mono'
           >
             skills
           </a>
 
           <a
-            // ref={textRef}
-            // ref={handleRef(0)}
             ref={testRef}
             href='#projects-section-scroll-to'
-            className='nav-text text-white font-mono'
+            className='nav-text text-clip text-white font-mono'
           >
             projects
           </a>
 
           <a
-            // ref={textRef}
-            // ref={navTextRef}
             href='#contact'
             onClick={() => lenis.scrollTo('#contacts')}
-            className='nav-text text-white font-mono'
+            className='nav-text text-clip text-white font-mono'
           >
             contact
           </a>
