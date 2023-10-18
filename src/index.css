@@ -21,7 +21,8 @@
 }
 
 .text-clip {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  perspective: 500px;
+  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
 }
 
 /* Blinking cursor animation */
