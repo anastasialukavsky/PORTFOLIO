@@ -32,7 +32,7 @@ export default function ProgressBar({ mobileMenu }: { mobileMenu: boolean }) {
         'about-section': '// who i am ',
         'skills-section': '// what i know',
         'projects-section': '// what i made',
-        'contact-section': '// hit me up',
+        'contact-section': '// get in touch',
       };
 
       const sections = Object.keys(sectionsText);
@@ -75,6 +75,7 @@ export default function ProgressBar({ mobileMenu }: { mobileMenu: boolean }) {
         gsap.to(progressRef.current, {
           top: '15%',
           ease: 'slow',
+          position: 'fixed',
           duration: 2,
           scrollTrigger: {
             trigger: aboutSection,
@@ -84,19 +85,6 @@ export default function ProgressBar({ mobileMenu }: { mobileMenu: boolean }) {
             // markers: true
           },
         });
-
-        // {mobileMenu &&
-        //   gsap.to('.progress-bar', {
-        //     top: '90%',
-        //     scrollTrigger: {
-        //       trigger: projects,
-        //       start: 'top 40%',
-        //       end: 'center center',
-        //       scrub: true,
-        //       // markers: true,
-        //     },
-        //   });
-        // }
 
         gsap.to('.hidden-dot', {
           display: 'block',
@@ -136,11 +124,11 @@ export default function ProgressBar({ mobileMenu }: { mobileMenu: boolean }) {
       aria-label='progress'
       aria-labelledby='progressbar'
       ref={progressRef}
-      className='progress-bar fixed top-3/4 left-0 min-h-screen z-[200] w-12 mix-blend-difference portrait:top-[120%]'
+      className='progress-bar fixed top-3/4 left-0 min-h-screen z-[200] w-12 mix-blend-difference'
     >
       <img src={whiteDot} alt='' className='w-2 ml-8' />
-      <div className='w-[1px]  min-h-screen ml-9 bg-white mix-blend-difference '>
-        <p className='top-[33%] -rotate-90 font-mono z-50 absolute   lg:top-[36%]  -left-16 lg:-left-[68px] w-44  uppercase  text-[.8rem] lg:text-[1rem]'>
+      <div className='w-[1px]  min-h-screen ml-9 bg-white mix-blend-difference'>
+        <p className='top-[33%] -rotate-90 font-mono z-50 absolute   lg:top-[36%]  -left-16 lg:-left-[68px] w-44  uppercase  text-[.8rem] lg:text-[1rem] '>
           {currentSectionText}
         </p>
       </div>
