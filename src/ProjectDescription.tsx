@@ -1,12 +1,11 @@
 import React, {
-  useState,
+  // useState,
   useEffect,
-  useRef,
-  SetStateAction,
   useLayoutEffect,
+  useImperativeHandle,
+  useRef,
 } from 'react';
 import { gsap } from 'gsap';
-import { setQuaternionFromProperEuler } from 'three/src/math/MathUtils.js';
 
 export type ProjectDescProps = {
   description: string;
@@ -18,132 +17,149 @@ export type ProjectDescProps = {
   shortDescriptionHeight: number;
   fullDescriptionHeight: number;
   setFullDescriptionHeight: React.Dispatch<React.SetStateAction<number>>;
+  toggleDesc: boolean;
+  setToggleDesc: React.Dispatch<React.SetStateAction<boolean>>;
+
+  // forwardedRef: React.RefObject<HTMLDivElement>;
 };
-export default function ProjectDescription({
-  description,
-  isFullDescription,
-  setIsFullDescription,
-  setProjectDescHeight,
-  projectDescHeight,
-  fullDescriptionHeight,
-  shortDescriptionHeight,
-  setFullDescriptionHeight,
-  setShortDescriptionHeight,
+const ProjectDescription = React.forwardRef(
+  (
+    {
+      description,
+      // projectDescHeight,
+      // setProjectDescHeight,
+      setIsFullDescription,
+      isFullDescription,
+      setShortDescriptionHeight,
+      shortDescriptionHeight,
+      fullDescriptionHeight,
+      setFullDescriptionHeight,
+      toggleDesc,
+      // isFullDescription,
+      setToggleDesc,
+    }: // projectDescHeight,
+    // setProjectDescHeight,
+    // forwardedRef,
+    ProjectDescProps,
+    ref
+  ) => {
 
-}: ProjectDescProps) {
-  const [toggleDesc, setToggleDesc] = useState(false);
-  const descRef = useRef<HTMLDivElement>(null);
-
-  //set initial projectHeight to 0
-
-  let shortDescription = description.slice(0, 200) + '...';
-  let fullDescription = description;
-
-  const handleFullDescription = () => {
-    setToggleDesc((prev) => !prev);
-    setIsFullDescription((prev) => !prev);
-  };
-
-  // useLayoutEffect(() => {
-  //   // console.log(isFullDescription)
-  //   console.log({projectDescHeight})
-  //   console.log({ shortDescriptionHeight });
-  //   console.log({ fullDescriptionHeight });
-
-  //   if(isFullDescription) {
-
-  //     const ctx = gsap.context(() => {
-  //       gsap.to(descRef.current, {
-  //         height: fullDescriptionHeight,
-  //         ease: 'none',
-  //         duration: 2
-  //       })
-  //     })
-  //     return () => ctx.revert()
-  //   }
-  // }, [isFullDescription])
-
-  // useLayoutEffect(() => {
-  //   if (!descRef.current) return;
-
-  //   if (isFullDescription) {
-  //     gsap.to(descRef.current, {
-  //       height: fullDescriptionHeight,
-  //       ease: 'power1.inOut', // Adjust the easing if needed
-  //       duration: 2,
-  //     });
-  //   } else {
-  //     gsap.to(descRef.current, {
-  //       height: shortDescriptionHeight,
-  //       ease: 'power1.inOut', // Adjust the easing if needed
-  //       duration: 2,
-  //     });
-  //   }
-  // }, [isFullDescription, shortDescriptionHeight, fullDescriptionHeight]);
-  useEffect(() => {
-    if (!descRef.current) return;
-
-    if (toggleDesc) {
-      setProjectDescHeight(descRef.current.getBoundingClientRect().height);
-
-      setShortDescriptionHeight(descRef.current.getBoundingClientRect().height);
-    } else {
-      // setFullDescriptionHeight(descRef.current.getBoundingClientRect().height);
-
-      setProjectDescHeight(heightDifference);
-    }
-  }, [toggleDesc, projectDescHeight]);
-
-
-
-  useEffect(() => {
     
-      setTimeout(() => {
-        setToggleDesc(true);
-        setFullDescriptionHeight(descRef.current?.getBoundingClientRect().height || 0)
-      }, 100);
-  
-  }, []);
-  // console.log(descRef.current)
-  // console.log({ isFullDescription });
-  // console.log({ shortDescriptionHeight });
-  // console.log({ fullDescriptionHeight });
-  // console.log({ shortDescription });
-  // console.log({ fullDescription });
+    const shortDescription = description.slice(0, 200) + '...';
+    const fullDescription = description;
+    const localDescRef = useRef<HTMLDivElement>(null);
 
-  const heightDifference = fullDescriptionHeight - shortDescriptionHeight;
-  // console.log({ heightDifference });
+    const handleDescriptionToggle = () => {
+      // setToggleDesc(true);
+      setToggleDesc((prev) => !prev);
+      // setIsFullDescription((prev) => !prev);
+      // setIsFullDescription(true);
+    };
 
-  // console.log({projectDescHeight})
-  // useEffect(() => {
-  //   // setProjectDescHeight(heightDifference);
-  //   // console.log({ heightDifference });
-  // }, [heightDifference, projectDescHeight]);
-  // console.log('diff', heightDifference);
+    // const handleFullToggle = () => {
+    //   setTimeout(() => {
+    //     setToggleDesc(false);
+    //     setIsFullDescription(false);
+    //   }, 500);
+    // };
 
-  return (
-    <article
-      ref={descRef}
-      className='desc-content w-full max-h-fit h-full lg:text-[.8rem] xl:text-[.9rem] 4xl:text-[1rem] text-[.6rem] 6xl:text-[1.1rem] leading-tight 2xl:leading-normal portrait:text-[1rem] portrait:pl-2 portrait:h-full overflow-hidden shrink-0'
-    >
-      {toggleDesc ? (
-        <>
-          {shortDescription}
-          <span
-            className='font-bold underline '
-            onClick={handleFullDescription}
-          >
-            see more
-          </span>
-        </>
-      ) : (
-        <>
-          {fullDescription}
-          <span className='font-bold underline' onClick={handleFullDescription}>
-            see less
-          </span>
-        </>
-      )}
-    </article>
-  );
-}
+    useImperativeHandle(ref, () => localDescRef.current);
+
+    //*desc height setters
+    useEffect(() => {
+      if (!localDescRef.current) return;
+      if (!toggleDesc) {
+        setShortDescriptionHeight(
+          localDescRef.current.getBoundingClientRect().height
+        );
+        setIsFullDescription(false);
+      } else {
+        setFullDescriptionHeight(
+          localDescRef.current.getBoundingClientRect().height
+        );
+        setIsFullDescription(true);
+      }
+    }, []);
+
+    // console.log({ isFullDescription });
+
+
+
+
+    //*desc anim
+    useLayoutEffect(() => {
+      if (!localDescRef.current || !shortDescriptionHeight) return;
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({});
+
+        if (toggleDesc) {
+
+          setIsFullDescription(true)
+
+          tl.fromTo(
+            localDescRef.current,
+            {
+              maxHeight: shortDescriptionHeight + 'px',
+            },
+            {
+              maxHeight: '100dvh',
+              ease: 'power1.in',
+              duration: 1.5,
+            }
+          );
+          
+          
+
+          
+        } else if (!toggleDesc) {
+          tl.fromTo(
+            localDescRef.current,
+            {
+              maxHeight: '60dvh',
+            },
+            {
+              ease: 'power1',
+              duration: .7,
+              maxHeight: shortDescriptionHeight + 'px',
+              onComplete: () => setIsFullDescription(false),
+            }
+          );
+        }
+      });
+
+      return () => ctx.revert();
+    }, [toggleDesc, shortDescriptionHeight]);
+
+
+
+    return (
+      <div
+        ref={localDescRef}
+        className='desc-content w-full max-h-fit  h-full lg:text-[.8rem] xl:text-[.9rem]  2xl:text-[1rem] text-[.7rem] 6xl:text-[1.1rem] leading-tight 2xl:leading-normal portrait:text-[1rem] portrait:pl-2 portrait:h-full overflow-hidden shrink-0 2xl:py-1 short:leading-tight short:text-[.9rem] xshort:leading-3 xshort:text-[.7rem]'
+      >
+        {isFullDescription ? (
+          <>
+            {fullDescription}
+            <span
+              className='font-bold underline cursor-pointer'
+              onClick={handleDescriptionToggle}
+            >
+              see less
+            </span>
+          </>
+        ) : (
+          <>
+            {shortDescription}
+            <span
+              className='font-bold underline cursor-pointer'
+              onClick={handleDescriptionToggle}
+            >
+              see more
+            </span>
+          </>
+        )}
+      </div>
+    );
+  }
+);
+export default ProjectDescription;
