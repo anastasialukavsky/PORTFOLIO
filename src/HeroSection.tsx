@@ -14,7 +14,7 @@ export default function HeroSection() {
           <Typewriter name='ANASTASIA LUKAVSKY' text='FULLSTACK DEVELOPER' />
         </h1>
 
-        <div className='hero-desc font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[.9rem] pt-[1%] portrait:pt-0 portrait:w-full md:text-[1.4vw] 5xl:text-[1vw] opacity-0 '>
+        <div className='hero-desc font-mono self-start pl-[7%] lowercase xs:w-[70%] md:w-[38%] portrait:text-[.9rem] pt-[1%] portrait:pb-5 portrait:w-full md:text-[1.4vw] 5xl:text-[1vw] opacity-0 '>
           <p>Crafting Digital Experiences from Front to Back</p>
           <p>Bringing Ideas to Life with Code and Creativity</p>
         </div>
