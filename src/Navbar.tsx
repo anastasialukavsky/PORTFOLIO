@@ -3,7 +3,10 @@ import { gsap } from 'gsap';
 import { CustomEase } from 'gsap/CustomEase';
 import Lenis from '@studio-freight/lenis';
 import { ScrollToPlugin } from 'gsap/all';
-import { useNavLinksAnimation } from './useNavLinksAnimation';
+import linkedin from '../public/icons/linkedin.svg';
+import github from '../public/icons/github.svg';
+import gmail from '../public/icons/gmail.svg';
+// import { useNavLinksAnimation } from './useNavLinksAnimation';
 // import SplitType from 'split-type';
 gsap.registerPlugin(CustomEase, ScrollToPlugin);
 
@@ -15,8 +18,10 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
   const testRef = useRef<HTMLAnchorElement>(null);
   const wrapperRef = useRef(null);
   const navRef = useRef<HTMLElement | null>(null);
+  const backdropRef = useRef(null);
+  const iconRef = useRef(null);
 
-  useNavLinksAnimation();
+  // useNavLinksAnimation();
   useEffect(() => {
     const navHeight = navRef.current?.getBoundingClientRect().height;
     if (navHeight) setNavbarHeight(navHeight);
@@ -37,9 +42,16 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
       const ctx = gsap.context(() => {
         const tl = gsap.timeline({});
 
-        tl.to(wrapperRef.current, {
+        tl.to(backdropRef.current, {
+          width: '100%',
           x: '0%',
-          // backdropFilter: 'blur(20px)',
+          ease: 'sine.inOut',
+          duration: 0.5,
+          backdropFilter: 'blur(100px)',
+        });
+
+        tl.to(wrapperRef.current, {
+          x: '15%',
           duration: 0.55,
           ease: 'expo',
         });
@@ -57,54 +69,25 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
           },
           'wrapperRef.current-=.4'
         );
-
-        tl.from('.logo', {
-          // scale: 1.4,
-          opacity: 0,
-
-          height: 0,
-          overflow: 'hidden',
-          yPercent: 100,
-          ease: 'expo',
+        tl.to(iconRef.current, {
+          //  delay: 1,
+          display: 'flex',
+          height: '23%',
+          // ease: 'power4.inOut',
           duration: 0.6,
-          // delay: .01
+          // stagger: 3
         });
       });
 
       return () => ctx.revert();
-    } else if (!isMenuOpen) {
-      const ctx = gsap.context(() => {
-        const tl = gsap.timeline({});
-
-        tl.from(
-          wrapperRef.current,
-          {
-            duration: 0.55,
-            x: '0%',
-            ease: 'expo',
-          },
-          '<'
-        );
-      });
-      return () => {
-        ctx.revert();
-      };
-    }
+    
+  }
+ 
+  
+    
   }, [wrapperRef.current, isMenuOpen]);
 
-  // const navTextRef = useRef<Array<HTMLAnchorElement | null>>([]);
-  // const navTextRef = useRef<HTMLAnchorElement>(null);
 
-
-
-
-
-
-
-
-
-
- 
   useEffect(() => {
     if (!testRef?.current) return;
 
@@ -165,6 +148,7 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
   const textRevealClasses =
     'text-reveal inline-block h-[5.5%] overflow-visible font-logo text-[10vw]';
 
+
   return (
     <nav
       ref={navRef}
@@ -181,6 +165,7 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
           onClick={() => {
             lenis.scrollTo('#home');
             toggleMenu();
+            animateHamburgerToX();
           }}
         >
           <p className='logo inline-block overflow-visible font-logo  text-[3.5rem] lg:text-[5rem] leading-none xshort:text-[3rem] z-[20] relative h-full w-fit'>
@@ -190,7 +175,7 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
 
         {/**mobile nav hamburger */}
         <svg
-          className='z-[260] pt-3  md:hidden w-fit h-fit'
+          className='z-[260] pt-3  landscape:hidden portrait:w-32 portrait:h-16'
           onClick={() => {
             toggleMenu();
             animateHamburgerToX();
@@ -223,76 +208,124 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
         </svg>
 
         {/**mobile nav dropdown */}
-
         <div
-          ref={wrapperRef}
-          className='md:hidden absolute  top-0 left-0 h-[100dvh] w-[100svw] backdrop-blur-0  portrait:bg-[#353b3c]  opacity-[99%] z-[250] transform translate-x-full '
+          ref={backdropRef}
+          className='bg-black/50 w-0 h-[100dvh] absolute left-0 top-0 landscape:hidden -translate-x-full    '
         >
-          <div className='flex flex-col items-center justify-center h-full'>
-            <a
-              href='#home'
-              className={`${textRevealClasses} fixed  top-[35%]`}
-              onClick={() => {
-                lenis.scrollTo('#home');
-                toggleMenu();
-              }}
-            >
-              <span className='self-start text-[3vw] pr-2 '>00</span>
-              HOME
-            </a>
+          <div
+            ref={wrapperRef}
+            className="landscape:hidden  absolute  top-0 left-0 portrait:h-[100dvh] portrait:w-[100svw] backdrop-blur-0  portrait:bg-[url('/bg/wrapper_blur_noise.svg')]  opacity-[80%] z-[250] transform translate-x-full"
+          >
+            <div className='flex flex-col items-center justify-center h-fit'>
+              <a
+                href='#home'
+                className={`${textRevealClasses} fixed  top-[35%]`}
+                onClick={() => {
+                  lenis.scrollTo('#home');
+                  toggleMenu();
+                  animateHamburgerToX();
+                }}
+              >
+                <span className='self-start text-[3vw] pr-2 '>00</span>
+                HOME
+              </a>
 
-            <a
-              href='#about'
-              className={`${textRevealClasses} fixed  top-[41%]`}
-              onClick={() => {
-                lenis.scrollTo('#about');
-                toggleMenu();
-              }}
-            >
-              <span className='self-start text-[3vw] pr-2 '>01</span>
-              ABOUT
-            </a>
+              <a
+                href='#about'
+                className={`${textRevealClasses} fixed  top-[41%]`}
+                onClick={() => {
+                  lenis.scrollTo('#about');
+                  toggleMenu();
+                  animateHamburgerToX();
+                }}
+              >
+                <span className='self-start text-[3vw] pr-2 '>01</span>
+                ABOUT
+              </a>
 
-            <a
-              href='#skills'
-              className={`${textRevealClasses} fixed  top-[47%]`}
-              onClick={() => {
-                lenis.scrollTo('#skills');
-                toggleMenu();
-              }}
-            >
-              <span className='self-start text-[3vw] pr-2'>02</span>
-              SKILLS
-            </a>
+              <a
+                href='#skills'
+                className={`${textRevealClasses} fixed  top-[47%]`}
+                onClick={() => {
+                  lenis.scrollTo('#skills');
+                  toggleMenu();
+                  animateHamburgerToX();
+                }}
+              >
+                <span className='self-start text-[3vw] pr-2'>02</span>
+                SKILLS
+              </a>
 
-            <a
-              href='#projects-section-scroll-to'
-              className={`${textRevealClasses} fixed  top-[53%]`}
-              onClick={() => {
-                lenis.scrollTo('#projects-section-scroll-to');
-                toggleMenu();
-              }}
-            >
-              <span className='self-start text-[3vw] pr-2'>03</span>
-              PROJECTS
-            </a>
+              <a
+                href='#projects-section-scroll-to'
+                className={`${textRevealClasses} fixed  top-[53%]`}
+                onClick={() => {
+                  lenis.scrollTo('#projects-section-scroll-to');
+                  toggleMenu();
+                  animateHamburgerToX();
+                }}
+              >
+                <span className='self-start text-[3vw] pr-2'>03</span>
+                PROJECTS
+              </a>
 
+              <a
+                href='#contact'
+                className={`${textRevealClasses} fixed  top-[59%]`}
+                onClick={() => {
+                  lenis.scrollTo('#contacts');
+                  toggleMenu();
+                  animateHamburgerToX();
+                }}
+              >
+                <span className='self-start text-[3vw] pr-2'>04</span>
+                CONTACT
+              </a>
+            </div>
+          </div>
+          <div
+            ref={iconRef}
+            className='absolute bottom-5 flex-col gap-6 left-3 h-0 hidden'
+          >
             <a
-              href='#contact'
-              className={`${textRevealClasses} fixed  top-[59%]`}
-              onClick={() => {
-                lenis.scrollTo('#contacts');
-                toggleMenu();
-              }}
+              id='linkedIn-link'
+              role='link'
+              accessKey='l'
+              aria-label='LinkedIn'
+              href='https://www.linkedin.com/in/anastasialukavsky/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='w-10'
             >
-              <span className='self-start text-[3vw] pr-2'>04</span>
-              CONTACT
+              <img src={linkedin} alt='' className='' />
             </a>
+            <a
+              id='github-link'
+              role='link'
+              accessKey='h'
+              aria-label='GitHub'
+              href='https://github.com/anastasialukavsky'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='w-10'
+            >
+              <img src={github} alt='' className='' />
+            </a>
+            <img
+              id='gmail-link'
+              role='link'
+              accessKey='g'
+              aria-label='Gmail'
+              src={gmail}
+              alt=''
+              className=' w-10'
+              // onClick={handleEmailClick}
+            />
           </div>
         </div>
 
         {/**primary nav */}
-        <div className='hidden md:flex uppercase  gap-4 text-[1.3vw] xl:text-[1.1vw] absolute top-4 right-7 4xl:text-[.9vw] 5xl:text-[.7vw]'>
+        <div className='hidden landscape:flex uppercase  gap-4 text-[1.3vw] xl:text-[1.1vw] absolute top-4 right-7 4xl:text-[.9vw] 5xl:text-[.7vw]'>
           <a
             href='#home'
             onClick={() => lenis.scrollTo('#home')}
