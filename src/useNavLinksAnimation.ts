@@ -14,13 +14,13 @@ export function useNavLinksAnimation() {
 
      const handleHover = () => {
        gsap.set(chars, {
-         transformOrigin: 'center center -10px',
+         transformOrigin: 'center center -7px',
          backfaceVisibility: 'hidden',
        });
 
        gsap.to(chars, {
          rotationX: '360',
-         duration: 0.5,
+         duration: 0.7,
          stagger: 0.04,
          ease: 'slow.inOut',
        });
