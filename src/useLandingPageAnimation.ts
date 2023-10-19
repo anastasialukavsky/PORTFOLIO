@@ -87,26 +87,30 @@ export function useLandingPageAnimation(mobileMenu:boolean, navbarHeight: number
       {
         /**about section pic anim */
       }
-      {
-        !mobileMenu &&
-          tl_09.from('.pic', {
-            // height: '100dvh',
-            scale: 1.1,
-            // opacity: 0,
-            // width: '800%',
-            // aspectRatio: '4/5',
-            xPercent: 70,
-            ease: 'expo.inOut',
-            duration: 1,
-            scrollTrigger: {
-              trigger: '.about-section',
-              start: 'top 7%',
-              end: 'center 90%',
-              scrub: 4,
-              // pin: true,
-              // markers: true,
-            },
-          });
+      
+      if(mobileMenu) {
+        return
+      } else {
+
+        tl_09.from('.pic', {
+          // height: '100dvh',
+          scale: 1.1,
+          // opacity: 0,
+          // width: '800%',
+          // aspectRatio: '4/5',
+          xPercent: 70,
+          ease: 'expo.inOut',
+          duration: 1,
+          scrollTrigger: {
+            trigger: '.about-section',
+            start: 'top 7%',
+            end: 'center 90%',
+            scrub: 4,
+            // pin: true,
+            // markers: true,
+          },
+        });
+        
       }
       tl_10.from('.bio-text', {
         opacity: 0,
