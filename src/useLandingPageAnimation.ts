@@ -1,11 +1,17 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
+export function useLandingPageAnimation(
+  mobileMenu: boolean,
+  navbarHeight: number
+) {
 
-export function useLandingPageAnimation(mobileMenu:boolean, navbarHeight: number) {
-    useLayoutEffect(() => {
+
+
+  // console.log({mobileMenu})
+  useLayoutEffect(() => {
     if (
       !document.querySelector('.hero-section') ||
       !document.querySelector('.about-section') ||
@@ -87,18 +93,15 @@ export function useLandingPageAnimation(mobileMenu:boolean, navbarHeight: number
       {
         /**about section pic anim */
       }
-      
-      if(mobileMenu) {
-        return
-      } else {
 
+   
         tl_09.from('.pic', {
           // height: '100dvh',
           scale: 1.1,
-          // opacity: 0,
+          // opacity: mobileMenu ?  0 : 1,
           // width: '800%',
           // aspectRatio: '4/5',
-          xPercent: 70,
+          xPercent: mobileMenu ? 10 : 70,
           ease: 'expo.inOut',
           duration: 1,
           scrollTrigger: {
@@ -110,8 +113,7 @@ export function useLandingPageAnimation(mobileMenu:boolean, navbarHeight: number
             // markers: true,
           },
         });
-        
-      }
+      
       tl_10.from('.bio-text', {
         opacity: 0,
         // xPercent: '10',
@@ -125,6 +127,8 @@ export function useLandingPageAnimation(mobileMenu:boolean, navbarHeight: number
           scrub: 4,
         },
       });
+
+
       tl_11.from('.pic-wrapper', {
         opacity: 0,
         xPercent: '10',
@@ -313,6 +317,5 @@ export function useLandingPageAnimation(mobileMenu:boolean, navbarHeight: number
     return () => {
       ctx.revert();
     };
-  }, []);
-
+  }, [mobileMenu]);
 }
