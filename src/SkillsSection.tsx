@@ -35,16 +35,16 @@ export default function SkillsSection() {
   return (
     <section
       id='skills'
-      className='skills-section font-mono  md:text-[1vw]  flex w-[100svw] bg-white  '
+      className="skills-section font-mono  md:text-[1vw]  flex w-[100svw]   bg-[url('/bg/skills_noise.svg')]"
     >
       <div className='front-end-section  md:text-[1.3vw] 4xl:text-[1rem]   flex w-[100vw]'>
-        <div className='flex flex-col w-full basis-0 md:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:w-[90vw]'>
-          <div className='frontend-div   min-h-[80dvh] w-[100vw]   md:w-full md:basis-1/2  portrait:w-[91vw] md:pb-20'>
+        <div className='flex flex-col min-w-[50vw] portrait:basis-0 landscape:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:w-[90vw]'>
+          <div className='frontend-div   min-h-[80dvh] w-fit   md:w-full md:basis-1/2  portrait:w-[91vw] md:pb-20'>
             <div className='flex flex-col  p-10 lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
-              <p className=' self-center portrait:pb-14 pb-5 text-[.9rem]'>
+              <p className=' self-center portrait:pb-14 pb-5 text-[.9rem] 4xl:text-[1rem] 5xl:text-[1.1rem]'>
                 //front-end development
               </p>
-              <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-24 w-full '>
+              <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14  '>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12 '>
                   <img src={html} alt='HTML' className='w-12 5xl:w-16 ' />
                 </li>
@@ -112,15 +112,19 @@ export default function SkillsSection() {
               </ul>
             </div>
           </div>
-          {/* bg-[#292e2f] */}
-          <div className='backend-div  border-t  min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2 portrait:w-[91svw] pt-36'>
+
+          <div className='backend-div  border-t  min-h-[80dvh] w-fit md:w-full md:basis-1/2 portrait:w-[91svw] pt-36'>
             <div className=' ft-section flex flex-col  p-10 lg:p-20 portrait:w-fit justify-center 5xl:items-center gap-2 xl:gap-10'>
-              <p className=' self-center portrait:pb-14 pb-5 text-[.9rem]'>
+              <p className=' self-center portrait:pb-14 pb-5 text-[.9rem] 4xl:text-[1rem] 5xl:text-[1.1rem]'>
                 //back-end development
               </p>
               <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14'>
-                <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12 mix-blend-difference'>
-                  <img src={nodejs} alt='NodeJS' className='w-16 5xl:w-20' />
+                <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12 '>
+                  <img
+                    src={nodejs}
+                    alt='NodeJS'
+                    className='w-16 5xl:w-24 mix-blend-difference'
+                  />
                 </li>
                 <li className='place-self-center  hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
                   <img
@@ -136,21 +140,21 @@ export default function SkillsSection() {
                   <img
                     src={postreSQL}
                     alt='PostgreSQL'
-                    className='w-14 5xl:w-20 '
+                    className='w-14 5xl:w-16 '
                   />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
                   <img
                     src={sequelize}
                     alt='Sequelize'
-                    className='w-14 5xl:w-20'
+                    className='w-14 5xl:w-16'
                   />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
                   <img
                     src={prisma}
                     alt='Prisma'
-                    className='w-14 5xl:w-32 mix-blend-difference'
+                    className='w-14 5xl:w-16 mix-blend-difference'
                   />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
@@ -164,14 +168,14 @@ export default function SkillsSection() {
                   />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
-                  <img src={zod} alt='Mongoose' className='w-20 5xl:w-28 ' />
+                  <img src={zod} alt='Mongoose' className='w-20 5xl:w-20 ' />
                 </li>
               </ul>
             </div>
           </div>
-          <div className='devops-and-deployment-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[91svw] pt-36'>
+          <div className='devops-and-deployment-div    min-h-[80dvh]  landscape:w-full md:basis-1/2  border-t portrait:w-[91svw] pt-36'>
             <div className='ft-section flex flex-col  p-10 lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
-              <p className='self-center portrait:pb-14 pb-5 text-[.9rem]'>
+              <p className='self-center portrait:pb-14 pb-5 text-[.9rem] 4xl:text-[1rem] 5xl:text-[1.1rem]'>
                 //devops and deployment
               </p>
               <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14 '>
@@ -193,9 +197,9 @@ export default function SkillsSection() {
               </ul>
             </div>
           </div>
-          <div className='misc-div left-div    min-h-[80dvh] w-[100vw] md:w-full md:basis-1/2  border-t portrait:w-[91svw] pt-36'>
+          <div className='misc-div left-div    min-h-[80dvh] landscape:w-full md:basis-1/2  border-t portrait:w-[91svw] pt-36'>
             <div className='ft-section flex flex-col p-10  lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
-              <p className='self-center portrait:pb-14 pb-5 text-[.9rem]'>
+              <p className='self-center portrait:pb-14 pb-5 text-[.9rem] 4xl:text-[1rem] 5xl:text-[1.1rem]'>
                 //misc
               </p>
               <ul className='grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14   '>
@@ -225,7 +229,7 @@ export default function SkillsSection() {
         </div>
 
         {/**blob placement section */}
-        <div className=' skills-section right-div  border-l   md:basis-1/2 hidden     h-screen   md:flex w-full  items-center bg-white'></div>
+        <div className=" skills-section right-div  border-l   landscape:basis-1/2 hidden     h-screen   landscape:flex landscape:min-w-[50vw]  items-center  bg-[url('/bg/skills_noise.svg')]"></div>
       </div>
     </section>
   );
