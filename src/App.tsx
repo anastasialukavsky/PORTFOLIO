@@ -100,7 +100,7 @@ function App() {
   }, []);
 
   return (
-    <div className='min-h-screen h-full bg-[#353b3c] w-screen relative portrait:w-[100vw] selection:bg-pink-200'>
+    <div className="min-h-screen h-full bg-[#353b3c] w-screen relative portrait:w-[100vw] selection:bg-pink-200 bg-[url('/bg/hero_noise.svg')] overflow-hidden">
       {/* <ProgressBar /> */}
 
       <Homepage />
