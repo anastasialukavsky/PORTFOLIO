@@ -38,8 +38,8 @@ export default function SkillsSection() {
       className="skills-section font-mono  md:text-[1vw]  flex w-[100svw]   bg-[url('/bg/skills_noise.svg')]"
     >
       <div className='front-end-section  md:text-[1.3vw] 4xl:text-[1rem]   flex w-[100vw]'>
-        <div className='flex flex-col min-w-[50vw] portrait:basis-0 landscape:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:w-[90vw]'>
-          <div className='frontend-div   min-h-[80dvh] w-fit   md:w-full md:basis-1/2  portrait:w-[91vw] md:pb-20'>
+        <div className='flex flex-col min-w-[50vw] portrait:basis-0 landscape:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:ml-[25px] portrait:w-[95vw]'>
+          <div className='frontend-div   min-h-[80dvh] w-fit   md:w-full md:basis-1/2  portrait:w-[95vw] md:pb-20'>
             <div className='flex flex-col  p-10 lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
               <p className=' self-center portrait:pb-14 pb-5 text-[.9rem] 4xl:text-[1rem] 5xl:text-[1.1rem]'>
                 //front-end development
@@ -113,7 +113,7 @@ export default function SkillsSection() {
             </div>
           </div>
 
-          <div className='backend-div  border-t  min-h-[80dvh] w-fit md:w-full md:basis-1/2 portrait:w-[91svw] pt-36'>
+          <div className='backend-div  border-t  min-h-[80dvh] w-fit md:w-full md:basis-1/2 portrait:w-[95svw] pt-36'>
             <div className=' ft-section flex flex-col  p-10 lg:p-20 portrait:w-fit justify-center 5xl:items-center gap-2 xl:gap-10'>
               <p className=' self-center portrait:pb-14 pb-5 text-[.9rem] 4xl:text-[1rem] 5xl:text-[1.1rem]'>
                 //back-end development
@@ -173,7 +173,7 @@ export default function SkillsSection() {
               </ul>
             </div>
           </div>
-          <div className='devops-and-deployment-div    min-h-[80dvh]  landscape:w-full md:basis-1/2  border-t portrait:w-[91svw] pt-36'>
+          <div className='devops-and-deployment-div    min-h-[80dvh]  landscape:w-full md:basis-1/2  border-t portrait:w-[95svw] pt-36'>
             <div className='ft-section flex flex-col  p-10 lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
               <p className='self-center portrait:pb-14 pb-5 text-[.9rem] 4xl:text-[1rem] 5xl:text-[1.1rem]'>
                 //devops and deployment
@@ -197,7 +197,7 @@ export default function SkillsSection() {
               </ul>
             </div>
           </div>
-          <div className='misc-div left-div    min-h-[80dvh] landscape:w-full md:basis-1/2  border-t portrait:w-[91svw] pt-36'>
+          <div className='misc-div left-div    min-h-[80dvh] landscape:w-full md:basis-1/2  border-t portrait:w-[95svw] pt-36'>
             <div className='ft-section flex flex-col p-10  lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
               <p className='self-center portrait:pb-14 pb-5 text-[.9rem] 4xl:text-[1rem] 5xl:text-[1.1rem]'>
                 //misc
