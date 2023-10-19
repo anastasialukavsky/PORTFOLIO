@@ -40,7 +40,7 @@ export default function Homepage() {
       className='container relative w-[100vw] h-full min-h-screen z-0 text-white'
     >
       <Navbar setNavbarHeight={setNavbarHeight} />
-      <div className='blob-wrapper  fixed self-center md:h-[99dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0  landscape:xshort:w-[100svw] landscape:xshort:h-[100svh]'>
+      <div className='blob-wrapper fixed self-center md:h-[100dvh] h-[100svh] w-[100svw]  z-[100] md:w-[100dvw] m-auto bottom-0 right-0  landscape:xshort:w-[100svw] landscape:xshort:h-[100svh]'>
         <Canvas
           camera={{ position: [1.0, 0.0, 9.9] }}
           gl={{
