@@ -112,7 +112,7 @@ const ProjectStack = React.forwardRef(
           return (
             <li
               key={item}
-              className='place-self-center flex flex-col justify-between  gap-2  w-full items-center h-full portrait:h-fit'
+              className='place-self-center flex flex-col justify-between  gap-2  w-full items-center h-full '
             >
               <StackLogos logoIcon={logoIcon} item={item} />
             </li>
@@ -125,13 +125,13 @@ const ProjectStack = React.forwardRef(
     return (
       <article
         ref={localStackRef}
-        className='  border border-[#121212] landscape:h-full max-h-[100vh] w-full 6xl:mb-36 portrait:h-fit shrink-1 overflow-hidden'
+        className='  border border-[#121212] landscape:h-full landscape:max-h-[100vh] w-full 6xl:mb-36 portrait:h-full shrink-1 overflow-hidden'
       >
-        <section className='h-full w-full p-2 lg:p-2 xl:p-5 xshort:p-1 portrait:max-h-full portrait:h-fit portra portrait:p-0 portrait:px-2'>
+        <section className='h-full w-full p-2 lg:p-2 xl:p-5 xshort:p-1 portrait:max-h-full portrait:h-full portrait:p-0 portrait:px-2'>
           <h2 className='text-center pb-3 2xl:pb-5 text-[.7rem] font-bold lg:text-[.8rem] xl:text-[1rem] 4xl:text-[1.1rem] 5xl:text-[1.2rem] portrait:text-[1.1rem] portrait:pt-4 portrait:pb-6'>
             //front-end
           </h2>
-          <ul className='grid grid-cols-6 lg:grid-cols-5 3xl:grid-cols-6 gap-2 xl:gap-4 2xl:gap-6 w-full h-fit short:gap-2 short:grid-cols-6 xshort:gap-1 portrait:grid-cols-3 xshort:grid-cols-6 portrait:gap-5'>
+          <ul className='grid grid-cols-6 lg:grid-cols-5 3xl:grid-cols-6 gap-2 xl:gap-4 2xl:gap-6 w-full h-fit short:gap-2 short:grid-cols-6 xshort:gap-1 portrait:grid-cols-3 xshort:grid-cols-6 portrait:gap-5 '>
             {renderLogos(frontEnd)}
           </ul>
 
