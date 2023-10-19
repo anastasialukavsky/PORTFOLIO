@@ -10,10 +10,10 @@ export default function AboutSection({mobileMenu}: AboutSectionProps) {
   return (
     <section
       id='about'
-      className='about z-[150] flex font-mono  w-[100svw] relative bg-[#353b3c]  landscape:xshort:w-[100svw] landscape:xshort:h-[100svh] '
+      className="about z-[150] flex font-mono  w-[100svw] relative bg-[#353b3c]  bg-[url('/bg/about_noise.svg')] landscape:xshort:w-[100svw] landscape:xshort:h-[100svh] "
     >
       <div className='about-section  portrait:w-[100svw] h-[115dvh] w-full bg-[#353b3c] flex relative top-0 '>
-        <div className='md:flex  gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto  portrait'>
+        <div className='md:flex gap-[9%] w-[80%] max-h-[70%] min-h-[60%] self-center items-center mx-auto portrait:flex-col'>
           <div className=' about-me-details-wrapper w-full h-fit '>
             <div
               className={` ${
