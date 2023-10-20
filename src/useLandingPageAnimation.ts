@@ -101,7 +101,7 @@ export function useLandingPageAnimation(
           // opacity: mobileMenu ?  0 : 1,
           // width: '800%',
           // aspectRatio: '4/5',
-          xPercent: mobileMenu ? 10 : 70,
+          xPercent: mobileMenu ? 5 : 70,
           ease: 'expo.inOut',
           duration: 1,
           scrollTrigger: {
@@ -131,7 +131,7 @@ export function useLandingPageAnimation(
 
       tl_11.from('.pic-wrapper', {
         opacity: 0,
-        xPercent: '10',
+        xPercent: '10%',
         ease: 'expo',
         scrollTrigger: {
           trigger: '.pic',
