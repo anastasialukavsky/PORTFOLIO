@@ -11,7 +11,7 @@ export default function ProjectButton({ link }: ProjectBtnProps) {
       <a
         id={link}
         role='link'
-        aria-label={link}
+        aria-label='external project link'
         href={link}
         target='_blank'
         rel='noopener noreferrer'
