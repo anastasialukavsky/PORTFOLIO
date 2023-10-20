@@ -2,10 +2,6 @@ import React from 'react'
 import me from '../public/bg/me-q30.webp';
 
 
-type AboutSectionProps = {
-  mobileMenu: boolean
-}
-
 export default function AboutSection() {
   return (
     <section
