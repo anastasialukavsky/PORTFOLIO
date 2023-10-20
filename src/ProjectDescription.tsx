@@ -135,7 +135,7 @@ const ProjectDescription = React.forwardRef(
     return (
       <div
         ref={localDescRef}
-        className='desc-content w-full max-h-fit  h-full lg:text-[.8rem] xl:text-[.9rem]  2xl:text-[1rem] text-[.7rem] 6xl:text-[1.1rem] leading-tight 2xl:leading-normal portrait:text-[1rem] portrait:pl-2 portrait:h-full overflow-hidden shrink-0 2xl:py-1 short:leading-tight short:text-[.9rem] xshort:leading-3 xshort:text-[.7rem]'
+        className='desc-content w-full max-h-fit  h-full lg:text-[.8rem] xl:text-[.9rem]  2xl:text-[1rem] text-[.7rem] 6xl:text-[1.1rem] leading-tight 2xl:leading-normal portrait:text-[1rem] portrait:pl-2 portrait:h-full overflow-hidden shrink-0 2xl:py-1 short:leading-[1] short:text-[.9rem] xshort:leading-3 xshort:text-[.7rem]'
       >
         {isFullDescription ? (
           <>
