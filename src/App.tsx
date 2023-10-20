@@ -1,14 +1,12 @@
-import React, { useLayoutEffect, useEffect, useState } from 'react';
+import React, {  useEffect } from 'react';
 
-// import './index.css';
+
 import Homepage from './Homepage';
 import Lenis from '@studio-freight/lenis';
-import Test from './Test';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Blob from './Blob';
-import { Canvas } from '@react-three/fiber';
-import ProgressBar from './ProgressBar';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,8 +21,8 @@ function App() {
     // orientation: 'horizontal',
     // gestureOrientation: 'vertical',
     wheelMultiplier: 1,
-    smoothTouch: true,
-    touchMultiplier: 1,
+    // smoothTouch: true,
+    // touchMultiplier: 1,
     infinite: false,
     // lerp: 3,
     // duration: 1,
