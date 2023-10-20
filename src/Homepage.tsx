@@ -10,6 +10,7 @@ import ContactSection from './ContactSection';
 import SkillsSection from './SkillsSection';
 import ProjectsSection from './ProjectsSection';
 import { useLandingPageAnimation } from './useLandingPageAnimation';
+import MobileProgressBar from './MobileProgressBar';
 
 export default function Homepage() {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -58,7 +59,12 @@ export default function Homepage() {
       {/**hero section */}
       <HeroSection />
       {/**progress bar */}
-      <ProgressBar mobileMenu={mobileMenu} />
+
+      {mobileMenu ? (
+        <MobileProgressBar />
+      ) : (
+        <ProgressBar mobileMenu={mobileMenu} />
+      )}
 
       {/**about section */}
       <AboutSection mobileMenu={mobileMenu} />
