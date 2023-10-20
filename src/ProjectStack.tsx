@@ -1,11 +1,4 @@
-import React, {
-  useRef,
-  useEffect,
-  useState,
-  useLayoutEffect,
-  useImperativeHandle,
-} from 'react';
-import { gsap } from 'gsap';
+import React, { useRef, useImperativeHandle } from 'react';
 
 import StackLogos from './StackLogos';
 
@@ -16,94 +9,14 @@ export type Logo = keyof typeof logos;
 export type ProjectStackProps = {
   frontEnd: Logo[];
   backEnd: Logo[];
-  projectDescHeight: number;
-  isFullDescription: boolean;
-  shortDescriptionHeight: number;
-  fullDescriptionHeight: number;
-  setFullStackHeight: React.Dispatch<React.SetStateAction<number>>;
-  setShortStackHeight: React.Dispatch<React.SetStateAction<number>>;
-  fullStackHeight: number;
-  shortStackHeight: number;
-  toggleDesc: boolean;
-  // wrapperHeight: number;
 };
 
 const ProjectStack = React.forwardRef(
-  (
-    {
-      frontEnd,
-      backEnd,
-      setFullStackHeight,
-      fullStackHeight,
-      setShortStackHeight,
-      shortStackHeight,
-      projectDescHeight,
-      isFullDescription,
-      fullDescriptionHeight,
-      shortDescriptionHeight,
-      toggleDesc,
-    }: ProjectStackProps,
-    ref
-  ) => {
+  ({ frontEnd, backEnd }: ProjectStackProps, ref) => {
+    
     const localStackRef = useRef<HTMLDivElement>(null);
+
     useImperativeHandle(ref, () => localStackRef.current);
-
-    //* stack height setters
-    useEffect(() => {
-      if (!localStackRef.current) return;
-
-      const fHeight = localStackRef.current?.getBoundingClientRect().height;
-      const sHeight = localStackRef.current?.getBoundingClientRect().height;
-      if (!toggleDesc) {
-        setFullStackHeight(fHeight);
-      } else {
-        setShortStackHeight(sHeight);
-      }
-    }, [localStackRef.current]);
-
-    // console.log(localStackRef.current?.getBoundingClientRect());
-    // console.log({ fullDescriptionHeight });
-
-    //*stack anim
-    // useLayoutEffect(() => {
-    //   console.log({ fullStackHeight });
-    //   if (!localStackRef.current) return;
-    //   const ctx = gsap.context(() => {
-    //     const tl = gsap.timeline({});
-
-    //     if (toggleDesc) {
-    //       tl.fromTo(
-    //         localStackRef.current,
-    //         {
-    //           maxHeight: fullStackHeight + 'px',
-    //           ease: 'power1.inOut',
-    //           duration: 1.5,
-    //         },
-    //         {
-    //           maxHeight: '100px',
-    //         }
-    //       );
-
-
-
-    //     } else if (!toggleDesc) {
-    //       tl.fromTo(
-    //         localStackRef.current,
-    //         {
-    //           maxHeight: fullStackHeight + 'px',
-    //         },
-    //         {
-    //           maxHeight: fullStackHeight + 'px',
-    //           ease: 'none',
-    //           duration: 1,
-    //           // overflow: 'hidden',
-    //         }
-    //       );
-    //     }
-    //   });
-
-    //   return () => ctx.revert();
-    // }, [toggleDesc, fullStackHeight]);
 
     const renderLogos = (logosArray: Logo[]) => {
       return logosArray.map((item) => {
