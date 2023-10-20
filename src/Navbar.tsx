@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { CustomEase } from 'gsap/CustomEase';
 import Lenis from '@studio-freight/lenis';
 import { ScrollToPlugin } from 'gsap/all';
-import { useNavLinksAnimation } from './useNavLinksAnimation';
+// import { useNavLinksAnimation } from './useNavLinksAnimation';
 
 import MobileModal from './MobileModal';
 
@@ -17,7 +17,7 @@ export default function Navbar({ setNavbarHeight }: NavbarProps) {
   const projectsScrollToRef = useRef<HTMLAnchorElement>(null);
   const navRef = useRef<HTMLElement | null>(null);
 
-  useNavLinksAnimation();
+  // useNavLinksAnimation();
   useEffect(() => {
     const navHeight = navRef.current?.getBoundingClientRect().height;
     if (navHeight) setNavbarHeight(navHeight);
