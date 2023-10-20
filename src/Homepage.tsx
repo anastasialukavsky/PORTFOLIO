@@ -79,7 +79,7 @@ export default function Homepage() {
       )}
 
       {/**about section */}
-      <AboutSection mobileMenu={mobileMenu} />
+      <AboutSection />
       {/**skills section */}
       <SkillsSection />
       {/**projects section */}
