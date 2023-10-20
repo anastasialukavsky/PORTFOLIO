@@ -28,25 +28,25 @@ export function useNavLinksAnimation() {
 
      navLink.addEventListener('mouseenter', handleHover);
 
-     navLink.addEventListener('mouseleave', () => {
-       gsap.to(chars, {
-         rotationX: '0',
-         duration: 0,
-         stagger: 0.04,
-         ease: 'slow',
-       });
-     });
+    //  navLink.addEventListener('mouseleave', () => {
+    //    gsap.to(chars, {
+    //      rotationX: '0',
+    //      duration: 0,
+    //      stagger: 0.04,
+    //      ease: 'slow',
+    //    });
+    //  });
 
      return () => {
        navLink.removeEventListener('mouseenter', handleHover);
-       navLink.removeEventListener('mouseleave', () => {
-         gsap.to(chars, {
-           rotationX: '0',
-           duration: 0,
-           stagger: 0.04,
-           ease: 'slow',
-         });
-       });
+      //  navLink.removeEventListener('mouseleave', () => {
+      //    gsap.to(chars, {
+      //      rotationX: '0',
+      //      duration: 0,
+      //      stagger: 0.04,
+      //      ease: 'slow',
+      //    });
+      //  });
      };
    });
  }, []);
