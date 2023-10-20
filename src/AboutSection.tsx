@@ -1,4 +1,4 @@
-import React from 'react'
+
 import me from '../public/bg/me-q30.webp';
 
 
