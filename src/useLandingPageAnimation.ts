@@ -97,11 +97,11 @@ export function useLandingPageAnimation(
    
         tl_09.from('.pic', {
           // height: '100dvh',
-          scale: 1.1,
+          scale: mobileMenu ? 1.1 : 1.2,
           // opacity: mobileMenu ?  0 : 1,
           // width: '800%',
           // aspectRatio: '4/5',
-          xPercent: mobileMenu ? 5 : 70,
+          xPercent: mobileMenu ? 0 : 60,
           ease: 'expo.inOut',
           duration: 1,
           scrollTrigger: {
@@ -116,26 +116,27 @@ export function useLandingPageAnimation(
       
       tl_10.from('.bio-text', {
         opacity: 0,
-        // xPercent: '10',
-        ease: 'slow',
-        duration: 3,
+        yPercent: 150,
+        ease: 'power2.inOut',
+        duration: .6,
         scrollTrigger: {
           trigger: '.pic',
-          start: mobileMenu ? 'top 30%' : 'top 15%',
-          end: mobileMenu ? 'top 50%' : 'top 25%',
+          start: mobileMenu ? 'top 30%' : 'top 19%',
+          end: mobileMenu ? 'top 50%' : 'top 20%',
           // markers: true,
-          scrub: 4,
+          scrub: 5,
         },
       });
 
 
       tl_11.from('.pic-wrapper', {
-        opacity: 0,
+        backgroundColor: 'transparent',
+        // z: 0,
         xPercent: '10%',
         ease: 'expo',
         scrollTrigger: {
           trigger: '.pic',
-          start: mobileMenu ? 'top 50%' : 'top 18%',
+          start: mobileMenu ? 'top 50%' : 'top 19%',
           end: 'center 50%',
           // markers: true,
           scrub: 3,
@@ -148,7 +149,7 @@ export function useLandingPageAnimation(
         duration: 3,
         scrollTrigger: {
           trigger: '.pic',
-          start: 'top 15%',
+          start: 'top 19%',
           end: 'top 17%',
           // markers: true,
           scrub: 4,
