@@ -130,7 +130,7 @@ export default function Blob({ mobileMenu }: { mobileMenu: boolean }) {
 
   useEffect(() => {
     if (!mesh.current) return; // Ensure mesh.current is available
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       gsap.to(mesh.current?.rotation, {
         // x: '+=20',
         y: '+=.2',
@@ -157,41 +157,13 @@ export default function Blob({ mobileMenu }: { mobileMenu: boolean }) {
     }, mesh);
 
     return () => ctx.revert();
-  });
+  }, []);
 
   const aboutSection = document.querySelector('.about-section');
   const devopsSection = document.querySelector('.devops-and-deployment-div');
   const miscSection = document.querySelector('.misc-div');
   const contactSection = document.querySelector('.contact-section');
 
-  // useLayoutEffect(() => {
-  //   gsap.registerPlugin(ScrollTrigger);
-  //   if (!mesh.current || !aboutSection) return;
-  //   const ctx = gsap.context(() => {
-  //     // const downTl = gsap.timeline({});
-
-  //       const downTl = gsap.timeline({
-  //         scrollTrigger: {
-  //           trigger: aboutSection,
-  //           start: 'center center',
-  //           end: 'bottom 140%',
-  //           scrub: 3,
-  //         },
-  //       });
-
-  //       downTl.to(mesh.current.position, {
-  //         ease: 'none',
-  //         y: 70,
-  //         x: 390,
-  //         duration: 1,
-  //       });
-
-  //     // return () => downTl.kill();
-  //   });
-  //   return () => {
-  //     ctx.revert();
-  //   };
-  // });
 
   const { camera } = useThree();
   let meshPosition = mesh.current ? mesh.current.position : new THREE.Vector3();
@@ -244,7 +216,6 @@ export default function Blob({ mobileMenu }: { mobileMenu: boolean }) {
         x: 0,
         y: 4.8,
         duration: 1.2,
-        // delay: 4,
         ease: 'expo',
 
         onUpdate: () => {
@@ -254,33 +225,26 @@ export default function Blob({ mobileMenu }: { mobileMenu: boolean }) {
         },
       });
       gsap.to(position, {
-        x: mobileMenu ? -4 : -4.9,
+        x: mobileMenu ? -4 : -5.3,
         y: mobileMenu ? 8 : 1,
-        z: mobileMenu ? 6 : 6,
+        z: mobileMenu ? 6 : 3,
         delay: 4,
-        // rotateX: 800,
-        // repeatRefresh: true,
+
         scrollTrigger: {
           trigger: aboutSection,
           start: 'center center',
           end: 'bottom bottom',
           scrub: 3,
-          // markers: true,
         },
         onUpdate: () => {
           camera.translateY(position.y - camera.position.y);
           camera.translateZ(position.z - camera.position.z);
           camera.translateX(position.x - camera.position.x);
-
-          // mesh.current?.translateZ(position.z);
-          // mesh.current?.translateY(position.x);
-          // mesh.current!.position = new THREE.Vector3(0,0,position.z);
-          // mesh.current?.updateMatrix();
         },
       });
       // let zoom = 1;
       // // const nzoom = { x: 1, y: 1, z: 3 };
-      const prevPosition = { x: -4.9, y: 1, z: 6 };
+      const prevPosition = { x: -5.3, y: 1, z: 3 };
       const mobilePrevPosition = {x:-4 , y:8,  z: 6}
       gsap.to(mobileMenu ? mobilePrevPosition : prevPosition, {
         repeatRefresh: true,
@@ -306,16 +270,7 @@ export default function Blob({ mobileMenu }: { mobileMenu: boolean }) {
         },
       });
 
-      //  gsap.to(mesh.current, {
-      //   rotate: 600,
-      //   ease: 'none',
-      //   scrollTrigger: {
-      //     trigger: aboutSection,
-      //     start: 'bottom 150%',
-      //     end: 'bottom 250%',
-      //     markers: true
-      //   }
-      //  });
+
     });
     return () => {
       ctx.revert();
