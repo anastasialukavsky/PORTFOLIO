@@ -1,9 +1,8 @@
 import whiteDot from '../public/icons/white_dot.svg';
-import blackDot from '../public/icons/black_dot.svg';
 
 import { gsap } from 'gsap/gsap-core';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useLayoutEffect, useRef, useEffect, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,8 +15,6 @@ type SectionsText = {
 };
 export default function ProgressBar({ mobileMenu }: { mobileMenu: boolean }) {
   const aboutSection = document.querySelector('.about-section');
-  const skillsSection = document.querySelector('.skills-section');
-  const projects = document.querySelector('.projects-section');
   const progressRef = useRef<HTMLDivElement>(null);
 
   const [currentSectionText, setCurrentSectionText] = useState('');
@@ -68,60 +65,7 @@ export default function ProgressBar({ mobileMenu }: { mobileMenu: boolean }) {
 
 
 
-
-  useLayoutEffect(() => {
-    console.log('hi');
-    if (!progressRef.current || !mobileMenu) return;
-    const onDOMContentLoaded = () => {
-      const ctx = gsap.context(() => {
-        gsap.to(progressRef.current, {
-          top: '15%',
-          ease: 'slow',
-          position: 'fixed',
-          duration: 2,
-          scrollTrigger: {
-            trigger: aboutSection,
-            start: 'top 50%',
-            end: 'center center',
-            scrub: 0.6,
-            // markers: true
-          },
-        });
-
-        gsap.to('.hidden-dot', {
-          display: 'block',
-          position: 'absolute',
-          top: '40%',
-          // y: '50%',
-          scrollTrigger: {
-            trigger: aboutSection,
-            start: 'top 40%',
-            end: 'center center',
-            scrub: true,
-            // markers: true,
-          },
-        });
-      });
-
-      return () => {
-        ctx.revert();
-      };
-    };
-
-    if (document.readyState === 'complete') {
-      onDOMContentLoaded();
-    } else {
-      document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
-    }
-
-    return () => {
-      document.removeEventListener('DOMContentLoaded', onDOMContentLoaded);
-    };
-  }, [mobileMenu]);
-
-
     useLayoutEffect(() => {
-      console.log('hi');
       if (!progressRef.current) return;
       const onDOMContentLoaded = () => {
         const ctx = gsap.context(() => {
