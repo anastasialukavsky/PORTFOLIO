@@ -9,61 +9,40 @@ import { gsap } from 'gsap';
 
 export type ProjectDescProps = {
   description: string;
-  projectDescHeight: number;
-  setProjectDescHeight: React.Dispatch<React.SetStateAction<number>>;
-  setIsFullDescription: React.Dispatch<React.SetStateAction<boolean>>;
+  // projectDescHeight: number;
+  // setProjectDescHeight: React.Dispatch<React.SetStateAction<number>>;
   isFullDescription: boolean;
-  setShortDescriptionHeight: React.Dispatch<React.SetStateAction<number>>;
+  setIsFullDescription: React.Dispatch<React.SetStateAction<boolean>>;
   shortDescriptionHeight: number;
-  fullDescriptionHeight: number;
-  setFullDescriptionHeight: React.Dispatch<React.SetStateAction<number>>;
+  setShortDescriptionHeight: React.Dispatch<React.SetStateAction<number>>;
+  // fullDescriptionHeight: number;
+  // setFullDescriptionHeight: React.Dispatch<React.SetStateAction<number>>;
   toggleDesc: boolean;
   setToggleDesc: React.Dispatch<React.SetStateAction<boolean>>;
 
-  // forwardedRef: React.RefObject<HTMLDivElement>;
 };
 const ProjectDescription = React.forwardRef(
   (
     {
       description,
-      // projectDescHeight,
-      // setProjectDescHeight,
-      setIsFullDescription,
       isFullDescription,
-      setShortDescriptionHeight,
+      setIsFullDescription,
       shortDescriptionHeight,
-      fullDescriptionHeight,
-      setFullDescriptionHeight,
+      setShortDescriptionHeight,
       toggleDesc,
-      // isFullDescription,
       setToggleDesc,
-    }: // projectDescHeight,
-    // setProjectDescHeight,
-    // forwardedRef,
+    }: 
     ProjectDescProps,
     ref
   ) => {
-
-    
     const shortDescription = description.slice(0, 200) + '...';
     const fullDescription = description;
     const localDescRef = useRef<HTMLDivElement>(null);
+    useImperativeHandle(ref, () => localDescRef.current);
 
     const handleDescriptionToggle = () => {
-      // setToggleDesc(true);
       setToggleDesc((prev) => !prev);
-      // setIsFullDescription((prev) => !prev);
-      // setIsFullDescription(true);
     };
-
-    // const handleFullToggle = () => {
-    //   setTimeout(() => {
-    //     setToggleDesc(false);
-    //     setIsFullDescription(false);
-    //   }, 500);
-    // };
-
-    useImperativeHandle(ref, () => localDescRef.current);
 
     //*desc height setters
     useEffect(() => {
@@ -72,19 +51,8 @@ const ProjectDescription = React.forwardRef(
         setShortDescriptionHeight(
           localDescRef.current.getBoundingClientRect().height
         );
-        setIsFullDescription(false);
-      } else {
-        setFullDescriptionHeight(
-          localDescRef.current.getBoundingClientRect().height
-        );
-        setIsFullDescription(true);
       }
     }, []);
-
-    // console.log({ isFullDescription });
-
-
-
 
     //*desc anim
     useLayoutEffect(() => {
@@ -93,8 +61,7 @@ const ProjectDescription = React.forwardRef(
         const tl = gsap.timeline({});
 
         if (toggleDesc) {
-
-          setIsFullDescription(true)
+          setIsFullDescription(true);
 
           tl.fromTo(
             localDescRef.current,
@@ -107,10 +74,6 @@ const ProjectDescription = React.forwardRef(
               duration: 1.5,
             }
           );
-          
-          
-
-          
         } else if (!toggleDesc) {
           tl.fromTo(
             localDescRef.current,
@@ -119,7 +82,7 @@ const ProjectDescription = React.forwardRef(
             },
             {
               ease: 'power1',
-              duration: .7,
+              duration: 0.7,
               maxHeight: shortDescriptionHeight + 'px',
               onComplete: () => setIsFullDescription(false),
             }
@@ -129,8 +92,6 @@ const ProjectDescription = React.forwardRef(
 
       return () => ctx.revert();
     }, [toggleDesc, shortDescriptionHeight]);
-
-
 
     return (
       <div
