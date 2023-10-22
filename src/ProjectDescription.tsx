@@ -9,17 +9,12 @@ import { gsap } from 'gsap';
 
 export type ProjectDescProps = {
   description: string;
-  // projectDescHeight: number;
-  // setProjectDescHeight: React.Dispatch<React.SetStateAction<number>>;
   isFullDescription: boolean;
   setIsFullDescription: React.Dispatch<React.SetStateAction<boolean>>;
   shortDescriptionHeight: number;
   setShortDescriptionHeight: React.Dispatch<React.SetStateAction<number>>;
-  // fullDescriptionHeight: number;
-  // setFullDescriptionHeight: React.Dispatch<React.SetStateAction<number>>;
   toggleDesc: boolean;
   setToggleDesc: React.Dispatch<React.SetStateAction<boolean>>;
-
 };
 const ProjectDescription = React.forwardRef(
   (
@@ -35,7 +30,7 @@ const ProjectDescription = React.forwardRef(
     ProjectDescProps,
     ref
   ) => {
-    const shortDescription = description.slice(0, 200) + '...';
+    const shortDescription = description.slice(0, 190) + '...';
     const fullDescription = description;
     const localDescRef = useRef<HTMLDivElement>(null);
     useImperativeHandle(ref, () => localDescRef.current);
@@ -70,8 +65,8 @@ const ProjectDescription = React.forwardRef(
             },
             {
               maxHeight: '100dvh',
-              ease: 'power1.in',
-              duration: 1.5,
+              ease: 'power3.in',
+              duration: 1.3,
             }
           );
         } else if (!toggleDesc) {
@@ -96,7 +91,7 @@ const ProjectDescription = React.forwardRef(
     return (
       <div
         ref={localDescRef}
-        className='desc-content w-full max-h-fit  h-full lg:text-[.8rem] xl:text-[.9rem]  2xl:text-[1rem] text-[.7rem] 6xl:text-[1.1rem] leading-tight 2xl:leading-normal portrait:text-[1rem] portrait:pl-2 portrait:h-full overflow-hidden shrink-0 2xl:py-1 short:leading-[1] short:text-[.9rem] xshort:leading-3 xshort:text-[.7rem]'
+        className='desc-content lg:min-h-[100px] 3xl:min-h-[60px] min-h-[60px] w-full max-h-full  h-full lg:text-[.8rem] xl:text-[.9rem]  2xl:text-[1rem] text-[.7rem] 6xl:text-[1.1rem] leading-[1] 2xl:leading-normal portrait:text-[1rem] portrait:pl-2 portrait:h-full overflow-hidden shrink-0 2xl:py-1 short:leading-[1] short:text-[.9rem] xshort:leading-3 xshort:text-[.7rem] pb-1'
       >
         {isFullDescription ? (
           <>
