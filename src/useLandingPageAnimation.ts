@@ -243,7 +243,7 @@ export function useLandingPageAnimation(
           pin: true,
           start: `top ${navbarHeight}`,
           end: 'bottom bottom',
-          markers: true,
+          // markers: true,
           endTrigger: '.projects-section',
         },
       });
