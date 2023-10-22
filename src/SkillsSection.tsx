@@ -1,33 +1,33 @@
-import github from '../public/icons/github.svg';
-import html from '../public/icons/html-1.svg';
-import adobePhotoshop from '../public/icons/adobe-photoshop.svg';
-import axios from '../public/icons/axios-1.svg';
-import blendr from '../public/icons/blender-1.svg';
-import css from '../public/icons/css-3.svg';
-import davinciResolve from '../public/icons/davinci-resolve-12.svg';
-import docker from '../public/icons/docker.svg';
-import electron from '../public/icons/electron-1.svg';
-import figma from '../public/icons/figma-5.svg';
-import git from '../public/icons/git-icon.svg';
-import gsapIcon from '../public/icons/gsap.svg';
-import javascript from '../public/icons/javascript-1.svg';
-import mongodb from '../public/icons/mongodb.svg';
-import nginx from '../public/icons/nginx-1.svg';
-import nodejs from '../public/icons/nodejs-1.svg';
-import postreSQL from '../public/icons/postgresql.svg';
-import prisma from '../public/icons/prisma-3.svg';
-import reactIcon from '../public/icons/react-2.svg';
-import reactNative from '../public/icons/react-native-1.svg';
-import redux from '../public/icons/redux.svg';
-import sequelize from '../public/icons/sequelize.svg';
-import tailwind from '../public/icons/tailwind-css-2.svg';
-import threejs from '../public/icons/threejs-1.svg';
-import typescript from '../public/icons/ts-logo-512.svg';
-import vite from '../public/icons/vitejs.svg';
-import zod from '../public/icons/zod.svg';
-import postman from '../public/icons/postman.svg';
-import mongoose from '../public/icons/mongoose.svg';
-import express from '../public/icons/express-logo.svg';
+import github from '/icons/github.svg';
+import html from '/icons/html-1.svg';
+import adobePhotoshop from '/icons/adobe-photoshop.svg';
+import axios from '/icons/axios-1.svg';
+import blendr from '/icons/blender-1.svg';
+import css from '/icons/css-3.svg';
+import davinciResolve from '/icons/davinci-resolve-12.svg';
+import docker from '/icons/docker.svg';
+import electron from '/icons/electron-1.svg';
+import figma from '/icons/figma-5.svg';
+import git from '/icons/git-icon.svg';
+import gsapIcon from '/icons/gsap.svg';
+import javascript from '/icons/javascript-1.svg';
+import mongodb from '/icons/mongodb.svg';
+import nginx from '/icons/nginx-1.svg';
+import nodejs from '/icons/nodejs-1.svg';
+import postreSQL from '/icons/postgresql.svg';
+import prisma from '/icons/prisma-3.svg';
+import reactIcon from '/icons/react-2.svg';
+import reactNative from '/icons/react-native-1.svg';
+import redux from '/icons/redux.svg';
+import sequelize from '/icons/sequelize.svg';
+import tailwind from '/icons/tailwind-css-2.svg';
+import threejs from '/icons/threejs-1.svg';
+import typescript from '/icons/ts-logo-512.svg';
+import vite from '/icons/vitejs.svg';
+import zod from '/icons/zod.svg';
+import postman from '/icons/postman.svg';
+import mongoose from '/icons/mongoose.svg';
+import express from '/icons/express-logo.svg';
 
 
 
@@ -48,13 +48,6 @@ export default function SkillsSection() {
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12 '>
                   <img src={html} alt='HTML' className='w-12 5xl:w-16 ' />
                 </li>
-                <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
-                  <img
-                    src={javascript}
-                    alt='JavaScript'
-                    className='w-12 5xl:w-16'
-                  />
-                </li>
                 <li className='place-self-center'>
                   <img
                     src={css}
@@ -62,6 +55,14 @@ export default function SkillsSection() {
                     className='w-12 5xl:w-16 hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'
                   />
                 </li>
+                <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
+                  <img
+                    src={javascript}
+                    alt='JavaScript'
+                    className='w-12 5xl:w-16'
+                  />
+                </li>
+
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
                   <img
                     src={typescript}
@@ -100,7 +101,13 @@ export default function SkillsSection() {
                   />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
-                  <img src={threejs} alt='Three.js' className='w-12 5xl:w-16' />
+                  <img
+                    src={threejs}
+                    width={64}
+                    height={40}
+                    alt='Three.js'
+                    className='w-12 5xl:w-16'
+                  />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
                   <img
@@ -123,7 +130,7 @@ export default function SkillsSection() {
                   <img
                     src={nodejs}
                     alt='NodeJS'
-                    className='w-16 5xl:w-24 mix-blend-difference'
+                    className='w-12 5xl:w-24 mix-blend-difference'
                   />
                 </li>
                 <li className='place-self-center  hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
@@ -140,21 +147,21 @@ export default function SkillsSection() {
                   <img
                     src={postreSQL}
                     alt='PostgreSQL'
-                    className='w-14 5xl:w-16 '
+                    className='w-12 5xl:w-16 '
                   />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
                   <img
                     src={sequelize}
                     alt='Sequelize'
-                    className='w-14 5xl:w-16'
+                    className='w-12 5xl:w-16'
                   />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
                   <img
                     src={prisma}
                     alt='Prisma'
-                    className='w-14 5xl:w-16 mix-blend-difference'
+                    className='w-12 5xl:w-16 mix-blend-difference'
                   />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
@@ -168,7 +175,7 @@ export default function SkillsSection() {
                   />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
-                  <img src={zod} alt='Mongoose' className='w-20 5xl:w-20 ' />
+                  <img src={zod} alt='Mongoose' className='w-14 5xl:w-20 ' />
                 </li>
               </ul>
             </div>
@@ -180,19 +187,19 @@ export default function SkillsSection() {
               </p>
               <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14 '>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
-                  <img src={git} alt='Git' className='w-14 5xl:w-20 ' />
+                  <img src={git} alt='Git' className='w-12 5xl:w-20 ' />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
-                  <img src={github} alt='GutHub' className='w-14 5xl:w-20 ' />
+                  <img src={github} alt='GutHub' className='w-12 5xl:w-20 ' />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
                   <img src={nginx} alt='Nginx' className='w-14 5xl:w-20 ' />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
-                  <img src={docker} alt='Docker' className='w-14 5xl:w-20' />
+                  <img src={docker} alt='Docker' className='w-16 5xl:w-20' />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
-                  <img src={postman} alt='Postman' className='w-14 5xl:w-20 ' />
+                  <img src={postman} alt='Postman' className='w-12 5xl:w-20 ' />
                 </li>
               </ul>
             </div>
@@ -204,23 +211,23 @@ export default function SkillsSection() {
               </p>
               <ul className='grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14   '>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
-                  <img src={blendr} alt='Blendr' className='w-14 5xl:w-20 ' />
+                  <img src={blendr} alt='Blendr' className='w-12 5xl:w-20 ' />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
-                  <img src={figma} alt='Figma' className='w-14 5xl:w-20 ' />
+                  <img src={figma} alt='Figma' className='w-12 5xl:w-20 ' />
                 </li>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
                   <img
                     src={davinciResolve}
                     alt='Davinci Resolve'
-                    className='w-14 5xl:w-20 '
+                    className='w-12 5xl:w-20 '
                   />
                 </li>
                 <li className='place-self-center col-span-full hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
                   <img
                     src={adobePhotoshop}
                     alt='Adobe Photoshop'
-                    className='w-12 5xl:w-20 '
+                    className='w-10 5xl:w-20 '
                   />
                 </li>
               </ul>
