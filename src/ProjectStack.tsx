@@ -40,7 +40,7 @@ const ProjectStack = React.forwardRef(
         ref={localStackRef}
         className='  border border-[#121212] landscape:h-full landscape:max-h-[100vh] w-full 6xl:mb-36 portrait:h-full shrink-1 overflow-hidden'
       >
-        <section className='h-full w-full p-2 lg:p-2 xl:p-5 xshort:p-1 portrait:max-h-full portrait:h-full portrait:p-0 portrait:px-2'>
+        <section className='h-full w-full p-2 3xl:py-0 4xl:py-10 lg:p-2 6xl:py-16 xl:p-5 xshort:p-1 portrait:max-h-full portrait:h-full portrait:p-0 portrait:px-2'>
           <h2 className='text-center pb-3 2xl:pb-5 text-[.7rem] font-bold lg:text-[.8rem] xl:text-[1rem] 4xl:text-[1.1rem] 5xl:text-[1.2rem] portrait:text-[1.1rem] portrait:pt-4 portrait:pb-6'>
             //front-end
           </h2>
