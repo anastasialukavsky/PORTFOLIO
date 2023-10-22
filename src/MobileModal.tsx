@@ -4,9 +4,9 @@ import { animateHamburgerToX } from './hamburgerAnimation';
 
 import Lenis from '@studio-freight/lenis';
 
-import linkedin from '../public/icons/linkedin.svg';
-import github from '../public/icons/github.svg';
-import gmail from '../public/icons/gmail.svg';
+import linkedin from '/icons/linkedin.svg';
+import github from '/icons/github.svg';
+import gmail from '/icons/gmail.svg';
 
 type Props = {
   openMenu: () => void;
