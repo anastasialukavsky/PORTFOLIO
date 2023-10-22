@@ -1,4 +1,4 @@
-import whiteDot from '../public/icons/white_dot.svg';
+import whiteDot from '/icons/white_dot.svg';
 
 import { gsap } from 'gsap/gsap-core';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
