@@ -1,14 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState , lazy} from 'react';
 import { Canvas } from '@react-three/fiber';
-
+const AboutSectionLazy = lazy(() => import('./AboutSection'));
+const ContactSectionLazy  = lazy(() => import('./ContactSection'));
+const SkillsSectionLazy = lazy(() => import('./SkillsSection'));
+const ProjectsSectionLazy = lazy(() => import('./ProjectsSection'))
 import Navbar from './Navbar';
 import ProgressBar from './ProgressBar';
 import Blob from './Blob';
-import AboutSection from './AboutSection';
+// import AboutSection from './AboutSection';
 import HeroSection from './HeroSection';
-import ContactSection from './ContactSection';
-import SkillsSection from './SkillsSection';
-import ProjectsSection from './ProjectsSection';
+// import ContactSection from './ContactSection';
+// import SkillsSection from './SkillsSection';
+// import ProjectsSection from './ProjectsSection';
 import { useLandingPageAnimation } from './useLandingPageAnimation';
 import MobileProgressBar from './MobileProgressBar';
 
@@ -63,7 +66,7 @@ export default function Homepage() {
           <Blob mobileMenu={mobileMenu} />
         </Canvas>
       </div>
-{/* 
+      {/* 
       <div className='text-8xl'>
       <p>height:{h}</p>
       <p>width:{w}</p>
@@ -79,14 +82,14 @@ export default function Homepage() {
       )}
 
       {/**about section */}
-      <AboutSection />
+      <AboutSectionLazy />
       {/**skills section */}
-      <SkillsSection />
+      <SkillsSectionLazy />
       {/**projects section */}
-      <ProjectsSection mobileMenu={mobileMenu} />
+      <ProjectsSectionLazy mobileMenu={mobileMenu} />
 
       {/**contact section */}
-      <ContactSection />
+      <ContactSectionLazy />
     </main>
   );
 }
