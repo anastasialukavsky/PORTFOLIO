@@ -1,7 +1,7 @@
 import React from 'react';
-import linkedin from '../public/icons/linkedin.svg';
-import github from '../public/icons/github.svg';
-import gmail from '../public/icons/gmail.svg';
+import linkedin from '/icons/linkedin.svg';
+import github from '/icons/github.svg';
+import gmail from '/icons/gmail.svg';
 
 export default function ContactSection() {
 
