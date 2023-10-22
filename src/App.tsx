@@ -101,7 +101,7 @@ function App() {
     <div className="min-h-screen h-full bg-[#353b3c] w-screen relative portrait:w-[100vw] selection:bg-pink-200 bg-[url('/bg/hero_noise.svg')] overflow-hidden">
 
       <Homepage />
-      <div className='portrait:hidden hidden ball mix-blend-difference lg:w-[60px] w-[45px] h-[45px]  lg:h-[60px] md:fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
+      <div className='portrait:hidden ball mix-blend-difference lg:w-[50px] w-[45px] h-[45px]  lg:h-[50px] md:fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
     </div>
   );
 }
