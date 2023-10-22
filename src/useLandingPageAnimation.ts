@@ -9,6 +9,7 @@ export function useLandingPageAnimation(
 ) {
 
 
+  console.log({navbarHeight})
 
   // console.log({mobileMenu})
   useLayoutEffect(() => {
@@ -20,7 +21,7 @@ export function useLandingPageAnimation(
       !document.querySelector('.right-div') ||
       !document.querySelector('.skills-section') ||
       !document.querySelector('.misc-div') ||
-      !document.querySelector('.contact-section')
+      !document.querySelector('.contact-section') 
     )
       return;
 
@@ -236,12 +237,13 @@ export function useLandingPageAnimation(
       });
 
       gsap.to('.right-div', {
-        // top: '75px',
+        // top: navbarHeight,
         scrollTrigger: {
           trigger: '.right-div',
           pin: true,
           start: `top ${navbarHeight}`,
           end: 'bottom bottom',
+          markers: true,
           endTrigger: '.projects-section',
         },
       });
@@ -318,5 +320,5 @@ export function useLandingPageAnimation(
     return () => {
       ctx.revert();
     };
-  }, [mobileMenu]);
+  }, [mobileMenu, navbarHeight]);
 }
