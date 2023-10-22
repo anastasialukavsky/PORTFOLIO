@@ -1,8 +1,10 @@
-import whiteDot from '../public/icons/white_dot.svg';
-
+import whiteDot from '/icons/white_dot.svg';
+import lazySizes from 'lazysizes';
 import { gsap } from 'gsap/gsap-core';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect, useRef, useState } from 'react';
+
+import debounce from 'lodash/debounce';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,18 +53,18 @@ export default function ProgressBar() {
         });
       });
     }
-
+const bouncedOnContentLoaded  = debounce(onDOMContentLoaded, 100)
     if (
       documentReadyState === 'complete' ||
       documentReadyState === 'interactive'
     ) {
-      onDOMContentLoaded();
+      bouncedOnContentLoaded();
     } else {
-      document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
+      document.addEventListener('DOMContentLoaded', bouncedOnContentLoaded);
     }
 
     return () => {
-      document.removeEventListener('DOMContentLoaded', onDOMContentLoaded);
+      document.removeEventListener('DOMContentLoaded', bouncedOnContentLoaded);
     };
   }, []);
 
