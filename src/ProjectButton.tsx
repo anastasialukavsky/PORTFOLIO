@@ -1,5 +1,5 @@
 import React from 'react';
-import redirect from '../public/icons/redirect.svg';
+import redirect from '/icons/redirect.svg';
 
 export type ProjectBtnProps = {
   link: string;
@@ -7,7 +7,7 @@ export type ProjectBtnProps = {
 
 export default function ProjectButton({ link }: ProjectBtnProps) {
   return (
-    <div className='cursor-pointer flex  w-fit self-end h-fit items-center align-baseline pb-2 xl:pb-4 4xl:pb-8 5xl:pr-[8%] 6xl:pb-0 6xl:pr-[9%] portrait:pt-3 portrait:pb-5'>
+    <div className='cursor-pointer flex  w-fit self-end h-fit items-center align-baseline pb-2 xl:pb-4 4xl:pb-10 5xl:pr-[8%] 6xl:pb-0 6xl:pr-[9%] portrait:pt-3 portrait:pb-5'>
       <a
         id={link}
         role='link'
