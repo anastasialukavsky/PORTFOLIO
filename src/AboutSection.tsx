@@ -1,6 +1,7 @@
 
-import me from '../public/bg/me-q30.webp';
-
+import me from '/bg/me-q30.webp';
+import lazySizes from 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 export default function AboutSection() {
   return (
@@ -13,9 +14,10 @@ export default function AboutSection() {
           <div className='basis-1/2 '>
             <div className=' pic-wrapper h-fit max-w-fit flex z-0 bg-[#383838]'>
               <img
-                src={me}
+                data-sizes='auto'
+                data-src='/bg/me-q30.webp'
                 alt='photo of the creator :)'
-                className='pic aspect-auto  bg-contain portrait:h-full portrait:w-fit portrait:-right-3 z-50 h-[70vh] w-fit relative -right-4 -top-4'
+                className='lazyload pic aspect-auto  bg-contain portrait:h-full portrait:w-fit portrait:-right-3 z-50 h-[70vh] w-fit relative -right-4 -top-4'
               />
             </div>
           </div>
