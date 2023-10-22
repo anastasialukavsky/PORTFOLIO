@@ -1,5 +1,4 @@
-import React, {  useEffect } from 'react';
-
+import React, { useEffect } from 'react';
 
 import Homepage from './Homepage';
 import Lenis from '@studio-freight/lenis';
@@ -7,14 +6,9 @@ import Lenis from '@studio-freight/lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-
-
-
-
   const lenis = new Lenis({
     duration: 2.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -54,10 +48,9 @@ function App() {
 
   requestAnimationFrame(raf);
 
-
-
-
-  {/**cursor animation for landscape md+ */}
+  {
+    /**cursor animation for landscape md+ */
+  }
   useEffect(() => {
     gsap.set('.ball', { xPercent: -50, yPercent: -50 });
 
@@ -99,8 +92,7 @@ function App() {
 
   return (
     <div className="min-h-screen h-full bg-[#353b3c] w-screen relative portrait:w-[100vw] selection:bg-pink-200 bg-[url('/bg/hero_noise.svg')] overflow-hidden">
-
-      <Homepage />
+        <Homepage />
       <div className='portrait:hidden ball mix-blend-difference lg:w-[50px] w-[45px] h-[45px]  lg:h-[50px] md:fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
     </div>
   );
