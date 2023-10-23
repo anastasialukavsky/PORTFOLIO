@@ -84,11 +84,10 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
     >
       <div className='proj-try flex flex-none landscape:overflow-x-scroll portrait:flex-col  portrait:gap-0  portrait:h-full '>
         <div className='projects landscape:h-screen w-[100vw] flex landscape:pt-2 justify-center  pl-10 portrait:w-[100svw]  portrait:min-h-fit portrait:flex-col portrait:pl-0 '>
-          <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212] gap-3 lg:gap-5 p-4 xshort:p-2 xl:p-6 4xl:p-8 3xl:gap-8 xl:gap-8 3xl:px-5 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw]  portrait:h-[190vh] '>
+          <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212] gap-3 lg:gap-5 p-4 xshort:p-2 xl:p-6 4xl:p-8 3xl:gap-8 xl:gap-8 3xl:px-5 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw]  portrait:h-[190vh]'>
             <img
-              // src='/bg/mock3-q30.webp'
+              alt=''
               data-sizes='auto'
-              // data-src='/bg/mock3-q30.webp'
               className="lazyload md:h-full portrait:bg-contain  bg-cover 3xl:bg-contain 5xl:bg-cover  bg-no-repeat basis-1/2  portrait:basis-full portrait:max-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/mock3-q30.webp')]"
             ></img>
 
@@ -143,7 +142,7 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
           <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-8 xl:gap-8   3xl:px-14 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw]   portrait:h-[195vh]'>
             <img
               data-sizes='auto'
-              // data-src='/bg/shhroom_mockup-q30.webp'
+              alt=''
               className="lazyload md:h-full portrait:bg-contain  bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 portrait:basis-full portrait:max-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/shhroom_mockup-q30.webp')]"
             ></img>
 
@@ -204,7 +203,7 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
           <div className='w-[90vw]  h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-8 xl:gap-8   3xl:px-14 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw]  portrait:h-[185vh]'>
             <img
               data-sizes='auto'
-              // data-src='/bg/mock_plants1-q30.webp'
+              alt=''
               className=" lazyload md:h-full portrait:bg-contain bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2  portrait:basis-full  portrait:max-h-[57vh] portrait:w-full  portrait:aspect-[1/3] bg-[url('/bg/mock_plants1-q30.webp')]"
             ></img>
 
@@ -259,9 +258,7 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
 
         <div className='projects landscape:h-screen w-[100vw] flex landscape:pt-2 justify-center portrait:w-[100svw]  portrait:min-h-fit portrait:flex-col portrait:pl-0'>
           <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex flex border border-[#121212] xshort:p-2 gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-8 5xl:gap-0 xl:gap-8 3xl:px-14 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw] portrait:h-[185vh] portrait:border-b-none portrait:border-transparent'>
-            <div
-              className=" md:h-full portrait:bg-contain bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 portrait:basis-full portrait:max-h-[57svh] portrait:w-full portrait:aspect-[1/3] bg-[url('/bg/lb_mockup-q30.webp')]"
-            ></div>
+            <div className=" md:h-full portrait:bg-contain bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 portrait:basis-full portrait:max-h-[57svh] portrait:w-full portrait:aspect-[1/3] bg-[url('/bg/lb_mockup-q30.webp')]"></div>
 
             <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
               <ProjectHeaderWrapper
