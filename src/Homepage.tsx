@@ -35,13 +35,7 @@ export default function Homepage() {
     };
   }, []);
 
-  // const [h, setH] = useState(0)
-  // const [w, setW] = useState(0)
-  // useEffect(() => {
-  //   setH(window.innerHeight)
-  //   setW(window.innerWidth)
-  //   // console.log(window.innerWidth)
-  // }, [])
+
 
   return (
     <main
@@ -63,11 +57,7 @@ export default function Homepage() {
           <Blob mobileMenu={mobileMenu} />
         </Canvas>
       </div>
-{/* 
-      <div className='text-8xl'>
-      <p>height:{h}</p>
-      <p>width:{w}</p>
-      </div> */}
+
       {/**hero section */}
       <HeroSection />
       {/**progress bar */}
