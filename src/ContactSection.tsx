@@ -19,8 +19,8 @@ export default function ContactSection() {
     >
       <div className='h-screen w-screen  relative '>
         <div className='flex  justify-between  portrait:bg-none bg-cover h-[100svh] portrait:mx-5   mx-36 items-center '>
-          <div className=' h-screen w-full landscape:basis-1/2  relative z-[120] gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden 3xl:pl-36 4xl:pl-56 5xl:pl-72 6xl:pl-96'>
-            <p className='md:text-[1.5vw] text-[5vw] 3xl:text-[1vw] whitespace-nowrap '>
+          <div className=' h-screen w-full landscape:basis-1/2  relative z-[120] gap-9 text-white mix-blend-difference flex flex-col items-center justify-center overflow-x-hidden landscape:translate-x-[25%]'>
+            <p className='md:text-[1.5vw] text-[5vw] 3xl:text-[1vw] whitespace-nowrap'>
               let's connect
             </p>
             <a
