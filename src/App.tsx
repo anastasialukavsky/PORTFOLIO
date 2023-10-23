@@ -18,26 +18,12 @@ function App() {
   const lenis = new Lenis({
     duration: 2.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    // orientation: 'horizontal',
-    // gestureOrientation: 'vertical',
     wheelMultiplier: 1,
-    // smoothTouch: true,
-    // touchMultiplier: 1,
     infinite: false,
-    // lerp: 3,
-    // duration: 1,
     smoothWheel: true,
   });
 
-  //   lenis.on('scroll', ScrollTrigger.update);
 
-  // lenis.on('scroll', (e: any) => {
-  // bg - [#a977cb];
-  // 343a40
-  // 353b3c
-  // [#1d1d1d]
-  //   // console.log(e);
-  // });
 
   lenis.on('scroll', ScrollTrigger.update);
 
@@ -101,7 +87,7 @@ function App() {
     <div className="min-h-screen h-full bg-[#353b3c] w-screen relative portrait:w-[100vw] selection:bg-pink-200 bg-[url('/bg/hero_noise.svg')] overflow-hidden">
 
       <Homepage />
-      <div className='portrait:hidden ball mix-blend-difference lg:w-[50px] w-[45px] h-[45px]  lg:h-[50px] md:fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
+      <div className='portrait:hidden ball mix-blend-difference w-[35px] h-[35px] md:fixed bg-white top-0 left-0 rounded-full pointer-events-none'></div>
     </div>
   );
 }
