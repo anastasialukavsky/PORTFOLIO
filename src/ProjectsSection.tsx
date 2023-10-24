@@ -143,7 +143,7 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
             <img
               data-sizes='auto'
               alt=''
-              className="lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover    bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 portrait:basis-full portrait:max-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/shhroom_mockup-q30.webp')]"
+              className="lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover    bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 portrait:basis-full portrait:max-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/mockshhroom-q30.webp')]"
             ></img>
 
             <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
