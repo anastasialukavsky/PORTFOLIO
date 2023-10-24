@@ -11,8 +11,7 @@ type ProjectSectionProps = {
 };
 export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
   useLayoutEffect(() => {
-
-    if(mobileMenu) return
+    if (mobileMenu) return;
     const documentReadyState = document.readyState;
 
     const handleDOMContentLoaded = () => {
@@ -26,15 +25,14 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
           /**horizontal scroll anim */
         }
 
-       if(mobileMenu) {
-        return
-       } else {
-
-         gsap.to(projects, {
-           x: mobileMenu
-           ? ''
-           : () => -1 * (projectsSection?.scrollWidth - innerWidth),
-           ease: 'none',
+        if (mobileMenu) {
+          return;
+        } else {
+          gsap.to(projects, {
+            x: mobileMenu
+              ? ''
+              : () => -1 * (projectsSection?.scrollWidth - innerWidth),
+            ease: 'none',
             scrollTrigger: {
               trigger: projectsSection,
               pin: mobileMenu ? false : true,
@@ -44,17 +42,17 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
               anticipatePin: 1,
               refreshPriority: 1,
               end: () => '+=' + projectsSection?.offsetWidth,
-                //!1st snap works better
-                //  snap: {
-                  //    snapTo: 0.33,
+              //!1st snap works better
+              //  snap: {
+              //    snapTo: 0.33,
               //    duration: 0.02,
               //    ease: 'power1.inOut',
               //  },
             },
           });
         }
-        });
-        return () => {
+      });
+      return () => {
         ctx.revert();
       };
     };
@@ -75,8 +73,6 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
     };
   }, [mobileMenu]);
 
-
-
   return (
     <section
       id='projects-section-scroll-to'
@@ -84,12 +80,11 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
     >
       <div className='proj-try flex flex-none landscape:overflow-x-scroll portrait:flex-col  portrait:gap-0  portrait:h-full '>
         <div className='projects landscape:h-screen w-[100vw] flex landscape:pt-2 justify-center  pl-10 portrait:w-[100svw]  portrait:min-h-fit portrait:flex-col portrait:pl-0'>
-          <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212] gap-3 lg:gap-5 p-4 xshort:p-2 xl:p-6 4xl:p-8 3xl:gap-8 xl:gap-8 3xl:px-5 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw] portrait:h-[190vh] portrait:md:h-[170vh]'>
-            <img
-              alt=''
+          <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212] gap-3 lg:gap-5 p-4 xshort:p-2 xl:p-6 4xl:p-8 3xl:gap-8 xl:gap-8 3xl:px-5 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw] portrait:h-[195vh] portrait:md:h-[170vh]'>
+            <div
               data-sizes='auto'
-              className="lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover  bg-cover 3xl:bg-contain 5xl:bg-cover  bg-no-repeat basis-1/2  portrait:basis-full portrait:max-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/mock3-q30.webp')]"
-            ></img>
+              className="lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover  bg-cover 3xl:bg-contain 5xl:bg-cover  bg-no-repeat basis-1/2  portrait:basis-full portrait:max-h-[67svh] portrait:min-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/mock3-q30.webp')]"
+            ></div>
 
             <div className='basis-1/2 portrait:basis-full h-fit portrait:h-full'>
               <ProjectHeaderWrapper
@@ -140,11 +135,10 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
 
         <div className='projects landscape:h-screen w-[100vw] flex landscape:pt-2 justify-center pl-10 portrait:w-[100svw]  portrait:min-h-fit  portrait:flex-col portrait:pl-0'>
           <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-8 xl:gap-8   3xl:px-14 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw]   portrait:h-[195vh] portrait:md:h-[170vh]'>
-            <img
+            <div
               data-sizes='auto'
-              alt=''
-              className="lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover    bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 portrait:basis-full portrait:max-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/mockshhroom-q30.webp')]"
-            ></img>
+              className="lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover    bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 portrait:basis-full portrait:max-h-[67svh]  portrait:min-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/mockshhroom-q30.webp')]"
+            ></div>
 
             <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
               <ProjectHeaderWrapper
@@ -201,11 +195,10 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
 
         <div className='projects  landscape:h-screen w-[100vw] flex landscape:pt-2 justify-center  pl-10 portrait:w-[100svw]  portrait:min-h-fit  portrait:flex-col portrait:pl-0'>
           <div className='w-[90vw]  h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-8 xl:gap-8   3xl:px-14 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw]  portrait:h-[185vh] portrait:md:h-[170vh]'>
-            <img
+            <div
               data-sizes='auto'
-              alt=''
-              className=" lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover   bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2  portrait:basis-full  portrait:max-h-[57vh] portrait:w-full  portrait:aspect-[1/3] bg-[url('/bg/mock_plants1-q30.webp')]"
-            ></img>
+              className=" lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover   bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2  portrait:basis-full  portrait:max-h-[67svh]  portrait:min-h-[57vh] portrait:w-full  portrait:aspect-[1/3] bg-[url('/bg/mock_plants1-q30.webp')]"
+            ></div>
 
             <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
               <ProjectHeaderWrapper
@@ -257,8 +250,11 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
         </div>
 
         <div className='projects landscape:h-screen w-[100vw] flex landscape:pt-2 justify-center portrait:w-[100svw]  portrait:min-h-fit portrait:flex-col portrait:pl-0'>
-          <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex flex border border-[#121212] xshort:p-2 gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-8 5xl:gap-0 xl:gap-8 3xl:px-14 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw]  portrait:h-[185vh] portrait:border-b-none '>
-            <div className=" md:h-full portrait:bg-contain bg-cover portrait:md:max-h-[70vh] portrait:md:bg-cover   3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 portrait:basis-full portrait:max-h-[57svh] portrait:w-full portrait:aspect-[1/3] bg-[url('/bg/lb_mockup-q30.webp')]"></div>
+          <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex flex border border-[#121212] xshort:p-2 gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-8 5xl:gap-0 xl:gap-8 3xl:px-14 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw]  portrait:min-h-[194vh] portrait:border-b-none '>
+            <div
+              data-sizes='auto'
+              className="lazyload md:h-full portrait:bg-contain bg-cover portrait:md:max-h-[70vh] portrait:md:bg-cover   3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 portrait:basis-full portrait:max-h-[67svh]  portrait:min-h-[57vh] portrait:w-full portrait:aspect-[1/3] bg-[url('/bg/lb_mockup-q30.webp')]"
+            ></div>
 
             <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
               <ProjectHeaderWrapper
