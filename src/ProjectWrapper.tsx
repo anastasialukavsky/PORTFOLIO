@@ -32,7 +32,7 @@ export default function ProjectWrapper({
         setIsFullDescription={setIsFullDescription}
         isFullDescription={isFullDescription}
       />
-      <p className='text-center text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem] pt-3 font-bold xshort:pt-0 portrait:text-[1.1rem] 3xl:pt-1'>
+      <p className='text-center text-[.8rem] lg:text-[1rem] 2xl:text-[1.3rem] pt-3 font-bold xshort:pt-0 portrait:text-[1.1rem] 3xl:pt-1 portrait:md:text-[1.6rem]'>
         STACK
       </p>
       <ProjectStack
