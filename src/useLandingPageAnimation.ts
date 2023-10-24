@@ -9,9 +9,9 @@ export function useLandingPageAnimation(
 ) {
 
 
-  console.log({navbarHeight})
 
-  // console.log({mobileMenu})
+
+
   useLayoutEffect(() => {
     if (
       !document.querySelector('.hero-section') ||

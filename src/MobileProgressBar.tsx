@@ -42,7 +42,6 @@ export default function ProgressBar() {
           start: 'top 50%',
           scrub: true,
           onUpdate: (self) => {
-            console.log(section)
             const currentSection = self.trigger;
             const sectionText = sectionsText[section];
 

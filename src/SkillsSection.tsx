@@ -35,17 +35,17 @@ export default function SkillsSection() {
   return (
     <section
       id='skills'
-      className="skills-section font-mono  md:text-[1vw]  flex w-[100svw]   bg-[url('/bg/skills_noise.svg')]"
+      className="skills-section font-mono  md:text-[1vw]  flex w-[100svw]  bg-[url('/bg/skills_noise.svg')]"
     >
       <div className='front-end-section  md:text-[1.3vw] 4xl:text-[1rem]   flex w-[100vw]'>
-        <div className='flex flex-col min-w-[50vw] portrait:basis-0 landscape:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:ml-[25px] portrait:w-[95vw]'>
-          <div className='frontend-div   min-h-[80dvh] w-fit   md:w-full md:basis-1/2  portrait:w-[95vw] md:pb-20'>
-            <div className='flex flex-col  p-10 lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10'>
+        <div className='flex flex-col min-w-[50vw] portrait:basis-0 landscape:basis-1/2 pt-20 lg:pt-96  ml-[37px] portrait:ml-[25px] portrait:w-[95vw]  portrait:z-50'>
+          <div className='frontend-div   min-h-[80dvh] w-fit   md:w-full md:basis-1/2  portrait:w-[95vw] md:pb-20 '>
+            <div className='flex flex-col  p-10 lg:p-20  portrait:w-full  justify-center 5xl:items-center gap-2 xl:gap-10 '>
               <p className=' self-center portrait:pb-14 pb-5 text-[.9rem] 4xl:text-[1rem] 5xl:text-[1.1rem]'>
                 //front-end development
               </p>
-              <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14  '>
-                <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12 '>
+              <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14 '>
+                <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12'>
                   <img src={html} alt='HTML' className='w-12 5xl:w-16 ' />
                 </li>
                 <li className='place-self-center'>
@@ -121,17 +121,13 @@ export default function SkillsSection() {
           </div>
 
           <div className='backend-div  border-t  min-h-[80dvh] w-fit md:w-full md:basis-1/2 portrait:w-[95svw] pt-36'>
-            <div className=' ft-section flex flex-col  p-10 lg:p-20 portrait:w-fit justify-center 5xl:items-center gap-2 xl:gap-10'>
+            <div className=' ft-section flex flex-col  p-10 lg:p-20 portrait:w-full justify-center 5xl:items-center gap-2 xl:gap-10'>
               <p className=' self-center portrait:pb-14 pb-5 text-[.9rem] 4xl:text-[1rem] 5xl:text-[1.1rem]'>
                 //back-end development
               </p>
               <ul className=' grid grid-cols-3 gap-10 4xl:gap-10 5xl:gap-14'>
                 <li className='place-self-center hover:scale-125 ease-out duration-300 transition-all transform hover:-rotate-12 '>
-                  <img
-                    src={nodejs}
-                    alt='NodeJS'
-                    className='w-12 5xl:w-24 mix-blend-difference'
-                  />
+                  <img src={nodejs} alt='NodeJS' className='w-12 5xl:w-16' />
                 </li>
                 <li className='place-self-center  hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'>
                   <img
