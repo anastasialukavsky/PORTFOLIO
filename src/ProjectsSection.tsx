@@ -83,7 +83,7 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
           <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212] gap-3 lg:gap-5 p-4 xshort:p-2 xl:p-6 4xl:p-8 3xl:gap-8 xl:gap-8 3xl:px-5 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw] portrait:h-[195vh] portrait:md:h-[170vh]'>
             <div
               data-sizes='auto'
-              className="lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover  bg-cover 3xl:bg-contain 5xl:bg-cover  bg-no-repeat basis-1/2  portrait:basis-full portrait:max-h-[67svh] portrait:min-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/mock3-q30.webp')]"
+              className="lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover  bg-cover 3xl:bg-contain 5xl:bg-cover  bg-no-repeat basis-1/2  portrait:basis-full portrait:max-h-[67svh] portrait:min-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/mock_astoria-q30.webp')]"
             ></div>
 
             <div className='basis-1/2 portrait:basis-full h-fit portrait:h-full'>
@@ -137,7 +137,7 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
           <div className='w-[90vw] h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-8 xl:gap-8   3xl:px-14 4xl:px-28 5xl:px-10 portrait:flex-col portrait:w-[100svw]   portrait:h-[195vh] portrait:md:h-[170vh]'>
             <div
               data-sizes='auto'
-              className="lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover    bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 portrait:basis-full portrait:max-h-[67svh]  portrait:min-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/mockshhroom-q30.webp')]"
+              className="lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover    bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2 portrait:basis-full portrait:max-h-[67svh]  portrait:min-h-[57vh] portrait:w-full  portrait:aspect-[2/3] bg-[url('/bg/mock_shhroom-q30.webp')]"
             ></div>
 
             <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
@@ -197,7 +197,7 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
           <div className='w-[90vw]  h-[85dvh] xshort:h-[80dvh] md:flex  flex border border-[#121212]  xshort:p-2  gap-3 lg:gap-5 p-4 xl:p-6 4xl:p-8 3xl:gap-8 xl:gap-8   3xl:px-14 4xl:px-28 5xl:px-10  portrait:flex-col portrait:w-[100svw]  portrait:h-[185vh] portrait:md:h-[170vh]'>
             <div
               data-sizes='auto'
-              className=" lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover   bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2  portrait:basis-full  portrait:max-h-[67svh]  portrait:min-h-[57vh] portrait:w-full  portrait:aspect-[1/3] bg-[url('/bg/mock_plants1-q30.webp')]"
+              className=" lazyload md:h-full portrait:bg-contain portrait:md:max-h-[70vh] portrait:md:bg-cover   bg-cover 3xl:bg-contain 5xl:bg-cover bg-no-repeat basis-1/2  portrait:basis-full  portrait:max-h-[67svh]  portrait:min-h-[57vh] portrait:w-full  portrait:aspect-[1/3] bg-[url('/bg/mock_plants-q30.webp')]"
             ></div>
 
             <div className=' basis-1/2 portrait:basis-full h-fit portrait:h-full'>
