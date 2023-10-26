@@ -92,7 +92,7 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
                 link='https://astoriaskincare.co/'
               />
 
-              <div className='font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5   max-h-[69svh] min-h-[69svh] lg:min-h-[70svh] lg:max-h-[70svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[66svh] short:max-h-[66svh]  xshort:justify-between portrait:min-h-[110vh] portrait:max-h-[110vh] xshort:max-h-[64svh] xshort:min-h-[64svh] portrait:justify-center portrait:md:max-h-[95vh] portrait:md:min-h-[90vh] '>
+              <div className='font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center portrait:pl-5   max-h-[69svh] min-h-[69svh] lg:min-h-[70svh] lg:max-h-[70svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[64svh] short:max-h-[68svh] short:justify-center xshort:justify-center portrait:min-h-[110vh] portrait:max-h-[110vh] xshort:max-h-[60svh] xshort:min-h-[60svh] portrait:justify-center portrait:md:max-h-[95vh] portrait:md:min-h-[90vh] '>
                 <ProjectWrapper
                   frontEnd={[
                     'React',
@@ -145,7 +145,7 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
                 projectName='SHHROOM 3.0'
                 link='https://shhroom.live/'
               />
-              <div className=' font-mono text-[#121212]   flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[70svh] lg:max-h-[70svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh]  short:min-h-[66svh] short:max-h-[66svh]  xshort:justify-between portrait:min-h-[110vh] portrait:pl-5 portrait:pb-10 xshort:max-h-[64svh] xshort:min-h-[64svh] portrait:justify-center portrait:md:max-h-[90vh] portrait:md:min-h-[90vh]'>
+              <div className=' font-mono text-[#121212]   flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[70svh] lg:max-h-[70svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh]  short:min-h-[64svh] short:max-h-[68svh] short:justify-center  xshort:justify-between portrait:min-h-[110vh] portrait:pl-5 portrait:pb-10 xshort:max-h-[64svh] xshort:min-h-[64svh] portrait:justify-center portrait:md:max-h-[90vh] portrait:md:min-h-[90vh]'>
                 <ProjectWrapper
                   description="SHHROOM 3.0 is a collaborative project that evolved from its
                   early versions during development, culminating in its recent
@@ -205,7 +205,7 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
                 projectName='PLANTS&CO 2.0'
                 link='https://www.plantsandco.shop/'
               />
-              <div className=' font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10   4xl:self-center  max-h-[69svh] min-h-[69svh]  lg:min-h-[70svh] lg:max-h-[70svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[66svh] short:max-h-[66svh]  xshort:justify-between  portrait:min-h-[95vh]  portrait:pl-5 xshort:max-h-[64svh] xshort:min-h-[64svh] portrait:justify-center portrait:md:max-h-[80vh] portrait:md:min-h-[80vh]'>
+              <div className=' font-mono text-[#121212]  flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10   4xl:self-center  max-h-[69svh] min-h-[69svh]  lg:min-h-[70svh] lg:max-h-[70svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[64svh] short:max-h-[68svh] short:justify-center  xshort:justify-between  portrait:min-h-[95vh]  portrait:pl-5 xshort:max-h-[64svh] xshort:min-h-[64svh] portrait:justify-center portrait:md:max-h-[80vh] portrait:md:min-h-[80vh]'>
                 <ProjectWrapper
                   description=' PLANTS&CO 2.0 embodies a dynamic e-commerce platform, artfully
                   fusing sleek design with robust functionality. Evolving from
@@ -261,7 +261,7 @@ export default function ProjectsSection({ mobileMenu }: ProjectSectionProps) {
                 projectName='LUNCH BUDDY 2.0'
                 link='https://lunchbuddy.co/'
               />
-              <div className=' font-mono text-[#121212]   flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[70svh] lg:max-h-[70svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[66svh] short:max-h-[66svh] xshort:justify-between  portrait:min-h-[110svh]  portrait:pl-5 xshort:max-h-[64svh] xshort:min-h-[64svh]  portrait:justify-center portrait:md:max-h-[90vh] portrait:md:min-h-[90vh]'>
+              <div className=' font-mono text-[#121212]   flex flex-col items-center justify-between  5xl:px-20 6xl:px-36 6xl:py-16 5xl:py-10  4xl:self-center max-h-[69svh] min-h-[69svh]  lg:min-h-[70svh] lg:max-h-[70svh] 2xl:min-h-[71svh] 2xl:max-h-[71svh] 3xl:max-h-[68svh] 3xl:min-h-[68svh] short:min-h-[64svh] short:max-h-[68svh] short:justify-center xshort:justify-between  portrait:min-h-[110svh]  portrait:pl-5 xshort:max-h-[64svh] xshort:min-h-[64svh]  portrait:justify-center portrait:md:max-h-[90vh] portrait:md:min-h-[90vh]'>
                 <ProjectWrapper
                   description="LUNCH BUDDY 2.0 revolutionizes lunchtime networking for busy
                   individuals, facilitating meaningful connections during brief
