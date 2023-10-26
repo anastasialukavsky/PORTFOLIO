@@ -106,6 +106,10 @@ export default function MobileModal({
     };
   }, [isMenuOpen]);
 
+  //**   click handler for default email app */
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:lukavskyanastasia@gmail.com';
+  };
   return (
     <>
       {/**MM svg section */}
@@ -261,7 +265,7 @@ export default function MobileModal({
             src={gmail}
             alt=''
             className=' w-10'
-            // onClick={handleEmailClick}
+            onClick={handleEmailClick}
           />
         </div>
       </div>

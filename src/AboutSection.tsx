@@ -1,5 +1,5 @@
 
-import me from '/bg/me-q30.webp';
+// import me from '/bg/me-q30.webp';
 // import lazySizes from 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 

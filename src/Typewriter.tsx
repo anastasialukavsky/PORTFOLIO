@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import lodash from 'lodash';
 
 export type Props = {
   text: string;

@@ -36,7 +36,7 @@ export default function ContactSection() {
               <img
                 src={linkedin}
                 alt=''
-                className=' landscape:md:w-[4vw] 5xl:w-[3vw] w-[10vw]'
+                className=' landscape:md:w-[4vw] landscape:5xl:w-[3vw] w-[10vw]'
               />
             </a>
             <a
@@ -52,7 +52,7 @@ export default function ContactSection() {
               <img
                 src={github}
                 alt=''
-                className='landscape:md:w-[4vw] 5xl:w-[3vw] w-[11vw]'
+                className='landscape:md:w-[4vw] landscape:5xl:w-[3vw] w-[11vw]'
               />
             </a>
             <img
@@ -62,7 +62,7 @@ export default function ContactSection() {
               aria-label='Gmail'
               src={gmail}
               alt=''
-              className=' landscape:md:w-[4vw] 5xl:w-[3vw] w-[10vw] hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'
+              className=' landscape:md:w-[4vw] landscape:5xl:w-[3vw] w-[10vw] hover:scale-125 ease-out duration-300 transition-all transform hover:rotate-12'
               onClick={handleEmailClick}
             />
           </div>
